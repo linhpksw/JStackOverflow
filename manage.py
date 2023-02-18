@@ -18,6 +18,8 @@ migrate = Migrate(app,db)
 manager.add_command('db',MigrateCommand)
 
 @manager.command
+def run():
+    app.run()
 
 def test():
     tests = unittest.TestLoader().discover('app/test',pattern ='test*.py')
