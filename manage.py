@@ -4,7 +4,8 @@ import unittest
 from flask_migrate import Migrate, MigrateCommand
 from flask_script import Manager
 
-from .question_app import create_app,db
+from .library import create_app,db
+from .library.model import models
 
 app = create_app(os.getenv('BOILERPLATE_ENV') or 'development')
 
