@@ -1,0 +1,189 @@
+// Option A: Include all of Bootstrap
+
+// Include any default variable overrides here (though functions won't be available)
+// $primary: red;
+
+$nav-pills-link-active-bg: #ff4401;
+$custom-bg:#2c353d ;
+$custom-txt: #F7F7F7;
+$btn-border-radius: 10px;
+@import "../../../node_modules/bootstrap/scss/bootstrap";
+@import "../../../node_modules/bootstrap/scss/functions";
+@import "../../../node_modules/bootstrap/scss/variables";
+@import "../../../node_modules/bootstrap/scss/maps";
+@import "../../../node_modules/bootstrap/scss/mixins";
+@import "../../../node_modules/bootstrap/scss/root";
+
+// Then add additional custom code here
+body {
+    background-color: #1E252B;
+    font-family: 'Source Sans Pro', sans-serif;
+    color: #F7F7F7;
+}
+p, h1, h2, h3, h4, h5, h6{
+    color: #F7F7F7;
+}
+
+/* TITLE SECTION  */
+#title{
+    padding:1% 2% 0 2%;
+    background-color: #262D34;
+    display: flex;
+    justify-content: center;
+}
+.search-container{
+    width: 40%;
+    margin-right: 4%;
+}
+#search-text{
+    width: 90%;
+    border:none;
+    background: none;
+    padding:2%;
+    outline: none;
+    border-radius: 30px;
+    color:#858EAD;
+    caret-color: #858EAD;
+}
+::placeholder {
+    color: #858EAD;
+  }
+#search-btn{
+    width: 8%;
+    border: none;
+    background:none;
+    padding: 2%;
+    border-radius: 50%;
+}
+#search-btn .search-icon{
+    color:#858EAD;
+}
+.brand-page{
+    color: #ff571a;
+    margin-right: 4%;
+    
+}
+#left-nav{
+    display: inline-block;
+    width: 16rem;
+}
+#title .right-nav{
+    display:flex;
+}
+#title .right-nav ul{
+    list-style-type: none;
+    text-align: center;
+}
+#title .right-nav ul li{
+    float: left;
+}
+.nav-link:hover{
+    background:#ff571a ;
+    color:#F7F7F7;
+}
+.nav-link{
+    border-radius: 10%;
+    color: #F7F7F7;
+}
+.nav-item, #search-box{
+    background: #2c353d;
+    border-radius: 10px;
+    margin: 0 2%;
+}
+.logo{
+    border-radius: 10%;
+}
+
+/* MAINBAR SECTION */
+#mainbar-full{
+    margin: 2% 4% 0 21%;
+    background-color: #262D34;
+    padding: 2%;
+    color: #F7F7F7;
+}
+.img-user{
+    margin: 1%;
+}
+.infor{
+    flex-direction: column;
+}
+.list-reset, .activity-item{
+    list-style-type: none;
+    text-align: left;
+    padding: 0;
+}
+.activity-item li{
+    border-radius: 10px;
+    cursor:pointer;  
+}
+.activity-item li:hover{
+    background-color: #ff571a;
+}
+.activity-item li:active, .activity-item li:visited, .btn-custom-var:hover, .btn-custom-var:active, .update-list:active {
+    background-color: #ff4401;
+}
+.activity-item li:focus{
+    background-color: #F7F7F7;
+}
+.activity-item li a{
+    text-decoration: none;
+    color: #F7F7F7;
+}
+.activity-list{
+    background-color: #2c353d;
+    border-radius: 10px;
+}
+li{
+    color:#F7F7F7;
+    margin: 2% 0 2% 0;
+}
+.btn-custom-var{
+    background-color: $custom-bg;
+    color: $custom-txt;
+}
+
+.stats-main{
+    background: #2c353d;
+    border-radius: 10px;
+}
+.modal-content{
+    background-color: #2c353d;
+}
+.input-change{
+    width: 47em;
+    background-color: #858EAD;
+    border:none;
+    color:#F7F7F7;
+    caret-color: #F7F7F7;
+}
+.about-me{
+    background-color: #2c353d;
+    border-radius: 10px;
+    width: 100%;
+}
+.about-txt{
+    text-align: center;
+}
+.about-item, .grid-item{
+    width: 140%;
+}
+.update-list{
+    border: 1px;
+    border-style:solid;
+    border-color: #858EAD;
+    text-decoration: none;
+    color: #F7F7F7;
+    cursor: pointer;
+}
+.empty-box{
+    background-color: #2c353d;
+    border-radius: 10px;
+    text-align: center;
+    margin-right: auto;
+    margin-left: auto;
+    padding: 10%;
+}
+
+.button-bar ul{
+    list-style-type: none;
+}

@@ -12,8 +12,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
   <!--Set up bootstrap-->
-  <link rel="stylesheet" href="main.css">
-  <script src="bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="/src/assets/scss/main.css">
+  <script src="/src/assets/js/bootstrap.bundle.min.js"></script>
   <!--Fontawesome-->
   <script src="https://kit.fontawesome.com/f7f5b64900.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="https://kit.fontawesome.com/f7f5b64900.css" crossorigin="anonymous">
@@ -202,13 +202,13 @@
                   <div class="d-flex align-items-start flex-column">
                     <label for="aboutMe">About me</label>
                     <div class="d-flex align-items-start flex-column">
-                      <div class = "button-bar">
-                        <ul class = "button-row d-flex">
-                          
+                      <div class="button-bar">
+                        <ul class="button-row d-flex">
+
                         </ul>
                       </div>
                       <div>
-                        <textarea id = "tiny" value="" class="input-change"></textarea>
+                        <textarea id="tiny" value="" class="input-change"></textarea>
                       </div>
                     </div>
                   </div>
@@ -253,7 +253,7 @@
                       <a class="p-2" href="profile_page_answer.html">Answers</a>
                     </li>
                     <li class="p-1 m-2">
-                      <a class="m-2" href = "profile_page_question.html">Questions</a>
+                      <a class="m-2" href="profile_page_question.html">Questions</a>
                     </li>
                     <li class="p-1 m-2">
                       <a class="m-2">Tags</a>
@@ -265,15 +265,14 @@
           </div>
           <div class="d-grid m-2 grid-item">
             <div>
-              <div class = "">
+              <div class="">
                 <h4>About</h4>
-                <div class = "about-me ">
-                  <div class = empty-box>
-                    <p class = " about-txt">
+                <div class="about-me ">
+                  <div class=empty-box>
+                    <p class=" about-txt">
                       Your about me section is currently blank. You want to change it?
                       <i class="fa-solid fa-hand-back-point-right"></i>
-                      <a href = "" data-bs-toggle="modal"
-                      data-bs-target="#staticBackdrop">Click here</a>
+                      <a href="" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Click here</a>
                     </p>
                   </div>
                 </div>
@@ -291,10 +290,10 @@
       selector: 'textarea#tiny'
     });
     document.addEventListener('focusin', (e) => {
-  if (e.target.closest(".tox-tinymce, .tox-tinymce-aux, .moxman-window, .tam-assetmanager-root") !== null) {
-    e.stopImmediatePropagation();
-  }
-});
+      if (e.target.closest(".tox-tinymce, .tox-tinymce-aux, .moxman-window, .tam-assetmanager-root") !== null) {
+        e.stopImmediatePropagation();
+      }
+    });
   </script>
 </body>
 
