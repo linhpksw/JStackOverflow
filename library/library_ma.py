@@ -12,7 +12,7 @@ class UserSchema(ma.Schema):
                  reputation=0, expert= False):
         '''
         
-class questionSchema(ma.Schema):
+class QuestionSchema(ma.Schema):
     class Meta:
         fields = ('id','question','answer','asker_id','expert_id')
         
