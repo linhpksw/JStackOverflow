@@ -39,13 +39,13 @@ class User(db.Model, UserMixin):
         
         question_asker = db.relationship(
             'question',
-            foreign_keys= 'question.asker_id',
+            foreign_keys= 'Question.asker_id',
             backref='asker',
             lazy = True
         )
         answer_request = db.relationship(
             'question',
-            foreign_keys= 'question.expert_id',
+            foreign_keys= 'Question.expert_id',
             backref='expert',
             lazy = True
         )
@@ -58,7 +58,7 @@ class User(db.Model, UserMixin):
             self.password = generate_password_hash(password)
    
            
-class question(db.Model):
+class Question(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     question = db.Column(db.Text)
     answer = db.Column(db.Text)
