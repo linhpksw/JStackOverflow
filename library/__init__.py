@@ -2,7 +2,7 @@ from flask import Flask,request,Blueprint
 from flask_bcrypt import Bcrypt
 from .questions_app.controller import questions
 from .profile_app.controller import profiles
-from .extensions import db,ma
+from .extensions import db,ma, login_manager
 from .model.models import User
 import os
 
@@ -22,6 +22,7 @@ def create_app(config_file='config.py'):
     app.config.from_pyfile(config_file)
     db.init_app(app)
     ma.init_app(app)
+    login_manager.init_app(app)
     create_database(app)
     app.register_blueprint(questions)
     app.register_blueprint(profiles)

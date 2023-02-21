@@ -5,8 +5,8 @@ from flask import request
 import random
 from datetime import datetime
 import re
-from werkzeug.security import check_password_hash
-from flask_login import login_required, login_user
+from werkzeug.security import check_password_hash, generate_password_hash
+from flask_login import login_required, login_user, LoginManager
 
 user_schema = UserSchema()
 
@@ -21,9 +21,11 @@ def sign_up_services():
         return 'Invalid email format'
     
     password = request.json.get('password')
-    password_pattern = r'^[a-zA-Z0-9+-*/%._@#!^\(\)\[\]\{\}\S]{6,}$'
+    password_pattern = r'^[a-zA-Z0-9+-.*/%_@#!^]{6,}$'
     if not re.match(password_pattern, password):
         return 'Password should have at least 6 characters and should not contain any spaces'
+    else: 
+        password = generate_password_hash(password)
     
     phone_number = request.json.get('phone_number')
     phone_number_pattern = r'^\d{10,11}$'
