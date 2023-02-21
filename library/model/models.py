@@ -19,8 +19,8 @@ class User(db.Model, UserMixin):
     expert = db.Column(db.Boolean, default=False)
     def __init__(self, id, name, email, password,
                  phone_number, date_of_birth, gender,
-                 bio, avatar, education = None,
-                 experience = None, year_of_experience = None, 
+                 bio, avatar, education = '',
+                 experience = '', year_of_experience = '', 
                  reputation=0, expert= False):
         self.id = id 
         self.name = name
