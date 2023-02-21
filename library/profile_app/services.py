@@ -5,6 +5,8 @@ from flask import request
 import random
 from datetime import datetime
 import re
+from werkzeug.security import check_password_hash
+from flask_login import login_required, login_user
 
 user_schema = UserSchema()
 
@@ -55,4 +57,18 @@ def sign_up_services():
         return "Can not sign up!"
 
 def login_services():
+    email = request.json.get('email')
+    password = request.json.get('password')
+    
+    found_user = User.query.filter_by(email=email).first()
+    if not found_user:
+        return 'Email has not been registered'
+    else:
+        if check_password_hash(found_user.password, password):
+            login_user(found_user)
+            return 'Login successfully!'
+        else:
+            return 'Incorrect password!'
+        
+def logout_services():
     pass
