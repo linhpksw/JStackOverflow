@@ -7,7 +7,7 @@ export default defineConfig({
             input: {
                 // main: resolve(__dirname, 'index.html'),
                 main: resolve(__dirname, 'index.html'),
-                home: resolve(__dirname, './src/templates/home-page.html'),
+               ' question-page': resolve(__dirname, './src/templates/question-page.html'),
             },
         },
     },
