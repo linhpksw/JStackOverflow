@@ -1,5 +1,5 @@
 from flask import Blueprint
-from .services import register
+from .services import sign_up_services
 
 profiles = Blueprint("profiles", __name__)
 
@@ -9,4 +9,4 @@ def get_info():
 
 @profiles.route('/sign_up', methods = ['POST'])
 def sign_up():
-    return register()
+    return sign_up_services()
