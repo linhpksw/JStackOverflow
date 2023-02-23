@@ -1,7 +1,7 @@
 from library.extensions import db
 from library.library_ma import UserSchema
 from library.model.models import User
-from flask import request
+from flask import request, jsonify
 import random
 from datetime import datetime
 import re
@@ -102,3 +102,22 @@ def edit_profile():
 
 def change_avatar():
     pass
+
+def see_profile_services(id):
+    found_user = User.query.get(id)
+    if found_user:
+        return user_schema.jsonify({"name": found_user.name,
+                                    "date of birth":found_user.date_of_birth,
+                                    "gender":found_user.gender,
+                                    "bio": found_user.bio,
+                                    "education": found_user.education,
+                                    "experience": found_user.experience,
+                                    "year_of_experience": found_user.year_of_experience,
+                                    "avatar": found_user.avatar})
+    else:
+        return "Not found!"
+'''(self, id, name, email, password,
+                 phone_number, date_of_birth, gender,
+                 bio, avatar, education = None,
+                 experience = None, year_of_experience = None, 
+                 reputation=0, expert= False):'''
