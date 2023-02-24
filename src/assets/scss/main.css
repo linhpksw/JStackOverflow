@@ -12005,14 +12005,14 @@ p, h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
   margin: 1%;
 }
 
-.infor {
-  flex-direction: column;
-}
-
 .list-reset, .activity-item {
   list-style-type: none;
   text-align: left;
   padding: 0;
+}
+
+.list-reset li {
+  display: inline-block;
 }
 
 .activity-item li {
@@ -12024,7 +12024,7 @@ p, h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
   background-color: #ff571a;
 }
 
-.activity-item li:active, .activity-item li:visited, .btn-custom-var:hover, .btn-custom-var:active, .update-list:active {
+.activity-item li:active, .activity-item li:visited, .btn-custom-var:hover, .btn-custom-var:active {
   background-color: #ff4401;
 }
 
@@ -12062,11 +12062,16 @@ li {
 }
 
 .input-change {
-  width: 47em;
+  width: 38em;
   background-color: #858EAD;
   border: none;
   color: #F7F7F7;
   caret-color: #F7F7F7;
+}
+
+.form-control:focus {
+  background-color: #858EAD;
+  color: #fff;
 }
 
 .about-me {
@@ -12103,4 +12108,8 @@ li {
 
 .button-bar ul {
   list-style-type: none;
+}
+
+.answer-tab, .question-tab {
+  background-color: #ff4401;
 }/*# sourceMappingURL=main.css.map */

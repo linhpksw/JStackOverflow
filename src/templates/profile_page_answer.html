@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FPT Forum</title>
+
+    <!-- Font link -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+    <!--Set up bootstrap-->
+    <link rel="stylesheet" href="/src/assets/scss/main.css">
+    <script src="/src/assets/js/bootstrap.bundle.min.js"></script>
+    <!--Fontawesome-->
+    <script src="https://kit.fontawesome.com/f7f5b64900.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://kit.fontawesome.com/f7f5b64900.css" crossorigin="anonymous">
+</head>
+
+<body>
+    <!--Top bar section-->
+    <section id="title">
+        <div class="brand-page">
+            <a>
+                <span class=""><img class="logo" src="/images/fpt-logo.png">Edu Forum</span>
+            </a>
+        </div>
+        <div id="left-nav">
+            <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home"
+                        type="button" role="tab" aria-controls="pills-home" aria-selected="true">
+                        <i class="fa-solid fa-house"></i>
+                    </a>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile"
+                        type="button" role="tab" aria-controls="pills-profile" aria-selected="false">
+                        <i class="fa-solid fa-users"></i>
+                    </a>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact"
+                        type="button" role="tab" aria-controls="pills-contact" aria-selected="false">
+                        <i class="fa-solid fa-tags"></i>
+                    </a>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link" id="pills-noti-tab" data-bs-toggle="pill" data-bs-target="#pills-noti"
+                        type="button" role="tab" aria-controls="pills-noti" aria-selected="false">
+                        <i class="fa-solid fa-bell noti"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="search-container">
+            <form class="" role="search" id="search-box">
+                <input class="" id="search-text" type="search" placeholder="Type here to search..." aria-label="Search">
+                <button class="" id="search-btn" type="submit"><i
+                        class="fa-solid fa-magnifying-glass search-icon"></i></button>
+            </form>
+        </div>
+        <div class="right-nav">
+            <nav>
+                <ul class="nav">
+                    <li class="nav-item">
+                        <a class=" d-flex " href=""><img src="/images/man.png">
+                            <p> User_name</p>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </section>
+
+    <!--Mainbar Seciton-->
+    <section id="content">
+        <div id="mainbar-full">
+            <!--USER-INFO-->
+            <div class="d-flex position-relative">
+                <a class="img-user"><img src="/images/man (1).png"></a>
+                <div class="d-flex">
+                    <div class="d-flex align-items-center infor">
+                        <div class="me-3">
+                            <div class="d-flex ms-3">
+                                <div class="me-3">
+                                    <h3>User_name</h3>
+                                </div>
+                                <div class=" d-flex address">
+                                    <div class="me-2"><i class="fa-solid fa-location-dot fa-lg mt-3"></i></div>
+                                    <div>
+                                        <p class="mt-2">HA NOI CITY</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="d-flex flex-wrap">
+                                <ul class="list-reset ms-3">
+                                    <li class="mb-2 mt-2">
+                                        <div class="d-flex">
+                                            <div>
+                                                <i class="fa-solid fa-venus-mars me-2"></i>
+                                            </div>
+                                            <div>
+                                                Gender : Male
+                                            </div>
+                                        </div>
+                                    </li>
+
+                                    <li class="mb-2 mt-2">
+                                        <div class="d-flex me-2">
+                                            <div>
+                                                <i class="fa-solid fa-cake-candles me-2"></i>
+                                            </div>
+                                            <div>
+                                                Member for 7 days
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="mb-2 mt-2">
+                                        <div class="d-flex me-2">
+                                            <div>
+                                                <i class="fa-solid fa-clock me-2"></i>
+                                            </div>
+                                            <div>
+                                                Last seen this week
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="mb-2 mt-2">
+                                        <div class="d-flex me-2">
+                                            <div>
+                                                <i class="fa-solid fa-calendar-days me-2"></i>
+                                            </div>
+                                            <div>
+                                                Visited 7 days
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!--Settings-->
+                <div class="d-flex position-absolute top-0 end-0">
+                    <a class="btn btn-custom-var d-flex me-1 ms-1" type="" href="" type="button" data-bs-toggle="modal"
+                        data-bs-target="#staticBackdrop">
+                        <i class="fa-solid fa-pen me-1 mt-1"></i>
+                        Edit profile
+                    </a>
+                    <a class="btn btn-custom-var d-flex me-1 ms-1 " type="" href="">
+                        <i class="fa-solid fa-gear me-1 mt-1"></i>
+                        Settings
+                    </a>
+                </div>
+            </div>
+            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+                aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Edit your profile</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="d-flex align-items-start flex-column">
+                                <div class="m-2">
+                                    <div class="d-flex align-items-start flex-column">
+                                        <div>
+                                            <label for="displayName">Display name</label>
+                                        </div>
+                                        <div class="d-flex">
+                                            <input value="User_name" class="input-change">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="m-2">
+                                    <div class="d-flex align-items-start flex-column">
+                                        <div>
+                                            <label for="location">Location</label>
+                                        </div>
+                                        <div class="d-flex">
+                                            <input value="HA NOI CITY" class="input-change">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="m-2">
+                                    <div class="d-flex align-items-start flex-column">
+                                        <label for="title">Title</label>
+                                        <div class="d-flex">
+                                            <input value="" class="input-change">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="m-2">
+                                    <div class="d-flex align-items-start flex-column">
+                                        <label for="aboutMe">About me</label>
+                                        <div class="d-flex align-items-start flex-column">
+                                            <div>
+                                                <ul>
+                                                    <li>BOld</li>
+                                                    <li>Italic</li>
+                                                    <li>Underlined</li>
+                                                </ul>
+                                            </div>
+                                            <div>
+                                                <textarea value="" class="input-change"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Save changes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="main-content">
+                <div class="d-flex">
+                    <div class="m-2">
+                        <div class="d-grid">
+                            <div>
+                                <div class="mb-2">
+                                    <h4>Stats</h4>
+                                </div>
+                                <div class="stats-main mb-2">
+                                    <div class="d-flex p-2">
+                                        <div class="m-2">
+                                            <div>0</div>
+                                            Answers
+                                        </div>
+                                        <div class="m-2">
+                                            <div>0</div>
+                                            Questions
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-2 mb-2">
+                                <h4 class="">Activity</h4>
+                                <div class="activity-list">
+                                    <ul class="activity-item p-1">
+                                        <li class="p-1 m-2 answer-tab">
+                                            <a class="p-2" href="profile_page_answer.html">Answers</a>
+                                        </li>
+                                        <li class="p-1 m-2">
+                                            <a class="m-2" href="profile_page_question.html">Questions</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <section id="answer-box-side" class="about-item">
+                        <div class="m-2 ">
+                            <div class="d-flex">
+                                <div class="d-flex flex-grow-1">
+                                    <div>
+                                        <h4>0 Answer</h4>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="d-flex align-items-end">
+                                        <div class="d-flex">
+                                            <a class="update-list px-1 rounded-start-1">Score</a>
+                                            <a class="update-list px-1 rounded-end-1">Newest</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="empty-box">
+                                    You have not
+                                    <a href="">answered</a>
+                                    any questions!
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+
+                </div>
+            </div>
+        </div>
+
+
+    </section>
+</body>
+
+</html>
