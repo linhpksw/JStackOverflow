@@ -1,4 +1,5 @@
 from werkzeug.security import generate_password_hash
+from datetime import datetime
 from library.extensions import db
 from flask_login import UserMixin
 
@@ -37,39 +38,60 @@ class User(db.Model, UserMixin):
         self.reputation = reputation
         self.expert = expert
         
-        question_asker = db.relationship(
-            'question',
-            foreign_keys= 'Question.asker_id',
-            backref='asker',
-            lazy = True
-        )
-        answer_request = db.relationship(
-            'question',
-            foreign_keys= 'Question.expert_id',
-            backref='expert',
-            lazy = True
-        )
-    
-        @property
-        def password(self):
-            raise AttributeError('Cannot view password!')
-        @password.setter
-        def password(self, password):
-            self.password = generate_password_hash(password)
+    question_asker = db.relationship(
+        'Question',
+        foreign_keys= 'Question.asker_id',
+        backref='asker',
+        lazy = True
+    )
+    answer_request = db.relationship(
+        'Answer',
+        primaryjoin= 'User.id == Answer.respondent_id',
+        backref='expert',
+        lazy = True
+    )
+    @property
+    def password(self):
+        raise AttributeError('Cannot view password!')
+    @password.setter
+    def password(self, password):
+        self.password_hash = generate_password_hash(password)
    
-           
+             
 class Question(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     question = db.Column(db.Text)
-    answer = db.Column(db.Text)
+    datetime_posted = db.Column(db.DateTime,default=datetime.utcnow)
+    datetime_updated = db.Column(db.DateTime,default=datetime.utcnow)
     asker_id = db.Column(db.Integer,db.ForeignKey('user.id'))
-    expert_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    vote_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     
-    def __init__(self,question,answer,asker_id,expert_id):
+    def __init__(self,question,datetime_updated,datetime_posted,asker_id,vote_id):
         self.question = question
-        self.answer = answer
+        self.datetime_posted = datetime_posted
+        self.datetime_updated = datetime_updated
         self.asker_id = asker_id
-        self.expert_id = expert_id
+        self.vote_id = vote_id
+        
+class Answer(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    answer = db.Column(db.Text)
+    datetime_posted = db.Column(db.DateTime,default=datetime.utcnow)
+    datetime_updated = db.Column(db.DateTime,default=datetime.utcnow)
+    respondent_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    question_id = db.Column(db.Integer,db.ForeignKey('question.id'))
+    like_id = db.Column(db.Integer,db.ForeignKey('user.id'))
+    unlike_id = db.Column(db.Integer,db.ForeignKey('user.id'))
+    
+    def __init__(self,answer,datetime_updated,datetime_posted,respondent_id,question_id,like_id,unlike_id):
+        self.answer = answer
+        self.datetime_updated = datetime_updated
+        self.datetime_posted = datetime_posted
+        self.respondent_id = respondent_id
+        self.question_id = question_id
+        self.like_id = like_id
+        self.unlike_id = unlike_id
+    
     
 
      
