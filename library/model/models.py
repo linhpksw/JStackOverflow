@@ -61,11 +61,11 @@ class Question(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     question = db.Column(db.Text)
     datetime_posted = db.Column(db.DateTime,default=datetime.utcnow)
-    datetime_updated = db.Column(db.DateTime,default=datetime.utcnow)
+    datetime_updated = db.Column(db.DateTime, default = datetime.utcnow)
     asker_id = db.Column(db.Integer,db.ForeignKey('user.id'))
     vote_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     
-    def __init__(self,question,datetime_updated,datetime_posted,asker_id,vote_id):
+    def __init__(self,question,datetime_updated,datetime_posted,asker_id,vote_id = None):
         self.question = question
         self.datetime_posted = datetime_posted
         self.datetime_updated = datetime_updated
