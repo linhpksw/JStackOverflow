@@ -2,6 +2,7 @@ from flask import Blueprint
 from .services import sign_up_services, login_services, logout_services, delete_user_services, load_user, see_profile_services
 from flask_login import login_required, login_user, LoginManager, logout_user, current_user
 from library.extensions import login_manager
+from library.model.models import User
 
 profiles = Blueprint("profiles", __name__)
 

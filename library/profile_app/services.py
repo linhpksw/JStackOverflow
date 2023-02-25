@@ -7,6 +7,7 @@ from datetime import datetime
 import re
 from werkzeug.security import check_password_hash, generate_password_hash
 from flask_login import login_required, login_user, LoginManager, logout_user, current_user
+from werkzeug.security import check_password_hash
 
 user_schema = UserSchema()
 
@@ -20,12 +21,12 @@ def sign_up_services():
     if not re.match(email_pattern, email):
         return 'Invalid email format'
 
-    password = request.json.get('password')
+    password_hash = request.json.get('password')
     password_pattern = r'^[a-zA-Z0-9+-.*/%_@#!^]{6,}$'
-    if not re.match(password_pattern, password):
+    if not re.match(password_pattern, password_hash):
         return 'Password should have at least 6 characters and should not contain any spaces'
     else:
-        password = generate_password_hash(password)
+       password_hash = generate_password_hash(password_hash)
 
     phone_number = request.json.get('phone_number')
     phone_number_pattern = r'^\d{10,11}$'
@@ -47,7 +48,7 @@ def sign_up_services():
         return "Email address already in use!"
 
     try:
-        new_user = User(id=id, name=name, email=email, password=password, phone_number=phone_number,
+        new_user = User(id=id, name=name, email=email, password=password_hash, phone_number=phone_number,
                         date_of_birth=date_of_birth, gender=gender, bio=bio, avatar=avatar, education=education,
                         experience=experience, year_of_experience=year_of_experience)
         db.session.add(new_user)
@@ -57,9 +58,24 @@ def sign_up_services():
         db.session.rollback()
         print("An error occurred:", e)
         return "Can not sign up!"
+ 
+    
+def login_services():
+    email = request.json.get('email')
+    password = request.json.get('password')
+    
+    found_user = User.query.filter_by(email=email).first()
+    if not found_user:
+        return "email has not been"
+    else:
+        if password and check_password_hash(found_user.password,password):
+            login_user(found_user)
+            return 'login up successfully'
+        else:
+            return "Password is incorrect!"
 
     
-
+'''
 def login_services():
     email = request.json.get('email')
     password = request.json.get('password')
@@ -73,6 +89,8 @@ def login_services():
             return 'Login successfully!'
         else:
             return 'Incorrect password!'
+'''
+
 
 
 def load_user(id):

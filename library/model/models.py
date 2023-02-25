@@ -51,13 +51,12 @@ class User(db.Model, UserMixin):
         lazy = True
     )
     @property
-    def password(self):
+    def password_hash(self):
         raise AttributeError('Cannot view password!')
-    @password.setter
-    def password(self, password):
-        self.password_hash = generate_password_hash(password)
+    @password_hash.setter
+    def password_hash(self, password_hash):
+        self.password_hash = generate_password_hash(password_hash)
    
-             
 class Question(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     question = db.Column(db.Text)
