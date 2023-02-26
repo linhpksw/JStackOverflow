@@ -8,9 +8,11 @@ export default defineConfig({
                 // main: resolve(__dirname, 'index.html'),
                 main: resolve(__dirname, 'index.html'),
                 home: resolve(__dirname, './src/templates/home-page.html'),
+                'profile-page': resolve(
+                    __dirname,
+                    'src/templates/profile-page.html'
+                ),
             },
         },
     },
 });
-
-// Hello 
