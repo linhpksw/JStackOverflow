@@ -65,8 +65,17 @@ def update_question_services(id):
     
 
 def delete_question_services(id):
-        
-    pass
+    question = Question.query.get(id)
+    if not question:
+        return jsonify({"Error": "Question not found."}), 404
+    if question:
+        try:
+            db.session.delete(question)
+            db.session.commit()
+            return "deleted question!!!"
+        except IndentationError:
+            db.session.rollback()
+            return "Can not delete question!"
  
 
 

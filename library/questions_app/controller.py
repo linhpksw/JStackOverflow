@@ -39,6 +39,6 @@ def update_questions(id):
     return update_question_services(id)
     
 
-@questions.route('/questions_manager/delete_question', methods=['POST'])
-def delete_questions():
-    pass
+@questions.route('/questions_manager/questions/<int:id>', methods=['DELETE'])
+def delete_questions(id):
+    return delete_question_services(id)
