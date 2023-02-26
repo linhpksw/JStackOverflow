@@ -2704,6 +2704,11 @@ input:checked + .toggle-bg {
 
 .input {
   flex-shrink: 1;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
+  transition-duration: 200ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   height: 3rem;
   padding-left: 1rem;
   padding-right: 1rem;
@@ -2857,6 +2862,11 @@ input:checked + .toggle-bg {
   --tw-bg-opacity: 1;
   background-color: hsl(var(--b1) / var(--tw-bg-opacity));
   font-weight: 600;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
+  transition-duration: 200ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   border-radius: var(--rounded-btn, 0.5rem);
   background-image: linear-gradient(45deg, transparent 50%, currentColor 50%), linear-gradient(135deg, currentColor 50%, transparent 50%);
   background-position: calc(100% - 20px) calc(1px + 50%), calc(100% - 16px) calc(1px + 50%);
@@ -2966,6 +2976,11 @@ input:checked + .toggle-bg {
 
 .textarea {
   flex-shrink: 1;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
+  transition-duration: 200ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   min-height: 3rem;
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
@@ -3767,7 +3782,7 @@ input:checked + .toggle-bg {
   --tw-text-opacity: 1;
 }
 
-.tab.tab-active:not(.tab-disabled):not([disabled]) {
+.tab.tab-active {
   border-color: hsl(var(--bc) / var(--tw-border-opacity));
   --tw-border-opacity: 1;
   --tw-text-opacity: 1;
@@ -3786,19 +3801,6 @@ input:checked + .toggle-bg {
 .tab:focus-visible.tab-lifted {
   border-bottom-right-radius: var(--tab-radius, 0.5rem);
   border-bottom-left-radius: var(--tab-radius, 0.5rem);
-}
-
-.tab-disabled,
-  .tab-disabled:hover,
-  .tab[disabled],
-  .tab[disabled]:hover {
-  cursor: not-allowed;
-  color: hsl(var(--bc) / var(--tw-text-opacity));
-  --tw-text-opacity: 0.2;
-}
-
-.tabs-boxed .tab {
-  border-radius: var(--rounded-btn, 0.5rem);
 }
 
 .table :where(th, td) {

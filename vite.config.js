@@ -10,7 +10,7 @@ export default defineConfig({
                 home: resolve(__dirname, './src/templates/home-page.html'),
                 'profile-page': resolve(
                     __dirname,
-                    'src/templates/profile-page.html'
+                    './src/templates/profile-page.html'
                 ),
             },
         },
