@@ -40,5 +40,6 @@ def update_questions(id):
     
 
 @questions.route('/questions_manager/questions/<int:id>', methods=['DELETE'])
+@login_required
 def delete_questions(id):
     return delete_question_services(id)

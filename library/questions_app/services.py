@@ -1,6 +1,6 @@
 from library.extensions import db
 from library.model.models import Question,User,Answer
-from library.library_ma import QuestionSchema
+from library.library_ma import QuestionSchema,AnswerSchema
 from flask import request
 from datetime import datetime
 from flask_login import LoginManager,current_user,login_required
@@ -9,6 +9,8 @@ import json
 
 question = QuestionSchema()
 questions = QuestionSchema(many=True)
+answer = AnswerSchema()
+answers = AnswerSchema(many=True)
 
 
 login_manager = LoginManager()
