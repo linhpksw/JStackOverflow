@@ -47,11 +47,25 @@ def get_all_questions_services():
     else:
         return jsonify({"Error":" No questions"}), 404
         
-def update_question_services():
-   pass
+def update_question_services(id):
+    question = Question.query.get(id)
+    if not question:
+        return jsonify({"Error": "Question not found."}), 404
+    data = request.get_json()
+    if not data:
+        return jsonify({"Error": "Invalid request data."}), 400
+    question.question = data.get('question', question.question)
+    question.datetime_update = data.get('datetime_update', datetime)
+   
+    db.session.commit()
 
+    new_question = Question.query.get(id)
+    return QuestionSchema().dump(new_question)
 
-def delete_question_services():
+    
+
+def delete_question_services(id):
+        
     pass
  
 

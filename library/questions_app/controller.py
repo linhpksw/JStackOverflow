@@ -1,7 +1,7 @@
 from flask import Blueprint,redirect,render_template,request,url_for
 from library.extensions import db
 from library.model.models import User, Question,Answer
-from .services import add_question_services, update_question_services, delete_question_services,get_question_services,get_all_questions_services
+from .services import add_question_services, update_question_services, delete_question_services,get_question_services,get_all_questions_services,update_question_services
 from flask_login import current_user,login_required
 
 questions = Blueprint("questions",__name__)
@@ -33,10 +33,11 @@ def get_all_questions():
     return get_all_questions_services()
 
 
-@questions.route('/questions_manager/update_question', methods=['POST','GET'])
+@questions.route('/questions_manager/questions/<int:id>', methods=['PUT'])
 @login_required
-def update_questions():
-    pass
+def update_questions(id):
+    return update_question_services(id)
+    
 
 @questions.route('/questions_manager/delete_question', methods=['POST'])
 def delete_questions():
