@@ -33,6 +33,12 @@ module.exports = {
                     'templates',
                     'home-page.html'
                 ),
+                'profile-page': path.resolve(
+                    __dirname,
+                    'src',
+                    'templates',
+                    'profile-page.html'
+                ),
 
                 // Add as many HTML files as you need
             },
