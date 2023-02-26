@@ -22,3 +22,29 @@ bgcolor.addEventListener("click", function () {
 //         selected[i].style.backgroundColor = randomColor;
 //     }
 // });
+
+// 1. new Promise
+// 2. executor
+var promise = new Promise(
+  function(resolve, reject){
+    // logic
+    //Thành công: resolve();
+    //Thất bại: reject();
+    resolve([
+      {
+        id: 1,
+        name: 'Javascript'
+      }
+    ]);
+});
+
+promise
+  .then(function(source){
+    console.log(source);
+  })
+  .catch(function(){
+    console.log('Failure!');
+  })
+  .finally(function(){
+    console.log('Done!');
+  });
