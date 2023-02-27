@@ -4549,10 +4549,6 @@ input:checked + .toggle-bg {
   overflow-x: hidden;
 }
 
-.overflow-x-scroll {
-  overflow-x: scroll;
-}
-
 .rounded-2xl {
   border-radius: 1rem;
 }

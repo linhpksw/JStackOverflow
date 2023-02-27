@@ -24,8 +24,10 @@
         "vite": "^4.1.2"
     },
     "dependencies": {
+        "@preline/overlay": "^1.4.0",
         "daisyui": "^2.50.2",
         "flowbite": "^1.6.3",
-        "highlight.js": "^11.7.0"
+        "highlight.js": "^11.7.0",
+        "preline": "^1.7.0"
     }
 }
