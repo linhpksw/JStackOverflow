@@ -4389,10 +4389,6 @@ input:checked + .toggle-bg {
   max-width: 48rem;
 }
 
-.max-w-\[85rem\] {
-  max-width: 85rem;
-}
-
 .max-w-md {
   max-width: 28rem;
 }
@@ -4551,6 +4547,10 @@ input:checked + .toggle-bg {
 
 .overflow-x-hidden {
   overflow-x: hidden;
+}
+
+.overflow-x-scroll {
+  overflow-x: scroll;
 }
 
 .rounded-2xl {
@@ -5047,6 +5047,14 @@ input:checked + .toggle-bg {
   -webkit-line-clamp: 2;
 }
 
+body {
+  position: fixed;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
 main::-webkit-scrollbar {
   width: 0.9rem;
 }
@@ -5060,9 +5068,6 @@ main::-webkit-scrollbar-thumb {
 
 main::-webkit-scrollbar-track {
   background-color: #1e252b;
-  margin-bottom: 12.5rem;
-  -webkit-transition: all;
-  transition: all;
 }
 
 .scrollbar-hide::-webkit-scrollbar {
