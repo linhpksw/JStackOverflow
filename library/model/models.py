@@ -37,7 +37,7 @@ class User(db.Model, UserMixin):
         self.year_of_experience = year_of_experience
         self.reputation = reputation
         self.expert = expert
-        
+       
     question_asker = db.relationship(
         'Question',
         foreign_keys= 'Question.asker_id',
@@ -50,13 +50,16 @@ class User(db.Model, UserMixin):
         backref='expert',
         lazy = True
     )
+    
+'''
     @property
     def password_hash(self):
         raise AttributeError('Cannot view password!')
     @password_hash.setter
     def password_hash(self, password_hash):
         self.password_hash = generate_password_hash(password_hash)
-   
+''' 
+
 class Question(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     question = db.Column(db.Text)

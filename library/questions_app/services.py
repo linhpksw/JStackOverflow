@@ -57,7 +57,7 @@ def update_question_services(id):
     if not data:
         return jsonify({"Error": "Invalid request data."}), 400
     question.question = data.get('question', question.question)
-    question.datetime_update = data.get('datetime_update', datetime)
+    question.datetime_updated = data.get('datetime_updated', datetime.now())
    
     db.session.commit()
 
