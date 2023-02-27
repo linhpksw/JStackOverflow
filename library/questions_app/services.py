@@ -16,6 +16,8 @@ answers = AnswerSchema(many=True)
 login_manager = LoginManager()
 
 
+#settings for features of questions
+
 def add_question_services():
     question = request.json['question']
     datetime_posted = datetime.now() 
@@ -78,6 +80,41 @@ def delete_question_services(id):
         except IndentationError:
             db.session.rollback()
             return "Can not delete question!"
+        
+        
+#settings for features of answers
+
+def add_answer_services():
+    question_id = request.json['question_id']
+    respondent_id = request.json['respondent_id']
+    answer = request.json['answer']
+    datetime_posted = datetime.now()
+    datetime_updated = datetime.now()
+    
+    try:
+        new_answer = Answer(question_id=question_id,respondent_id= respondent_id,answer=answer,datetime_posted=datetime_posted,datetime_updated=datetime_updated)
+        db.session.add(new_answer)
+        db.session.commit()
+        return "answer added in database!!!"
+    except Exception as e:
+        db.session.rollback()
+        print("An error occurred:", e)
+        return "Can not add answer in database!!!"
+ 
+    
+
+def get_answer_services(id):
+    pass
+
+def get_all_answers_services():
+    pass
+
+def update_answer_services(id):
+    pass
+
+def delete_answer_services(id):
+    pass
+
  
 
 

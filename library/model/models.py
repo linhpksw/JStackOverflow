@@ -85,7 +85,7 @@ class Answer(db.Model):
     like_id = db.Column(db.Integer,db.ForeignKey('user.id'))
     unlike_id = db.Column(db.Integer,db.ForeignKey('user.id'))
     
-    def __init__(self,answer,datetime_updated,datetime_posted,respondent_id,question_id,like_id,unlike_id):
+    def __init__(self,answer,datetime_updated,datetime_posted,respondent_id,question_id,like_id = None,unlike_id = None):
         self.answer = answer
         self.datetime_updated = datetime_updated
         self.datetime_posted = datetime_posted
