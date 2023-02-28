@@ -7,6 +7,7 @@ from datetime import datetime
 import re
 from werkzeug.security import check_password_hash, generate_password_hash
 from flask_login import login_required, login_user, LoginManager, logout_user, current_user
+import cloudinary.uploader
 
 user_schema = UserSchema()
 
@@ -14,33 +15,34 @@ user_schema = UserSchema()
 def sign_up_services():
 
     id = random.randint(100000, 999999)
-    name = request.json.get('name')
-    email = request.json.get('email')
+    name = request.values.get('name')
+    email = request.values.get('email')
     email_pattern = r'^[a-zA-Z0-9+-.%_]+@[a-zA-Z0-9.-]+\.[a-zA-z]{2,}$'
     if not re.match(email_pattern, email):
         return 'Invalid email format'
 
-    password = request.json.get('password')
+    password = request.values.get('password')
     password_pattern = r'^[a-zA-Z0-9+-.*/%_@#!^]{6,}$'
     if not re.match(password_pattern, password):
         return 'Password should have at least 6 characters and should not contain any spaces'
     else:
         password = generate_password_hash(password)
 
-    phone_number = request.json.get('phone_number')
+    phone_number = request.values.get('phone_number')
     phone_number_pattern = r'^\d{10,11}$'
     if not re.match(phone_number_pattern, phone_number):
         return 'Invalid phone number format'
 
-    date_of_birth_str = request.json.get('date_of_birth')
+    date_of_birth_str = request.values.get('date_of_birth')
     date_of_birth = datetime.strptime(date_of_birth_str, '%Y-%m-%d').date()
 
-    gender = request.json.get('gender')
-    bio = request.json.get('bio')
-    avatar = request.json.get('avatar')
-    education = request.json.get('education')
-    experience = request.json.get('experience')
-    year_of_experience = request.json.get('year_of_experience')
+    gender = request.values.get('gender')
+    bio = request.values.get('bio')
+    # avatar = request.json.get('avatar')
+    avatar = get_path_image(request)
+    education = request.values.get('education')
+    experience = request.values.get('experience')
+    year_of_experience = request.values.get('year_of_experience')
 
     existing_user = User.query.filter_by(email=email).first()
     if existing_user:
@@ -120,8 +122,11 @@ def edit_profile_services(id):
         return "Cannot edit profile"
     
     
-def change_avatar():
+def change_avatar(id):
     pass
+    
+        
+        
 
 def see_profile_services(id):
     found_user = User.query.get(id)
@@ -147,3 +152,16 @@ def get_question_by_user_id(user_id):
 
 def get_answer_by_user_id(user_id):
     pass
+
+def calculate_reputation_services():
+    pass
+
+def get_path_image(request):
+    file = request.files.get('avatar', None)
+    # check if user has uploaded file, save the path
+    if file is not None:
+        res = cloudinary.uploader.upload(file)
+        return res['secure_url']
+    else:
+        return "https://res.cloudinary.com/dxu6nsoye/image/upload/v1649821452/z3336574163217_bc5927ec38c68b516f13b300443dfcac_zouzvp.jpg"
+    
