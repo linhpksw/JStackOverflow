@@ -22,7 +22,7 @@ def add_question_services():
     question = request.json['question']
     datetime_posted = datetime.now() 
     datetime_updated = datetime.now()
-    asker_id = request.json['asker_id']
+    asker_id = current_user.id   #request.json['asker_id']
     
     try:
         new_question = Question(question= question,datetime_updated=datetime_updated, datetime_posted=datetime_posted,asker_id=asker_id)
@@ -53,39 +53,47 @@ def get_all_questions_services():
   
         
 def update_question_services(id):
-    question = Question.query.get(id)
-    if not question:
-        return jsonify({"Error": "Question not found."}), 404
-    data = request.get_json()
-    if not data:
-        return jsonify({"Error": "Invalid request data."}), 400
-    question.question = data.get('question', question.question)
-    question.datetime_updated = data.get('datetime_updated', datetime.now())
+    if Question.query.get(id).asker_id != current_user.id:
+        return jsonify({"Error":" cannot update question !!!"}), 404
+    else:
+        question = Question.query.get(id)
+        if not question:
+            return jsonify({"Error": "Question not found."}), 404
+        data = request.get_json()
+        if not data:
+            return jsonify({"Error": "Invalid request data."}), 400
+        question.question = data.get('question', question.question)
+        question.datetime_updated = data.get('datetime_updated', datetime.now())
    
-    db.session.commit()
+        db.session.commit()
 
-    new_question = Question.query.get(id)
-    return QuestionSchema().dump(new_question)
+        new_question = Question.query.get(id)
+        return QuestionSchema().dump(new_question)
 
     
 def delete_question_services(id):
-    question = Question.query.get(id)
-    if not question:
-        return jsonify({"Error": "Question not found."}), 404
-    if question:
-        try:
-            db.session.delete(question)
-            db.session.commit()
-            return "deleted question!!!"
-        except IndentationError:
-            db.session.rollback()
-            return "Can not delete question!"
+    if Question.query.get(id).asker_id != current_user.id:
+        return jsonify({"Error": "Cannot delete question"}), 404
+    else:
+        question = Question.query.get(id)
+        if not question:
+            return jsonify({"Error": "Question not found."}), 404
+        if question:
+            try:
+                db.session.delete(question)
+                db.session.commit()
+                return "deleted question!!!"
+            except IndentationError:
+                db.session.rollback()
+                return "Can not delete question!"
         
         
 #settings for features of answers
 
 def add_answer_services():
+    #question_id = Answer.query.get(id).question_id
     question_id = request.json['question_id']
+    #respondent_id = current_user.id 
     respondent_id = request.json['respondent_id']
     answer = request.json['answer']
     datetime_posted = datetime.now()
@@ -100,6 +108,7 @@ def add_answer_services():
         db.session.rollback()
         print("An error occurred:", e)
         return "Can not add answer in database!!!"
+
  
     
 def get_answer_services(id):
@@ -121,34 +130,40 @@ def get_all_answers_services():
     
 
 def update_answer_services(id):
-    answer = Answer.query.get(id)
-    if not answer:
-        return jsonify({"Error": "Answer not found."}), 404
-    data = request.get_json()
-    if not data:
-        return jsonify({"Error": "Invalid request data."}), 400
-    answer.answer = data.get('answer', answer.answer)
-    answer.datetime_updated = data.get('datetime_updated', datetime.now())
-   
-    db.session.commit()
+    if Answer.query.get(id).respondent_id != current_user.id:
+        return jsonify({"Error":" Can't update answer"})
+    else:
+        answer = Answer.query.get(id)
+        if not answer:
+            return jsonify({"Error": "Answer not found."}), 404
+        data = request.get_json()
+        if not data:
+            return jsonify({"Error": "Invalid request data."}), 400
+        answer.answer = data.get('answer', answer.answer)
+        answer.datetime_updated = data.get('datetime_updated', datetime.now())
+    
+        db.session.commit()
 
-    new_answer = Answer.query.get(id)
-    return AnswerSchema().dump(new_answer)
+        new_answer = Answer.query.get(id)
+        return AnswerSchema().dump(new_answer)
     
 
 def delete_answer_services(id):
-    answer = Answer.query.get(id)
-    if not answer:
-        return jsonify({"Error": "Answer not found."}), 404
-    if answer:
-        try:
-            db.session.delete(answer)
-            db.session.commit()
-            return "deleted answer!!!"
-        except IndentationError:
-            db.session.rollback()
-            return "Can not delete answer!"
-        
+    if Answer.query.get(id).respondent_id != current_user.id:
+        return jsonify({"Error":" Can't delete answer"})
+    else:
+        answer = Answer.query.get(id)
+        if not answer:
+            return jsonify({"Error": "Answer not found."}), 404
+        if answer:
+            try:
+                db.session.delete(answer)
+                db.session.commit()
+                return "deleted answer!!!"
+            except IndentationError:
+                db.session.rollback()
+                return "Can not delete answer!"
+            
     
 
  
