@@ -41,3 +41,7 @@ body{
 .material-icons{
     font-size: 70px;
 }
+#increment-count{
+    width: 30px;
+    height: 30px;
+}

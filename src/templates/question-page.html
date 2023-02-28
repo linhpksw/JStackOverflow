@@ -325,17 +325,13 @@
                     <hr width="100%">
                     <div class="flex p-5">
     
-                        <div id="vote" class="float-left px-1 mr-3 ">
-                            <button class="material-icons  text-white ">arrow_drop_up</button>
-                            <script>
-                                let button = document.getElementById('myButton');
-                                button.addEventListener('click', function() {
-                                count++;
-                                 console.log(count);
-                                });
-                            </script>
-                            <div id="count-like" class="text-white text-center align-middle">12</div>
-                            <button class="material-icons  text-white text-4xl">arrow_drop_down</button>
+                        <div  class="float-left px-1 mr-3 ">
+                            <button id="increment-count" class="material-icons  text-white text-xl"  >arrow_drop_up</button>
+    
+                            <div id="total-count" class="text-white text-center align-middle"></div> 
+
+                            
+                            <button id="decrement-count" class="material-icons  text-white text-4xl">arrow_drop_down</button>
                         </div> 
                         <p class="content-question md-48 text-white float-right text-justify">Chả là năm nay e định học thêm nhiều kĩ năng mềm để có ích cho bản thân sau này và đã lên hẳn 1 list các kỹ năng cần học,kết quả là quá nhiều nên e không biết phải sắp xếp học các kỹ năng sao cho hợp lý,mong các bác cho e xin vài lời khuyên.</p>
                     </div>
@@ -516,6 +512,8 @@
                 </div>
         </div>
     </div>
+
+    <script src="../static/js/index.js"></script>
         
     
 </body>
