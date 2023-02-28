@@ -122,9 +122,18 @@ def edit_profile_services(id):
         return "Cannot edit profile"
     
     
-def change_avatar(id):
-    pass
-    
+def change_avatar_services(id):
+    if id!=current_user.id:
+        return "You are not allowed to edit this profile"  
+    #avatar = request.values
+    try: 
+        current_user.avatar = get_path_image(request)
+        db.session.commit()
+        return "change avatar successfully"
+    except Exception as e:
+        db.session.rollback()
+        print("An error occurred:", e)
+        return "Cannot change avatar"  
         
         
 

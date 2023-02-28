@@ -1,5 +1,5 @@
 from flask import Blueprint
-from .services import sign_up_services, login_services, logout_services, delete_user_services, load_user, see_profile_services, edit_profile_services
+from .services import sign_up_services, login_services, logout_services, delete_user_services, load_user, see_profile_services, edit_profile_services, change_avatar_services
 from flask_login import login_required, login_user, LoginManager, logout_user, current_user
 from library.extensions import login_manager
 
@@ -40,3 +40,8 @@ def see_profile(id):
 @login_required
 def edit_profile(id):
     return edit_profile_services(id)
+
+@profiles.route('/user/<int:id>/change_avatar', methods = ['PUT'])
+@login_required
+def change_avatar(id):
+    return change_avatar_services(id)

@@ -36,6 +36,7 @@ def add_question_services():
 
 def get_question_services(id):
     question = Question.query.get(id)
+    #print(question.asker_id)
     if question:
         question_json = QuestionSchema().dump(question)
         return jsonify(question_json)
