@@ -2,46 +2,41 @@
 @tailwind components;
 @tailwind utilities;
 
-
-body{
-    background: #1E252B;
-    font-family: 'Source Sans Pro', sans-serif;
-}
-#main{
-    
-    
+body {
+    position: fixed;
 }
 
-
-#logo{
-    height: 2.5rem;
-    line-height: 79px;
-
+body::-webkit-scrollbar {
+    display: none;
 }
 
-#content{
-    width: 800px;
-     /* height: 2000px;   */
-    background: #262D34;
-    
-}
-#tags li{
-    background: orange;
-    color: black;
-    padding: 5px 6px;
-    
-}
-#content .title-question{
-    font-weight: 900;
-    font-size: 45px;
-    color:aliceblue
+main::-webkit-scrollbar {
+    width: 0.9rem;
 }
 
+main::-webkit-scrollbar-thumb {
+    background-image: linear-gradient(180deg, #d0368a 0%, #708ad4 99%);
 
-.material-icons{
-    font-size: 70px;
+    -webkit-border-radius: 10px;
+
+    border: 5px solid transparent;
+    background-clip: content-box;
 }
-#increment-count{
-    width: 30px;
-    height: 30px;
+
+main::-webkit-scrollbar-track {
+    background-color: #1e252b;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+}
+
+.ql-toolbar {
+    border-top-right-radius: 0.5rem;
+    border-top-left-radius: 0.5rem;
+}
+
+.ql-container {
+    border-bottom-right-radius: 0.5rem;
+    border-bottom-left-radius: 0.5rem;
 }
