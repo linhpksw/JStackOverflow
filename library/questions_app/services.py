@@ -50,6 +50,7 @@ def get_all_questions_services():
         return jsonify(questions)
     else:
         return jsonify({"Error":" No questions"}), 404
+  
         
 def update_question_services(id):
     question = Question.query.get(id)
@@ -67,7 +68,6 @@ def update_question_services(id):
     return QuestionSchema().dump(new_question)
 
     
-
 def delete_question_services(id):
     question = Question.query.get(id)
     if not question:
@@ -102,18 +102,54 @@ def add_answer_services():
         return "Can not add answer in database!!!"
  
     
-
 def get_answer_services(id):
-    pass
+    answer = Answer.query.get(id)
+    if not answer:
+        return jsonify({"error": "An error occurred"}), 404
+    else:
+        answer_json = AnswerSchema().dump(answer)
+        return jsonify(answer_json)
+        
 
 def get_all_answers_services():
-    pass
+    answers = Answer.query.all()
+    if answer:
+        answers = AnswerSchema(many=True).dump(answers)
+        return jsonify(answers)
+    else:
+        return jsonify({"Error":" Not found answers"}), 404
+    
 
 def update_answer_services(id):
-    pass
+    answer = Answer.query.get(id)
+    if not answer:
+        return jsonify({"Error": "Answer not found."}), 404
+    data = request.get_json()
+    if not data:
+        return jsonify({"Error": "Invalid request data."}), 400
+    answer.answer = data.get('answer', answer.answer)
+    answer.datetime_updated = data.get('datetime_updated', datetime.now())
+   
+    db.session.commit()
+
+    new_answer = Answer.query.get(id)
+    return AnswerSchema().dump(new_answer)
+    
 
 def delete_answer_services(id):
-    pass
+    answer = Answer.query.get(id)
+    if not answer:
+        return jsonify({"Error": "Answer not found."}), 404
+    if answer:
+        try:
+            db.session.delete(answer)
+            db.session.commit()
+            return "deleted answer!!!"
+        except IndentationError:
+            db.session.rollback()
+            return "Can not delete answer!"
+        
+    
 
  
 

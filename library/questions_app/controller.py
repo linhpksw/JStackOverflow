@@ -54,3 +54,24 @@ def delete_questions(id):
 @login_required
 def add_answer():
     return add_answer_services()
+
+
+@main.route('/answers_manager/answers/<int:id>', methods=['GET'])
+def get_answer(id):
+    return get_answer_services(id)
+
+
+@main.route('/answers_manager/answers/get_all_answers', methods=['GET'])
+def get_all_answers():
+    return get_all_answers_services()
+
+
+@main.route('/answers_manager/answers/update_answer/<int:id>', methods=['PUT'])
+@login_required
+def update_answer(id):
+    return update_answer_services(id)
+
+@main.route('/answers_manager/answers/delete_answer/<int:id>', methods=['DELETE'])
+@login_required
+def delete_answer(id):
+    return delete_answer_services(id)
