@@ -15,7 +15,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link rel="stylesheet" href="/src/fontawesome-free-5.12.1-web/css/">
 </head>
-<body>
+<body class="mx-auto max-w-[2000px]">
     <div id="main" class="mx-10">
         <!-- header -->
         <!-- Navbar -->
@@ -210,9 +210,105 @@
         <!-- nội dung  -->
         <div id="main-content " class="my-5 flex justify-center">
             <!-- trang bên trái -->
-            <div id="side-bar" class="  h-96 ">
-                <div id="side-1" class="gap-2 ">
-                    
+             <!-- Left sidebar -->
+             <div class="lg:w-56 lg:flex-shrink-0 lg:border-b-0">
+                <div class="h-full py-5 pl-4 sm:pl-6 lg:pl-8 xl:pl-0">
+                    <!-- Start left column area -->
+                    <div class="h-full">
+                        <div
+                            class="flex flex-col gap-3 rounded-2xl bg-[#262D34] p-5">
+                            <div>
+                                <span
+                                    class="text-base font-semibold text-[#F7F7F7]"
+                                    >Popular Tags</span
+                                >
+                            </div>
+
+                            <!-- JS tag -->
+                            <div class="flex items-center gap-3">
+                                <div>
+                                    <svg
+                                        width="32"
+                                        height="32"
+                                        viewBox="0 0 32 32"
+                                        fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <rect
+                                            width="32"
+                                            height="32"
+                                            rx="4"
+                                            fill="#5A4F43" />
+                                        <path
+                                            d="M11.8537 20.8902L11.3202 21.871C11.1407 22.0578 10.8492 22.0345 10.6699 21.8477L6.11779 16.8269C5.96074 16.6401 5.96074 16.3599 6.11779 16.1731L10.6699 11.1523C10.8494 10.9655 11.1409 10.9422 11.3202 11.129L11.8537 12.1098C12.0331 12.2967 12.0555 12.6003 11.8761 12.787L8.12863 16.5L11.8763 20.2129C12.0333 20.3997 12.0331 20.7034 11.8537 20.8902Z"
+                                            fill="#EEA956" />
+                                        <path
+                                            d="M25.8654 16.8269L21.3136 21.8477C21.1342 22.0345 20.8426 22.0578 20.6634 21.871L20.1463 20.8902C19.9669 20.7033 19.9445 20.3997 20.1239 20.213L23.8704 16.5L20.1455 12.787C19.9661 12.6001 19.9885 12.2965 20.1679 12.1098L20.6634 11.129C20.8428 10.9422 21.1343 10.9655 21.3136 11.1523L25.8654 16.1731C26.0449 16.36 26.0449 16.64 25.8654 16.8269Z"
+                                            fill="#EEA956" />
+                                        <path
+                                            d="M18.1309 22.6218L17.0915 22.9832C16.8276 23.0555 16.5637 22.8869 16.4917 22.6218L13.5167 10.9808C13.4448 10.7157 13.6126 10.4505 13.8765 10.3782L15.0442 10.0168C15.3082 9.9445 15.5721 10.1131 15.644 10.3782L18.4909 22.0192C18.5388 22.2842 18.3949 22.5495 18.1309 22.6218Z"
+                                            fill="#EEA956" />
+                                    </svg>
+                                </div>
+
+                                <div>
+                                    <div>
+                                        <span
+                                            class="text-sm font-semibold text-[#F7F7F7]"
+                                            >#javascript</span
+                                        >
+                                    </div>
+                                    <div>
+                                        <span
+                                            class="text-xs text-[#97989D]"
+                                            >82,645 Posted by this
+                                            tag</span
+                                        >
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- bitcoin tag -->
+                            <div class="flex items-center gap-3">
+                                <div>
+                                    <svg
+                                        width="33"
+                                        height="32"
+                                        viewBox="0 0 33 32"
+                                        fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <rect
+                                            width="32.0024"
+                                            height="32"
+                                            rx="4"
+                                            fill="#473E3B" />
+                                        <path
+                                            d="M16.0012 6C10.4863 6 6 10.4859 6 15.9988C6 21.5161 10.4859 26 16.0012 26C21.5165 26 26.0024 21.5161 26.0024 15.9988C26.0024 10.4859 21.5165 6 16.0012 6ZM16.0012 24.5069C11.3102 24.5069 7.49314 20.692 7.49314 15.9988C7.49314 11.3078 11.3103 7.49314 16.0012 7.49314C20.6942 7.49314 24.5069 11.3103 24.5069 15.9988C24.5069 20.6918 20.6942 24.5069 16.0012 24.5069Z"
+                                            fill="#FF8F67" />
+                                        <path
+                                            d="M16.5011 15.2759C15.1453 14.7152 14.5688 14.3099 14.5688 13.5013C14.5688 12.8798 15.0215 12.1614 16.2194 12.1614C17.2171 12.1614 17.8544 12.5037 18.181 12.6906L18.5705 11.6638C18.1202 11.398 17.4805 11.1481 16.5482 11.1188L16.5484 9.60767H15.5799V11.1818C14.1476 11.4139 13.2312 12.3957 13.2312 13.6883C13.2312 15.0439 14.213 15.7601 15.8007 16.3817C16.9515 16.8501 17.5594 17.3772 17.5594 18.2352C17.5594 19.1224 16.8116 19.762 15.7059 19.762C14.8344 19.762 14.0237 19.4648 13.4629 19.091L13.0894 20.1335C13.6343 20.5253 14.5689 20.8046 15.4719 20.8227V22.3923H16.4537L16.4538 20.773C18.055 20.5096 18.913 19.3542 18.913 18.1269C18.9128 16.7397 18.1045 15.9313 16.5011 15.2759H16.5011Z"
+                                            fill="#FF8F67" />
+                                    </svg>
+                                </div>
+
+                                <div>
+                                    <div>
+                                        <span
+                                            class="text-sm font-semibold text-[#F7F7F7]"
+                                            >#bitcoin</span
+                                        >
+                                    </div>
+                                    <div>
+                                        <span
+                                            class="text-xs text-[#97989D]"
+                                            >65,523 Posted
+                                            Trending</span
+                                        >
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End left column area -->
                 </div>
             </div>
             <!-- ở giữa -->
@@ -230,9 +326,16 @@
                     <div class="flex p-5">
     
                         <div id="vote" class="float-left px-1 mr-3 ">
-                            <i class="material-icons  text-white ">arrow_drop_up</i>
-                            <div class="text-white text-center align-middle">12</div>
-                            <i class="material-icons  text-white text-4xl">arrow_drop_down</i>
+                            <button class="material-icons  text-white ">arrow_drop_up</button>
+                            <script>
+                                let button = document.getElementById('myButton');
+                                button.addEventListener('click', function() {
+                                count++;
+                                 console.log(count);
+                                });
+                            </script>
+                            <div id="count-like" class="text-white text-center align-middle">12</div>
+                            <button class="material-icons  text-white text-4xl">arrow_drop_down</button>
                         </div> 
                         <p class="content-question md-48 text-white float-right text-justify">Chả là năm nay e định học thêm nhiều kĩ năng mềm để có ích cho bản thân sau này và đã lên hẳn 1 list các kỹ năng cần học,kết quả là quá nhiều nên e không biết phải sắp xếp học các kỹ năng sao cho hợp lý,mong các bác cho e xin vài lời khuyên.</p>
                     </div>
@@ -259,6 +362,10 @@
                               <i class="material-icons  text-white mr-2">bookmark </i> 
                               <div class="mr-4">save</div>
                         </div>
+                        <div class="cursor-pointer hover:bg-gray-400 flex align-middle items-center">
+                            <i class="material-icons  text-white mr-2">edit </i> 
+                            <div class="mr-4">edit</div>
+                      </div>
                         
                     </div>
                     <!-- đại diện user -->
@@ -334,7 +441,79 @@
 
             </div>
 
-            <div id="right-bar" class=" float-right h-80 "></div>
+            <!-- Right sidebar -->
+            <div
+            class="pr-4 sm:pr-6 lg:flex-shrink-0 lg:border-gray-200 lg:pr-8 xl:pr-0">
+            <div class="h-full py-5 lg:w-52">
+                <!-- Start right column area -->
+                <div
+                    class="relative h-full"
+                    style="min-height: 16rem">
+                    <div
+                        class="flex flex-col gap-3 rounded-2xl bg-[#262D34] p-5">
+                        <div class="flex items-center gap-2">
+                            <div>
+                                <span
+                                    class="text-base font-semibold text-[#F7F7F7]"
+                                    >Hot Questions</span
+                                >
+                            </div>
+                            <div>
+                                <svg
+                                    width="14"
+                                    height="12"
+                                    viewBox="0 0 14 12"
+                                    fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M1 6H13M13 6L8.33333 1M13 6L8.33333 11"
+                                        stroke="#F7F7F7"
+                                        stroke-width="2"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg>
+                            </div>
+                        </div>
+
+                        <div class="flex flex-col gap-5">
+                            <div>
+                                <div>
+                                    <span
+                                        class="block w-full text-xs font-semibold leading-5 text-[#F7F7F7]"
+                                        >Selling a Business and
+                                        Scaling Another Amidst
+                                        Tragedy.</span
+                                    >
+                                </div>
+
+                                <div>
+                                    <span
+                                        class="text-[0.625rem] text-[#97989D]"
+                                        >by Michele Hansen</span
+                                    >
+                                </div>
+                            </div>
+
+                            <div>
+                                <div>
+                                    <span
+                                        class="block w-full text-xs font-semibold leading-5 text-[#F7F7F7]"
+                                        >Mental health as a founder
+                                        and the importance of
+                                        community...</span
+                                    >
+                                </div>
+
+                                <div>
+                                    <span
+                                        class="text-[0.625rem] text-[#97989D]"
+                                        >by James McKinven</span
+                                    >
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
         </div>
     </div>
         

@@ -18,12 +18,9 @@ body{
     line-height: 79px;
 
 }
-#side-bar{
-    background: #262D34;
-    width: 186px;
-}
+
 #content{
-    width: 785px;
+    width: 800px;
      /* height: 2000px;   */
     background: #262D34;
     
@@ -39,11 +36,8 @@ body{
     font-size: 45px;
     color:aliceblue
 }
-#right-bar{
-    background: #262D34;
-     width: 325px;
 
-}
+
 .material-icons{
     font-size: 70px;
 }
