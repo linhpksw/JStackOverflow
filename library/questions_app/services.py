@@ -22,7 +22,7 @@ def add_question_services():
     question = request.json['question']
     datetime_posted = datetime.now() 
     datetime_updated = datetime.now()
-    asker_id = request.json['asker_id']
+    asker_id = current_user.id   #request.json['asker_id']
     
     try:
         new_question = Question(question= question,datetime_updated=datetime_updated, datetime_posted=datetime_posted,asker_id=asker_id)
@@ -84,15 +84,16 @@ def delete_question_services(id):
         
 #settings for features of answers
 
-def add_answer_services():
-    question_id = request.json['question_id']
-    respondent_id = request.json['respondent_id']
+def add_answer_services(id):
+    question_id = id#request.json['question_id']
+    respondent_id = current_user.id #request.json['respondent_id']
     answer = request.json['answer']
     datetime_posted = datetime.now()
     datetime_updated = datetime.now()
     
     try:
-        new_answer = Answer(question_id=question_id,respondent_id= respondent_id,answer=answer,datetime_posted=datetime_posted,datetime_updated=datetime_updated)
+        new_answer = Answer(question_id=question_id,respondent_id= respondent_id,
+                            answer=answer,datetime_posted=datetime_posted,datetime_updated=datetime_updated)
         db.session.add(new_answer)
         db.session.commit()
         return "answer added in database!!!"

@@ -104,8 +104,7 @@ def edit_profile_services(id):
     data = request.json
     if not data:
         return "No need to edit"
-    infor = ["name", "bio", "education", 
-             "experience", "year_of_experience"]
+    infor = ["name", "bio", "education", "experience", "year_of_experience"]
     if "date_of_birth" in data:
         date_of_birth = datetime.strptime(data.get("date_of_birth"), '%Y-%m-%d').date()
         update = {"date_of_birth": date_of_birth}
@@ -119,6 +118,8 @@ def edit_profile_services(id):
         db.session.rollback()
         print("An error occurred:", e)
         return "Cannot edit profile"
+    
+    
 def change_avatar():
     pass
 
@@ -140,3 +141,9 @@ def see_profile_services(id):
                  bio, avatar, education = None,
                  experience = None, year_of_experience = None, 
                  reputation=0, expert= False):'''
+                 
+def get_question_by_user_id(user_id):
+    pass
+
+def get_answer_by_user_id(user_id):
+    pass
