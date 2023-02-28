@@ -1,0 +1,47 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+body{
+    background: #1E252B;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+#main{
+    
+    
+}
+
+
+#logo{
+    height: 2.5rem;
+    line-height: 79px;
+
+}
+
+#content{
+    width: 800px;
+     /* height: 2000px;   */
+    background: #262D34;
+    
+}
+#tags li{
+    background: orange;
+    color: black;
+    padding: 5px 6px;
+    
+}
+#content .title-question{
+    font-weight: 900;
+    font-size: 45px;
+    color:aliceblue
+}
+
+
+.material-icons{
+    font-size: 70px;
+}
+#increment-count{
+    width: 30px;
+    height: 30px;
+}
