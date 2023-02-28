@@ -68,7 +68,7 @@ def login_services():
     if not found_user:
         return 'Email has not been registered'
     else:
-        if check_password_hash(found_user.password, password):
+        if password and check_password_hash(found_user.password, password):
             login_user(found_user)
             return 'Login successfully!'
         else:
@@ -86,20 +86,39 @@ def logout_services():
 
 def delete_user_services():
     id = request.json.get('id')
-    found_user = User.query.filter_by(id=id).first()
-    if found_user:
-        db.session.delete(found_user)
-        db.session.commit()
-        return 'Delete successfully!'
+    if id == current_user.id:
+        #found_user = User.query.filter_by(id=id).first()
+        #if found_user:
+            db.session.delete(current_user)
+            db.session.commit()
+            return 'Delete successfully!'
     else:
-        return 'User does not exist!'
+        return 'Cannot delete user!'
 
 
 
-def edit_profile():
-    pass
-
-
+def edit_profile_services(id):
+    
+    if id != current_user.id:
+        return "You are not allowed to edit this profile"    #found_user = User.query.get(id)
+    data = request.json
+    if not data:
+        return "No need to edit"
+    infor = ["name", "bio", "education", 
+             "experience", "year_of_experience"]
+    if "date_of_birth" in data:
+        date_of_birth = datetime.strptime(data.get("date_of_birth"), '%Y-%m-%d').date()
+        update = {"date_of_birth": date_of_birth}
+        
+    update = {in4: data.get(in4) for in4 in infor if in4 in data}
+    try: 
+        User.query.filter_by(id=id).update(update)
+        db.session.commit()
+        return 'Edit successfully'
+    except Exception as e:
+        db.session.rollback()
+        print("An error occurred:", e)
+        return "Cannot edit profile"
 def change_avatar():
     pass
 

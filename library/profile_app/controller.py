@@ -1,5 +1,5 @@
 from flask import Blueprint
-from .services import sign_up_services, login_services, logout_services, delete_user_services, load_user, see_profile_services
+from .services import sign_up_services, login_services, logout_services, delete_user_services, load_user, see_profile_services, edit_profile_services
 from flask_login import login_required, login_user, LoginManager, logout_user, current_user
 from library.extensions import login_manager
 
@@ -32,6 +32,11 @@ def delete():
     return delete_user_services()
 
 @profiles.route('/user/<int:id>', methods = ['GET'])
-#@login_required
+@login_required
 def see_profile(id):
     return see_profile_services(id)
+
+@profiles.route('/user/<int:id>/edit', methods =['PUT'])
+@login_required
+def edit_profile(id):
+    return edit_profile_services(id)
