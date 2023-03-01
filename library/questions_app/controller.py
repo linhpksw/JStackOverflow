@@ -50,10 +50,10 @@ def delete_questions(id):
 
 #setup the answer services
 
-@main.route('/answers_manager/add_answers', methods=['POST'])
+@main.route('/answers_manager/add_answers/<int:id>', methods=['POST'])
 @login_required
-def add_answer():
-    return add_answer_services()
+def add_answer(id):
+    return add_answer_services(id)
 
 
 @main.route('/answers_manager/answers/<int:id>', methods=['GET'])
