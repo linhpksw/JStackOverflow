@@ -99,7 +99,14 @@ class Answer(db.Model):
         self.question_id = question_id
         self.like_id = like_id
         self.unlike_id = unlike_id
-    
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'answer': self.answer,
+            'question_id': self.question_id,
+            'repondent_id': self.respondent_id,
+            # add more fields as needed
+        } 
 
      
         
