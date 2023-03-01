@@ -847,14 +847,6 @@ select {
   height: 2rem;
 }
 
-.h-80 {
-  height: 20rem;
-}
-
-.h-96 {
-  height: 24rem;
-}
-
 .h-full {
   height: 100%;
 }
@@ -1198,6 +1190,11 @@ select {
   line-height: 1.25rem;
 }
 
+.text-xl {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+}
+
 .text-xs {
   font-size: 0.75rem;
   line-height: 1rem;
@@ -1296,13 +1293,8 @@ body{
   line-height: 79px;
 }
 
-#side-bar{
-  background: #262D34;
-  width: 186px;
-}
-
 #content{
-  width: 785px;
+  width: 800px;
   /* height: 2000px;   */
   background: #262D34;
 }
@@ -1319,13 +1311,13 @@ body{
   color:aliceblue
 }
 
-#right-bar{
-  background: #262D34;
-  width: 325px;
-}
-
 .material-icons{
   font-size: 70px;
+}
+
+#increment-count{
+  width: 30px;
+  height: 30px;
 }
 
 .hover\:rounded-sm:hover {
