@@ -91,7 +91,7 @@ def delete_question_services(id):
 #settings for features of answers
 
 def add_answer_services(id):
-    question_id = Question.query.get(id)
+    question_id = Question.query.get(id).id
     #question_id = request.json['question_id']
     respondent_id = current_user.id 
     #respondent_id = request.json['respondent_id']
@@ -100,18 +100,17 @@ def add_answer_services(id):
     datetime_updated = datetime.now()
     
     try:
-        new_answer = Answer(question_id=question_id,respondent_id= respondent_id,answer=answer,datetime_posted=datetime_posted,datetime_updated=datetime_updated)
+        new_answer = Answer(question_id=question_id,respondent_id=respondent_id,answer=answer,datetime_posted=datetime_posted,datetime_updated=datetime_updated)
+        
         db.session.add(new_answer)
+        
         db.session.commit()
-        print(question_id)
-        print(Question.query.get(id))
-        print(respondent_id)
-        print(current_user.id)
+        
         return "answer added in database!!!"
     except Exception as e:
         db.session.rollback()
         print("An error occurred:", e)
-        return "Can not add answer in database!!!"
+        return "error"
 
  
     
