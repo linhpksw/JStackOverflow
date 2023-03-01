@@ -118,8 +118,8 @@ def delete_answer_services(id):
     pass
         
 
-
-
+def vote_answer_services():
+    pass
 
 
 

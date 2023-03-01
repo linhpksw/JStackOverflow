@@ -147,7 +147,7 @@ def see_profile_services(id):
                             "education": found_user.education,
                             "experience": found_user.experience,
                             "year_of_experience": found_user.year_of_experience,
-                            "avatar": found_user.avatar})
+                            "avatar": found_user.avatar})#, get_question_by_user_id(id), get_answer_by_user_id(id)
     except Exception as e:
         print('an error occur:', e)
         return "csfdfsf"#"avatar": found_user.avatar})
@@ -164,8 +164,6 @@ def see_profile_services(id):
 
 def get_question_by_user_id(id):
     questions = Question.query.filter_by(asker_id=id).all()
-    if not questions:
-        return ''
     return jsonify({'questions': [q.to_dict() for q in questions]})
 
 
@@ -174,8 +172,13 @@ def get_answer_by_user_id(id):
     return jsonify({'answers': [a.to_dict() for a in answers]})
 
 
-def calculate_reputation_services():
-    pass
+# def calculate_reputation_services(id):
+#     answers = Answer.query.filter_by(respondent_id=id).all()
+#     repu = 0
+#     for answer in answers:
+#         repu += (answer.lide_id - answer.unlide_id)
+#     user =  User.query.filter_by(id=id).first()
+#     user.reputaion = repu
 
 
 def get_path_image(request):
