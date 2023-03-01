@@ -1,6 +1,6 @@
 from library.extensions import db
-from library.library_ma import UserSchema
-from library.model.models import User
+from library.library_ma import UserSchema, QuestionSchema, AnswerSchema
+from library.model.models import User, Question, Answer
 from flask import request, jsonify
 import random
 from datetime import datetime
@@ -60,7 +60,6 @@ def sign_up_services():
         print("An error occurred:", e)
         return "Can not sign up!"
 
-    
 
 def login_services():
     email = request.json.get('email')
@@ -89,30 +88,31 @@ def logout_services():
 def delete_user_services():
     id = request.json.get('id')
     if id == current_user.id:
-        #found_user = User.query.filter_by(id=id).first()
-        #if found_user:
-            db.session.delete(current_user)
-            db.session.commit()
-            return 'Delete successfully!'
+        # found_user = User.query.filter_by(id=id).first()
+        # if found_user:
+        db.session.delete(current_user)
+        db.session.commit()
+        return 'Delete successfully!'
     else:
         return 'Cannot delete user!'
 
 
-
 def edit_profile_services(id):
-    
+
     if id != current_user.id:
-        return "You are not allowed to edit this profile"    #found_user = User.query.get(id)
+        # found_user = User.query.get(id)
+        return "You are not allowed to edit this profile"
     data = request.json
     if not data:
         return "No need to edit"
     infor = ["name", "bio", "education", "experience", "year_of_experience"]
     if "date_of_birth" in data:
-        date_of_birth = datetime.strptime(data.get("date_of_birth"), '%Y-%m-%d').date()
+        date_of_birth = datetime.strptime(
+            data.get("date_of_birth"), '%Y-%m-%d').date()
         update = {"date_of_birth": date_of_birth}
-        
+
     update = {in4: data.get(in4) for in4 in infor if in4 in data}
-    try: 
+    try:
         User.query.filter_by(id=id).update(update)
         db.session.commit()
         return 'Edit successfully'
@@ -120,50 +120,63 @@ def edit_profile_services(id):
         db.session.rollback()
         print("An error occurred:", e)
         return "Cannot edit profile"
-    
-    
+
+
 def change_avatar_services(id):
-    if id!=current_user.id:
-        return "You are not allowed to edit this profile"  
-    #avatar = request.values
-    try: 
+    if id != current_user.id:
+        return "You are not allowed to edit this profile"
+    # avatar = request.values
+    try:
         current_user.avatar = get_path_image(request)
         db.session.commit()
         return "change avatar successfully"
     except Exception as e:
         db.session.rollback()
         print("An error occurred:", e)
-        return "Cannot change avatar"  
-        
-        
+        return "Cannot change avatar"
+
 
 def see_profile_services(id):
     found_user = User.query.get(id)
-    if found_user:
-        return user_schema.jsonify({"name": found_user.name,
-                                    "date of birth":found_user.date_of_birth,
-                                    "gender":found_user.gender,
-                                    "bio": found_user.bio,
-                                    "education": found_user.education,
-                                    "experience": found_user.experience,
-                                    "year_of_experience": found_user.year_of_experience,
-                                    "avatar": found_user.avatar})
+    try:
+        if found_user:
+            return user_schema.jsonify({"name": found_user.name,
+                            "date of birth": found_user.date_of_birth,
+                            "gender": found_user.gender,
+                            "bio": found_user.bio,
+                            "education": found_user.education,
+                            "experience": found_user.experience,
+                            "year_of_experience": found_user.year_of_experience,
+                            "avatar": found_user.avatar})
+    except Exception as e:
+        print('an error occur:', e)
+        return "csfdfsf"#"avatar": found_user.avatar})
     else:
         return "Not found!"
+
+
 '''(self, id, name, email, password,
                  phone_number, date_of_birth, gender,
                  bio, avatar, education = None,
                  experience = None, year_of_experience = None, 
                  reputation=0, expert= False):'''
-                 
-def get_question_by_user_id(user_id):
-    pass
 
-def get_answer_by_user_id(user_id):
-    pass
+
+def get_question_by_user_id(id):
+    questions = Question.query.filter_by(asker_id=id).all()
+    if not questions:
+        return ''
+    return jsonify({'questions': [q.to_dict() for q in questions]})
+
+
+def get_answer_by_user_id(id):
+    answers = Answer.query.filter_by(respondent_id=id).all()
+    return jsonify({'answers': [a.to_dict() for a in answers]})
+
 
 def calculate_reputation_services():
     pass
+
 
 def get_path_image(request):
     file = request.files.get('avatar', None)
@@ -173,4 +186,3 @@ def get_path_image(request):
         return res['secure_url']
     else:
         return "https://res.cloudinary.com/dxu6nsoye/image/upload/v1649821452/z3336574163217_bc5927ec38c68b516f13b300443dfcac_zouzvp.jpg"
-    

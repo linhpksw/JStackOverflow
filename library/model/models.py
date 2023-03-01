@@ -73,7 +73,14 @@ class Question(db.Model):
         self.datetime_updated = datetime_updated
         self.asker_id = asker_id
         self.vote_id = vote_id
-        
+    
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'question': self.question,
+            'asker_id': self.asker_id,
+            # add more fields as needed
+        } 
 class Answer(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     answer = db.Column(db.Text)
