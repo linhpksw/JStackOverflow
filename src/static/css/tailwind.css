@@ -2,46 +2,108 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+    position: fixed;
+}
 
-body{
-    background: #1E252B;
+body::-webkit-scrollbar {
+    display: none;
+}
+
+main::-webkit-scrollbar {
+    width: 0.9rem;
+}
+
+main::-webkit-scrollbar-thumb {
+    background-image: linear-gradient(180deg, #d0368a 0%, #708ad4 99%);
+
+    -webkit-border-radius: 10px;
+
+    border: 5px solid transparent;
+    background-clip: content-box;
+}
+
+main::-webkit-scrollbar-track {
+    background-color: #1e252b;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+}
+
+.ql-toolbar {
+    border-top-right-radius: 0.5rem;
+    border-top-left-radius: 0.5rem;
+}
+
+.ql-container {
+    border-bottom-right-radius: 0.5rem;
+    border-bottom-left-radius: 0.5rem;
+}
+
+body::-webkit-scrollbar-thumb {
+    background-image: linear-gradient(180deg, #d0368a 0%, #708ad4 99%);
+    box-shadow: inset 2px 2px 5px 0 rgba(#fff, 0.5);
+    border-radius: 100px;
+
+    border: 5px solid transparent;
+    background-clip: content-box;
+
+    /* background-color: #8070d4; */
+}
+
+body::-webkit-scrollbar {
+    width: 15px;
+}
+
+body::-webkit-scrollbar-track {
+    background-color: #1e252b;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+}
+
+.ql-toolbar {
+    border-top-right-radius: 0.5rem;
+    border-top-left-radius: 0.5rem;
+}
+
+.ql-container {
+    border-bottom-right-radius: 0.5rem;
+    border-bottom-left-radius: 0.5rem;
+}
+
+body {
+    background: #1e252b;
     font-family: 'Source Sans Pro', sans-serif;
 }
-#main{
-    
-    
-}
 
-
-#logo{
+#logo {
     height: 2.5rem;
     line-height: 79px;
-
 }
 
-#content{
+#content {
     width: 800px;
-     /* height: 2000px;   */
-    background: #262D34;
-    
+    /* height: 2000px;   */
+    background: #262d34;
 }
-#tags li{
+#tags li {
     background: orange;
     color: black;
     padding: 5px 6px;
-    
 }
-#content .title-question{
+#content .title-question {
     font-weight: 900;
     font-size: 45px;
-    color:aliceblue
+    color: aliceblue;
 }
 
-
-.material-icons{
+.material-icons {
     font-size: 70px;
 }
-#increment-count{
+#increment-count {
     width: 30px;
     height: 30px;
 }
