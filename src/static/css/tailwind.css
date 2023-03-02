@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
+/* body {
     position: fixed;
 }
 
@@ -49,7 +49,7 @@ body::-webkit-scrollbar-thumb {
     border: 5px solid transparent;
     background-clip: content-box;
 
-    /* background-color: #8070d4; */
+    
 }
 
 body::-webkit-scrollbar {
@@ -72,7 +72,7 @@ body::-webkit-scrollbar-track {
 .ql-container {
     border-bottom-right-radius: 0.5rem;
     border-bottom-left-radius: 0.5rem;
-}
+} */
 
 body {
     background: #1e252b;
@@ -85,7 +85,7 @@ body {
 }
 
 #content {
-    width: 800px;
+    width: 850px;
     /* height: 2000px;   */
     background: #262d34;
 }
