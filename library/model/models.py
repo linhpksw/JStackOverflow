@@ -109,6 +109,6 @@ class Answer(db.Model):
             'id': self.id,
             'answer': self.answer,
             'question_id': self.question_id,
-            'repondent_id': self.respondent_id,
+            'respondent_id': self.respondent_id,
             # add more fields as needed
         }
