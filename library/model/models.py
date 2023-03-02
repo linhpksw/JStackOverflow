@@ -1,7 +1,8 @@
-from werkzeug.security import generate_password_hash
-from datetime import datetime
+# from werkzeug.security import generate_password_hash
 from library.extensions import db
 from flask_login import UserMixin
+from datetime import datetime
+
 
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
@@ -18,12 +19,13 @@ class User(db.Model, UserMixin):
     year_of_experience = db.Column(db.Integer)
     reputation = db.Column(db.Integer, default=0)
     expert = db.Column(db.Boolean, default=False)
+
     def __init__(self, id, name, email, password,
                  phone_number, date_of_birth, gender,
-                 bio, avatar, education = None,
-                 experience = None, year_of_experience = None, 
-                 reputation=0, expert= False):
-        self.id = id 
+                 bio, avatar, education='',
+                 experience='', year_of_experience='',
+                 reputation=0, expert=False):
+        self.id = id
         self.name = name
         self.email = email
         self.password = password
@@ -37,55 +39,63 @@ class User(db.Model, UserMixin):
         self.year_of_experience = year_of_experience
         self.reputation = reputation
         self.expert = expert
-       
+
     question_asker = db.relationship(
         'Question',
-        foreign_keys= 'Question.asker_id',
+        foreign_keys='Question.asker_id',
         backref='asker',
-        lazy = True
+        lazy=True
     )
     answer_request = db.relationship(
         'Answer',
-        primaryjoin= 'User.id == Answer.respondent_id',
+        primaryjoin='User.id == Answer.respondent_id',
         backref='expert',
-        lazy = True
+        lazy=True
     )
-    
-'''
-    @property
-    def password_hash(self):
-        raise AttributeError('Cannot view password!')
-    @password_hash.setter
-    def password_hash(self, password_hash):
-        self.password_hash = generate_password_hash(password_hash)
-''' 
+
+    # @property
+    # def password_hash(self):
+    #     raise AttributeError('Cannot view password!')
+    # @password_hash.setter
+    # def password_hash(self, password_hash):
+    #     self.password_hash = generate_password_hash(password_hash)
+
 
 class Question(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     question = db.Column(db.Text)
-    datetime_posted = db.Column(db.DateTime,default=datetime.utcnow)
-    datetime_updated = db.Column(db.DateTime, default = datetime.utcnow)
-    asker_id = db.Column(db.Integer,db.ForeignKey('user.id'))
+    datetime_posted = db.Column(db.DateTime, default=datetime.utcnow)
+    datetime_updated = db.Column(db.DateTime, default=datetime.utcnow)
+    asker_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     vote_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-    
-    def __init__(self,question,datetime_updated,datetime_posted,asker_id,vote_id = None):
+
+    def __init__(self, question, datetime_updated, datetime_posted, asker_id, vote_id=None):
         self.question = question
         self.datetime_posted = datetime_posted
         self.datetime_updated = datetime_updated
         self.asker_id = asker_id
         self.vote_id = vote_id
-        
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'question': self.question,
+            'asker_id': self.asker_id,
+            # add more fields as needed
+        }
+
+
 class Answer(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     answer = db.Column(db.Text)
-    datetime_posted = db.Column(db.DateTime,default=datetime.utcnow)
-    datetime_updated = db.Column(db.DateTime,default=datetime.utcnow)
+    datetime_posted = db.Column(db.DateTime, default=datetime.utcnow)
+    datetime_updated = db.Column(db.DateTime, default=datetime.utcnow)
     respondent_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-    question_id = db.Column(db.Integer,db.ForeignKey('question.id'))
-    like_id = db.Column(db.Integer,db.ForeignKey('user.id'))
-    unlike_id = db.Column(db.Integer,db.ForeignKey('user.id'))
-    
-    def __init__(self,answer,datetime_updated,datetime_posted,respondent_id,question_id,like_id = None,unlike_id = None):
+    question_id = db.Column(db.Integer, db.ForeignKey('question.id'))
+    like_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    unlike_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+
+    def __init__(self, answer, datetime_updated, datetime_posted, respondent_id, question_id, like_id=0, unlike_id=0):
         self.answer = answer
         self.datetime_updated = datetime_updated
         self.datetime_posted = datetime_posted
@@ -93,8 +103,12 @@ class Answer(db.Model):
         self.question_id = question_id
         self.like_id = like_id
         self.unlike_id = unlike_id
-    
-    
 
-     
-        
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'answer': self.answer,
+            'question_id': self.question_id,
+            'respondent_id': self.respondent_id,
+            # add more fields as needed
+        }
