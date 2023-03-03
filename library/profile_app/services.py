@@ -28,10 +28,16 @@ def sign_up_services():
     else:
         password = generate_password_hash(password)
 
+
     phone_number = request.values.get('phone_number')
     phone_number_pattern = r'^\d{10,11}$'
+    # if not isinstance(phone_number, (str, bytes)):
+    #     print(phone_number_pattern)
+    #     print(phone_number)
+    #     raise TypeError('Phone number must be a string or bytes-like object')
     if not re.match(phone_number_pattern, phone_number):
         return 'Invalid phone number format'
+  
 
     date_of_birth_str = request.values.get('date_of_birth')
     date_of_birth = datetime.strptime(date_of_birth_str, '%Y-%m-%d').date()
