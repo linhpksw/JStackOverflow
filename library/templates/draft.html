@@ -10,6 +10,14 @@
     <body>
         <h1>hello</h1>
 
-        <a href="src\templates\home-page.html">Link </a>
+        <a href="../../src/templates/home-page.html">Link </a>
+
+        <button id="redirect-button">Redirect</button>
+
+        <script>
+            document.getElementById('redirect-button').addEventListener('click', function () {
+                window.location.href = 'src/templates/home-page.html';
+            });
+        </script>
     </body>
 </html>
