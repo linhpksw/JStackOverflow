@@ -34,7 +34,10 @@ def sign_up_services():
         return 'Invalid phone number format'
 
     date_of_birth_str = request.values.get('date_of_birth')
-    date_of_birth = datetime.strptime(date_of_birth_str, '%Y-%m-%d').date()
+    print(date_of_birth_str)
+    print(type(date_of_birth_str))
+    if date_of_birth_str != None:
+        date_of_birth = datetime.strptime(date_of_birth_str, '%Y-%m-%d').date()
 
     gender = request.values.get('gender')
     bio = request.values.get('bio')

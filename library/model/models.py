@@ -9,7 +9,7 @@ class User(db.Model, UserMixin):
     name = db.Column(db.String(255), nullable=False)
     email = db.Column(db.String(255), nullable=False, unique=True)
     password = db.Column(db.String(255), nullable=False)
-    phone_number = db.Column(db.String(255), nullable=False)
+    phone_number = db.Column(db.String(255))#, nullable=False)
     date_of_birth = db.Column(db.Date)
     gender = db.Column(db.String(255))
     bio = db.Column(db.String(1000))
@@ -21,8 +21,8 @@ class User(db.Model, UserMixin):
     expert = db.Column(db.Boolean, default=False)
 
     def __init__(self, id, name, email, password,
-                 phone_number, date_of_birth, gender,
-                 bio, avatar, education='',
+                  gender,
+                 bio, avatar,phone_number='', date_of_birth='', education='',
                  experience='', year_of_experience='',
                  reputation=0, expert=False):
         self.id = id
