@@ -10,7 +10,6 @@ main = Blueprint('main', __name__)
 
 # setup the questions services
 
-
 @main.route('/')
 def index():
     questions = Question.query.filter(Question.question != None).all()
