@@ -8,7 +8,7 @@ profiles = Blueprint("profiles", __name__)
 
 @profiles.route('/')
 def index():
-    return 'hello'#render_template('index.html')
+    return render_template('draft.html')
 
 @profiles.route('/get_info')
 def get_info():

@@ -1,15 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Discussion</title>
+    </head>
 
-<head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Discussion</title>
-</head>
+    <body>
+        <h1>hello</h1>
 
-<body>
-    <h1>hello</h1>
-</body>
+        <a href="../../src/templates/home-page.html">Link </a>
 
+        <button id="redirect-button">Redirect</button>
+
+        <script>
+            document.getElementById('redirect-button').addEventListener('click', function () {
+                window.location.href = 'src/templates/home-page.html';
+            });
+        </script>
+    </body>
 </html>

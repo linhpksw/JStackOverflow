@@ -3,7 +3,7 @@ from flask import Blueprint, redirect, render_template, request, url_for
 from library.extensions import db
 from library.model.models import User, Question, Answer
 from .services import add_question_services, update_question_services, delete_question_services, get_question_services, get_all_questions_services
-from .services import add_answer_services, update_answer_services, delete_answer_services, get_answer_services, get_all_answers_services
+from .services import add_answer_services, update_answer_services, delete_answer_services, get_answer_services, get_all_answers_services, get_answer_by_question_id_services
 
 
 main = Blueprint('main', __name__)
@@ -18,7 +18,7 @@ def index():
         'questions': questions,
         'answers': answers
 
-    }
+     }
     return render_template('home.html', **context)
 
 
@@ -29,11 +29,13 @@ def add_questions():
 
 
 @main.route('/questions_manager/questions/<int:id>', methods=['GET'])
+@login_required
 def get_question(id):
     return get_question_services(id)
 
 
 @main.route('/questions_manager/questions/all_questions', methods=['GET'])
+@login_required
 def get_all_questions():
     return get_all_questions_services()
 
@@ -59,11 +61,13 @@ def add_answer(id):
 
 
 @main.route('/answers_manager/answers/<int:id>', methods=['GET'])
+@login_required
 def get_answer(id):
     return get_answer_services(id)
 
 
 @main.route('/answers_manager/answers/get_all_answers', methods=['GET'])
+@login_required
 def get_all_answers():
     return get_all_answers_services()
 
@@ -78,3 +82,8 @@ def update_answer(id):
 @login_required
 def delete_answer(id):
     return delete_answer_services(id)
+
+@main.route('/questions_manager/questions/<int:id>/answers', methods=['GET'])
+@login_required
+def get_answer_by_question_id(id):
+    return get_answer_by_question_id_services(id)
