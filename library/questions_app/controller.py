@@ -10,17 +10,6 @@ main = Blueprint('main', __name__)
 
 # setup the questions services
 
-@main.route('/')
-def index():
-    questions = Question.query.filter(Question.question != None).all()
-    answers = Answer.query.filter(Answer.answer != None).all()
-    context = {
-        'questions': questions,
-        'answers': answers
-
-     }
-    return render_template('home.html', **context)
-
 
 @main.route('/questions_manager/add_question', methods=['POST'])
 @login_required
