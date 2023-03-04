@@ -167,3 +167,7 @@ def delete_answer_services(id):
             except IndentationError:
                 db.session.rollback()
                 return "Can not delete answer!"
+
+def get_answer_by_question_id_services(id):
+    answers = Answer.query.filter_by(question_id=id).all()
+    return jsonify({'answers': [a.to_dict() for a in answers]})
