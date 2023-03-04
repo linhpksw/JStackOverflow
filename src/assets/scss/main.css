@@ -11908,22 +11908,22 @@ p, h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
 
 /* TITLE SECTION  */
 #title {
-  padding: 1% 2% 0 2%;
+  padding: 2% 2% 2% 2%;
   background-color: #262D34;
   display: flex;
   justify-content: center;
 }
 
 .search-container {
-  width: 40%;
-  margin-right: 4%;
+  width: 50rem;
+  margin: 0% 2% 0 2%;
 }
 
 #search-text {
   width: 90%;
   border: none;
   background: none;
-  padding: 2%;
+  padding: 1%;
   outline: none;
   border-radius: 30px;
   color: #858EAD;
@@ -11952,7 +11952,7 @@ p, h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
 
 .brand-page {
   color: #ff571a;
-  margin-right: 4%;
+  margin-right: 1%;
 }
 
 #left-nav {
@@ -11973,24 +11973,19 @@ p, h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
   float: left;
 }
 
-.nav-link:hover {
-  background: #ff571a;
-  color: #F7F7F7;
-}
-
-.nav-link {
-  border-radius: 10%;
+.icon {
   color: #F7F7F7;
 }
 
 .nav-item, #search-box {
   background: #2c353d;
   border-radius: 10px;
-  margin: 0 2%;
+  margin: 0;
 }
 
-.logo {
-  border-radius: 10%;
+.top-items {
+  background: #2c353d;
+  padding: 12px 2px;
 }
 
 /* MAINBAR SECTION */
@@ -12112,4 +12107,35 @@ li {
 
 .answer-tab, .question-tab {
   background-color: #ff4401;
+}
+
+.answers-list {
+  background-color: #2c353d;
+  border-radius: 10px;
+}
+
+.svg-icon {
+  color: #F7F7F7;
+}
+
+.post-summary-stats {
+  background-color: green;
+  padding: 0 5px;
+  border-radius: 5px;
+}
+
+.post-summary-tags ul {
+  list-style-type: none;
+  text-align: center;
+}
+
+.post-summary-tags ul li {
+  display: inline-block;
+  background-color: #ff571a;
+  border-radius: 5px;
+}
+
+.title-ans {
+  color: yellow;
+  font-size: 22px;
 }/*# sourceMappingURL=main.css.map */
