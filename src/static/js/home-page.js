@@ -100,7 +100,7 @@ async function getAnswerFromAPI() {
   const button = document.getElementById('cmt-btn');
 
 // add a click event listener to the button
-  button.addEventListener("click", () => {
+  button.addEventListener('click', () => {
   // find the element to scroll to
   const elementToScrollTo = document.querySelector('fill-answer');
 
