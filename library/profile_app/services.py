@@ -228,3 +228,12 @@ def get_all_users_services():
         return jsonify(users)
     else:
         return jsonify({"Error": " No questions"}), 404
+    
+def get_info_user_services(id):
+    found_user = User.query.get(id)
+    
+    if found_user:
+        found_user = UserSchema().dump(found_user)
+        return jsonify(found_user)
+    else:
+        return jsonify({"Error": " No user"}), 404
