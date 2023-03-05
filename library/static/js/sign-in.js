@@ -1,36 +1,34 @@
-document.addEventListener('DOMContentLoaded', () => {
-    try {
-        const email = document.getElementById('email');
+try {
+    const email = document.getElementById('email');
 
-        const password = document.getElementById('password');
+    const password = document.getElementById('password');
 
-        const signInBtn = document.getElementById('sign-in-btn');
+    const signInBtn = document.getElementById('sign-in-btn');
 
-        const fetchUserCredential = async () => {
-            const data = {
-                email: `${email.value}`,
-                password: `${password.value}`,
-            };
-
-            const opt = {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(data),
-            };
-
-            const URL = 'https://jstackoverflow.jsclub.me/login';
-
-            const response = await fetch(URL, opt);
-
-            const jsonResponse = await response.json();
-
-            console.log(jsonResponse);
+    const fetchUserCredential = async () => {
+        const data = {
+            email: email.value,
+            password: password.value,
         };
 
-        signInBtn.addEventListener('click', fetchUserCredential);
-    } catch (err) {
-        console.log(err);
-    }
-});
+        const opt = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+        };
+
+        const URL = 'https://jstackoverflow.jsclub.me/login';
+
+        const response = await fetch(URL, opt);
+
+        // const jsonResponse = await response.json();
+
+        console.log(response);
+    };
+
+    signInBtn.addEventListener('click', fetchUserCredential);
+} catch (err) {
+    console.log(err);
+}
