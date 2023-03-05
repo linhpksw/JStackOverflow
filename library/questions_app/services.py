@@ -1,7 +1,7 @@
 from library.extensions import db
 from library.model.models import Question,User,Answer
 from library.library_ma import QuestionSchema,AnswerSchema
-from flask import request
+from flask import request,redirect,render_template,url_for
 from datetime import datetime
 from flask_login import LoginManager,current_user,login_required
 from flask import jsonify
@@ -22,13 +22,16 @@ def add_question_services():
     question = request.json['question']
     datetime_posted = datetime.now() 
     datetime_updated = datetime.now()
-    asker_id = current_user.id   #request.json['asker_id']
+    asker_id = current_user.id  
     
     try:
         new_question = Question(question= question,datetime_updated=datetime_updated, datetime_posted=datetime_posted,asker_id=asker_id)
         db.session.add(new_question)
         db.session.commit()
-        return "New question successfully!!!"
+        return jsonify({'question': new_question.question,
+                        'datetime_posted': new_question.datetime_posted,
+                        'datetime_updated': new_question.datetime_updated,
+                        'asker_id': new_question.asker_id})
     except IndentationError:
         db.session.rollback()
         return "Can't add new question"
@@ -82,25 +85,24 @@ def delete_question_services(id):
             try:
                 db.session.delete(question)
                 db.session.commit()
-                return "deleted question!!!"
+                return render_template('home-page.html',id = id)
             except IndentationError:
                 db.session.rollback()
                 return "Can not delete question!"
             
 def vote_question(id):
-    question = Question.query.filter_by(id=id).first()
+    question = Question.query.filter(id = id).first()
     question.vote_id += 1
     db.session.commit()
-    return "vote_question"
+    return jsonify({'question': question.question,
+                    'vote_id': question.vote_id})
     
         
 #settings for features of answers
 
 def add_answer_services(id):
     question_id = Question.query.get(id).id
-    #question_id = request.json['question_id']
     respondent_id = current_user.id 
-    #respondent_id = request.json['respondent_id']
     answer = request.json['answer']
     datetime_posted = datetime.now()
     datetime_updated = datetime.now()
@@ -112,7 +114,7 @@ def add_answer_services(id):
         
         db.session.commit()
         
-        return "answer added in database!!!"
+        return jsonify(new_answer)
     except Exception as e:
         db.session.rollback()
         print("An error occurred:", e)
