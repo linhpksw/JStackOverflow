@@ -32,53 +32,25 @@ def add_questions():
 @main.route('/questions_manager/questions/<int:id>', methods=['GET'])
 @login_required
 def get_question(id):
-    found_question = Question.query.get(id)
-    return QuestionSchema.jsonify({
-    "question": found_question.question,
-    "datetime_posted": found_question.datetime_posted,
-    "datetime_updated":found_question.datetime_updated,
-    "asker_id": found_question.asker_id,
-     "vote_id": found_question.vote_id
-    })
+    return get_question_services(id)
 
 
 @main.route('/questions_manager/questions/all_questions', methods=['GET'])
 @login_required
 def get_all_questions():
-    found_question = Question.query.get.all()
-    return QuestionSchema.jsonify({
-    "question": found_question.question,
-    "datetime_posted": found_question.datetime_posted,
-    "datetime_updated":found_question.datetime_updated,
-    "asker_id": found_question.asker_id,
-     "vote_id": found_question.vote_id
-    })
+    return get_all_questions_services()
 
 
 @main.route('/questions_manager/questions/<int:id>', methods=['PUT'])
 @login_required
 def update_questions(id):
-    found_question = Question.query.get(id)
-    return QuestionSchema.jsonify({
-    "question": found_question.question,
-    "datetime_posted": found_question.datetime_posted,
-    "datetime_updated":found_question.datetime_updated,
-    "asker_id": found_question.asker_id,
-     "vote_id": found_question.vote_id
-    })
+    return update_question_services(id)
 
 
 @main.route('/questions_manager/questions/<int:id>', methods=['DELETE'])
 @login_required
 def delete_questions(id):
-    found_question = Question.query.get(id)
-    return QuestionSchema.jsonify({
-    "question": found_question.question,
-    "datetime_posted": found_question.datetime_posted,
-    "datetime_updated":found_question.datetime_updated,
-    "asker_id": found_question.asker_id,
-     "vote_id": found_question.vote_id
-    })
+    return delete_question_services(id)
 
 
 # setup the answer services
