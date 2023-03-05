@@ -1,14 +1,14 @@
-const email = document.getElementById('email').value;
-console.log(email);
-const password = document.getElementById('password').value;
-
-const signInBtn = document.getElementById('sign-in-btn');
-
 try {
+    const email = document.getElementById('email');
+
+    const password = document.getElementById('password');
+
+    const signInBtn = document.getElementById('sign-in-btn');
+
     const fetchUserCredential = async () => {
         const data = {
-            email: email,
-            password: password,
+            email: email.value,
+            password: password.value,
         };
 
         const opt = {
