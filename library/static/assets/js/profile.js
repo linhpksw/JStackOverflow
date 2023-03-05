@@ -158,53 +158,78 @@ const id = 124859;
 
 getDataFakeAPI();
 async function getDataFakeAPI() {
-  const responseAPI = await fetch("https://jsonplaceholder.typicode.com/posts");
+  const responseAPI = await fetch("https://jsonplaceholder.typicode.com/users");
   const data = await responseAPI.json();
-  let userIds = data.filter(function (id) {
-    return id.userId == 1;
+  let userIds = data.filter(function (user) {
+    return user.id == 1;
   });
-
-  renderQuestions(userIds);
+  console.log(userIds);
+  renderGeneralInfo(userIds);
 }
-function renderQuestions(users) {
-  let listQuestions = document.getElementById("list-questions");
+function renderGeneralInfo(users) {
+  let info = document.getElementById("general-info");
   let htmls = users.map(function (e) {
     return `
-      <div class="mb-2 answers-list">
-          <div class="pe-3 ps-3 pt-3 d-flex">
-              <div class="me-3">
-                  <span>31</span>
-                  <span>votes</span>
-              </div>
-              <div class="post-summary-stats">
-                  <svg aria-hidden="true" class="svg-icon iconCheckmarkSm" width="14"
-                      height="14" viewBox="0 0 14 14">
-                      <path d=="M13 3.41 11.59 2 5 8.59 2.41 6 1 7.41l4 4 8-8Z"></path>
-                  </svg>
-                  Accept
-              </div>
-          </div>
-          <div>
-              <div class="pe-3 ps-3 pb-3">
-                  <h5 class="title-ans">${e.title}</h5>
-                  <div class="d-flex">
-                      <div class="post-summary-tags d-flex">
-                          <ul class = "ps-0">
-                              <li class = "pe-1 ps-1 me-1 ms-1">#MAE101</li>
-                              <li class = "pe-1 ps-1 me-1 ms-1">#PRF192</li>
-                          </ul>
-                      </div>
-                      <div class="d-flex align-items-center justify-content-end flex-grow-1">
-                          <div>
-                              answer at 00:02
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </div>
+      <div class="d-flex position-relative">
+                    <a class="img-user"><img src="/src/images/man (1).png" /></a>
+                    <div class="d-flex">
+                        <div class="d-flex align-items-center infor">
+                            <div class="me-3">
+                                <div class="d-flex ms-3">
+                                    <div class="me-3">
+                                        <h3>${e.username}</h3>
+                                    </div>
+                                    <!-- <div class="d-flex address">
+                                        <div class="me-2">
+                                            <i class="fa-solid fa-location-dot fa-lg mt-3"></i>
+                                        </div>
+                                        <div>
+                                            <p class="mt-2"></p>
+                                        </div>
+                                    </div> -->
+                                </div>
+
+                                <div class="">
+                                    <ul class="list-reset ms-3">
+                                        <li class="mb-2 mt-2">
+                                            <div class="d-flex me-3">
+                                                <div>
+                                                    <i class="fa-solid fa-venus-mars me-2"></i>
+                                                </div>
+                                                <div>Gender : Male</div>
+                                            </div>
+                                        </li>
+
+                                        <li class="mb-2 mt-2">
+                                            <div class="d-flex me-3">
+                                                <div>
+                                                    <i class="fa-solid fa-cake-candles me-2"></i>
+                                                </div>
+                                                <div>Member for 7 days</div>
+                                            </div>
+                                        </li>
+                                        <li class="mb-2 mt-2">
+                                            <div class="d-flex me-3">
+                                                <div>
+                                                    <i class="fa-solid fa-clock me-2"></i>
+                                                </div>
+                                                <div>Last seen this week</div>
+                                            </div>
+                                        </li>
+                                        <li class="mb-2 mt-2">
+                                            <div class="d-flex me-3">
+                                                <div>
+                                                    <i class="fa-solid fa-calendar-days me-2"></i>
+                                                </div>
+                                                <div>Visited 7 days</div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
       `;
   });
-  console.log(listQuestions);
-  listQuestions.innerHTML = htmls.join("");
+  info.innerHTML = htmls;
 }
