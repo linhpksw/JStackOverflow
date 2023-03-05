@@ -5,12 +5,10 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-        <link rel="stylesheet" href="../static/css/stylesheet.css" />
-        <link rel="stylesheet" href="../static/css/linh.css" />
+        <link rel="stylesheet" href="{{ url_for('static',filename ='css/homepage-i.css')}}" />
+        <link rel="stylesheet" href="{{ url_for('static',filename ='css/homepage-o.css')}}" />
 
-        <link
-            rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/agate.min.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/agate.min.css" />
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
 
@@ -71,8 +69,7 @@
                             </div>
 
                             <!-- Search section -->
-                            <div
-                                class="flex flex-1 justify-between rounded-lg bg-[#2C353D] px-5 py-2 text-[#858EAD]">
+                            <div class="flex flex-1 justify-between rounded-lg bg-[#2C353D] px-5 py-2 text-[#858EAD]">
                                 <input
                                     id="search"
                                     name="search"
@@ -155,9 +152,7 @@
                             <div class="flex flex-col gap-3 rounded-2xl bg-[#262D34] p-5">
                                 <!-- Tags title -->
                                 <div>
-                                    <span class="text-base font-semibold text-[#F7F7F7]"
-                                        >Popular Tags</span
-                                    >
+                                    <span class="text-base font-semibold text-[#F7F7F7]">Popular Tags</span>
                                 </div>
 
                                 <!-- Tags element -->
@@ -171,11 +166,7 @@
                                                 viewBox="0 0 32 32"
                                                 fill="none"
                                                 xmlns="http://www.w3.org/2000/svg">
-                                                <rect
-                                                    width="32"
-                                                    height="32"
-                                                    rx="4"
-                                                    fill="#5A4F43" />
+                                                <rect width="32" height="32" rx="4" fill="#5A4F43" />
                                                 <path
                                                     d="M11.8537 20.8902L11.3202 21.871C11.1407 22.0578 10.8492 22.0345 10.6699 21.8477L6.11779 16.8269C5.96074 16.6401 5.96074 16.3599 6.11779 16.1731L10.6699 11.1523C10.8494 10.9655 11.1409 10.9422 11.3202 11.129L11.8537 12.1098C12.0331 12.2967 12.0555 12.6003 11.8761 12.787L8.12863 16.5L11.8763 20.2129C12.0333 20.3997 12.0331 20.7034 11.8537 20.8902Z"
                                                     fill="#EEA956" />
@@ -190,14 +181,10 @@
 
                                         <div>
                                             <div>
-                                                <span class="text-sm font-semibold text-[#F7F7F7]"
-                                                    >#javascript</span
-                                                >
+                                                <span class="text-sm font-semibold text-[#F7F7F7]">#javascript</span>
                                             </div>
                                             <div>
-                                                <span class="text-xs text-[#97989D]"
-                                                    >82,645 Posted by this tag</span
-                                                >
+                                                <span class="text-xs text-[#97989D]">82,645 Posted by this tag</span>
                                             </div>
                                         </div>
                                     </div>
@@ -211,11 +198,7 @@
                                                 viewBox="0 0 33 32"
                                                 fill="none"
                                                 xmlns="http://www.w3.org/2000/svg">
-                                                <rect
-                                                    width="32.0024"
-                                                    height="32"
-                                                    rx="4"
-                                                    fill="#473E3B" />
+                                                <rect width="32.0024" height="32" rx="4" fill="#473E3B" />
                                                 <path
                                                     d="M16.0012 6C10.4863 6 6 10.4859 6 15.9988C6 21.5161 10.4859 26 16.0012 26C21.5165 26 26.0024 21.5161 26.0024 15.9988C26.0024 10.4859 21.5165 6 16.0012 6ZM16.0012 24.5069C11.3102 24.5069 7.49314 20.692 7.49314 15.9988C7.49314 11.3078 11.3103 7.49314 16.0012 7.49314C20.6942 7.49314 24.5069 11.3103 24.5069 15.9988C24.5069 20.6918 20.6942 24.5069 16.0012 24.5069Z"
                                                     fill="#FF8F67" />
@@ -227,14 +210,10 @@
 
                                         <div>
                                             <div>
-                                                <span class="text-sm font-semibold text-[#F7F7F7]"
-                                                    >#bitcoin</span
-                                                >
+                                                <span class="text-sm font-semibold text-[#F7F7F7]">#bitcoin</span>
                                             </div>
                                             <div>
-                                                <span class="text-xs text-[#97989D]"
-                                                    >65,523 Posted Trending</span
-                                                >
+                                                <span class="text-xs text-[#97989D]">65,523 Posted Trending</span>
                                             </div>
                                         </div>
                                     </div>
@@ -249,10 +228,8 @@
                                 <!-- Start main area-->
 
                                 <!-- Create Post -->
-                                <div
-                                    class="flex h-20 items-center gap-5 rounded-2xl bg-[#262D34] p-5">
-                                    <div
-                                        class="flex h-10 w-10 items-center justify-center rounded-full bg-[#F9DFC0]">
+                                <div class="flex h-20 items-center gap-5 rounded-2xl bg-[#262D34] p-5">
+                                    <div class="flex h-10 w-10 items-center justify-center rounded-full bg-[#F9DFC0]">
                                         <!-- <img
                             class="h-7 w-7"
                             src="assets/Memoji Boys 2-1.png"
@@ -272,13 +249,9 @@
 
                                     <!-- Modal ask question -->
                                     <div id="modal-question" class="modal">
-                                        <div
-                                            class="scrollbar-hide modal-box sticky inset-x-0 top-0 z-50 max-w-3xl">
-                                            <nav
-                                                class="mb-3 flex items-center justify-between border-b-2 pb-3">
-                                                <h2 class="text-2xl font-bold">
-                                                    Ask a public question
-                                                </h2>
+                                        <div class="scrollbar-hide modal-box sticky inset-x-0 top-0 z-50 max-w-3xl">
+                                            <nav class="mb-3 flex items-center justify-between border-b-2 pb-3">
+                                                <h2 class="text-2xl font-bold">Ask a public question</h2>
 
                                                 <button
                                                     data-modal-target="popup-modal"
@@ -299,8 +272,7 @@
                                                 </button>
                                             </nav>
 
-                                            <main
-                                                class="scrollbar-hide max-h-[26rem] overflow-scroll px-1">
+                                            <main class="scrollbar-hide max-h-[26rem] overflow-scroll px-1">
                                                 <form>
                                                     <!-- Title -->
                                                     <div class="mb-5">
@@ -309,10 +281,7 @@
                                                                 for="title"
                                                                 data-tip="Choose a specific question."
                                                                 class="tooltip tooltip-right mb-2 block text-lg font-medium text-gray-900"
-                                                                >Title
-                                                                <span class="text-red-600"
-                                                                    >*</span
-                                                                ></label
+                                                                >Title <span class="text-red-600">*</span></label
                                                             >
                                                         </div>
 
@@ -346,10 +315,7 @@
                                                                 for="tags"
                                                                 data-tip="Must start by hashtag #"
                                                                 class="tooltip tooltip-right mb-2 block text-lg font-medium text-gray-900"
-                                                                >Tags
-                                                                <span class="text-red-600"
-                                                                    >*</span
-                                                                ></label
+                                                                >Tags <span class="text-red-600">*</span></label
                                                             >
                                                         </div>
 
@@ -384,10 +350,8 @@
                                                         id="popup-modal"
                                                         tabindex="-1"
                                                         class="fixed top-0 left-0 right-0 z-50 hidden h-modal overflow-y-auto overflow-x-hidden p-4 md:inset-0 md:h-full">
-                                                        <div
-                                                            class="relative h-full w-full max-w-md md:h-auto">
-                                                            <div
-                                                                class="relative rounded-lg bg-slate-300 shadow">
+                                                        <div class="relative h-full w-full max-w-md md:h-auto">
+                                                            <div class="relative rounded-lg bg-slate-300 shadow">
                                                                 <button
                                                                     type="button"
                                                                     class="absolute top-3 right-2.5 ml-auto inline-flex items-center rounded-lg bg-transparent p-1.5 text-sm text-gray-400 hover:bg-gray-200 hover:text-gray-900"
@@ -420,8 +384,7 @@
                                                                     </svg>
                                                                     <h3
                                                                         class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">
-                                                                        Are you sure you want to
-                                                                        discard this question?
+                                                                        Are you sure you want to discard this question?
                                                                     </h3>
                                                                     <button
                                                                         id="discard-btn"
@@ -449,16 +412,12 @@
                                 <!-- Questions -->
                                 <div class="flex flex-col gap-5">
                                     <!-- Question 1 -->
-                                    <div
-                                        class="flex h-auto gap-5 rounded-2xl bg-[#262D34] py-5 px-5">
+                                    <div class="flex h-auto gap-5 rounded-2xl bg-[#262D34] py-5 px-5">
                                         <div class="flex flex-none flex-col gap-2 text-white">
                                             <!-- Stats -->
-                                            <span class="flex justify-end text-sm font-medium"
-                                                >31 votes</span
-                                            >
+                                            <span class="flex justify-end text-sm font-medium">31 votes</span>
                                             <div class="rounded-md bg-green-900 py-2 px-1.5">
-                                                <div
-                                                    class="flex items-center justify-between gap-1">
+                                                <div class="flex items-center justify-between gap-1">
                                                     <div>
                                                         <svg
                                                             xmlns="http://www.w3.org/2000/svg"
@@ -475,17 +434,14 @@
                                                     </div>
 
                                                     <div>
-                                                        <span
-                                                            class="flex justify-end text-sm font-medium"
+                                                        <span class="flex justify-end text-sm font-medium"
                                                             >7 answers</span
                                                         >
                                                     </div>
                                                 </div>
                                             </div>
 
-                                            <span class="flex justify-end text-sm font-medium"
-                                                >82k views</span
-                                            >
+                                            <span class="flex justify-end text-sm font-medium">82k views</span>
                                         </div>
 
                                         <div>
@@ -494,17 +450,15 @@
                                                 <div class="flex justify-between">
                                                     <span
                                                         class="text-xl font-semibold text-amber-400 hover:text-amber-500"
-                                                        >Blockchain developer best practices on
-                                                        innovationchain</span
+                                                        >Blockchain developer best practices on innovationchain</span
                                                     >
                                                 </div>
 
                                                 <!-- Question content -->
                                                 <div>
                                                     <p class="text-slate-100 line-clamp-2">
-                                                        Does anyone know a keyboard shortcut to
-                                                        close all tabs except for the current one in
-                                                        Visual Studio? And while we're at it, the
+                                                        Does anyone know a keyboard shortcut to close all tabs except
+                                                        for the current one in Visual Studio? And while we're at it, the
                                                         shortcut for closing all tabs? Is there a
                                                     </p>
                                                 </div>
@@ -537,28 +491,21 @@
                                                 </div>
 
                                                 <div class="flex-none">
-                                                    <span
-                                                        class="text-sm font-semibold text-[#C5D0E6]"
-                                                        ><a href="#" class="text-amber-400"
-                                                            >Pavel Gvay</a
-                                                        >
-                                                        answered 32 secs ago</span
+                                                    <span class="text-sm font-semibold text-[#C5D0E6]"
+                                                        ><a href="#" class="text-amber-400">Pavel Gvay</a> answered 32
+                                                        secs ago</span
                                                     >
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <!-- Question 1 -->
-                                    <div
-                                        class="flex h-auto gap-5 rounded-2xl bg-[#262D34] py-5 px-5">
+                                    <div class="flex h-auto gap-5 rounded-2xl bg-[#262D34] py-5 px-5">
                                         <div class="flex flex-none flex-col gap-2 text-white">
                                             <!-- Stats -->
-                                            <span class="flex justify-end text-sm font-medium"
-                                                >31 votes</span
-                                            >
+                                            <span class="flex justify-end text-sm font-medium">31 votes</span>
                                             <div class="rounded-md bg-green-900 py-2 px-1.5">
-                                                <div
-                                                    class="flex items-center justify-between gap-1">
+                                                <div class="flex items-center justify-between gap-1">
                                                     <div>
                                                         <svg
                                                             xmlns="http://www.w3.org/2000/svg"
@@ -575,17 +522,14 @@
                                                     </div>
 
                                                     <div>
-                                                        <span
-                                                            class="flex justify-end text-sm font-medium"
+                                                        <span class="flex justify-end text-sm font-medium"
                                                             >7 answers</span
                                                         >
                                                     </div>
                                                 </div>
                                             </div>
 
-                                            <span class="flex justify-end text-sm font-medium"
-                                                >82k views</span
-                                            >
+                                            <span class="flex justify-end text-sm font-medium">82k views</span>
                                         </div>
 
                                         <div>
@@ -594,17 +538,15 @@
                                                 <div class="flex justify-between">
                                                     <span
                                                         class="text-xl font-semibold text-amber-400 hover:text-amber-500"
-                                                        >Blockchain developer best practices on
-                                                        innovationchain</span
+                                                        >Blockchain developer best practices on innovationchain</span
                                                     >
                                                 </div>
 
                                                 <!-- Question content -->
                                                 <div>
                                                     <p class="text-slate-100 line-clamp-2">
-                                                        Does anyone know a keyboard shortcut to
-                                                        close all tabs except for the current one in
-                                                        Visual Studio? And while we're at it, the
+                                                        Does anyone know a keyboard shortcut to close all tabs except
+                                                        for the current one in Visual Studio? And while we're at it, the
                                                         shortcut for closing all tabs? Is there a
                                                     </p>
                                                 </div>
@@ -637,28 +579,21 @@
                                                 </div>
 
                                                 <div class="flex-none">
-                                                    <span
-                                                        class="text-sm font-semibold text-[#C5D0E6]"
-                                                        ><a href="#" class="text-amber-400"
-                                                            >Pavel Gvay</a
-                                                        >
-                                                        answered 32 secs ago</span
+                                                    <span class="text-sm font-semibold text-[#C5D0E6]"
+                                                        ><a href="#" class="text-amber-400">Pavel Gvay</a> answered 32
+                                                        secs ago</span
                                                     >
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <!-- Question 1 -->
-                                    <div
-                                        class="flex h-auto gap-5 rounded-2xl bg-[#262D34] py-5 px-5">
+                                    <div class="flex h-auto gap-5 rounded-2xl bg-[#262D34] py-5 px-5">
                                         <div class="flex flex-none flex-col gap-2 text-white">
                                             <!-- Stats -->
-                                            <span class="flex justify-end text-sm font-medium"
-                                                >31 votes</span
-                                            >
+                                            <span class="flex justify-end text-sm font-medium">31 votes</span>
                                             <div class="rounded-md bg-green-900 py-2 px-1.5">
-                                                <div
-                                                    class="flex items-center justify-between gap-1">
+                                                <div class="flex items-center justify-between gap-1">
                                                     <div>
                                                         <svg
                                                             xmlns="http://www.w3.org/2000/svg"
@@ -675,17 +610,14 @@
                                                     </div>
 
                                                     <div>
-                                                        <span
-                                                            class="flex justify-end text-sm font-medium"
+                                                        <span class="flex justify-end text-sm font-medium"
                                                             >7 answers</span
                                                         >
                                                     </div>
                                                 </div>
                                             </div>
 
-                                            <span class="flex justify-end text-sm font-medium"
-                                                >82k views</span
-                                            >
+                                            <span class="flex justify-end text-sm font-medium">82k views</span>
                                         </div>
 
                                         <div>
@@ -694,17 +626,15 @@
                                                 <div class="flex justify-between">
                                                     <span
                                                         class="text-xl font-semibold text-amber-400 hover:text-amber-500"
-                                                        >Blockchain developer best practices on
-                                                        innovationchain</span
+                                                        >Blockchain developer best practices on innovationchain</span
                                                     >
                                                 </div>
 
                                                 <!-- Question content -->
                                                 <div>
                                                     <p class="text-slate-100 line-clamp-2">
-                                                        Does anyone know a keyboard shortcut to
-                                                        close all tabs except for the current one in
-                                                        Visual Studio? And while we're at it, the
+                                                        Does anyone know a keyboard shortcut to close all tabs except
+                                                        for the current one in Visual Studio? And while we're at it, the
                                                         shortcut for closing all tabs? Is there a
                                                     </p>
                                                 </div>
@@ -737,28 +667,21 @@
                                                 </div>
 
                                                 <div class="flex-none">
-                                                    <span
-                                                        class="text-sm font-semibold text-[#C5D0E6]"
-                                                        ><a href="#" class="text-amber-400"
-                                                            >Pavel Gvay</a
-                                                        >
-                                                        answered 32 secs ago</span
+                                                    <span class="text-sm font-semibold text-[#C5D0E6]"
+                                                        ><a href="#" class="text-amber-400">Pavel Gvay</a> answered 32
+                                                        secs ago</span
                                                     >
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <!-- Question 1 -->
-                                    <div
-                                        class="flex h-auto gap-5 rounded-2xl bg-[#262D34] py-5 px-5">
+                                    <div class="flex h-auto gap-5 rounded-2xl bg-[#262D34] py-5 px-5">
                                         <div class="flex flex-none flex-col gap-2 text-white">
                                             <!-- Stats -->
-                                            <span class="flex justify-end text-sm font-medium"
-                                                >31 votes</span
-                                            >
+                                            <span class="flex justify-end text-sm font-medium">31 votes</span>
                                             <div class="rounded-md bg-green-900 py-2 px-1.5">
-                                                <div
-                                                    class="flex items-center justify-between gap-1">
+                                                <div class="flex items-center justify-between gap-1">
                                                     <div>
                                                         <svg
                                                             xmlns="http://www.w3.org/2000/svg"
@@ -775,17 +698,14 @@
                                                     </div>
 
                                                     <div>
-                                                        <span
-                                                            class="flex justify-end text-sm font-medium"
+                                                        <span class="flex justify-end text-sm font-medium"
                                                             >7 answers</span
                                                         >
                                                     </div>
                                                 </div>
                                             </div>
 
-                                            <span class="flex justify-end text-sm font-medium"
-                                                >82k views</span
-                                            >
+                                            <span class="flex justify-end text-sm font-medium">82k views</span>
                                         </div>
 
                                         <div>
@@ -794,17 +714,15 @@
                                                 <div class="flex justify-between">
                                                     <span
                                                         class="text-xl font-semibold text-amber-400 hover:text-amber-500"
-                                                        >Blockchain developer best practices on
-                                                        innovationchain</span
+                                                        >Blockchain developer best practices on innovationchain</span
                                                     >
                                                 </div>
 
                                                 <!-- Question content -->
                                                 <div>
                                                     <p class="text-slate-100 line-clamp-2">
-                                                        Does anyone know a keyboard shortcut to
-                                                        close all tabs except for the current one in
-                                                        Visual Studio? And while we're at it, the
+                                                        Does anyone know a keyboard shortcut to close all tabs except
+                                                        for the current one in Visual Studio? And while we're at it, the
                                                         shortcut for closing all tabs? Is there a
                                                     </p>
                                                 </div>
@@ -837,12 +755,9 @@
                                                 </div>
 
                                                 <div class="flex-none">
-                                                    <span
-                                                        class="text-sm font-semibold text-[#C5D0E6]"
-                                                        ><a href="#" class="text-amber-400"
-                                                            >Pavel Gvay</a
-                                                        >
-                                                        answered 32 secs ago</span
+                                                    <span class="text-sm font-semibold text-[#C5D0E6]"
+                                                        ><a href="#" class="text-amber-400">Pavel Gvay</a> answered 32
+                                                        secs ago</span
                                                     >
                                                 </div>
                                             </div>
@@ -860,9 +775,7 @@
                             <div class="flex flex-col gap-3 rounded-2xl bg-[#262D34] p-5">
                                 <!-- Hot questions -> -->
                                 <div class="flex items-center gap-2">
-                                    <span class="text-base font-semibold text-amber-400"
-                                        >Hot Questions
-                                    </span>
+                                    <span class="text-base font-semibold text-amber-400">Hot Questions </span>
 
                                     <svg
                                         class="stroke-amber-500"
@@ -886,16 +799,13 @@
                                         <div>
                                             <span
                                                 class="block w-full text-xs font-semibold leading-5 text-[#F7F7F7] line-clamp-2"
-                                                >Selling a Business and Scaling Another Amidst
-                                                Tragedy.</span
+                                                >Selling a Business and Scaling Another Amidst Tragedy.</span
                                             >
                                         </div>
 
                                         <!-- By author -->
                                         <div>
-                                            <span class="text-[0.625rem] text-[#97989D]"
-                                                >by Michele Hansen</span
-                                            >
+                                            <span class="text-[0.625rem] text-[#97989D]">by Michele Hansen</span>
                                         </div>
                                     </div>
 
@@ -904,15 +814,12 @@
                                         <div>
                                             <span
                                                 class="block w-full text-xs font-semibold leading-5 text-[#F7F7F7] line-clamp-2"
-                                                >Mental health as a founder and the importance of
-                                                community</span
+                                                >Mental health as a founder and the importance of community</span
                                             >
                                         </div>
 
                                         <div>
-                                            <span class="text-[0.625rem] text-[#97989D]"
-                                                >by James McKinven</span
-                                            >
+                                            <span class="text-[0.625rem] text-[#97989D]">by James McKinven</span>
                                         </div>
                                     </div>
                                 </div>
@@ -933,15 +840,12 @@
                 stroke-width="2"
                 stroke="currentColor"
                 class="m-1 h-4 w-4 text-white">
-                <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M12 19.5v-15m0 0l-6.75 6.75M12 4.5l6.75 6.75" />
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 19.5v-15m0 0l-6.75 6.75M12 4.5l6.75 6.75" />
             </svg></button
         ><!-- Include the Quill library -->
         <script src="https://cdn.quilljs.com/1.3.6/quill.min.js"></script>
 
-        <script src="../../node_modules/flowbite/dist/flowbite.min.js"></script>
-        <script src="../static/js/main.js"></script>
+        <script src="{{url_for('static',filename ='js/flowbite.min.js')}}"></script>
+        <script src="{{url_for('static',filename ='js/home-page.js')}}"></script>
     </body>
 </html>
