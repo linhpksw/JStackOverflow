@@ -4,8 +4,6 @@ const password = document.getElementById('password').value;
 const signInBtn = document.getElementById('sign-in-btn');
 
 try {
-    signInBtn.addEventListener('click', fetchUserCredential);
-
     const fetchUserCredential = async () => {
         const data = {
             email: email,
@@ -30,6 +28,8 @@ try {
 
         console.log(jsonResponse);
     };
+
+    signInBtn.addEventListener('click', fetchUserCredential);
 } catch (err) {
     console.log(err);
 }
