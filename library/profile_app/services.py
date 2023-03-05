@@ -72,13 +72,13 @@ def login_services():
 
     found_user = User.query.filter_by(email=email).first()
     if not found_user:
-        return jsonify({"Error":"Email not found :(("})
+        return jsonify({"error":"not found "})
     else:
         if password and check_password_hash(found_user.password, password):
             login_user(found_user)
-            return jsonify({"login":"successfully!!!"})
+            return render_template('home-page.html')
         else:
-            return jsonify({"Error":" password incorrect"})
+            return jsonify({"error":"incorrect password"})
 
 
 '''
@@ -111,7 +111,7 @@ def load_user(id):
 
 def logout_services():
     logout_user()
-    return 'Logout successfully!'
+    return jsonify({'success':'logout successfully'})
 
 
 def delete_user_services():
@@ -121,19 +121,19 @@ def delete_user_services():
         # if found_user:
         db.session.delete(current_user)
         db.session.commit()
-        return 'Delete successfully!'
+        return jsonify({'success':'delete successfully'})
     else:
-        return 'Cannot delete user!'
+        return jsonify({'error':'delete failed'})
 
 
 def edit_profile_services(id):
 
     if id != current_user.id:
         # found_user = User.query.get(id)
-        return "You are not allowed to edit this profile"
+        return jsonify({'error':'You are not allowed to edit this profile'})
     data = request.json
     if not data:
-        return "No need to edit"
+        return jsonify({'error':'No need to edit'})
     infor = ["name", "bio", "education", "experience", "year_of_experience"]
     if "date_of_birth" in data:
         date_of_birth = datetime.strptime(
@@ -144,25 +144,25 @@ def edit_profile_services(id):
     try:
         User.query.filter_by(id=id).update(update)
         db.session.commit()
-        return 'Edit successfully'
+        return jsonify({'success':'Edit successfully'})
     except Exception as e:
         db.session.rollback()
         print("An error occurred:", e)
-        return "Cannot edit profile"
+        return jsonify({'error':'Cannot edit profile'})
 
 
 def change_avatar_services(id):
     if id != current_user.id:
-        return "You are not allowed to edit this profile"
+        return jsonify({'error':'You are not allowed to edit this profile'})
     # avatar = request.values
     try:
         current_user.avatar = get_path_image(request)
         db.session.commit()
-        return "change avatar successfully"
+        return jsonify({"success":"change avatar successfully"})
     except Exception as e:
         db.session.rollback()
         print("An error occurred:", e)
-        return "Cannot change avatar"
+        return jsonify({"error":"Cannot change avatar"})
 
 
 def see_profile_services(id):
