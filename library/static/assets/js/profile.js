@@ -229,6 +229,15 @@ function renderGeneralInfo(users) {
                             </div>
                         </div>
                     </div>
+                    <div class="d-flex position-absolute end-0 top-0">
+                        <a class="btn-custom-var d-flex me-1 ms-1 btn" type="" href="" type="button"
+                            data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                            <i class="fa-solid fa-pen me-1 mt-1"></i>
+                            Edit profile
+                        </a>
+                    </div>
+                </div>
+            </div>
       `;
   });
   info.innerHTML = htmls;

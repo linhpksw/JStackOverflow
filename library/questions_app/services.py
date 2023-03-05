@@ -87,9 +87,12 @@ def delete_question_services(id):
                 db.session.rollback()
                 return "Can not delete question!"
             
-# def vote_question(id):
-#     vote_id = Question.query.get(id).vote_id
-#     if vote_id in QuestionSchema:
+def vote_question(id):
+    question = Question.query.filter_by(id=id).first()
+    question.vote_id += 1
+    db.session.commit()
+    return "vote_question"
+    
         
 #settings for features of answers
 
