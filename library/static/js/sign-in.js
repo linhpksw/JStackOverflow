@@ -25,7 +25,7 @@ try {
 
         const jsonResponse = await response.json();
 
-        console.log(response);
+        console.log(jsonResponse);
     };
 
     signInBtn.addEventListener('click', fetchUserCredential);
