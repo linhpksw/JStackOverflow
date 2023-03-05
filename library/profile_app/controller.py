@@ -47,12 +47,12 @@ def delete():
 
 
 @profiles.route('/api/user/<int:id>', methods=['GET'])
-@login_required
+#@login_required
 def see_profile(id):
     return see_profile_services(id) 
 
 @profiles.route('/user/<int:id>', methods=['GET'])
-@login_required
+#@login_required
 def see_profile2(id):
     return render_template('profile-page.html', id=id)
 
