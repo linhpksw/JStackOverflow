@@ -22,7 +22,7 @@ class User(db.Model, UserMixin):
 
     def __init__(self, id, name, email, password,
                   gender,
-                 bio, avatar,phone_number='', date_of_birth='', education='',
+                  avatar, bio='',phone_number='', date_of_birth='', education='',
                  experience='', year_of_experience='',
                  reputation=0, expert=False):
         self.id = id
