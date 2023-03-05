@@ -11,7 +11,7 @@ import cloudinary.uploader
 
 
 user_schema = UserSchema()
-
+users_schema = UserSchema(many = True)
 
 def sign_up_services():
 
@@ -220,3 +220,20 @@ def get_path_image(request):
         return "https://res.cloudinary.com/dxu6nsoye/image/upload/v1649821452/z3336574163217_bc5927ec38c68b516f13b300443dfcac_zouzvp.jpg"
 
 
+def get_all_users_services():
+    
+    users = User.query.all()
+    if users:
+        users = UserSchema(many=True).dump(users)
+        return jsonify(users)
+    else:
+        return jsonify({"Error": " No questions"}), 404
+    
+def get_info_user_services(id):
+    found_user = User.query.get(id)
+    
+    if found_user:
+        found_user = UserSchema().dump(found_user)
+        return jsonify(found_user)
+    else:
+        return jsonify({"Error": " No user"}), 404

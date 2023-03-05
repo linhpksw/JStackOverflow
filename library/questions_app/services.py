@@ -1,7 +1,7 @@
 from library.extensions import db
 from library.model.models import Question, User, Answer
 from library.library_ma import QuestionSchema, AnswerSchema
-from flask import request
+from flask import request,render_template,redirect,url_for
 from datetime import datetime
 from flask_login import LoginManager, current_user, login_required
 from flask import jsonify
@@ -23,13 +23,13 @@ def add_question_services():
     question = request.json['question']
     datetime_posted = datetime.now()
     datetime_updated = datetime.now()
-    asker_id = current_user.id  # request.json['asker_id']
+    asker_id = current_user.id 
 
     try:
         new_question = Question(question=question, datetime_updated=datetime_updated,datetime_posted=datetime_posted, asker_id=asker_id)
         db.session.add(new_question)
         db.session.commit()
-        return "New question successfully!!!"
+        return "add question in database!!"
     except:
         db.session.rollback()
         return "Can't add new question"

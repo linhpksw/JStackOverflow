@@ -67,7 +67,7 @@ class Question(db.Model):
     datetime_posted = db.Column(db.DateTime, default=datetime.utcnow)
     datetime_updated = db.Column(db.DateTime, default=datetime.utcnow)
     asker_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-    vote_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    vote_id = db.Column(db.Integer, db.ForeignKey('user.id'),default=0)
 
     def __init__(self, question, datetime_updated, datetime_posted, asker_id, vote_id=None):
         self.question = question
@@ -92,8 +92,8 @@ class Answer(db.Model):
     datetime_updated = db.Column(db.DateTime, default=datetime.utcnow)
     respondent_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     question_id = db.Column(db.Integer, db.ForeignKey('question.id'))
-    like_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-    unlike_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    like_id = db.Column(db.Integer, db.ForeignKey('user.id'),default=0)
+    unlike_id = db.Column(db.Integer, db.ForeignKey('user.id'),default=0)
 
     def __init__(self, answer, datetime_updated, datetime_posted, respondent_id, question_id, like_id=0, unlike_id=0):
         self.answer = answer
