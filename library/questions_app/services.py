@@ -114,11 +114,14 @@ def add_answer_services(id):
         
         db.session.commit()
         
-        return jsonify(new_answer)
+        return jsonify({'answer': new_answer.answer,
+                        'question_id': new_answer.question_id,
+                        'datetime_posted': new_answer.datetime_posted,
+                        'datetime_updated': new_answer.datetime_updated,
+                        'respondent_id': new_answer.respondent_id})
     except Exception as e:
         db.session.rollback()
-        print("An error occurred:", e)
-        return "error"
+        return jsonify({'Error': e})
 
  
     
