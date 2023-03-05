@@ -23,7 +23,7 @@ try {
 
         const response = await fetch(URL, opt);
 
-        // const jsonResponse = await response.json();
+        const jsonResponse = await response.json();
 
         console.log(response);
     };
