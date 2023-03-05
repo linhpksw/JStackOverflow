@@ -29,7 +29,7 @@ def add_question_services():
         new_question = Question(question=question, datetime_updated=datetime_updated,datetime_posted=datetime_posted, asker_id=asker_id)
         db.session.add(new_question)
         db.session.commit()
-        return render_template('add-question.html') #id = new_question.id
+        return "add question in database!!"
     except:
         db.session.rollback()
         return "Can't add new question"
