@@ -2,7 +2,7 @@ from flask_login import current_user, login_required
 from flask import Blueprint, redirect, render_template, request, url_for
 from library.extensions import db
 from library.model.models import User, Question, Answer
-from .services import add_question_services, update_question_services, delete_question_services, get_question_services, get_all_questions_services
+from .services import add_question_services, update_question_services, delete_question_services, get_question_services, get_all_questions_services,vote_question
 from .services import add_answer_services, update_answer_services, delete_answer_services, get_answer_services, get_all_answers_services, get_answer_by_question_id_services
 from library.library_ma import QuestionSchema, AnswerSchema
 from flask import jsonify
@@ -51,6 +51,11 @@ def update_questions(id):
 @login_required
 def delete_questions(id):
     return delete_question_services(id)
+
+@main.route('/vote/<int:id>', methods=['POST'])
+@login_required
+def like_questions(id):
+    return vote_question(id)
 
 
 # setup the answer services
