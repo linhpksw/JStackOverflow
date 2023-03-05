@@ -8,6 +8,8 @@
 
         <link rel="stylesheet" href="{{ url_for('static',filename ='css/signin-i.css')}}" />
         <link rel="stylesheet" href="{{ url_for('static',filename ='css/signin-o.css')}}" />
+        <!-- <link rel="stylesheet" href="../static/css/signin-i.css" />
+        <link rel="stylesheet" href="../static/css/signin-o.css" /> -->
     </head>
     <body>
         <section class="bg-gray-900">
@@ -24,6 +26,7 @@
                         <h1 class="text-xl font-bold leading-tight tracking-tight text-white md:text-2xl">
                             Sign in to your account
                         </h1>
+
                         <form class="space-y-4 md:space-y-6" action="#">
                             <div>
                                 <label for="email" class="mb-2 block text-sm font-medium text-white">Your email</label>
@@ -64,7 +67,8 @@
                                 >
                             </div>
                             <button
-                                type="submit"
+                                id="sign-in-btn"
+                                type="button"
                                 class="w-full rounded-lg bg-[#d97706] px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-[#b45309] focus:outline-none focus:ring-4 focus:ring-[#fcd34d]">
                                 Sign in
                             </button>
@@ -79,7 +83,9 @@
             </div>
         </section>
 
-        <!-- <script src="../../src/static/js/sign-in.js"></script> -->
         <script src="{{url_for('static',filename ='js/flowbite.min.js')}}"></script>
+        <script src="{{url_for('static',filename ='js/sign-in.js')}}"></script>
+        <!-- <script src="../static/js/flowbite.min.js"></script>
+        <script src="../static/js/sign-in.js"></script> -->
     </body>
 </html>
