@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="../static/css/stylesheet.css">
-    <link rel="stylesheet" href="../static/css/tailwind.css">
-
+    <title>Question Page</title>
+    <link rel="stylesheet" href="{{url_for('static',filename ='css/question-i.css')}}" />
+    <link rel="stylesheet" href="{{url_for('static',filename ='css/question-o.css')}}" />
+</head>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -261,17 +261,17 @@
                     <!-- tags -->
                     <div id="tags" class="">
                         <ul class=" text-xs  ">
-                            <li class="inline-block rounded-sm ">TRS6010</li>
+                            <li class="inline-block rounded-sm ">TRS601</li>
                             <li class="inline-block rounded-sm">MAE101</li>
                             <li class="inline-block rounded-sm">TRS501</li>
                         </ul>
     
                     </div>
                     <!-- biểu tượng cmt, share, save -->
-                    <div id="cmt-btn" class=" text-white flex ml-4  m-5 py-5 mr-3 text-sm">
+                    <div id="cmt-btn" onclick="myFunction" class=" text-white flex ml-4  m-5 py-5 mr-3 text-sm">
                         <div class="cursor-pointer hover:bg-gray-400 flex align-middle items-center py-2 mr-3 hover:rounded-sm">
                             <i class="material-icons  text-white mr-3 ">forum </i>
-                            <div class=" mr-4">comment</div>
+                            <div  class=" mr-4">comment</div>
                         </div>
                         <div  class="cursor-pointer hover:bg-gray-400 flex align-middle items-center">
                             <i class="material-icons  text-white mr-2 ">share </i>
@@ -301,7 +301,7 @@
                 <!-- câu trả lời  -->
                 <div class="my-10">
                     <div>  
-                        <textarea id="fill-answer" class="w-full h-32 p-2 border rounded-md" name="message" placeholder="Câu trả lời của bạn là gì?"></textarea>
+                        <textarea id="fill-answer"  class="w-full h-32 p-2 border rounded-md" name="message" placeholder="Câu trả lời của bạn là gì?"></textarea>
                         <button class="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 mt-4 unded focus:outline-none focus:shadow-outline rounded-md" type="submit">Gửi câu trả lời</button>
                     </div>
                     <div id="list">
@@ -381,7 +381,7 @@
         </div>
     </main>
 
-    <script src="../static/js/index.js"></script>
+    <script src="../static/js/question-page.js"></script>
         
     
 </body>

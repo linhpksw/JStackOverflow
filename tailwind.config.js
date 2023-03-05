@@ -32,6 +32,7 @@ module.exports = {
 
                 'sign-up': path.resolve(__dirname, 'library', 'templates', 'sign-up.html'),
                 'sign-in': path.resolve(__dirname, 'library', 'templates', 'sign-in.html'),
+                'question-page': path.resolve(__dirname, 'library', 'templates', 'question-page.html'),
 
                 // Add as many HTML files as you need
             },
