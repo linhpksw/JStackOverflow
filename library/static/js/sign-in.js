@@ -1,4 +1,5 @@
 const email = document.getElementById('email').value;
+console.log(email);
 const password = document.getElementById('password').value;
 
 const signInBtn = document.getElementById('sign-in-btn');
