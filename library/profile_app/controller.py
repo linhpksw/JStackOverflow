@@ -8,7 +8,7 @@ profiles = Blueprint("profiles", __name__)
 
 @profiles.route('/')
 def index():
-    return render_template('question-page.html')
+    return render_template('sign-in.html')
 
 @profiles.route('/api/get_info/<id>')
 def get_info(id):
