@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template, redirect, url_for, jsonify
 from .services import sign_up_services, login_services, logout_services, delete_user_services, load_user, see_profile_services, edit_profile_services, change_avatar_services, get_question_by_user_id, get_answer_by_user_id
 from flask_login import login_required, login_user, LoginManager, logout_user, current_user
 from library.extensions import login_manager
@@ -10,13 +10,24 @@ profiles = Blueprint("profiles", __name__)
 def index():
     return render_template('draft.html')
 
-@profiles.route('/get_info')
-def get_info():
-    return 'In4'
+@profiles.route('/api/get_info/<id>')
+def get_info(id):
+    found_user = User.query.get(id)
+    
+    if found_user:
+        return jsonify({"name": found_user.name,
+                        "date of birth": found_user.date_of_birth,
+                        "gender": found_user.gender,
+                        "bio": found_user.bio,
+                        "education": found_user.education,
+                        "experience": found_user.experience,
+                        "year_of_experience": found_user.year_of_experience,
+                        "avatar": found_user.avatar}) 
+    
 
 @profiles.route('/sign_up', methods=['POST'])
 def sign_up():
-    return sign_up_services()
+     return  sign_up_services() #, render_template('draft.html')
 
 
 @profiles.route('/login', methods=['POST'])

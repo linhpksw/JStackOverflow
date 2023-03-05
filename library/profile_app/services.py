@@ -1,13 +1,14 @@
 from library.extensions import db
 from library.library_ma import UserSchema, QuestionSchema, AnswerSchema
 from library.model.models import User, Question, Answer
-from flask import request, jsonify
+from flask import request, jsonify, render_template, redirect, url_for
 import random
 from datetime import datetime
 import re
 from werkzeug.security import check_password_hash, generate_password_hash
 from flask_login import login_required, login_user, LoginManager, logout_user, current_user
 import cloudinary.uploader
+
 
 user_schema = UserSchema()
 
@@ -57,12 +58,13 @@ def sign_up_services():
                         experience=experience, year_of_experience=year_of_experience)
         db.session.add(new_user)
         db.session.commit()
-        return 'Sign up successfully!'
+        return render_template('id.html', id = new_user.id)
     except Exception as e:
         db.session.rollback()
         print("An error occurred:", e)
         return "Can not sign up!"
 
+    
 
 def login_services():
     email = request.json.get('email')

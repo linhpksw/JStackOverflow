@@ -12,8 +12,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-<link rel="stylesheet" href="/src/fontawesome-free-5.12.1-web/css/">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">  
 </head>
 <body class="mx-auto max-w-[2000px]">
     <div id="main" class="mx-10">
@@ -243,7 +242,7 @@
                 <!-- câu hỏi -->
                 <div>
 
-                    <h1 class="title-question ">Làm gì khi có quá nhiều thứ để học ?</h1>
+                    <h1 id="title-ques" class="title-question ">Làm gì khi có quá nhiều thứ để học ?</h1>
                     <ul class="note-list text-white flex mb-4 text-sm">
                         <li class="mr-4 font-semibold">Asked<span class="note-item ml-2">today</span></li>
                         <li class="mr-4 font-semibold">Modified<span class="note-item ml-2">today</span></li>
@@ -254,10 +253,10 @@
     
                         <div  class="float-left px-1 mr-3 ">
                             <button id="increment-count" class="material-icons  text-white text-xl"  >arrow_drop_up</button>
-                            <div id="total-count" class="text-white text-center align-middle"></div> 
+                            <div id="total-count"   class="text-white text-center align-middle"></div> 
                             <button id="decrement-count" class="material-icons  text-white text-4xl">arrow_drop_down</button>
                         </div> 
-                        <p class="content-question md-48 text-white float-right text-justify">Chả là năm nay e định học thêm nhiều kĩ năng mềm để có ích cho bản thân sau này và đã lên hẳn 1 list các kỹ năng cần học,kết quả là quá nhiều nên e không biết phải sắp xếp học các kỹ năng sao cho hợp lý,mong các bác cho e xin vài lời khuyên.</p>
+                        <p id="content-ques" class="content-question md-48 text-white float-right text-justify">Chả là năm nay e định học thêm nhiều kĩ năng mềm để có ích cho bản thân sau này và đã lên hẳn 1 list các kỹ năng cần học,kết quả là quá nhiều nên e không biết phải sắp xếp học các kỹ năng sao cho hợp lý,mong các bác cho e xin vài lời khuyên.</p>
                     </div>
                     <!-- tags -->
                     <div id="tags" class="">
@@ -269,12 +268,12 @@
     
                     </div>
                     <!-- biểu tượng cmt, share, save -->
-                    <div class=" text-white flex ml-4  m-5 py-5 mr-3 text-sm">
+                    <div id="cmt-btn" class=" text-white flex ml-4  m-5 py-5 mr-3 text-sm">
                         <div class="cursor-pointer hover:bg-gray-400 flex align-middle items-center py-2 mr-3 hover:rounded-sm">
                             <i class="material-icons  text-white mr-3 ">forum </i>
                             <div class=" mr-4">comment</div>
                         </div>
-                        <div class="cursor-pointer hover:bg-gray-400 flex align-middle items-center">
+                        <div  class="cursor-pointer hover:bg-gray-400 flex align-middle items-center">
                             <i class="material-icons  text-white mr-2 ">share </i>
                             <div class="mr-4">share</div>
                        </div>                            
@@ -302,59 +301,11 @@
                 <!-- câu trả lời  -->
                 <div class="my-10">
                     <div>  
-                        <textarea class="w-full h-32 p-2 border rounded-md" name="message" placeholder="Câu trả lời của bạn là gì?"></textarea>
+                        <textarea id="fill-answer" class="w-full h-32 p-2 border rounded-md" name="message" placeholder="Câu trả lời của bạn là gì?"></textarea>
                         <button class="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 mt-4 unded focus:outline-none focus:shadow-outline rounded-md" type="submit">Gửi câu trả lời</button>
                     </div>
-                    <div>
-                        <!-- câu trả lời số 1 -->
-                        <div class="flex p-4 items-start space-x-4">
-                            <img class="w-10 h-10 rounded-full" src="/src/img/12022330_845928092188375_8890160160420757664_o.png" alt="Avatar">
-                            <div id="answer1" class="m-4">
-                              <div class="flex items-center justify-between">
-                                <h2 class="text-lg font-medium text-orange-300">hallo</h2>
-                                <p class="text-sm text-gray-400">3h ago</p>
-                              </div>
-                              <p class="mt-2 text-white">Tin mình nhé, đúc kết từ kinh nghiệm bản thân. Là khi bạn tự nhủ mình có quá nhiều thứ để học và ko chọn đc cái gì thì là bạn quen thói trì hoãn, là chúa procrastination thôi.
-
-                                Lời khuyên thì dễ, là bắt tay vô làm đi, pick cái gì cũng đc hết, lên checklist rồi thì làm đi và mỗi thời điểm thì chỉ focus 1 việc thôi.</p>
-                                <!-- icon câu trả lời -->
-                                <div id="icon-commnet" class="flex  text-gray-400 mt-3">
-                                <i class="material-icons  text-gray-400 mr-3 hover:text-orange-600 ">thumb_up </i>
-                                <div class="align-middle text-center mr-2">4</div>
-                                <i class="material-icons  text-gray-400 mr-3 hover:text-orange-600 ">thumb_down </i>
-                                <div class="hover:bg-orange-600 hover:text-white px-4 font-bold text-gray-400 rounded flex items-center align-middle ">
-                                    <i class="material-icons inline-block ">reply </i>
-                                    <div class="inline-block">reply</div>
-                                </div>                                
-                                </div>
-                            </div>
-                           
-                        </div>
-                        <!-- câu trả lời số 2 -->
-                        <div class="flex p-4 items-start space-x-4">
-                            <img class="w-10 h-10 rounded-full" src="/src/img/c1247765a7925be9aae023276f71ec8c.jpg" alt="Avatar">
-                            <div id="answer1" class="m-4">
-                              <div class="flex items-center justify-between">
-                                <h2 class="text-lg font-medium text-orange-300">hehehe</h2>
-                                <p class="text-sm text-gray-400">4d ago</p>
-                              </div>
-                              <p class="mt-2 text-white">Học gì cũng đc quan trọng là duy trì thói quen. Bạn cố gắng lên kế hoạch học 1h mỗi ngày, học gì cũng được, miễn là bạn tập trung và ko đc bỏ ngày nào hết. 2h sáng mới đi chơi về cũng ngồi vào bàn học.
-
-                                Cứ cho là bạn có 10 thứ muốn học đi, một năm 365 ngày 365h, thì chia ra mỗi thứ cũng học được 36 tiếng, thế là gấp rưỡi độ dài một khóa học online rồi.
-                                
-                                Vì thực ra kỹ năng mềm quan trọng nhất mình thấy là quyết tâm và kiên trì.</p>
-                                <!-- icon câu trả lời -->
-                                <div id="icon-commnet" class="flex  text-gray-400 mt-3">
-                                <i class="material-icons  text-gray-400 mr-3 hover:text-orange-600 ">thumb_up </i>
-                                <div class="align-middle text-center mr-2">-3</div>
-                                <i class="material-icons  text-gray-400 mr-3 hover:text-orange-600 ">thumb_down </i>
-                                <div class="hover:bg-orange-600 hover:text-white px-4 font-bold text-gray-400 rounded flex items-center align-middle ">
-                                    <i class="material-icons inline-block ">reply </i>
-                                    <div class="inline-block">reply</div>
-                                </div>                                
-                                </div>
-                            </div>
-                        </div>
+                    <div id="list">
+                        
                     </div>
 
                 </div>
