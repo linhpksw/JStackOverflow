@@ -164,4 +164,81 @@ async function getDataFakeAPI() {
     return user.id == 1;
   });
   console.log(userIds);
+  renderGeneralInfo(userIds);
+}
+function renderGeneralInfo(users) {
+  let info = document.getElementById("general-info");
+  let htmls = users.map(function (e) {
+    return `
+      <div class="d-flex position-relative">
+                    <a class="img-user"><img src="/src/images/man (1).png" /></a>
+                    <div class="d-flex">
+                        <div class="d-flex align-items-center infor">
+                            <div class="me-3">
+                                <div class="d-flex ms-3">
+                                    <div class="me-3">
+                                        <h3>${e.username}</h3>
+                                    </div>
+                                    <!-- <div class="d-flex address">
+                                        <div class="me-2">
+                                            <i class="fa-solid fa-location-dot fa-lg mt-3"></i>
+                                        </div>
+                                        <div>
+                                            <p class="mt-2"></p>
+                                        </div>
+                                    </div> -->
+                                </div>
+
+                                <div class="">
+                                    <ul class="list-reset ms-3">
+                                        <li class="mb-2 mt-2">
+                                            <div class="d-flex me-3">
+                                                <div>
+                                                    <i class="fa-solid fa-venus-mars me-2"></i>
+                                                </div>
+                                                <div>Gender : Male</div>
+                                            </div>
+                                        </li>
+
+                                        <li class="mb-2 mt-2">
+                                            <div class="d-flex me-3">
+                                                <div>
+                                                    <i class="fa-solid fa-cake-candles me-2"></i>
+                                                </div>
+                                                <div>Member for 7 days</div>
+                                            </div>
+                                        </li>
+                                        <li class="mb-2 mt-2">
+                                            <div class="d-flex me-3">
+                                                <div>
+                                                    <i class="fa-solid fa-clock me-2"></i>
+                                                </div>
+                                                <div>Last seen this week</div>
+                                            </div>
+                                        </li>
+                                        <li class="mb-2 mt-2">
+                                            <div class="d-flex me-3">
+                                                <div>
+                                                    <i class="fa-solid fa-calendar-days me-2"></i>
+                                                </div>
+                                                <div>Visited 7 days</div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex position-absolute end-0 top-0">
+                        <a class="btn-custom-var d-flex me-1 ms-1 btn" type="" href="" type="button"
+                            data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                            <i class="fa-solid fa-pen me-1 mt-1"></i>
+                            Edit profile
+                        </a>
+                    </div>
+                </div>
+            </div>
+      `;
+  });
+  info.innerHTML = htmls;
 }

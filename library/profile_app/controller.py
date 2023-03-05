@@ -46,10 +46,15 @@ def delete():
     return delete_user_services()
 
 
-@profiles.route('/user/<int:id>', methods=['GET'])
-@login_required
+@profiles.route('/api/user/<int:id>', methods=['GET'])
+#@login_required
 def see_profile(id):
-    return see_profile_services(id)
+    return see_profile_services(id) 
+
+@profiles.route('/user/<int:id>', methods=['GET'])
+#@login_required
+def see_profile2(id):
+    return render_template('profile-page.html', id=id)
 
 
 @profiles.route('/user/<int:id>/edit', methods=['PUT'])
