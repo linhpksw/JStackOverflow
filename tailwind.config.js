@@ -29,8 +29,6 @@ module.exports = {
         rollupOptions: {
             input: {
                 index: path.resolve(__dirname, 'src', 'index.html'),
-                'home-page': path.resolve(__dirname, 'src', 'templates', 'home-page.html'),
-                'profile-page': path.resolve(__dirname, 'src', 'templates', 'profile-page.html'),
 
                 'sign-up': path.resolve(__dirname, 'library', 'templates', 'sign-up.html'),
                 'sign-in': path.resolve(__dirname, 'library', 'templates', 'sign-in.html'),
