@@ -86,7 +86,10 @@ def delete_question_services(id):
             except IndentationError:
                 db.session.rollback()
                 return "Can not delete question!"
-        
+            
+def vote_question(id):
+    vote_id = Question.query.get(id).vote_id
+    if vote_id in QuestionSchema:
         
 #settings for features of answers
 
