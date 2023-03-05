@@ -69,7 +69,7 @@ class Question(db.Model):
     asker_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     vote_id = db.Column(db.Integer, db.ForeignKey('user.id'),default=0)
 
-    def __init__(self, question, datetime_updated, datetime_posted, asker_id, vote_id=None):
+    def __init__(self, question, datetime_updated, datetime_posted, asker_id, vote_id):
         self.question = question
         self.datetime_posted = datetime_posted
         self.datetime_updated = datetime_updated
@@ -81,6 +81,7 @@ class Question(db.Model):
             'id': self.id,
             'question': self.question,
             'asker_id': self.asker_id,
+            'vote_id': self.vote_id
             # add more fields as needed
         }
 
@@ -110,5 +111,7 @@ class Answer(db.Model):
             'answer': self.answer,
             'question_id': self.question_id,
             'respondent_id': self.respondent_id,
+            'like_id': self.like_id,
+            'unlike_id' : self.unlike_id
             # add more fields as needed
         }
