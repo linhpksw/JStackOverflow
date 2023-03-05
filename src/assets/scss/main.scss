@@ -97,7 +97,9 @@ p, h1, h2, h3, h4, h5, h6{
     background: #2c353d;
     padding: 12px 2px;
 }
-
+.top-items:hover {
+    background-color: #ff4401; 
+}
 /* MAINBAR SECTION */
 #mainbar-full{
     margin: 2% 4% 0 21%;
