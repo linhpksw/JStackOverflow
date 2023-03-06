@@ -20,10 +20,10 @@
         <title>Discussion Forum</title>
     </head>
     <body class="overflow-hidden">
-        <div class="flex w-screen items-center justify-center bg-[#1e252b]">
-            <div class="flex h-screen max-w-[1440px] flex-col">
+        <div class="w-screen bg-[#1e252b]">
+            <div class="flex h-screen flex-col">
                 <header class="sticky inset-x-0 top-0 z-50 flex flex-1">
-                    <nav class="relative mx-auto flex flex-1 items-center bg-[#262D34] py-5">
+                    <nav class="relative mx-auto flex flex-1 items-center bg-[#262D34] py-5 px-5">
                         <div class="flex h-16 flex-1 items-center gap-10 px-5">
                             <!-- Logo section -->
                             <div class="flex items-center">
@@ -413,90 +413,7 @@
                                 </div>
 
                                 <!-- Questions -->
-                                <div id="questions" class="flex flex-col gap-5">
-                                    <!-- Question 1 -->
-                                    <div id="question-1" class="flex h-auto gap-5 rounded-2xl bg-[#262D34] py-5 px-5">
-                                        <!-- Stats -->
-                                        <div id="stats" class="flex flex-none flex-col gap-2 text-white">
-                                            <!-- Total votes -->
-                                            <span id="total-votes" class="flex justify-end text-sm font-medium"
-                                                >31 votes</span
-                                            >
-
-                                            <!-- Answers -->
-                                            <div id="answers" class="rounded-md bg-green-900 py-2 px-1.5">
-                                                <div class="flex items-center justify-between gap-1">
-                                                    <!-- Correct answer -->
-                                                    <!-- <div>
-                                                        <svg
-                                                            xmlns="http://www.w3.org/2000/svg"
-                                                            fill="none"
-                                                            viewBox="0 0 24 24"
-                                                            stroke-width="2.5"
-                                                            stroke="currentColor"
-                                                            class="h-5 w-5">
-                                                            <path
-                                                                stroke-linecap="round"
-                                                                stroke-linejoin="round"
-                                                                d="M4.5 12.75l6 6 9-13.5" />
-                                                        </svg>
-                                                    </div> -->
-
-                                                    <!-- Total answers -->
-                                                    <div>
-                                                        <span
-                                                            id="total-answers"
-                                                            class="flex justify-end text-sm font-medium"
-                                                            >7 answers</span
-                                                        >
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <span id="total-views" class="flex justify-end text-sm font-medium"
-                                                >82k views</span
-                                            >
-                                        </div>
-
-                                        <!-- Infor -->
-
-                                        <div id="infors" class="flex flex-1 flex-col gap-3">
-                                            <!-- Question title -->
-                                            <div class="flex justify-between">
-                                                <span
-                                                    id="question-title"
-                                                    class="text-xl font-semibold text-amber-400 hover:text-amber-500"
-                                                    >Blockchain developer best practices on innovationchain</span
-                                                >
-                                            </div>
-
-                                            <!-- Tag and ask_id -->
-                                            <div class="flex justify-between gap-3">
-                                                <button
-                                                    id="question-tag"
-                                                    class="rounded-3xl bg-[#2C353D] py-1 px-3 text-xs font-semibold text-[#C5D0E6]">
-                                                    MAE101
-                                                </button>
-
-                                                <div class="mt-3 flex items-center justify-end">
-                                                    <div
-                                                        class="mr-3 flex h-5 w-5 items-center justify-center rounded-full bg-[#F0F1FE]"></div>
-
-                                                    <div class="flex-none">
-                                                        <span
-                                                            id="question-time"
-                                                            class="text-sm font-semibold text-[#C5D0E6]"
-                                                            ><a id="user-name" href="#" class="text-amber-400"
-                                                                >Pavel Gvay</a
-                                                            >
-                                                            answered 32 secs ago</span
-                                                        >
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                <div id="questions" class="flex flex-col gap-5"></div>
 
                                 <!-- End main area -->
                             </div>
@@ -530,29 +447,31 @@
                                     <div>
                                         <!-- Question content -->
                                         <div>
-                                            <span
+                                            <a
+                                                href="#"
                                                 class="block w-full text-xs font-semibold leading-5 text-[#F7F7F7] line-clamp-2"
-                                                >Selling a Business and Scaling Another Amidst Tragedy.</span
+                                                >Selling a Business and Scaling Another Amidst Tragedy.</a
                                             >
                                         </div>
 
                                         <!-- By author -->
                                         <div>
-                                            <span class="text-[0.625rem] text-[#97989D]">by Michele Hansen</span>
+                                            <a href="#" class="text-[0.625rem] text-[#97989D]">by Michele Hansen</a>
                                         </div>
                                     </div>
 
                                     <!-- Question 2 -->
                                     <div>
                                         <div>
-                                            <span
+                                            <a
+                                                href="#"
                                                 class="block w-full text-xs font-semibold leading-5 text-[#F7F7F7] line-clamp-2"
-                                                >Mental health as a founder and the importance of community</span
+                                                >Mental health as a founder and the importance of community</a
                                             >
                                         </div>
 
                                         <div>
-                                            <span class="text-[0.625rem] text-[#97989D]">by James McKinven</span>
+                                            <a href="#" class="text-[0.625rem] text-[#97989D]">by James McKinven</a>
                                         </div>
                                     </div>
                                 </div>

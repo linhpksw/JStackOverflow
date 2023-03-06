@@ -15,17 +15,22 @@ discardBtn.addEventListener('click', () => {
 function appendQuestion(id) {
     const questionsElement = document.getElementById('questions');
 
+    const questionChild = document.createElement('div');
+    questionChild.setAttribute('id', `question-${id}`);
+
     const totalVotes = 25;
     const totalAnswers = 10;
     const totalViews = 13;
 
+    const questionId = 111111;
     const questionTitle = `ABC`;
     const questionTag = `PRF192`;
 
     const questionTime = `32p`;
     const userName = 'Le Trong Linh';
+    const userId = 136822;
 
-    const newQuestionElement = `
+    questionChild.innerHTML = `
     <!-- Question ${id} -->
     <div id="question-${id}" class="flex h-auto gap-5 rounded-2xl bg-[#262D34] py-5 px-5">
     <!-- Stats -->
@@ -74,10 +79,11 @@ function appendQuestion(id) {
     <div id="infors" class="flex flex-1 flex-col gap-3">
         <!-- Question title -->
         <div class="flex justify-between">
-            <span
+            <a
                 id="question-title"
+                href="/questions_manager/questions/${questionId}"
                 class="text-xl font-semibold text-amber-400 hover:text-amber-500"
-                >${questionTitle}</span
+                >${questionTitle}</a
             >
         </div>
 
@@ -97,7 +103,7 @@ function appendQuestion(id) {
                     <span
                         id="question-time"
                         class="text-sm font-semibold text-[#C5D0E6]"
-                        ><a id="user-name" href="#" class="text-amber-400"
+                        ><a id="user-name" href="/user/${userId}" class="text-amber-400"
                             >${userName}</a
                         >
                         ${questionTime}</span
@@ -109,7 +115,12 @@ function appendQuestion(id) {
     </div>
     `;
 
-    questionsElement.insertBefore(newQuestionElement, questionsElement.firstChild);
+    // Check if there are any child elements
+    if (questionsElement.children.length > 0) {
+        questionsElement.children[0].appendChild(questionChild);
+    } else {
+        questionsElement.appendChild(questionChild);
+    }
 }
 
 //  Initialize Quill editor
@@ -154,13 +165,14 @@ const postQuestion = async () => {
             body: JSON.stringify(data),
         };
 
-        const response = await fetch(URL, opt);
-        const jsonResponse = await response.json();
+        // const response = await fetch(URL, opt);
+        // const jsonResponse = await response.json();
+        const jsonResponse = 'success';
 
-        if (jsonResponse.status == '') {
+        if (jsonResponse == 'success') {
             const id = 2;
             appendQuestion(id);
-            // modalQuestion.classList.remove('modal-open');
+            modalQuestion.classList.remove('modal-open');
         } else {
         }
     } catch (err) {
