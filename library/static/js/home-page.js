@@ -149,6 +149,8 @@ const postQuestion = async () => {
 
         const URL = 'https://jstackoverflow.jsclub.me/questions_manager/add_question';
 
+        console.log(questionContent);
+
         const data = {
             title: questionTitle,
             tag: questionTag,
