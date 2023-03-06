@@ -68,7 +68,7 @@ getAnswerFromAPI();
 async function getAnswerFromAPI() {
   const responseAPT = await fetch('https://jsonplaceholder.typicode.com/comments');
   const  data  = await responseAPT.json();
-  list.inertHTML = ``;
+  list.innertHTML = ``;
   data.forEach(data => {
     const divItem = document.createElement('div');
     divItem.innerHTML = `
@@ -102,7 +102,7 @@ async function getAnswerFromAPI() {
 // add a click event listener to the button
   // button.addEventListener('click', () => {
   // find the element to scroll to
-//   const elementToScrollTo = document.querySelector('fill-answer');
+//   const element  ToScrollTo = document.querySelector('fill-answer');
 
 
 //   elementToScrollTo.scrollIntoView({ behavior: 'smooth' });
