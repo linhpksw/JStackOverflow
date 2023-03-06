@@ -1,19 +1,3 @@
-const bgcolor = document.querySelector(".img-user");
-const colors = [
-  "#00aefd",
-  "#ffa400",
-  "#07a787",
-  "#ff7870",
-  "black",
-  "pink",
-  "yellow",
-  "#e74c3c",
-  "#2979ff",
-];
-bgcolor.addEventListener("click", function () {
-  const randomColor = colors[Math.floor(Math.random() * colors.length)];
-  document.querySelector(".img-user").style.backgroundColor = randomColor;
-});
 let list = document.getElementById("list");
 const search = document.getElementById("search-text");
 const id = 124859;
@@ -50,13 +34,13 @@ function renderAbout(users) {
   let info = document.getElementById("edit-about");
   let htmls = "";
   let tmp = users.filter(function (user) {
-    return user.id === 1;
+    return user.id == 1;
   });
   console.log(tmp);
-  if (tmp.length === 0) {
+  if (tmp.length == 0) {
     htmls += `<div id = "edit-about">
         <div class="about-me">
-            <div class="empty-box">
+            <div class="empty-box"></div>
                 <p class="about-txt">
                     Your about me section is
                     currently blank. You want to
@@ -71,7 +55,7 @@ function renderAbout(users) {
   } else {
     htmls += `
         <div>
-            ${tmp.name}
+            ${tmp[0].name}
         </div>
         `;
   }
