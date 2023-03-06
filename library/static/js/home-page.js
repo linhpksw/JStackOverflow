@@ -52,14 +52,12 @@ const postQuestion = async () => {
         const questionTitle = document.getElementById('question-title').value;
         const questionTag = document.getElementById('question-tag').value;
         const editorContent = quill.getContents();
-
-        console.log(questionTitle);
-        console.log(questionTag);
+        console.log(editorContent);
 
         const jsonEditorContent = JSON.stringify(editorContent);
         console.log(jsonEditorContent);
 
-        console.log(editorContent == jsonEditorContent.parse(jsonEditorContent));
+        // console.log(editorContent == jsonEditorContent.parse(jsonEditorContent));
     } catch (err) {
         console.log(err);
     }
