@@ -26,9 +26,13 @@ const loadQuestions = async () => {
             asker_id: askerId,
         } = jsonResponse;
 
-        const profileResponse = await fetch(`https://jstackoverflow.jsclub.me/api/user/${askerId}`);
+        const profileResponse = await fetch(`https://jstackoverflow.jsclub.me/api/user/${askerId}`, {
+            method: 'GET',
+        });
 
         const jsonProfileResponse = await profileResponse.json();
+
+        console.log(jsonProfileResponse);
 
         const askerName = jsonProfileResponse.found_user.name;
 
