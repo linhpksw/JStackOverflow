@@ -5,8 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Question Page</title>
-    <!-- <link rel="stylesheet" href="{{url_for('static',filename ='css/question-i.css')}}" />
-    <link rel="stylesheet" href="{{url_for('static',filename ='css/question-o.css')}}" /> -->
+    <link rel="stylesheet" href="{{url_for('static',filename ='css/question-i.css')}}" />
+    <link rel="stylesheet" href="{{url_for('static',filename ='css/question-o.css')}}" />
     <link rel="stylesheet" href="../static/css/question-i.css">
     <link rel="stylesheet" href="../static/css/question-o.css">
 
@@ -270,7 +270,7 @@
     
                     </div>
                     <!-- biểu tượng cmt, share, save -->
-                    <div id="cmt-btn" onclick="myFunction" class=" text-white flex ml-4  m-5 py-5 mr-3 text-sm">
+                    <div id="cmt-btn" onclick="myFunction()" class=" text-white flex ml-4  m-5 py-5 mr-3 text-sm">
                         <div class="cursor-pointer hover:bg-gray-400 flex align-middle items-center py-2 mr-3 hover:rounded-sm">
                             <i class="material-icons  text-white mr-3 ">forum </i>
                             <div  class=" mr-4">comment</div>
@@ -291,7 +291,7 @@
                     </div>
                     <!-- đại diện user -->
                     <div class="w-52 h-15 bg-orange-200 flex items-center justify-center py-2 px-4 float-right rounded-sm">
-                    <img src="/src/img/ad0d063e1f57b808fd9e31ffe7d1f3a4.jpg" alt="Avatar" class="w-16 h-16 rounded-full mr-4 ">
+                    <img src="/src/img/12022330_845928092188375_8890160160420757664_o.png" alt="Avatar" class="w-16 h-16 rounded-full mr-4 ">
                     <div>
                         <p class="font-semibold text-gray-800">Tran Bao Ngoc</p>
                         <p class="text-sm text-gray-600">Software Engineering</p>
@@ -383,7 +383,10 @@
         </div>
     </main>
 
-    <script src="../static/js/question-page.js"></script>
+    <link rel="stylesheet" href="{{url_for('static',filename ='js/question-page.js')}}" />
+    
+    <script src="../static/js/question-page.js">   </script>
+    
         
     
 </body>
