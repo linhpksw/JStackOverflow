@@ -107,7 +107,7 @@ function appendQuestion(questionId, askerId, questionTitle, questionTag, questio
             <button
                 id="question-tag"
                 class="rounded-3xl bg-[#2C353D] py-1 px-3 text-xs font-semibold text-[#C5D0E6]">
-                $${questionTag}
+                ${questionTag}
             </button>
 
             <div class="mt-3 flex items-center justify-end">
@@ -121,7 +121,7 @@ function appendQuestion(questionId, askerId, questionTitle, questionTag, questio
                         ><a id="user-name" href="/user/${askerId}" class="text-amber-400"
                             >${askerName}</a
                         >
-                        ${questionTime}</span
+                        asked at ${questionTime}</span
                     >
                 </div>
             </div>
