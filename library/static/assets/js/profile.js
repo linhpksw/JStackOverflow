@@ -22,12 +22,47 @@ const getDataFakeAPI = async () => {
       "https://jstackoverflow.jsclub.me/user/872805/questions"
     );
     const { questions } = await responseQuestions.json();
-    data = questions;
-    console.log(data);
+    function renderGeneralQuestions() {
+      let info = document.getElementById("general-questions");
+      let tmp = questions.slice(-5);
+      let htmls = "";
+      for (let i = 4; i >= 0; i--) {
+        htmls += `
+                <div class="mb-2 answers-list">
+                <div class="pe-3 ps-3 pt-3 d-flex">
+                    <div class="me-3">
+                        <span>31</span>
+                        <span>votes</span>
+                    </div>
+                    <div class="post-summary-stats">
+                        <svg aria-hidden="true" class="svg-icon iconCheckmarkSm" width="14"
+                            height="14" viewBox="0 0 14 14">
+                            <path d=="M13 3.41 11.59 2 5 8.59 2.41 6 1 7.41l4 4 8-8Z"></path>
+                        </svg>
+                        Accept
+                    </div>
+                </div>
+                <div>
+                    <div class="pe-3 ps-3 pb-3">
+                        <h5 class="title-ans">${tmp[i].title}</h5>
+                        <div class="d-flex">
+                            <div class="d-flex align-items-center justify-content-end flex-grow-1">
+                                <div>
+                                    answer at 00:02
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+              </div>
+              `;
+      }
+      info.innerHTML = htmls;
+    }
+
     let userIds = data.filter(function (user) {
       return user.id == 1;
     });
-    console.log(data);
     renderGeneralInfo(userIds);
     renderGeneralAnswer();
     renderGeneralQuestions();
@@ -68,43 +103,7 @@ function renderAbout(users) {
   }
   info.innerHTML = htmls;
 }
-function renderGeneralQuestions() {
-  let info = document.getElementById("general-questions");
-  let tmp = questions.slice(-5);
-  let htmls = "";
-  for (let i = 4; i >= 0; i--) {
-    htmls += `
-          <div class="mb-2 answers-list">
-          <div class="pe-3 ps-3 pt-3 d-flex">
-              <div class="me-3">
-                  <span>31</span>
-                  <span>votes</span>
-              </div>
-              <div class="post-summary-stats">
-                  <svg aria-hidden="true" class="svg-icon iconCheckmarkSm" width="14"
-                      height="14" viewBox="0 0 14 14">
-                      <path d=="M13 3.41 11.59 2 5 8.59 2.41 6 1 7.41l4 4 8-8Z"></path>
-                  </svg>
-                  Accept
-              </div>
-          </div>
-          <div>
-              <div class="pe-3 ps-3 pb-3">
-                  <h5 class="title-ans">${tmp[i].title}</h5>
-                  <div class="d-flex">
-                      <div class="d-flex align-items-center justify-content-end flex-grow-1">
-                          <div>
-                              answer at 00:02
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
-        </div>
-        `;
-  }
-  info.innerHTML = htmls;
-}
+
 function renderGeneralAnswer() {
   let info = document.getElementById("general-answer");
   let tmp = data.slice(-5);
