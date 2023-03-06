@@ -19,147 +19,9 @@ const search = document.getElementById("search-text");
 const id = 124859;
 const searchBar = document.getElementById("search-text");
 let data = [];
-// const answerTab = document.querySelector(".answer-tab");
-// answerTab.addEventListener("click", function () {
-//   getDataFakeAPI();
-//   async function getDataFakeAPI() {
-//     const responseAPI = await fetch(
-//       "https://b265-2001-ee0-40e1-2676-7de2-d8ab-6694-6607.ap.ngrok.io/user/496067/questions"
-//     );
-//     const data = await responseAPI.json();
-//     // list.innerHTML = "Loading...";
-//     // setTimeout(() => {
-//     //   list.innerHTML = "";
 
-//     //   data.forEach((e) => {
-//     //     // const answersItem = document.createElement("div");
-//     //     // const questionsItem = document.createElement("div");
-
-//     //     const divItem = document.createElement("div");
-//     //     divItem.innerHTML = `
-//     //     <div class="mb-2 answers-list">
-//     //                                 <div class="pe-3 ps-3 pt-3 d-flex">
-//     //                                     <div class="me-3">
-//     //                                         <span>31</span>
-//     //                                         <span>votes</span>
-//     //                                     </div>
-//     //                                     <div class="post-summary-stats">
-//     //                                         <svg aria-hidden="true" class="svg-icon iconCheckmarkSm" width="14"
-//     //                                             height="14" viewBox="0 0 14 14">
-//     //                                             <path d=="M13 3.41 11.59 2 5 8.59 2.41 6 1 7.41l4 4 8-8Z"></path>
-//     //                                         </svg>
-//     //                                         Accept
-//     //                                     </div>
-//     //                                 </div>
-//     //                                 <div>
-//     //                                     <div class="pe-3 ps-3 pb-3">
-//     //                                         <h5 class="title-ans">${e.title}</h5>
-//     //                                         <div class="d-flex">
-//     //                                             <div class="post-summary-tags d-flex">
-//     //                                                 <ul class = "ps-0">
-//     //                                                     <li class = "pe-1 ps-1 me-1 ms-1">#MAE101</li>
-//     //                                                     <li class = "pe-1 ps-1 me-1 ms-1">#PRF192</li>
-//     //                                                 </ul>
-//     //                                             </div>
-//     //                                             <div class="d-flex align-items-center justify-content-end flex-grow-1">
-//     //                                                 <div>
-//     //                                                     answer at 00:02
-//     //                                                 </div>
-//     //                                             </div>
-//     //                                         </div>
-//     //                                     </div>
-//     //                                 </div>
-//     //                             </div>`;
-//     //     list.appendChild(divItem);
-
-//     // const questionItem = `;
-
-//     //     answersItem.innerHTML = `
-//     // <div class="mb-2 answers-list">
-//     //                             <div class="pe-3 ps-3 pt-3 d-flex">
-//     //                                 <div class="me-3">
-//     //                                     <span>31</span>
-//     //                                     <span>votes</span>
-//     //                                 </div>
-//     //                                 <div class="post-summary-stats">
-//     //                                     <svg aria-hidden="true" class="svg-icon iconCheckmarkSm" width="14"
-//     //                                         height="14" viewBox="0 0 14 14">
-//     //                                         <path d=="M13 3.41 11.59 2 5 8.59 2.41 6 1 7.41l4 4 8-8Z"></path>
-//     //                                     </svg>
-//     //                                     Accept
-//     //                                 </div>
-//     //                             </div>
-//     //                             <div>
-//     //                                 <div class="pe-3 ps-3 pb-3">
-//     //                                     <h5 class="title-ans">${data.title}</h5>
-//     //                                     <div class="d-flex">
-//     //                                         <div class="post-summary-tags d-flex">
-//     //                                             <ul class = "ps-0">
-//     //                                                 <li class = "pe-1 ps-1 me-1 ms-1">#MAE101</li>
-//     //                                                 <li class = "pe-1 ps-1 me-1 ms-1">#PRF192</li>
-//     //                                             </ul>
-//     //                                         </div>
-//     //                                         <div class="d-flex align-items-center justify-content-end flex-grow-1">
-//     //                                             <div>
-//     //                                                 answer at 00:02
-//     //                                             </div>
-//     //                                         </div>
-//     //                                     </div>
-//     //                                 </div>
-//     //                             </div>
-//     //                         </div>`;
-
-//     //     questionsItem.innerHTML = `
-//     //     <div class="my-2 answers-list">
-//     //                                 <div class="pe-3 ps-3 pt-3 d-flex">
-//     //                                     <div class="me-3">
-//     //                                         <span>31</span>
-//     //                                         <span>votes</span>
-//     //                                     </div>
-//     //                                     <div class="post-summary-stats">
-//     //                                         <svg aria-hidden="true" class="svg-icon iconCheckmarkSm" width="14"
-//     //                                             height="14" viewBox="0 0 14 14">
-//     //                                             <path d="M13 3.41 11.59 2 5 8.59 2.41 6 1 7.41l4 4 8-8Z"></path>
-//     //                                         </svg>
-//     //                                         "Accept"
-//     //                                     </div>
-//     //                                     <div class="ms-3">
-//     //                                         <span>1k</span>
-//     //                                         <span>views</span>
-//     //                                     </div>
-//     //                                 </div>
-//     //                                 <div>
-//     //                                     <div class="pe-3 ps-3 pb-3">
-//     //                                         <h5 class="title-ans">HELLO</h5>
-//     //                                         <div class="d-flex">
-//     //                                             <div class="post-summary-tags d-flex">
-//     //                                                 <ul class="ps-0">
-//     //                                                     <li>#MAE101</li>
-//     //                                                     <li>#PRF192</li>
-//     //                                                 </ul>
-//     //                                             </div>
-//     //                                             <div class="d-flex align-items-center justify-content-end flex-grow-1">
-//     //                                                 <div>
-//     //                                                     answer at 00:02
-//     //                                                 </div>
-//     //                                             </div>
-//     //                                         </div>
-//     //                                     </div>
-//     //                                 </div>
-//     //                             </div>
-//     //     `;
-//     // list.appendChild(answersItem);
-//     // list.appendChild(questionsItem);
-//     // });
-//     // }, 1000);
-//     // list.innerHTML = allAnswers.join(" ");
-//     console.log(data);
-//   }
-// });
-console.log(searchBar);
 searchBar.addEventListener("keyup", (e) => {
   const searchString = e.target.value.toLowerCase();
-  console.log(searchString);
   const filteredCharacters = data.filter((character) => {
     return character.name.toLowerCase().includes(searchString);
   });
@@ -177,12 +39,121 @@ const getDataFakeAPI = async () => {
     });
     console.log(data);
     renderGeneralInfo(userIds);
+    renderGeneralAnswer();
+    renderGeneralQuestions();
+    renderAbout(userIds);
   } catch (err) {
     console.error(err);
   }
 };
+function renderAbout(users) {
+  let info = document.getElementById("edit-about");
+  let htmls = "";
+  let tmp = users.filter(function (user) {
+    return user.id === 1;
+  });
+  console.log(tmp);
+  if (tmp.length === 0) {
+    htmls += `<div id = "edit-about">
+        <div class="about-me">
+            <div class="empty-box">
+                <p class="about-txt">
+                    Your about me section is
+                    currently blank. You want to
+                    change it?
+                    <i class="fa-solid fa-hand-back-point-right"></i>
+                    <a href="" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Click
+                        here</a>
+                </p>
+            </div>
+        </div>
+        </div>`;
+  } else {
+    htmls += `
+        <div>
+            ${tmp.name}
+        </div>
+        `;
+  }
+  info.innerHTML = htmls;
+}
+function renderGeneralQuestions() {
+  let info = document.getElementById("general-questions");
+  let tmp = data.slice(-5);
+  let htmls = "";
+  for (let i = 4; i >= 0; i--) {
+    htmls += `
+          <div class="mb-2 answers-list">
+          <div class="pe-3 ps-3 pt-3 d-flex">
+              <div class="me-3">
+                  <span>31</span>
+                  <span>votes</span>
+              </div>
+              <div class="post-summary-stats">
+                  <svg aria-hidden="true" class="svg-icon iconCheckmarkSm" width="14"
+                      height="14" viewBox="0 0 14 14">
+                      <path d=="M13 3.41 11.59 2 5 8.59 2.41 6 1 7.41l4 4 8-8Z"></path>
+                  </svg>
+                  Accept
+              </div>
+          </div>
+          <div>
+              <div class="pe-3 ps-3 pb-3">
+                  <h5 class="title-ans">${tmp[i].name}</h5>
+                  <div class="d-flex">
+                      <div class="d-flex align-items-center justify-content-end flex-grow-1">
+                          <div>
+                              answer at 00:02
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+        </div>
+        `;
+  }
+  info.innerHTML = htmls;
+}
+function renderGeneralAnswer() {
+  let info = document.getElementById("general-answer");
+  let tmp = data.slice(-5);
+  let htmls = "";
+  for (let i = 4; i >= 0; i--) {
+    htmls += `
+        <div class="mb-2 answers-list">
+        <div class="pe-3 ps-3 pt-3 d-flex">
+            <div class="me-3">
+                <span>31</span>
+                <span>votes</span>
+            </div>
+            <div class="post-summary-stats">
+                <svg aria-hidden="true" class="svg-icon iconCheckmarkSm" width="14"
+                    height="14" viewBox="0 0 14 14">
+                    <path d=="M13 3.41 11.59 2 5 8.59 2.41 6 1 7.41l4 4 8-8Z"></path>
+                </svg>
+                Accept
+            </div>
+        </div>
+        <div>
+            <div class="pe-3 ps-3 pb-3">
+                <h5 class="title-ans">${tmp[i].name}</h5>
+                <div class="d-flex">
+                    <div class="d-flex align-items-center justify-content-end flex-grow-1">
+                        <div>
+                            answer at 00:02
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
+      `;
+  }
+  info.innerHTML = htmls;
+}
 function renderGeneralInfo(users) {
   let info = document.getElementById("general-info");
+
   let htmls = users.map(function (e) {
     return `
       <div class="d-flex position-relative">
@@ -211,7 +182,7 @@ function renderGeneralInfo(users) {
                                                 <div>
                                                     <i class="fa-solid fa-venus-mars me-2"></i>
                                                 </div>
-                                                <div>Gender : Male</div>
+                                                <div>Gender : (Male)</div>
                                             </div>
                                         </li>
 
@@ -220,25 +191,10 @@ function renderGeneralInfo(users) {
                                                 <div>
                                                     <i class="fa-solid fa-cake-candles me-2"></i>
                                                 </div>
-                                                <div>Member for 7 days</div>
+                                                <div>DoB: (2004-24-11)</div>
                                             </div>
                                         </li>
-                                        <li class="mb-2 mt-2">
-                                            <div class="d-flex me-3">
-                                                <div>
-                                                    <i class="fa-solid fa-clock me-2"></i>
-                                                </div>
-                                                <div>Last seen this week</div>
-                                            </div>
-                                        </li>
-                                        <li class="mb-2 mt-2">
-                                            <div class="d-flex me-3">
-                                                <div>
-                                                    <i class="fa-solid fa-calendar-days me-2"></i>
-                                                </div>
-                                                <div>Visited 7 days</div>
-                                            </div>
-                                        </li>
+                                        
                                     </ul>
                                 </div>
                             </div>
@@ -253,6 +209,62 @@ function renderGeneralInfo(users) {
                     </div>
                 </div>
             </div>
+            <div class="fade modal" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
+                    tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="staticBackdropLabel">
+                                    Edit your profile
+                                </h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="d-flex align-items-start flex-column">
+                                    <div class="my-2 mx-auto">
+                                        <div class="d-flex align-items-start flex-column">
+                                            <div class="form-floating mb-3">
+                                                <input type="email" class="input-change form-control" id="floatingName"
+                                                    placeholder="Name" value="User_name" />
+                                                <label for="floatingInput">Display name</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="my-2 mx-auto">
+                                        <div class="d-flex align-items-start flex-column">
+                                            <div class="form-floating mb-3">
+                                                <input type="email" class="input-change form-control" id="floatingName"
+                                                    placeholder="Name" value="HA NOI CITY" />
+                                                <label for="floatingInput">Location</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="my-2 mx-auto">
+                                        <div class="d-flex align-items-start flex-column">
+                                            <div class="form-floating mb-3">
+                                                <textarea id="floatingTextarea" value=""
+                                                    class="input-change form-control"
+                                                    placeholder="Write something fun about you..." style="
+                                                        height: 150px;
+                                                    "></textarea>
+                                                <label for="floatingTextarea">About me</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn-secondary btn" data-bs-dismiss="modal">
+                                    Close
+                                </button>
+                                <button type="button" class="btn-primary btn">
+                                    Save changes
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
       `;
   });
   info.innerHTML = htmls;
