@@ -158,31 +158,27 @@ const postQuestion = async () => {
         const opt = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(data),
+            body: `${JSON.stringify(data)}`,
         };
-
-        console.log(opt);
 
         const response = await fetch(URL, opt);
         const jsonResponse = await response.json();
 
-        console.log(jsonResponse);
+        if (jsonResponse.status == 'add question successfully') {
+            const {
+                name: askerName,
+                question_id: questionId,
+                title: questionTitle,
+                content: questionContent,
+                tag: questionTag,
+                asker_id: askerId,
+                datetime_posted: questionTime,
+                datetime_updated: updateTime,
+            } = jsonResponse;
 
-        // if (jsonResponse.status == 'add question successfully') {
-        //     const {
-        //         name: askerName,
-        //         question_id: questionId,
-        //         title: questionTitle,
-        //         content: questionContent,
-        //         tag: questionTag,
-        //         asker_id: askerId,
-        //         datetime_posted: questionTime,
-        //         datetime_updated: updateTime,
-        //     } = jsonResponse;
-
-        //     appendQuestion(questionId, askerId, questionTitle, questionTag, questionTime, askerName);
-        //     modalQuestion.classList.remove('modal-open');
-        // }
+            appendQuestion(questionId, askerId, questionTitle, questionTag, questionTime, askerName);
+            modalQuestion.classList.remove('modal-open');
+        }
     } catch (err) {
         console.log(err);
     }
