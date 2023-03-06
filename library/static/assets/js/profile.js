@@ -17,6 +17,7 @@ bgcolor.addEventListener("click", function () {
 let list = document.getElementById("list");
 const search = document.getElementById("search-text");
 const id = 124859;
+const searchBar = document.getElementById("search-text");
 
 // const answerTab = document.querySelector(".answer-tab");
 // answerTab.addEventListener("click", function () {
@@ -155,7 +156,8 @@ const id = 124859;
 //     console.log(data);
 //   }
 // });
-
+console.log(searchBar);
+// searchBar.addEventListener("keyup", () => {});
 getDataFakeAPI();
 async function getDataFakeAPI() {
   const responseAPI = await fetch("https://jsonplaceholder.typicode.com/users");
@@ -163,7 +165,6 @@ async function getDataFakeAPI() {
   let userIds = data.filter(function (user) {
     return user.id == 1;
   });
-  console.log(userIds);
   renderGeneralInfo(userIds);
 }
 function renderGeneralInfo(users) {
