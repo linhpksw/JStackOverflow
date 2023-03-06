@@ -32,7 +32,7 @@ def add_question_services():
         
         db.session.add(new_question)
         db.session.commit()
-        return jsonify({'name':User.query.get(id).name,
+        return jsonify({'name':current_user.name,
                         'title': new_question.title,
                         'content': new_question.content,
                         'tag': new_question.tag,

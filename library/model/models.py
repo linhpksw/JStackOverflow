@@ -114,8 +114,8 @@ class Answer(db.Model):
             'answer': self.answer,
             'question_id': self.question_id,
             'respondent_id': self.respondent_id,
-            'up_vote': self.up_vote,
-            'down_vote' : self.down_vote
+            'like': self.like,
+            'unlike' : self.unlike
             # add more fields as needed
         }
 
