@@ -35,18 +35,13 @@ let options = {
 
 const quill = new Quill('#editor', options);
 
-quill.on('text-change', update);
+// quill.on('text-change', update);
 const container = document.querySelector('#delta-container');
-update();
+// update();
 
 function update(delta) {
-    const editorContent = quill.getContents();
-
-    console.log(editorContent);
-
     // quill2.setContents(contents);
     // quill2.disable();
-
     // if (delta) {
     //     console.log(JSON.stringify(delta, null, 2));
     // }
@@ -56,9 +51,15 @@ const postQuestion = async () => {
     try {
         const questionTitle = document.getElementById('question-title').value;
         const questionTag = document.getElementById('question-tag').value;
+        const editorContent = quill.getContents();
+        console.log(editorContent);
 
-        console.log(questionTitle);
-        console.log(questionTag);
+        const jsonEditorContent = JSON.stringify(editorContent);
+        console.log(jsonEditorContent);
+
+        console.log(JSON.parse(jsonEditorContent));
+
+        // console.log(editorContent == jsonEditorContent.parse(jsonEditorContent));
     } catch (err) {
         console.log(err);
     }
