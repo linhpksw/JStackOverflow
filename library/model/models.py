@@ -9,7 +9,7 @@ class User(db.Model, UserMixin):
     name = db.Column(db.String(255), nullable=False)
     email = db.Column(db.String(255), nullable=False, unique=True)
     password = db.Column(db.String(255), nullable=False)
-    phone_number = db.Column(db.String(255))#, nullable=False)
+    phone_number = db.Column(db.String(255), nullable=False)
     date_of_birth = db.Column(db.Date)
     gender = db.Column(db.String(255))
     bio = db.Column(db.String(1000))
@@ -18,12 +18,11 @@ class User(db.Model, UserMixin):
     experience = db.Column(db.String(255))
     year_of_experience = db.Column(db.Integer)
     reputation = db.Column(db.Integer, default=0)
-    expert = db.Column(db.Boolean, default=False)
-
+    
     def __init__(self, id, name, email, password,
                   gender,
-                  avatar, bio='',phone_number='', date_of_birth='', education='',
-                 experience='', year_of_experience='',
+                  avatar,phone_number, bio='', date_of_birth='', education='',
+                 experience='', year_of_experience=0,
                  reputation=0, expert=False):
         self.id = id
         self.name = name
@@ -53,35 +52,38 @@ class User(db.Model, UserMixin):
         lazy=True
     )
 
-    # @property
-    # def password_hash(self):
-    #     raise AttributeError('Cannot view password!')
-    # @password_hash.setter
-    # def password_hash(self, password_hash):
-    #     self.password_hash = generate_password_hash(password_hash)
-
 
 class Question(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    question = db.Column(db.Text)
+    title = db.Column(db.String(255))
+    content = db.Column(db.String(255))  
+    tag =   db.Column(db.String(255))                    
     datetime_posted = db.Column(db.DateTime, default=datetime.utcnow)
     datetime_updated = db.Column(db.DateTime, default=datetime.utcnow)
     asker_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-    vote_id = db.Column(db.Integer, db.ForeignKey('user.id'),default=0)
-
-    def __init__(self, question, datetime_updated, datetime_posted, asker_id, vote_id):
-        self.question = question
+    rating = db.Column(db.Integer,default=0)
+    voted_question = db.relationship('Vote_Question')
+    
+    def __init__(self, title, content,tag, datetime_updated, 
+                 datetime_posted, asker_id, rating = 0):
+    
+        self.title =title
+        self.content =content
+        self.tag =tag
         self.datetime_posted = datetime_posted
         self.datetime_updated = datetime_updated
-        self.asker_id = asker_id
-        self.vote_id = vote_id
+        self.asker_id = asker_id        
+        self.rating = rating
+    
 
     def to_dict(self):
         return {
             'id': self.id,
-            'question': self.question,
             'asker_id': self.asker_id,
-            'vote_id': self.vote_id
+            'rating': self.rating,
+            'title':self.title,
+            'content': self.content,
+            'tag': self.tag
             # add more fields as needed
         }
 
@@ -93,17 +95,18 @@ class Answer(db.Model):
     datetime_updated = db.Column(db.DateTime, default=datetime.utcnow)
     respondent_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     question_id = db.Column(db.Integer, db.ForeignKey('question.id'))
-    like_id = db.Column(db.Integer, db.ForeignKey('user.id'),default=0)
-    unlike_id = db.Column(db.Integer, db.ForeignKey('user.id'),default=0)
+    like = db.Column(db.Integer,default=0)
+    unlike = db.Column(db.Integer,default=0)
+    vote_answer = db.relationship('Vote_Answer')
 
-    def __init__(self, answer, datetime_updated, datetime_posted, respondent_id, question_id, like_id=0, unlike_id=0):
+    def __init__(self, answer, datetime_updated, datetime_posted, respondent_id, question_id, like=0, unlike=0):
         self.answer = answer
         self.datetime_updated = datetime_updated
         self.datetime_posted = datetime_posted
         self.respondent_id = respondent_id
         self.question_id = question_id
-        self.like_id = like_id
-        self.unlike_id = unlike_id
+        self.like = like
+        self.unlike= unlike
 
     def to_dict(self):
         return {
@@ -111,7 +114,27 @@ class Answer(db.Model):
             'answer': self.answer,
             'question_id': self.question_id,
             'respondent_id': self.respondent_id,
-            'like_id': self.like_id,
-            'unlike_id' : self.unlike_id
+            'like': self.like,
+            'unlike' : self.unlike
             # add more fields as needed
         }
+
+class Vote_Question(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    question_id = db.Column(db.Integer, db.ForeignKey('question.id'))
+    voter_id = db.Column(db.Integer)
+    vote = db.Column(db.Integer)
+    def __init__(self, vote, question_id, voter_id):
+        self.vote = vote
+        self.question_id = question_id
+        self.voter_id = voter_id
+        
+class Vote_Answer(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    answer_id = db.Column(db.Integer, db.ForeignKey('answer.id'))
+    voter_id = db.Column(db.Integer)
+    react = db.Column(db.Integer)
+    def __init__(self, answer_id, voter_id, react):
+        self.answer_id = answer_id
+        self.voter_id = voter_id
+        self.react = react
