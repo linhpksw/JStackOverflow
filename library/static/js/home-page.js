@@ -4,6 +4,33 @@ const modalOpenBtn = document.getElementById('modal-open-btn');
 
 const postQuestionElement = document.getElementById('post-question');
 
+const loadQuestions = async () => {
+    try {
+        const URL = 'https://jstackoverflow.jsclub.me/questions_manager/questions/all_questions';
+
+        const opt = {
+            method: 'GET',
+        };
+
+        const response = await fetch(URL, opt);
+
+        const jsonResponse = await response.json();
+
+        const {
+            id: questionId,
+            title: questionTitle,
+            tag: questionTag,
+            datetime_posted: questionTime,
+            name: askerName,
+            asker_id: askerId,
+        } = jsonResponse;
+
+        appendQuestion(questionId, askerId, questionTitle, questionTag, questionTime, askerName);
+    } catch (err) {
+        console.log(err);
+    }
+};
+
 modalOpenBtn.addEventListener('click', () => {
     modalQuestion.classList.add('modal-open');
 });
@@ -18,21 +45,9 @@ function appendQuestion(questionId, askerId, questionTitle, questionTag, questio
     const questionChild = document.createElement('div');
     questionChild.setAttribute('id', `question-${questionId}`);
 
-    // const totalVotes = 25;
-    // const totalAnswers = 10;
-    // const totalViews = 13;
-
-    // const questionId = 111111;
-    // const questionTitle = `ABC`;
-    // const questionTag = `PRF192`;
-
-    // const questionTime = `32p`;
-    // const userName = 'Le Trong Linh';
-    // const askerId = 136822;
-
     questionChild.innerHTML = `
     <!-- Question ${questionId} -->
-    <div id="question-${questionId}" class="flex h-auto gap-5 rounded-2xl bg-[#262D34] py-5 px-5">
+    <div id="question-${questionId}" class="flex h-auto gap-5 rounded-2xl bg-[#262D34] py-5 px-5 mb-5">
     <!-- Stats -->
     <div id="stats" class="flex flex-none flex-col gap-2 text-white">
         <!-- Total votes -->
@@ -92,7 +107,7 @@ function appendQuestion(questionId, askerId, questionTitle, questionTag, questio
             <button
                 id="question-tag"
                 class="rounded-3xl bg-[#2C353D] py-1 px-3 text-xs font-semibold text-[#C5D0E6]">
-                $${questionTag}
+                ${questionTag}
             </button>
 
             <div class="mt-3 flex items-center justify-end">
@@ -106,7 +121,7 @@ function appendQuestion(questionId, askerId, questionTitle, questionTag, questio
                         ><a id="user-name" href="/user/${askerId}" class="text-amber-400"
                             >${askerName}</a
                         >
-                        ${questionTime}</span
+                        asked at ${questionTime}</span
                     >
                 </div>
             </div>
@@ -145,22 +160,20 @@ const postQuestion = async () => {
     try {
         const questionTitle = document.getElementById('question-title').value;
         const questionTag = document.getElementById('question-tag').value;
-        // const questionContent = quill.getContents();
-
-        const questionContent = 'abc';
+        const questionContent = quill.getContents();
 
         const URL = 'https://jstackoverflow.jsclub.me/questions_manager/add_question';
 
         const data = {
             title: questionTitle,
             tag: questionTag,
-            content: questionContent,
+            content: questionContent.ops[0].insert,
         };
 
         const opt = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: `${JSON.stringify(data)}`,
+            body: JSON.stringify(data),
         };
 
         const response = await fetch(URL, opt);
@@ -187,3 +200,5 @@ const postQuestion = async () => {
 };
 
 postQuestionElement.addEventListener('click', postQuestion);
+
+window.addEventListener('DOMContentLoaded', loadQuestions);
