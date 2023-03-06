@@ -15,9 +15,13 @@ searchBar.addEventListener("keyup", (e) => {
 const getDataFakeAPI = async () => {
   try {
     const responseAPI = await fetch(
-      "https://jstackoverflow.jsclub.me/user/174830/questions"
+      "https://jsonplaceholder.typicode.com/users"
     );
     data = await responseAPI.json();
+    const res = await fetch(
+      "https://jstackoverflow.jsclub.me/user/174830/questions"
+    );
+    data1 = await res.json();
     let userIds = data.filter(function (user) {
       return user.id == 1;
     });
