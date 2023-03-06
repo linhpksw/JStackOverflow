@@ -4,6 +4,35 @@ const modalOpenBtn = document.getElementById('modal-open-btn');
 
 const postQuestionElement = document.getElementById('post-question');
 
+window.addEventListener('DOMContentLoaded', loadQuestions);
+
+const loadQuestions = async () => {
+    try {
+        const URL = 'https://jstackoverflow.jsclub.me/questions_manager/questions/all_questions';
+
+        const opt = {
+            method: 'GET',
+        };
+
+        const response = await fetch(URL, opt);
+
+        const jsonResponse = await response.json();
+
+        const {
+            id: questionId,
+            title: questionTitle,
+            tag: questionTag,
+            datetime_posted: questionTime,
+            name: askerName,
+            asker_id: askerId,
+        } = jsonResponse;
+
+        appendQuestion(questionId, askerId, questionTitle, questionTag, questionTime, askerName);
+    } catch (err) {
+        console.log(err);
+    }
+};
+
 modalOpenBtn.addEventListener('click', () => {
     modalQuestion.classList.add('modal-open');
 });
@@ -136,8 +165,6 @@ const postQuestion = async () => {
         const questionContent = quill.getContents();
 
         const URL = 'https://jstackoverflow.jsclub.me/questions_manager/add_question';
-
-        console.log(questionContent);
 
         const data = {
             title: questionTitle,
