@@ -156,8 +156,10 @@ let data = [];
 //     console.log(data);
 //   }
 // });
+console.log(searchBar);
 searchBar.addEventListener("keyup", (e) => {
   const searchString = e.target.value.toLowerCase();
+  console.log(searchString);
   const filteredCharacters = data.filter((character) => {
     return character.name.toLowerCase().includes(searchString);
   });
