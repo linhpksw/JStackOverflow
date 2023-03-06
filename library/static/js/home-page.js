@@ -152,7 +152,7 @@ const postQuestion = async () => {
         const data = {
             title: questionTitle,
             tag: questionTag,
-            content: questionContent,
+            content: JSON.stringify(questionContent),
         };
 
         const opt = {
