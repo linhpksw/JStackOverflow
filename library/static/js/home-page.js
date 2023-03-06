@@ -161,6 +161,8 @@ const postQuestion = async () => {
             body: JSON.stringify(data),
         };
 
+        console.log(opt);
+
         const response = await fetch(URL, opt);
         const jsonResponse = await response.json();
 
