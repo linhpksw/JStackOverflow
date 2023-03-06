@@ -18,7 +18,7 @@ try {
             body: JSON.stringify(data),
         };
 
-        const URL = 'https://jstackoverflow.jsclub.me/login';
+        const URL = 'https://jstackoverflow.jsclub.me/';
         const response = await fetch(URL, opt);
         const jsonResponse = await response.json();
 
