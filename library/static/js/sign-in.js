@@ -3,7 +3,9 @@ try {
     const password = document.getElementById('password');
     const signInBtn = document.getElementById('sign-in-btn');
 
-    const fetchUserCredential = async () => {
+    async function fetchUserCredential(e) {
+        e.preventDefault();
+
         const data = {
             email: email.value,
             password: password.value,
@@ -20,20 +22,16 @@ try {
 
         const URL = 'https://jstackoverflow.jsclub.me/login';
         const response = await fetch(URL, opt);
+        const jsonResponse = await response.json();
 
-        // Get the current URL path and redirect to the new URL
-        // const currentPath = window.location.pathname;
-        // const newUrl = currentPath.replace('/', '/home-page/');
-        // window.history.pushState({}, '', newUrl);
+        if (jsonResponse.status == 'sign in successfully') {
+            window.location.href = '/home';
+        } else {
+            alert(jsonResponse.status);
+        }
+    }
 
-        console.log(response);
-
-        // const jsonResponse = await response.json();
-
-        // console.log(jsonResponse);
-    };
-
-    signInBtn.addEventListener('click', fetchUserCredential);
+    signInBtn.addEventListener('click', fetchUserCredential(e));
 } catch (err) {
     console.log(err);
 }
