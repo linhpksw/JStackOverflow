@@ -66,21 +66,26 @@ class Question(db.Model):
     question = db.Column(db.Text)
     title = db.Column(db.String(255))
     content = db.Column(db.String(255))  
-    tag =   db.Column(db.String(255))                    
+    tag =   db.Column(db.String(255))
+    views = db.Column(db.Integer,default =0)
+    correct_answer = db.Column(db.Integer,default =0)                    
     datetime_posted = db.Column(db.DateTime, default=datetime.utcnow)
     datetime_updated = db.Column(db.DateTime, default=datetime.utcnow)
     asker_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     vote_id = db.Column(db.Integer, db.ForeignKey('user.id'),default=0)
 
-    def __init__(self, question,content,title,tag, datetime_updated, datetime_posted, asker_id, vote_id):
+    def __init__(self, question,content,title,tag, datetime_updated, datetime_posted, asker_id, vote_id,correct_answer,views=0):
         self.question = question
         self.title =title
         self.content =content
         self.tag =tag
+        self.views =views
+        self.correct_answer =correct_answer
         self.datetime_posted = datetime_posted
         self.datetime_updated = datetime_updated
         self.asker_id = asker_id
         self.vote_id = vote_id
+    
 
     def to_dict(self):
         return {
@@ -90,7 +95,9 @@ class Question(db.Model):
             'vote_id': self.vote_id,
             'title':self.title,
             'content': self.content,
-            'tag': self.tag
+            'tag': self.tag,
+            'correct_answer':self.correct_answer,
+            'views':self.views
             # add more fields as needed
         }
 
