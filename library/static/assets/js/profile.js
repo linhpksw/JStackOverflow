@@ -22,7 +22,7 @@ const getDataFakeAPI = async () => {
       "https://jstackoverflow.jsclub.me/user/872805/questions"
     );
     const { questions } = await responseQuestions.json();
-    console.log(questions);
+    console.log(questions.title);
     let userIds = data.filter(function (user) {
       return user.id == 1;
     });
