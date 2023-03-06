@@ -3,9 +3,7 @@ try {
     const password = document.getElementById('password');
     const signInBtn = document.getElementById('sign-in-btn');
 
-    async function fetchUserCredential(e) {
-        e.preventDefault();
-
+    async function fetchUserCredential() {
         const data = {
             email: email.value,
             password: password.value,
@@ -31,7 +29,7 @@ try {
         }
     }
 
-    signInBtn.addEventListener('click', fetchUserCredential(e));
+    signInBtn.addEventListener('click', fetchUserCredential);
 } catch (err) {
     console.log(err);
 }
