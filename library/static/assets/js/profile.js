@@ -18,10 +18,10 @@ const getDataFakeAPI = async () => {
       "https://jsonplaceholder.typicode.com/users"
     );
     data = await responseAPI.json();
-    const res = await fetch(
-      "https://jstackoverflow.jsclub.me/user/{{id}}/questions"
+    const responseQuestions = await fetch(
+      "https://jstackoverflow.jsclub.me/user/872805/questions"
     );
-    const { questions } = await res.json();
+    const { questions } = await responseQuestions.json();
     console.log(questions);
     let userIds = data.filter(function (user) {
       return user.id == 1;
@@ -68,7 +68,7 @@ function renderAbout(users) {
 }
 function renderGeneralQuestions() {
   let info = document.getElementById("general-questions");
-  let tmp = data.slice(-5);
+  let tmp = questions.slice(-5);
   let htmls = "";
   for (let i = 4; i >= 0; i--) {
     htmls += `
