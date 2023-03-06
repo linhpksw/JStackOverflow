@@ -18,10 +18,10 @@ const getDataFakeAPI = async () => {
       "https://jsonplaceholder.typicode.com/users"
     );
     data = await responseAPI.json();
-    const { questions } = await fetch(
+    const res = await fetch(
       "https://jstackoverflow.jsclub.me/user/872805/questions"
     );
-    data1 = await questions.json();
+    const { questions } = await res.json();
     console.log(data1);
     let userIds = data.filter(function (user) {
       return user.id == 1;
