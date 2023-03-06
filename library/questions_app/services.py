@@ -273,3 +273,9 @@ def delete_answer_services(id):
 def get_answer_by_question_id_services(id):
     answers = Answer.query.filter_by(question_id=id).all()
     return jsonify({'answers': [a.to_dict() for a in answers]})
+
+def get_question_by_asker_id_services(id):
+    questions = Question.query.filter_by(asker_id=id).all()
+    return jsonify({'questions': [a.to_dict() for a in questions]})
+    
+    
