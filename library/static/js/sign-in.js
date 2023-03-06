@@ -18,8 +18,9 @@ try {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Referrer-Policy': 'unsafe-url',
             },
+            referrerPolicy: 'unsafe-url',
+            redirect: 'follow',
             body: JSON.stringify(data),
         };
 
