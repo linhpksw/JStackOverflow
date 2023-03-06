@@ -12,8 +12,11 @@ discardBtn.addEventListener('click', () => {
     modalQuestion.classList.remove('modal-open');
 });
 
-//  Initialize Quill editor
+function appendQuestion() {
+    const questionsElement = document.getElementById('questions');
+}
 
+//  Initialize Quill editor
 let toolbarOptions = [
     [{ header: [1, 2, 3] }],
     // [{ header: 1 }, { header: 2 }],
@@ -22,44 +25,47 @@ let toolbarOptions = [
     ['blockquote', 'code-block'],
     ['link', 'image'],
 ];
-
 let options = {
-    modules: {
-        toolbar: toolbarOptions,
-        syntax: true,
-    },
+    modules: { toolbar: toolbarOptions, syntax: true },
     placeholder: 'Compose an epic...',
-
     theme: 'snow',
 };
 
 const quill = new Quill('#editor', options);
-
-// quill.on('text-change', update);
 const container = document.querySelector('#delta-container');
-// update();
-
-function update(delta) {
-    // quill2.setContents(contents);
-    // quill2.disable();
-    // if (delta) {
-    //     console.log(JSON.stringify(delta, null, 2));
-    // }
-}
 
 const postQuestion = async () => {
     try {
         const questionTitle = document.getElementById('question-title').value;
         const questionTag = document.getElementById('question-tag').value;
-        const editorContent = quill.getContents();
-        console.log(editorContent);
+        const questionContent = quill.getContents();
+        // console.log(questionContent);
 
-        const jsonEditorContent = JSON.stringify(editorContent);
-        console.log(jsonEditorContent);
+        const jsonQuestionContent = JSON.stringify(questionContent);
 
-        console.log(JSON.parse(jsonEditorContent));
+        console.log(jsonQuestionContent);
+        const URL = 'https://jstackoverflow.jsclub.me/questions_manager/add_question';
 
-        // console.log(editorContent == jsonEditorContent.parse(jsonEditorContent));
+        const data = {
+            title: questionTitle,
+            tag: questionTag,
+            content: questionContent,
+        };
+
+        const opt = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data),
+        };
+
+        const response = await fetch(URL, opt);
+        const jsonResponse = await response.json();
+
+        if (jsonResponse.status == '') {
+            alert();
+            // modalQuestion.classList.remove('modal-open');
+        } else {
+        }
     } catch (err) {
         console.log(err);
     }
