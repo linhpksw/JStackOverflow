@@ -4,6 +4,33 @@ const modalOpenBtn = document.getElementById('modal-open-btn');
 
 const postQuestionElement = document.getElementById('post-question');
 
+const loadQuestions = async () => {
+    try {
+        const URL = 'https://jstackoverflow.jsclub.me/questions_manager/questions/all_questions';
+
+        const opt = {
+            method: 'GET',
+        };
+
+        const response = await fetch(URL, opt);
+
+        const jsonResponse = await response.json();
+
+        const {
+            id: questionId,
+            title: questionTitle,
+            tag: questionTag,
+            datetime_posted: questionTime,
+            name: askerName,
+            asker_id: askerId,
+        } = jsonResponse;
+
+        appendQuestion(questionId, askerId, questionTitle, questionTag, questionTime, askerName);
+    } catch (err) {
+        console.log(err);
+    }
+};
+
 modalOpenBtn.addEventListener('click', () => {
     modalQuestion.classList.add('modal-open');
 });
@@ -80,7 +107,7 @@ function appendQuestion(questionId, askerId, questionTitle, questionTag, questio
             <button
                 id="question-tag"
                 class="rounded-3xl bg-[#2C353D] py-1 px-3 text-xs font-semibold text-[#C5D0E6]">
-                $${questionTag}
+                ${questionTag}
             </button>
 
             <div class="mt-3 flex items-center justify-end">
@@ -94,7 +121,7 @@ function appendQuestion(questionId, askerId, questionTitle, questionTag, questio
                         ><a id="user-name" href="/user/${askerId}" class="text-amber-400"
                             >${askerName}</a
                         >
-                        ${questionTime}</span
+                        asked at ${questionTime}</span
                     >
                 </div>
             </div>
@@ -137,8 +164,6 @@ const postQuestion = async () => {
 
         const URL = 'https://jstackoverflow.jsclub.me/questions_manager/add_question';
 
-        console.log(questionContent);
-
         const data = {
             title: questionTitle,
             tag: questionTag,
@@ -175,3 +200,5 @@ const postQuestion = async () => {
 };
 
 postQuestionElement.addEventListener('click', postQuestion);
+
+window.addEventListener('DOMContentLoaded', loadQuestions);
