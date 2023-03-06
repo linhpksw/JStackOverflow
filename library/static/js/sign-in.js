@@ -28,6 +28,11 @@ try {
 
         const response = await fetch(URL, opt);
 
+        // Get the current URL path and redirect to the new URL
+        const currentPath = window.location.pathname;
+        const newUrl = currentPath.replace('/', '/home-page/');
+        window.history.pushState({}, '', newUrl);
+
         console.log(response);
 
         // const jsonResponse = await response.json();
