@@ -146,17 +146,15 @@ const postQuestion = async () => {
         const questionTitle = document.getElementById('question-title').value;
         const questionTag = document.getElementById('question-tag').value;
         const questionContent = quill.getContents();
-        // console.log(questionContent);
 
         const jsonQuestionContent = JSON.stringify(questionContent);
 
-        console.log(jsonQuestionContent);
         const URL = 'https://jstackoverflow.jsclub.me/questions_manager/add_question';
 
         const data = {
             title: questionTitle,
             tag: questionTag,
-            content: questionContent,
+            content: jsonQuestionContent,
         };
 
         const opt = {
