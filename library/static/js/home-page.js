@@ -12,11 +12,11 @@ discardBtn.addEventListener('click', () => {
     modalQuestion.classList.remove('modal-open');
 });
 
-function appendQuestion(id) {
+function appendQuestion(questionId, askerId, questionTitle, questionContent, questionTag, questionTime) {
     const questionsElement = document.getElementById('questions');
 
     const questionChild = document.createElement('div');
-    questionChild.setAttribute('id', `question-${id}`);
+    questionChild.setAttribute('id', `question-${questionId}`);
 
     const totalVotes = 25;
     const totalAnswers = 10;
@@ -28,11 +28,11 @@ function appendQuestion(id) {
 
     const questionTime = `32p`;
     const userName = 'Le Trong Linh';
-    const userId = 136822;
+    const askerId = 136822;
 
     questionChild.innerHTML = `
-    <!-- Question ${id} -->
-    <div id="question-${id}" class="flex h-auto gap-5 rounded-2xl bg-[#262D34] py-5 px-5">
+    <!-- Question ${questionId} -->
+    <div id="question-${questionId}" class="flex h-auto gap-5 rounded-2xl bg-[#262D34] py-5 px-5">
     <!-- Stats -->
     <div id="stats" class="flex flex-none flex-col gap-2 text-white">
         <!-- Total votes -->
@@ -103,7 +103,7 @@ function appendQuestion(id) {
                     <span
                         id="question-time"
                         class="text-sm font-semibold text-[#C5D0E6]"
-                        ><a id="user-name" href="/user/${userId}" class="text-amber-400"
+                        ><a id="user-name" href="/user/${askerId}" class="text-amber-400"
                             >${userName}</a
                         >
                         ${questionTime}</span
@@ -165,15 +165,22 @@ const postQuestion = async () => {
             body: JSON.stringify(data),
         };
 
-        // const response = await fetch(URL, opt);
-        // const jsonResponse = await response.json();
-        const jsonResponse = 'success';
+        const response = await fetch(URL, opt);
+        const jsonResponse = await response.json();
 
-        if (jsonResponse == 'success') {
-            const id = 2;
-            appendQuestion(id);
+        if (jsonResponse.status == 'add question successfully') {
+            const {
+                question_id: questionId,
+                title: questionTitle,
+                content: questionContent,
+                tag: questionTag,
+                asker_id: askerId,
+                datetime_posted: questionTime,
+                datetime_updated: updateTime,
+            } = jsonResponse;
+
+            appendQuestion(questionId, askerId, questionTitle, questionContent, questionTag, questionTime);
             modalQuestion.classList.remove('modal-open');
-        } else {
         }
     } catch (err) {
         console.log(err);
