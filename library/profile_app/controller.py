@@ -11,7 +11,6 @@ def index():
     return render_template('sign-in.html')
 
 @profiles.route('/login', methods=['POST'])
-@login_required
 def login():
     return login_services()
 
