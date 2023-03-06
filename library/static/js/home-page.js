@@ -33,9 +33,7 @@ const loadQuestions = async () => {
 
             const jsonProfileResponse = await profileResponse.json();
 
-            console.log(jsonProfileResponse);
-
-            const askerName = jsonProfileResponse.found_user.name;
+            const askerName = jsonProfileResponse.name;
 
             appendQuestion(questionId, askerId, questionTitle, questionTag, questionTime, askerName);
         }
