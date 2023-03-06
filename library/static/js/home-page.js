@@ -16,6 +16,8 @@ const loadQuestions = async () => {
 
         const jsonResponse = await response.json();
 
+        console.log(jsonResponse);
+
         const {
             id: questionId,
             title: questionTitle,
