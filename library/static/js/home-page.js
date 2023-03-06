@@ -154,7 +154,7 @@ const postQuestion = async () => {
         const data = {
             title: questionTitle,
             tag: questionTag,
-            content: questionContent[0].insert,
+            content: questionContent.ops[0].insert,
         };
 
         const opt = {
