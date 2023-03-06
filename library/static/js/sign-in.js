@@ -18,6 +18,7 @@ try {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
+                'Referrer-Policy': 'unsafe-url',
             },
             body: JSON.stringify(data),
         };
@@ -25,6 +26,8 @@ try {
         const URL = 'https://jstackoverflow.jsclub.me/login';
 
         const response = await fetch(URL, opt);
+
+        console.log(response);
 
         // const jsonResponse = await response.json();
 
