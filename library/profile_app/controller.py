@@ -6,10 +6,19 @@ from library.model.models import User
 
 profiles = Blueprint("profiles", __name__)
 
+# @profiles.route('/')
+# def index():
+#     return render_template('sign-in.html')
 @profiles.route('/')
 def index():
-    return render_template('sign-in.html')
-
+    data = login_services()
+    return render_template('home-page',data=data)
+# @profiles.route('/home')
+# def home():
+#     return redirect(url_for('home-page'))
+    
+    
+    
 @profiles.route('/api/get_info/<id>')
 def get_info(id):
     return get_info_user_services(id)

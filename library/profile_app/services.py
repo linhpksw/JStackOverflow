@@ -76,7 +76,9 @@ def login_services():
     else:
         if password and check_password_hash(found_user.password, password):
             login_user(found_user)
-            return render_template('home-page.html')
+            return jsonify({"name":found_user.name,
+                            "id":found_user.id})
+            # return render_template('home-page.html')
         else:
             return jsonify({"error":"incorrect password"})
 
