@@ -18,6 +18,8 @@ def sign_up_services():
     id = random.randint(100000, 999999)
     name = request.values.get('name')
     email = request.values.get('email')
+    if email is None or email.strip() == '':
+        return 'Email field is required'
     email_pattern = r'^[a-zA-Z0-9+-.%_]+@[a-zA-Z0-9.-]+\.[a-zA-z]{2,}$'
     if not re.match(email_pattern, email):
         return 'Invalid email format'
@@ -35,14 +37,11 @@ def sign_up_services():
         return 'Invalid phone number format'
 
     date_of_birth_str = request.values.get('date_of_birth')
-    print(date_of_birth_str)
-    print(type(date_of_birth_str))
     if date_of_birth_str != None:
         date_of_birth = datetime.strptime(date_of_birth_str, '%Y-%m-%d').date()
 
     gender = request.values.get('gender')
     bio = request.values.get('bio')
-    # avatar = request.json.get('avatar')
     avatar = get_path_image(request)
     education = request.values.get('education')
     experience = request.values.get('experience')
@@ -84,28 +83,6 @@ def login_services():
             return jsonify({"error":"incorrect password"})
 
 
-'''
-def login_services():
-    email = request.json.get('email')
-    password = request.json.get('password')
-
-
-    found_user = User.query.filter_by(email=email).first()
-    if not found_user:
-        return 'Email has not been registered'
-    else:
-        if password and check_password_hash(found_user.password, password):
-            login_user(found_user)
-            return 'Login successfully!'
-        else:
-            return 'Incorrect password!'
-
-
-def load_user(id):
-    return User.query.get(int(id))
-
-
-'''
 
 
 def load_user(id):
@@ -179,19 +156,13 @@ def see_profile_services(id):
                                         "education": found_user.education,
                                         "experience": found_user.experience,
                                         "year_of_experience": found_user.year_of_experience,
-                                        "avatar": found_user.avatar})  # , get_question_by_user_id(id), get_answer_by_user_id(id)
+                                        "avatar": found_user.avatar})  
     except Exception as e:
         print('an error occur:', e)
-        return "csfdfsf"  # "avatar": found_user.avatar})
+        return jsonify({"Error:", e}) 
     else:
         return "Not found!"
 
-
-'''(self, id, name, email, password,
-                 phone_number, date_of_birth, gender,
-                 bio, avatar, education = None,
-                 experience = None, year_of_experience = None, 
-                 reputation=0, expert= False):'''
 
 
 def get_question_by_user_id(id):
@@ -203,14 +174,6 @@ def get_answer_by_user_id(id):
     answers = Answer.query.filter_by(respondent_id=id).all()
     return jsonify({'answers': [a.to_dict() for a in answers]})
 
-
-# def calculate_reputation_services(id):
-#     answers = Answer.query.filter_by(respondent_id=id).all()
-#     repu = 0
-#     for answer in answers:
-#         repu += (answer.lide_id - answer.unlide_id)
-#     user =  User.query.filter_by(id=id).first()
-#     user.reputaion = repu
 
 
 def get_path_image(request):
@@ -224,7 +187,6 @@ def get_path_image(request):
 
 
 def get_all_users_services():
-    
     users = User.query.all()
     if users:
         users = UserSchema(many=True).dump(users)
