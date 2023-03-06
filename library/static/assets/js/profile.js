@@ -3,7 +3,7 @@ const search = document.getElementById("search-text");
 const id = 124859;
 const searchBar = document.getElementById("search-text");
 let data = [];
-let questions = [];
+
 searchBar.addEventListener("keyup", (e) => {
   const searchString = e.target.value.toLowerCase();
   const filteredCharacters = data.filter((character) => {
@@ -14,15 +14,16 @@ searchBar.addEventListener("keyup", (e) => {
 
 const getDataFakeAPI = async () => {
   try {
-    const responseAPI = await fetch(
-      "https://jsonplaceholder.typicode.com/users"
-    );
-    data = await responseAPI.json();
+    // const responseAPI = await fetch(
+    //   "https://jsonplaceholder.typicode.com/users"
+    // );
+    // data = await responseAPI.json();
     const responseQuestions = await fetch(
       "https://jstackoverflow.jsclub.me/user/872805/questions"
     );
     const { questions } = await responseQuestions.json();
-    console.log(questions.title);
+    data = questions;
+    console.log(data);
     let userIds = data.filter(function (user) {
       return user.id == 1;
     });
@@ -35,6 +36,7 @@ const getDataFakeAPI = async () => {
     console.error(err);
   }
 };
+console.log(data);
 function renderAbout(users) {
   let info = document.getElementById("edit-about");
   let htmls = "";
