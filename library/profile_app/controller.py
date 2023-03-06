@@ -10,7 +10,7 @@ profiles = Blueprint("profiles", __name__)
 def index():
     return render_template('sign-in.html')
 
-@profiles.route('/home', methods=['GET', 'POST'])
+@profiles.route('/home')
 def home():
     return render_template('home-page.html')
 
@@ -47,9 +47,9 @@ def sign_up():
      return  sign_up_services() #, render_template('draft.html')
 
 
-@profiles.route('/login', methods=['POST'])
-def login():
-    return login_services()
+# @profiles.route('/login', methods=['POST'])
+# def login():
+#     return login_services()
 
 
 @login_manager.user_loader
