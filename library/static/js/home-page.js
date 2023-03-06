@@ -1,43 +1,69 @@
-const modalQuestion = document.getElementById("modal-question");
-const discardBtn = document.getElementById("discard-btn");
-const modalOpenBtn = document.getElementById("modal-open-btn");
+const modalQuestion = document.getElementById('modal-question');
+const discardBtn = document.getElementById('discard-btn');
+const modalOpenBtn = document.getElementById('modal-open-btn');
 
-const postQuestionElement = document.getElementById("post-question");
+const postQuestionElement = document.getElementById('post-question');
 
-modalOpenBtn.addEventListener("click", () => {
-  modalQuestion.classList.add("modal-open");
+const loadQuestions = async () => {
+    try {
+        const URL = 'https://jstackoverflow.jsclub.me/questions_manager/questions/all_questions';
+
+        const opt = {
+            method: 'GET',
+        };
+
+        const response = await fetch(URL, opt);
+
+        const jsonResponse = await response.json();
+
+        for (let i = 0; i < jsonResponse.length; i++) {
+            const e = jsonResponse[i];
+
+            const {
+                id: questionId,
+                title: questionTitle,
+                tag: questionTag,
+                datetime_posted: questionTime,
+                asker_id: askerId,
+            } = e;
+
+            const profileResponse = await fetch(`https://jstackoverflow.jsclub.me/api/user/${askerId}`, {
+                method: 'GET',
+            });
+
+            const jsonProfileResponse = await profileResponse.json();
+
+            const askerName = jsonProfileResponse.name;
+
+            appendQuestion(questionId, askerId, questionTitle, questionTag, questionTime, askerName);
+        }
+    } catch (err) {
+        console.log(err);
+    }
+};
+
+modalOpenBtn.addEventListener('click', () => {
+    modalQuestion.classList.add('modal-open');
 });
 
-discardBtn.addEventListener("click", () => {
-  modalQuestion.classList.remove("modal-open");
+discardBtn.addEventListener('click', () => {
+    modalQuestion.classList.remove('modal-open');
 });
 
-function appendQuestion(id) {
+function appendQuestion(questionId, askerId, questionTitle, questionTag, questionTime, askerName) {
     const questionsElement = document.getElementById('questions');
 
     const questionChild = document.createElement('div');
-    questionChild.setAttribute('id', `question-${id}`);
-
-    const totalVotes = 25;
-    const totalAnswers = 10;
-    const totalViews = 13;
-
-    const questionId = 111111;
-    const questionTitle = `ABC`;
-    const questionTag = `PRF192`;
-
-    const questionTime = `32p`;
-    const userName = 'Le Trong Linh';
-    const userId = 136822;
+    questionChild.setAttribute('id', `question-${questionId}`);
 
     questionChild.innerHTML = `
-    <!-- Question ${id} -->
-    <div id="question-${id}" class="flex h-auto gap-5 rounded-2xl bg-[#262D34] py-5 px-5">
+    <!-- Question ${questionId} -->
+    <div id="question-${questionId}" class="flex h-auto gap-5 rounded-2xl bg-[#262D34] py-5 px-5 mb-5">
     <!-- Stats -->
     <div id="stats" class="flex flex-none flex-col gap-2 text-white">
         <!-- Total votes -->
         <span id="total-votes" class="flex justify-end text-sm font-medium"
-            >${totalVotes} votes</span
+            >0 votes</span
         >
 
         <!-- Answers -->
@@ -64,14 +90,14 @@ function appendQuestion(id) {
                     <span
                         id="total-answers"
                         class="flex justify-end text-sm font-medium"
-                        >${totalAnswers} answers</span
+                        >0 answers</span
                     >
                 </div>
             </div>
         </div>
 
         <span id="total-views" class="flex justify-end text-sm font-medium"
-            >${totalViews} views</span
+            >1 views</span
         >
     </div>
 
@@ -92,7 +118,7 @@ function appendQuestion(id) {
             <button
                 id="question-tag"
                 class="rounded-3xl bg-[#2C353D] py-1 px-3 text-xs font-semibold text-[#C5D0E6]">
-                $${questionTag}
+                ${questionTag}
             </button>
 
             <div class="mt-3 flex items-center justify-end">
@@ -103,10 +129,10 @@ function appendQuestion(id) {
                     <span
                         id="question-time"
                         class="text-sm font-semibold text-[#C5D0E6]"
-                        ><a id="user-name" href="/user/${userId}" class="text-amber-400"
-                            >${userName}</a
+                        ><a id="user-name" href="/user/${askerId}" class="text-amber-400"
+                            >${askerName}</a
                         >
-                        ${questionTime}</span
+                        asked at ${questionTime}</span
                     >
                 </div>
             </div>
@@ -125,63 +151,65 @@ function appendQuestion(id) {
 
 //  Initialize Quill editor
 let toolbarOptions = [
-  [{ header: [1, 2, 3] }],
-  // [{ header: 1 }, { header: 2 }],
-  ["bold", "italic", "underline"],
-  [{ list: "ordered" }, { list: "bullet" }],
-  ["blockquote", "code-block"],
-  ["link", "image"],
+    [{ header: [1, 2, 3] }],
+    // [{ header: 1 }, { header: 2 }],
+    ['bold', 'italic', 'underline'],
+    [{ list: 'ordered' }, { list: 'bullet' }],
+    ['blockquote', 'code-block'],
+    ['link', 'image'],
 ];
 let options = {
-  modules: { toolbar: toolbarOptions, syntax: true },
-  placeholder: "Compose an epic...",
-  theme: "snow",
+    modules: { toolbar: toolbarOptions, syntax: true },
+    placeholder: 'Compose an epic...',
+    theme: 'snow',
 };
 
-const quill = new Quill("#editor", options);
-const container = document.querySelector("#delta-container");
+const quill = new Quill('#editor', options);
+const container = document.querySelector('#delta-container');
 
 const postQuestion = async () => {
-  try {
-    const questionTitle = document.getElementById("question-title").value;
-    const questionTag = document.getElementById("question-tag").value;
-    const questionContent = quill.getContents();
-    // console.log(questionContent);
+    try {
+        const questionTitle = document.getElementById('question-title').value;
+        const questionTag = document.getElementById('question-tag').value;
+        const questionContent = quill.getContents();
 
-    const jsonQuestionContent = JSON.stringify(questionContent);
+        const URL = 'https://jstackoverflow.jsclub.me/questions_manager/add_question';
 
-    console.log(jsonQuestionContent);
-    const URL =
-      "https://jstackoverflow.jsclub.me/questions_manager/add_question";
+        const data = {
+            title: questionTitle,
+            tag: questionTag,
+            content: questionContent.ops[0].insert,
+        };
 
-    const data = {
-      title: questionTitle,
-      tag: questionTag,
-      content: questionContent,
-    };
+        const opt = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data),
+        };
 
-    const opt = {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(data),
-    };
+        const response = await fetch(URL, opt);
+        const jsonResponse = await response.json();
 
-        // const response = await fetch(URL, opt);
-        // const jsonResponse = await response.json();
-        const jsonResponse = 'success';
+        if (jsonResponse.status == 'add question successfully') {
+            const {
+                name: askerName,
+                question_id: questionId,
+                title: questionTitle,
+                content: questionContent,
+                tag: questionTag,
+                asker_id: askerId,
+                datetime_posted: questionTime,
+                datetime_updated: updateTime,
+            } = jsonResponse;
 
-        if (jsonResponse == 'success') {
-            const id = 2;
-            appendQuestion(id);
+            appendQuestion(questionId, askerId, questionTitle, questionTag, questionTime, askerName);
             modalQuestion.classList.remove('modal-open');
-        } else {
         }
     } catch (err) {
         console.log(err);
     }
-  } catch (err) {
-    console.log(err);
-  }
 };
 
-postQuestionElement.addEventListener("click", postQuestion);
+postQuestionElement.addEventListener('click', postQuestion);
+
+window.addEventListener('DOMContentLoaded', loadQuestions);

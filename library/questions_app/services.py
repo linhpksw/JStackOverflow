@@ -39,6 +39,7 @@ def add_question_services():
                         'datetime_posted': new_question.datetime_posted,
                         'datetime_updated': new_question.datetime_updated,
                         'asker_id': new_question.asker_id,
+                        'question_id': new_question.id,
                         'status': 'add question successfully'})
     except IndentationError:
         db.session.rollback()
@@ -275,8 +276,8 @@ def get_answer_by_question_id_services(id):
     answers = Answer.query.filter_by(question_id=id).all()
     return jsonify({'answers': [a.to_dict() for a in answers]})
 
-def get_question_by_asker_id_services(id):
-    questions = Question.query.filter_by(asker_id=id).all()
-    return jsonify({'questions': [a.to_dict() for a in questions]})
+# def get_question_by_asker_id_services(id):
+#     questions = Question.query.filter_by(asker_id=id).all()
+#     return jsonify({'questions': [a.to_dict() for a in questions]})
     
     

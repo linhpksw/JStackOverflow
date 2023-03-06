@@ -6,8 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Question Page</title>
-    <!-- <link rel="stylesheet" href="{{url_for('static',filename ='css/question-i.css')}}" />
-    <link rel="stylesheet" href="{{url_for('static',filename ='css/question-o.css')}}" /> -->
+    <link rel="stylesheet" href="{{url_for('static',filename ='css/question-i.css')}}" />
+    <link rel="stylesheet" href="{{url_for('static',filename ='css/question-o.css')}}" />
     <link rel="stylesheet" href="../static/css/question-i.css">
     <link rel="stylesheet" href="../static/css/question-o.css">
 
@@ -194,82 +194,71 @@
                     <!-- câu hỏi -->
                     <div>
 
-                        <h1 id="title-ques" class="title-question ">Làm gì khi có quá nhiều thứ để học ?</h1>
-                        <ul class="note-list text-white flex mb-4 text-sm">
-                            <li class="mr-4 font-semibold">Askedd<span class="note-item ml-2">today</span></li>
-                            <li class="mr-4 font-semibold">Modified<span class="note-item ml-2">today</span></li>
-                            <li class="mr-4 font-semibold">Viewd<span class="note-item ml-2">24 times</span></li>
-                        </ul>
-                        <hr width="100%">
-                        <div class="flex p-5">
-
-                            <div class="float-left px-1 mr-3 ">
-                                <button id="increment-count"
-                                    class="material-icons  text-white text-xl">arrow_drop_up</button>
-                                <div id="total-count" class="text-white text-center align-middle"></div>
-                                <button id="decrement-count"
-                                    class="material-icons  text-white text-4xl">arrow_drop_down</button>
-                            </div>
-                            <p id="content-ques" class="content-question md-48 text-white float-right text-justify">Chả
-                                là năm nay e định học thêm nhiều kĩ năng mềm để có ích cho bản thân sau này và đã lên
-                                hẳn 1 list các kỹ năng cần học,kết quả là quá nhiều nên e không biết phải sắp xếp học
-                                các kỹ năng sao cho hợp lý,mong các bác cho e xin vài lời khuyên.</p>
-                        </div>
-                        <!-- tags -->
-                        <div id="tags" class="">
-                            <ul class=" text-xs  ">
-                                <li class="inline-block rounded-sm ">TRS601</li>
-                                <li class="inline-block rounded-sm">MAE101</li>
-                                <li class="inline-block rounded-sm">TRS501</li>
-                            </ul>
-
-                        </div>
-                        <!-- biểu tượng cmt, share, save -->
-                        <div id="cmt-btn" onclick="myFunction()" class=" text-white flex ml-4  m-5 py-5 mr-3 text-sm">
-                            <div
-                                class="cursor-pointer hover:bg-gray-400 flex align-middle items-center py-2 mr-3 hover:rounded-sm">
-                                <i class="material-icons  text-white mr-3 ">forum </i>
-                                <div class=" mr-4">comment</div>
-                            </div>
-                            <div class="cursor-pointer hover:bg-gray-400 flex align-middle items-center">
-                                <i class="material-icons  text-white mr-2 ">share </i>
-                                <div class="mr-4">share</div>
-                            </div>
-                            <div class="cursor-pointer hover:bg-gray-400 flex align-middle items-center">
-                                <i class="material-icons  text-white mr-2">bookmark </i>
-                                <div class="mr-4">save</div>
-                            </div>
-                            <div class="cursor-pointer hover:bg-gray-400 flex align-middle items-center">
-                                <i class="material-icons  text-white mr-2">edit </i>
-                                <div class="mr-4">edit</div>
-                            </div>
-
-                        </div>
-                        <!-- đại diện user -->
-                        <div
-                            class="w-52 h-15 bg-orange-200 flex items-center justify-center py-2 px-4 float-right rounded-sm">
-                            <img src="/src/img/ad0d063e1f57b808fd9e31ffe7d1f3a4.jpg" alt="Avatar"
-                                class="w-16 h-16 rounded-full mr-4 ">
-                            <div>
-                                <p class="font-semibold text-gray-800">Tran Bao Ngoc</p>
-                                <p class="text-sm text-gray-600">Software Engineering</p>
-                            </div>
-                        </div>
-                        <div class="h-24"></div>
-                        <hr class="border border-gray-400 border-opacity-50">
+                    <h1 id="title-ques" class="title-question ">Làm gì khi có quá nhiều thứ để học ?</h1>
+                    <ul class="note-list text-white flex mb-4 text-sm">
+                        <li class="mr-4 font-semibold">Askedd<span class="note-item ml-2">today</span></li>
+                        <li class="mr-4 font-semibold">Modified<span class="note-item ml-2">today</span></li>
+                        <li class="mr-4 font-semibold">Viewd<span class="note-item ml-2">24 times</span></li>
+                    </ul>
+                    <hr width="100%">
+                    <div class="flex p-5">
+    
+                        <div  class="float-left px-1 mr-3 ">
+                            <button id="increment-count" class="material-icons  text-white text-xl"  >arrow_drop_up</button>
+                            <div id="total-count"   class="text-white text-center align-middle"></div> 
+                            <button id="decrement-count" class="material-icons  text-white text-4xl">arrow_drop_down</button>
+                        </div> 
+                        <p id="content-ques" class="content-question md-48 text-white float-right text-justify">Chả là năm nay e định học thêm nhiều kĩ năng mềm để có ích cho bản thân sau này và đã lên hẳn 1 list các kỹ năng cần học,kết quả là quá nhiều nên e không biết phải sắp xếp học các kỹ năng sao cho hợp lý,mong các bác cho e xin vài lời khuyên.</p>
                     </div>
-                    <!-- câu trả lời  -->
-                    <div class="my-10">
-                        <div>
-                            <textarea id="fill-answer" class="w-full h-32 p-2 border rounded-md" name="message"
-                                placeholder="Câu trả lời của bạn là gì?"></textarea>
-                            <button
-                                class="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 mt-4 unded focus:outline-none focus:shadow-outline rounded-md"
-                                type="submit">Gửi câu trả lời</button>
+                    <!-- tags -->
+                    <div id="tags" class="">
+                        <ul class=" text-xs  ">
+                            <li class="inline-block rounded-sm ">TRS601</li>
+                            <li class="inline-block rounded-sm">MAE101</li>
+                            <li class="inline-block rounded-sm">TRS501</li>
+                        </ul>
+    
+                    </div>
+                    <!-- biểu tượng cmt, share, save -->
+                    <div id="cmt-btn" onclick="myFunction" class=" text-white flex ml-4  m-5 py-5 mr-3 text-sm">
+                        <div class="cursor-pointer hover:bg-gray-400 flex align-middle items-center py-2 mr-3 hover:rounded-sm">
+                            <i class="material-icons  text-white mr-3 ">forum </i>
+                            <div  class=" mr-4">comment</div>
                         </div>
-                        <div id="list">
-
+                        <div  class="cursor-pointer hover:bg-gray-400 flex align-middle items-center">
+                            <i class="material-icons  text-white mr-2 ">share </i>
+                            <div class="mr-4">share</div>
+                       </div>                            
+                       <div class="cursor-pointer hover:bg-gray-400 flex align-middle items-center">
+                              <i class="material-icons  text-white mr-2">bookmark </i> 
+                              <div class="mr-4">save</div>
                         </div>
+                        <div class="cursor-pointer hover:bg-gray-400 flex align-middle items-center">
+                            <i class="material-icons  text-white mr-2">edit </i> 
+                            <div class="mr-4">edit</div>
+                      </div>
+                        
+                    </div>
+                    <!-- đại diện user -->
+                    <div class="w-52 h-15 bg-orange-200 flex items-center justify-center py-2 px-4 float-right rounded-sm">
+                    <img src="/src/img/ad0d063e1f57b808fd9e31ffe7d1f3a4.jpg" alt="Avatar" class="w-16 h-16 rounded-full mr-4 ">
+                    <div>
+                        <p class="font-semibold text-gray-800">Tran Bao Ngoc</p>
+                        <p class="text-sm text-gray-600">Software Engineering</p>
+                    </div>
+                    </div>
+                    <div class="h-24"></div>
+                    <hr class="border border-gray-400 border-opacity-50">
+                </div>
+                <!-- câu trả lời  -->
+                <div class="my-10">
+                    <div>  
+                        <textarea id="fill-answer"  class="w-full h-32 p-2 border rounded-md" name="message" placeholder="Câu trả lời của bạn là gì?"></textarea>
+                        <button class="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 mt-4 unded focus:outline-none focus:shadow-outline rounded-md" type="submit">Gửi câu trả lời</button>
+                    </div>
+                    <div id="list">
+                        
+                    </div>
 
                     </div>
 
@@ -329,9 +318,9 @@
             </div>
         </main>
 
-        <script src="../static/js/question-page.js"></script>
-
-
+    <script src="../static/js/question-page.js"></script>
+        
+    
 </body>
 
 </html>
