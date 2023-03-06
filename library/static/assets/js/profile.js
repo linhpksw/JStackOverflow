@@ -19,7 +19,7 @@ const getDataFakeAPI = async () => {
     );
     data = await responseAPI.json();
     const res = await fetch(
-      "https://jstackoverflow.jsclub.me/user/872805/questions"
+      "https://jstackoverflow.jsclub.me/user/{{id}}/questions"
     );
     const { questions } = await res.json();
     console.log(questions);
