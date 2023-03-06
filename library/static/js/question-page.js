@@ -62,7 +62,9 @@ const question = document.getElementById('just-question');
 
 getQuestionFromAPI();
 
+try{
 async function getQuestionFromAPI() {
+  
   const responseAPT = await fetch('https://jsonplaceholder.typicode.com/posts');
   const data = await responseAPT.json();
   const divItem = document.createElement('div');
@@ -98,7 +100,9 @@ async function getQuestionFromAPI() {
   `
 }
 list.appendChild(divItem);
-
+} catch(err){
+  console.error(err);
+}
 
 
 
