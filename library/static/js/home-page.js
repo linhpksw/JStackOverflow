@@ -59,7 +59,7 @@ const postQuestion = async () => {
         const jsonEditorContent = JSON.stringify(editorContent);
         console.log(jsonEditorContent);
 
-        console.log(editorContent == jsonEditorContent.json());
+        console.log(editorContent == jsonEditorContent.parse(jsonEditorContent));
     } catch (err) {
         console.log(err);
     }
