@@ -1,11 +1,9 @@
 try {
     const email = document.getElementById('email');
-
     const password = document.getElementById('password');
-
     const signInBtn = document.getElementById('sign-in-btn');
 
-    const fetchUserCredential = async () => {
+    async function fetchUserCredential() {
         const data = {
             email: email.value,
             password: password.value,
@@ -16,17 +14,20 @@ try {
             headers: {
                 'Content-Type': 'application/json',
             },
+
             body: JSON.stringify(data),
         };
 
         const URL = 'https://jstackoverflow.jsclub.me/login';
-
         const response = await fetch(URL, opt);
-
         const jsonResponse = await response.json();
 
-        console.log(jsonResponse);
-    };
+        if (jsonResponse.status == 'sign in successfully') {
+            window.location.href = '/home';
+        } else {
+            alert(jsonResponse.status);
+        }
+    }
 
     signInBtn.addEventListener('click', fetchUserCredential);
 } catch (err) {

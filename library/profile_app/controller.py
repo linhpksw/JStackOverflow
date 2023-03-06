@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, redirect, url_for, jsonify
+from flask import Blueprint, render_template, redirect, url_for, jsonify,session
 from .services import sign_up_services, login_services, logout_services, delete_user_services, load_user, see_profile_services, edit_profile_services, change_avatar_services, get_question_by_user_id, get_answer_by_user_id, get_all_users_services, get_info_user_services
 from flask_login import login_required, login_user, LoginManager, logout_user, current_user
 from library.extensions import login_manager
@@ -10,6 +10,16 @@ profiles = Blueprint("profiles", __name__)
 def index():
     return render_template('sign-in.html')
 
+@profiles.route('/login', methods=['POST'])
+@login_required
+def login():
+    return login_services()
+
+@profiles.route('/home', methods=['GET'])
+def home():
+    return render_template('home-page.html')  
+
+        
 @profiles.route('/api/get_info/<id>')
 def get_info(id):
     return get_info_user_services(id)
@@ -23,10 +33,6 @@ def get_all_users():
 def sign_up():
      return  sign_up_services() #, render_template('draft.html')
 
-
-@profiles.route('/login', methods=['POST'])
-def login():
-    return login_services()
 
 
 @login_manager.user_loader

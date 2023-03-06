@@ -71,11 +71,14 @@ def login_services():
 
     found_user = User.query.filter_by(email=email).first()
     if not found_user:
-        return jsonify({"error":"not found "})
+        return jsonify({"status":"email not found"})
     else:
         if password and check_password_hash(found_user.password, password):
             login_user(found_user)
-            return render_template('home-page.html')
+            # return render_template('home-page.html')
+            return jsonify({"id":found_user.id,
+                            "status":"sign in successfully"})
+                           
         else:
             return jsonify({"error":"incorrect password"})
 

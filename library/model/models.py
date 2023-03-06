@@ -55,29 +55,35 @@ class User(db.Model, UserMixin):
 
 class Question(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    question = db.Column(db.Text)
+    title = db.Column(db.String(255))
+    content = db.Column(db.String(255))  
+    tag =   db.Column(db.String(255))                    
     datetime_posted = db.Column(db.DateTime, default=datetime.utcnow)
     datetime_updated = db.Column(db.DateTime, default=datetime.utcnow)
     asker_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-    topic = db.Column(db.String(10))
     rating = db.Column(db.Integer,default=0)
     voted_question = db.relationship('Vote_Question')
     
-    def __init__(self, question, datetime_updated, 
-                 datetime_posted, asker_id,topic, rating = 0):
-        self.question = question
+    def __init__(self, title, content,tag, datetime_updated, 
+                 datetime_posted, asker_id, rating = 0):
+    
+        self.title =title
+        self.content =content
+        self.tag =tag
         self.datetime_posted = datetime_posted
         self.datetime_updated = datetime_updated
-        self.asker_id = asker_id
-        self.topic = topic
+        self.asker_id = asker_id        
         self.rating = rating
+    
+
     def to_dict(self):
         return {
             'id': self.id,
-            'question': self.question,
             'asker_id': self.asker_id,
-            'topic': self.topic,
-            'rating': self.rating
+            'rating': self.rating,
+            'title':self.title,
+            'content': self.content,
+            'tag': self.tag
             # add more fields as needed
         }
 
