@@ -19,7 +19,7 @@ def home():
 def login():
     data = login_services()
     if request.method == 'POST':
-        return redirect(url_for('home'))
+        return redirect(url_for('profiles.home'))
     else:
         return render_template('sign-in.html', data=data)
 
