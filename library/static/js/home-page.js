@@ -55,7 +55,7 @@ const postQuestion = async () => {
 
         console.log(questionTitle);
         console.log(questionTag);
-        console.log(editorContent);
+        console.log(JSON.stringify(editorContent));
     } catch (err) {
         console.log(err);
     }
