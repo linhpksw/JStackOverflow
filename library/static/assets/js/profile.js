@@ -3,7 +3,7 @@ const search = document.getElementById("search-text");
 const id = 124859;
 const searchBar = document.getElementById("search-text");
 let data = [];
-
+let questions = [];
 searchBar.addEventListener("keyup", (e) => {
   const searchString = e.target.value.toLowerCase();
   const filteredCharacters = data.filter((character) => {
