@@ -16,27 +16,27 @@ const loadQuestions = async () => {
 
         const jsonResponse = await response.json();
 
-        console.log(jsonResponse);
+        for (let i = 0; i < jsonResponse.length; i++) {
+            const e = jsonResponse[i];
 
-        const {
-            id: questionId,
-            title: questionTitle,
-            tag: questionTag,
-            datetime_posted: questionTime,
-            asker_id: askerId,
-        } = jsonResponse;
+            const {
+                id: questionId,
+                title: questionTitle,
+                tag: questionTag,
+                datetime_posted: questionTime,
+                asker_id: askerId,
+            } = e;
 
-        const profileResponse = await fetch(`https://jstackoverflow.jsclub.me/api/user/${askerId}`, {
-            method: 'GET',
-        });
+            const profileResponse = await fetch(`https://jstackoverflow.jsclub.me/api/user/${askerId}`, {
+                method: 'GET',
+            });
 
-        const jsonProfileResponse = await profileResponse.json();
+            const jsonProfileResponse = await profileResponse.json();
 
-        console.log(jsonProfileResponse);
+            const askerName = jsonProfileResponse.found_user.name;
 
-        const askerName = jsonProfileResponse.found_user.name;
-
-        appendQuestion(questionId, askerId, questionTitle, questionTag, questionTime, askerName);
+            appendQuestion(questionId, askerId, questionTitle, questionTag, questionTime, askerName);
+        }
     } catch (err) {
         console.log(err);
     }
