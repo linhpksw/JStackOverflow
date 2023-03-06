@@ -14,15 +14,16 @@ searchBar.addEventListener("keyup", (e) => {
 
 const getDataFakeAPI = async () => {
   try {
-    const responseAPI = await fetch(
-      "https://jsonplaceholder.typicode.com/users"
+    // const responseAPI = await fetch(
+    //   "https://jsonplaceholder.typicode.com/users"
+    // );
+    // data = await responseAPI.json();
+    const responseQuestions = await fetch(
+      "https://jstackoverflow.jsclub.me/user/872805/questions"
     );
-    data = await responseAPI.json();
-    const res = await fetch(
-      "https://jstackoverflow.jsclub.me/user/174830/questions"
-    );
-    data1 = await res.json();
-    console.log(data1);
+    const { questions } = await responseQuestions.json();
+    data = questions;
+    console.log(data);
     let userIds = data.filter(function (user) {
       return user.id == 1;
     });
@@ -35,6 +36,7 @@ const getDataFakeAPI = async () => {
     console.error(err);
   }
 };
+console.log(data);
 function renderAbout(users) {
   let info = document.getElementById("edit-about");
   let htmls = "";
@@ -68,7 +70,7 @@ function renderAbout(users) {
 }
 function renderGeneralQuestions() {
   let info = document.getElementById("general-questions");
-  let tmp = data.slice(-5);
+  let tmp = questions.slice(-5);
   let htmls = "";
   for (let i = 4; i >= 0; i--) {
     htmls += `
@@ -88,7 +90,7 @@ function renderGeneralQuestions() {
           </div>
           <div>
               <div class="pe-3 ps-3 pb-3">
-                  <h5 class="title-ans">${tmp[i].name}</h5>
+                  <h5 class="title-ans">${tmp[i].title}</h5>
                   <div class="d-flex">
                       <div class="d-flex align-items-center justify-content-end flex-grow-1">
                           <div>
@@ -112,16 +114,16 @@ function renderGeneralAnswer() {
         <div class="mb-2 answers-list">
         <div class="pe-3 ps-3 pt-3 d-flex">
             <div class="me-3">
-                <span>31</span>
+                <span>0</span>
                 <span>votes</span>
             </div>
-            <div class="post-summary-stats">
-                <svg aria-hidden="true" class="svg-icon iconCheckmarkSm" width="14"
-                    height="14" viewBox="0 0 14 14">
-                    <path d=="M13 3.41 11.59 2 5 8.59 2.41 6 1 7.41l4 4 8-8Z"></path>
-                </svg>
-                Accept
-            </div>
+            // <div class="post-summary-stats">
+            //     <svg aria-hidden="true" class="svg-icon iconCheckmarkSm" width="14"
+            //         height="14" viewBox="0 0 14 14">
+            //         <path d=="M13 3.41 11.59 2 5 8.59 2.41 6 1 7.41l4 4 8-8Z"></path>
+            //     </svg>
+            //     Accept
+            // </div>
         </div>
         <div>
             <div class="pe-3 ps-3 pb-3">
