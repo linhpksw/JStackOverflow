@@ -20,7 +20,7 @@ try {
                 'Content-Type': 'application/json',
             },
             referrerPolicy: 'unsafe-url',
-            redirect: 'follow',
+            redirect: 'manual',
             body: JSON.stringify(data),
         };
 
