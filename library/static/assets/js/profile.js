@@ -18,10 +18,10 @@ const getDataFakeAPI = async () => {
       "https://jsonplaceholder.typicode.com/users"
     );
     data = await responseAPI.json();
-    const res = await fetch(
-      "https://jstackoverflow.jsclub.me/user/174830/questions"
+    const { questions } = await fetch(
+      "https://jstackoverflow.jsclub.me/user/872805/questions"
     );
-    data1 = await res.json();
+    data1 = await questions.json();
     console.log(data1);
     let userIds = data.filter(function (user) {
       return user.id == 1;
@@ -112,16 +112,16 @@ function renderGeneralAnswer() {
         <div class="mb-2 answers-list">
         <div class="pe-3 ps-3 pt-3 d-flex">
             <div class="me-3">
-                <span>31</span>
+                <span>0</span>
                 <span>votes</span>
             </div>
-            <div class="post-summary-stats">
-                <svg aria-hidden="true" class="svg-icon iconCheckmarkSm" width="14"
-                    height="14" viewBox="0 0 14 14">
-                    <path d=="M13 3.41 11.59 2 5 8.59 2.41 6 1 7.41l4 4 8-8Z"></path>
-                </svg>
-                Accept
-            </div>
+            // <div class="post-summary-stats">
+            //     <svg aria-hidden="true" class="svg-icon iconCheckmarkSm" width="14"
+            //         height="14" viewBox="0 0 14 14">
+            //         <path d=="M13 3.41 11.59 2 5 8.59 2.41 6 1 7.41l4 4 8-8Z"></path>
+            //     </svg>
+            //     Accept
+            // </div>
         </div>
         <div>
             <div class="pe-3 ps-3 pb-3">
