@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, redirect, url_for, jsonify
+from flask import Blueprint, render_template, redirect, url_for, jsonify,request
 from .services import sign_up_services, login_services, logout_services, delete_user_services, load_user, see_profile_services, edit_profile_services, change_avatar_services, get_question_by_user_id, get_answer_by_user_id, get_all_users_services, get_info_user_services
 from flask_login import login_required, login_user, LoginManager, logout_user, current_user
 from library.extensions import login_manager
@@ -6,13 +6,27 @@ from library.model.models import User
 
 profiles = Blueprint("profiles", __name__)
 
-# @profiles.route('/')
-# def index():
-#     return render_template('sign-in.html')
 @profiles.route('/')
 def index():
+    return render_template('sign-in.html')
+
+@profiles.route('/home', methods=['GET', 'POST'])
+def home():
+    return render_template('home-page.html')
+
+
+@profiles.route('/login', methods=['GET', 'POST'])
+def login():
     data = login_services()
-    return render_template('home-page',data=data)
+    if request.method == 'POST':
+        return redirect(url_for('home'))
+    else:
+        return render_template('sign-in.html', data=data)
+
+
+# @profiles.route('/home')
+# def home():
+#     return render_template('home-page.html')
 # @profiles.route('/home')
 # def home():
 #     return redirect(url_for('home-page'))
