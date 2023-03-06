@@ -88,7 +88,7 @@ function renderGeneralQuestions() {
           </div>
           <div>
               <div class="pe-3 ps-3 pb-3">
-                  <h5 class="title-ans">${tmp[i].name}</h5>
+                  <h5 class="title-ans">${tmp[i].title}</h5>
                   <div class="d-flex">
                       <div class="d-flex align-items-center justify-content-end flex-grow-1">
                           <div>
