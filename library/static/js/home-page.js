@@ -152,10 +152,8 @@ const postQuestion = async () => {
         const data = {
             title: questionTitle,
             tag: questionTag,
-            content: questionContent,
+            content: questionContent[0].insert,
         };
-
-        console.log(questionContent);
 
         const opt = {
             method: 'POST',
