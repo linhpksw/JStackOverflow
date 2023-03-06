@@ -29,7 +29,7 @@ decrementCount.addEventListener("click", handleDecrement);
 
 // get question
 
-
+const list
 
 
 //js answer
@@ -47,7 +47,7 @@ async function getAnswerFromAPI() {
     const divItem = document.createElement('div');
     divItem.innerHTML = `
     <div class="flex p-4 items-start space-x-4">
-      <img class="w-10 h-10 rounded-full" src="" alt="Avatar">
+      <img class="w-10 h-10 rounded-full" src="/src/img/meo.jpg" alt="Avatar">
       <div id="answer1" class="m-4">
         <div class="flex items-center justify-between">
           <h2 class="text-lg font-medium text-orange-300"> ${data.name} </h2>
@@ -55,9 +55,9 @@ async function getAnswerFromAPI() {
         </div>
         <p class="mt-2 text-white">${data.body} </p>
           <div id="icon-comment" class="flex  text-gray-400 mt-3">
-          <i id="count-like" class="material-icons  text-gray-400 mr-3 hover:text-orange-600 ">thumb_up </i>
+          <button id="count-like" class="material-icons  text-gray-400 mr-3 hover:text-orange-600 ">thumb_up </button>
           <div id="total-like" class="align-middle text-center mr-2">4</div>
-          <i id="count-dislike" class="material-icons  text-gray-400 mr-3 hover:text-orange-600 ">thumb_down </i>
+          <button id="count-dislike" class="material-icons  text-gray-400 mr-3 hover:text-orange-600 ">thumb_down </button>
           <div class="hover:bg-orange-600 hover:text-white px-4 font-bold text-gray-400 rounded flex items-center align-middle ">
               <i class="material-icons inline-block ">reply </i>
               <div class="inline-block">reply</div>
