@@ -18,21 +18,9 @@ function appendQuestion(questionId, askerId, questionTitle, questionTag, questio
     const questionChild = document.createElement('div');
     questionChild.setAttribute('id', `question-${questionId}`);
 
-    // const totalVotes = 25;
-    // const totalAnswers = 10;
-    // const totalViews = 13;
-
-    // const questionId = 111111;
-    // const questionTitle = `ABC`;
-    // const questionTag = `PRF192`;
-
-    // const questionTime = `32p`;
-    // const userName = 'Le Trong Linh';
-    // const askerId = 136822;
-
     questionChild.innerHTML = `
     <!-- Question ${questionId} -->
-    <div id="question-${questionId}" class="flex h-auto gap-5 rounded-2xl bg-[#262D34] py-5 px-5">
+    <div id="question-${questionId}" class="flex h-auto gap-5 rounded-2xl bg-[#262D34] py-5 px-5 mb-5">
     <!-- Stats -->
     <div id="stats" class="flex flex-none flex-col gap-2 text-white">
         <!-- Total votes -->
