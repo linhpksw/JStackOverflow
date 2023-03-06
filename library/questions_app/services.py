@@ -34,7 +34,7 @@ def add_question_services():
                         'asker_id': new_question.asker_id})
     except IndentationError:
         db.session.rollback()
-        return "Can't add new question"
+        return jsonify({'status': "Can't add new question"})
        
 
 def get_question_services(id):
@@ -43,7 +43,7 @@ def get_question_services(id):
         question_json = QuestionSchema().dump(question)
         return jsonify(question_json)
     else:
-        return jsonify({"Error":"Not found question"}), 404
+        return jsonify({"status":"Not found question"}), 404
     
 
 def get_all_questions_services():
@@ -52,16 +52,16 @@ def get_all_questions_services():
         questions = QuestionSchema(many=True).dump(questions)
         return jsonify(questions)
     else:
-        return jsonify({"Error":" No questions"}), 404
+        return jsonify({"status":" not found questions"}), 404
   
         
 def update_question_services(id):
     if Question.query.get(id).asker_id != current_user.id:
-        return jsonify({"Error":" cannot update question !!!"}), 404
+        return jsonify({"status":" cannot update question"}), 404
     else:
         question = Question.query.get(id)
         if not question:
-            return jsonify({"Error": "Question not found."}), 404
+            return jsonify({"status": "question not found."}), 404
         data = request.get_json()
         if not data:
             return jsonify({"Error": "Invalid request data."}), 400
@@ -85,10 +85,10 @@ def delete_question_services(id):
             try:
                 db.session.delete(question)
                 db.session.commit()
-                return render_template('home-page.html',id = id)
+                return jsonify({"status": " delete question successfully"})
             except IndentationError:
                 db.session.rollback()
-                return "Can not delete question!"
+                return jsonify({"error":"Can not delete question"})
             
 def vote_question(id):
     question = Question.query.filter(id = id).first()
@@ -173,10 +173,10 @@ def delete_answer_services(id):
             try:
                 db.session.delete(answer)
                 db.session.commit()
-                return "deleted answer!!!"
+                return jsonify({"status":"deleted answer"})
             except IndentationError:
                 db.session.rollback()
-                return "Can not delete answer!"
+                return jsonify({"status":"Can not delete answer"})
             
 def get_answer_by_question_id_services(id):
     answers = Answer.query.filter_by(question_id=id).all()
