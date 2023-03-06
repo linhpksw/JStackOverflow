@@ -39,7 +39,8 @@ def add_question_services():
                         'datetime_posted': new_question.datetime_posted,
                         'datetime_updated': new_question.datetime_updated,
                         'asker_id': new_question.asker_id,
-                        'id': new_question.id})
+                        'id': new_question.id,
+                        'status': 'add question successfully'})
     except IndentationError:
         db.session.rollback()
         return jsonify({'status': "Can't add new question"})
