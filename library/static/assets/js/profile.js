@@ -17,7 +17,8 @@ bgcolor.addEventListener("click", function () {
 let list = document.getElementById("list");
 const search = document.getElementById("search-text");
 const id = 124859;
-
+const searchBar = document.getElementById("search-text");
+let data = [];
 // const answerTab = document.querySelector(".answer-tab");
 // answerTab.addEventListener("click", function () {
 //   getDataFakeAPI();
@@ -155,17 +156,31 @@ const id = 124859;
 //     console.log(data);
 //   }
 // });
-
-getDataFakeAPI();
-async function getDataFakeAPI() {
-  const responseAPI = await fetch("https://jsonplaceholder.typicode.com/users");
-  const data = await responseAPI.json();
-  let userIds = data.filter(function (user) {
-    return user.id == 1;
+console.log(searchBar);
+searchBar.addEventListener("keyup", (e) => {
+  const searchString = e.target.value.toLowerCase();
+  console.log(searchString);
+  const filteredCharacters = data.filter((character) => {
+    return character.name.toLowerCase().includes(searchString);
   });
-  console.log(userIds);
-  renderGeneralInfo(userIds);
-}
+  console.log(filteredCharacters);
+});
+
+const getDataFakeAPI = async () => {
+  try {
+    const responseAPI = await fetch(
+      "https://jsonplaceholder.typicode.com/users"
+    );
+    data = await responseAPI.json();
+    let userIds = data.filter(function (user) {
+      return user.id == 1;
+    });
+    console.log(data);
+    renderGeneralInfo(userIds);
+  } catch (err) {
+    console.error(err);
+  }
+};
 function renderGeneralInfo(users) {
   let info = document.getElementById("general-info");
   let htmls = users.map(function (e) {
@@ -242,3 +257,4 @@ function renderGeneralInfo(users) {
   });
   info.innerHTML = htmls;
 }
+getDataFakeAPI();
