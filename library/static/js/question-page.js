@@ -29,7 +29,78 @@ decrementCount.addEventListener("click", handleDecrement);
 
 // get question
 
-const list
+{/* <div id="just-question">
+
+<h1 id="title-ques" class="title-question ">Làm gì khi có quá nhiều thứ để học ?</h1>
+<ul class="note-list text-white flex mb-4 text-sm">
+    <li class="mr-4 font-semibold">Askedd<span class="note-item ml-2">today</span></li>
+    <li class="mr-4 font-semibold">Modified<span class="note-item ml-2">today</span></li>
+    <li class="mr-4 font-semibold">Viewd<span class="note-item ml-2">24 times</span></li>
+</ul>
+<hr width="100%">
+<div class="flex p-5">
+
+    <div  class="float-left px-1 mr-3 ">
+        <button id="increment-count" class="material-icons  text-white text-xl"  >arrow_drop_up</button>
+        <div id="total-count"   class="text-white text-center align-middle"></div> 
+        <button id="decrement-count" class="material-icons  text-white text-4xl">arrow_drop_down</button>
+    </div> 
+    <p id="content-ques" class="content-question md-48 text-white float-right text-justify">Chả là năm nay e định học thêm nhiều kĩ năng mềm để có ích cho bản thân sau này và đã lên hẳn 1 list các kỹ năng cần học,kết quả là quá nhiều nên e không biết phải sắp xếp học các kỹ năng sao cho hợp lý,mong các bác cho e xin vài lời khuyên.</p>
+</div>
+
+<div id="tags" class="">
+    <ul class=" text-xs  ">
+        <li class="inline-block rounded-sm ">TRS601</li>
+        <li class="inline-block rounded-sm">MAE101</li>
+        <li class="inline-block rounded-sm">TRS501</li>
+    </ul>
+
+</div>
+</div> */}
+
+const question = document.getElementById('just-question');
+
+getQuestionFromAPI();
+
+async function getQuestionFromAPI() {
+  const responseAPT = await fetch('https://jsonplaceholder.typicode.com/posts');
+  const data = await responseAPT.json();
+  const divItem = document.createElement('div');
+  divItem.innerHTML = `
+  <div id="just-question">
+
+<h1 id="title-ques" class="title-question "> ${data.title} </h1>
+<ul class="note-list text-white flex mb-4 text-sm">
+    <li class="mr-4 font-semibold">Askedd<span class="note-item ml-2">today</span></li>
+    <li class="mr-4 font-semibold">Modified<span class="note-item ml-2">today</span></li>
+    <li class="mr-4 font-semibold">Viewd<span class="note-item ml-2">24 times</span></li>
+</ul>
+<hr width="100%">
+<div class="flex p-5">
+
+    <div  class="float-left px-1 mr-3 ">
+        <button id="increment-count" class="material-icons  text-white text-xl"  >arrow_drop_up</button>
+        <div id="total-count"   class="text-white text-center align-middle"></div> 
+        <button id="decrement-count" class="material-icons  text-white text-4xl">arrow_drop_down</button>
+    </div> 
+    <p id="content-ques" class="content-question md-48 text-white float-right text-justify"> ${data.body} </p>
+</div>
+
+<div id="tags" class="">
+    <ul class=" text-xs  ">
+        <li class="inline-block rounded-sm ">TRS601</li>
+        <li class="inline-block rounded-sm">MAE101</li>
+        <li class="inline-block rounded-sm">TRS501</li>
+    </ul>
+
+</div>
+</div>
+  `
+}
+list.appendChild(divItem);
+
+
+
 
 
 //js answer
@@ -42,7 +113,6 @@ getAnswerFromAPI();
 async function getAnswerFromAPI() {
   const responseAPT = await fetch('https://jsonplaceholder.typicode.com/comments');
   const  data  = await responseAPT.json();
-  // list.innertHTML = ``;
   data.forEach(data => {
     const divItem = document.createElement('div');
     divItem.innerHTML = `

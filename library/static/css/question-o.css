@@ -4594,10 +4594,6 @@ input:checked + .toggle-bg {
   width: 1.75rem;
 }
 
-.w-8 {
-  width: 2rem;
-}
-
 .w-full {
   width: 100%;
 }
