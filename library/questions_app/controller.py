@@ -3,7 +3,7 @@ from flask import Blueprint, redirect, render_template, request, url_for
 from library.extensions import db
 from library.model.models import User, Question, Answer
 from .services import add_question_services, update_question_services, delete_question_services, get_question_services, get_all_questions_services,vote_question_services,vote_answer_services
-from .services import add_question_services, update_question_services, delete_question_services, get_question_services, get_all_questions_services,vote_question,get_question_by_asker_id_services
+from .services import add_question_services, update_question_services, delete_question_services, get_question_services, get_all_questions_services,get_question_by_asker_id_services
 from .services import add_answer_services, update_answer_services, delete_answer_services, get_answer_services, get_all_answers_services, get_answer_by_question_id_services
 from library.library_ma import QuestionSchema, AnswerSchema
 from flask import jsonify
