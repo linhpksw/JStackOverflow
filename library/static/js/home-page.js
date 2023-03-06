@@ -12,7 +12,7 @@ discardBtn.addEventListener('click', () => {
     modalQuestion.classList.remove('modal-open');
 });
 
-function appendQuestion(questionId, askerId, questionTitle, questionTag, questionTime) {
+function appendQuestion(questionId, askerId, questionTitle, questionTag, questionTime, askerName) {
     const questionsElement = document.getElementById('questions');
 
     const questionChild = document.createElement('div');
@@ -37,7 +37,7 @@ function appendQuestion(questionId, askerId, questionTitle, questionTag, questio
     <div id="stats" class="flex flex-none flex-col gap-2 text-white">
         <!-- Total votes -->
         <span id="total-votes" class="flex justify-end text-sm font-medium"
-            >${totalVotes} votes</span
+            >0 votes</span
         >
 
         <!-- Answers -->
@@ -64,14 +64,14 @@ function appendQuestion(questionId, askerId, questionTitle, questionTag, questio
                     <span
                         id="total-answers"
                         class="flex justify-end text-sm font-medium"
-                        >${totalAnswers} answers</span
+                        >0 answers</span
                     >
                 </div>
             </div>
         </div>
 
         <span id="total-views" class="flex justify-end text-sm font-medium"
-            >${totalViews} views</span
+            >1 views</span
         >
     </div>
 
@@ -104,7 +104,7 @@ function appendQuestion(questionId, askerId, questionTitle, questionTag, questio
                         id="question-time"
                         class="text-sm font-semibold text-[#C5D0E6]"
                         ><a id="user-name" href="/user/${askerId}" class="text-amber-400"
-                            >${userName}</a
+                            >${askerName}</a
                         >
                         ${questionTime}</span
                     >
@@ -147,14 +147,12 @@ const postQuestion = async () => {
         const questionTag = document.getElementById('question-tag').value;
         const questionContent = quill.getContents();
 
-        const jsonQuestionContent = JSON.stringify(questionContent);
-
         const URL = 'https://jstackoverflow.jsclub.me/questions_manager/add_question';
 
         const data = {
             title: questionTitle,
             tag: questionTag,
-            content: jsonQuestionContent,
+            content: questionContent,
         };
 
         const opt = {
@@ -168,6 +166,7 @@ const postQuestion = async () => {
 
         if (jsonResponse.status == 'add question successfully') {
             const {
+                name: askerName,
                 question_id: questionId,
                 title: questionTitle,
                 content: questionContent,
@@ -177,7 +176,7 @@ const postQuestion = async () => {
                 datetime_updated: updateTime,
             } = jsonResponse;
 
-            appendQuestion(questionId, askerId, questionTitle, questionTag, questionTime);
+            appendQuestion(questionId, askerId, questionTitle, questionTag, questionTime, askerName);
             modalQuestion.classList.remove('modal-open');
         }
     } catch (err) {
