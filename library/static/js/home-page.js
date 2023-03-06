@@ -145,9 +145,7 @@ const postQuestion = async () => {
     try {
         const questionTitle = document.getElementById('question-title').value;
         const questionTag = document.getElementById('question-tag').value;
-        // const questionContent = quill.getContents();
-
-        const questionContent = 'abc';
+        const questionContent = quill.getContents();
 
         const URL = 'https://jstackoverflow.jsclub.me/questions_manager/add_question';
 
