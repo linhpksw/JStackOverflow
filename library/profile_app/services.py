@@ -73,12 +73,16 @@ def login_services():
     if not found_user:
         return jsonify({"status":"email not found"})
     else:
+        
         if password and check_password_hash(found_user.password, password):
-            login_user(found_user)
-            # return render_template('home-page.html')
-            return jsonify({"id":found_user.id,
-                            "status":"sign in successfully"})
-                           
+            try:
+                login_user(found_user)
+                # return render_template('home-page.html')
+                return jsonify({"id":found_user.id,
+                                "status":"sign in successfully"})
+            except Exception as e:
+                print("error:",e)
+                return jsonify({"status":"cannot login"})
         else:
             return jsonify({"error":"incorrect password"})
 
