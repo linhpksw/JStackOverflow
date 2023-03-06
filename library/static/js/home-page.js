@@ -12,23 +12,23 @@ discardBtn.addEventListener('click', () => {
     modalQuestion.classList.remove('modal-open');
 });
 
-function appendQuestion(questionId, askerId, questionTitle, questionContent, questionTag, questionTime) {
+function appendQuestion(questionId, askerId, questionTitle, questionTag, questionTime) {
     const questionsElement = document.getElementById('questions');
 
     const questionChild = document.createElement('div');
     questionChild.setAttribute('id', `question-${questionId}`);
 
-    const totalVotes = 25;
-    const totalAnswers = 10;
-    const totalViews = 13;
+    // const totalVotes = 25;
+    // const totalAnswers = 10;
+    // const totalViews = 13;
 
-    const questionId = 111111;
-    const questionTitle = `ABC`;
-    const questionTag = `PRF192`;
+    // const questionId = 111111;
+    // const questionTitle = `ABC`;
+    // const questionTag = `PRF192`;
 
-    const questionTime = `32p`;
-    const userName = 'Le Trong Linh';
-    const askerId = 136822;
+    // const questionTime = `32p`;
+    // const userName = 'Le Trong Linh';
+    // const askerId = 136822;
 
     questionChild.innerHTML = `
     <!-- Question ${questionId} -->
@@ -179,7 +179,7 @@ const postQuestion = async () => {
                 datetime_updated: updateTime,
             } = jsonResponse;
 
-            appendQuestion(questionId, askerId, questionTitle, questionContent, questionTag, questionTime);
+            appendQuestion(questionId, askerId, questionTitle, questionTag, questionTime);
             modalQuestion.classList.remove('modal-open');
         }
     } catch (err) {
