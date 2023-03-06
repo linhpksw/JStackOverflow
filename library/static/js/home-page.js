@@ -23,9 +23,14 @@ const loadQuestions = async () => {
             title: questionTitle,
             tag: questionTag,
             datetime_posted: questionTime,
-            name: askerName,
             asker_id: askerId,
         } = jsonResponse;
+
+        const profileResponse = await fetch(`https://jstackoverflow.jsclub.me/api/user/${askerId}`);
+
+        const jsonProfileResponse = await profileResponse.json();
+
+        const askerName = jsonProfileResponse.found_user.name;
 
         appendQuestion(questionId, askerId, questionTitle, questionTag, questionTime, askerName);
     } catch (err) {
