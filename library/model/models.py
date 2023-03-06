@@ -64,13 +64,19 @@ class User(db.Model, UserMixin):
 class Question(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     question = db.Column(db.Text)
+    title = db.Column(db.String(255))
+    content = db.Column(db.String(255))  
+    tag =   db.Column(db.String(255))                    
     datetime_posted = db.Column(db.DateTime, default=datetime.utcnow)
     datetime_updated = db.Column(db.DateTime, default=datetime.utcnow)
     asker_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     vote_id = db.Column(db.Integer, db.ForeignKey('user.id'),default=0)
 
-    def __init__(self, question, datetime_updated, datetime_posted, asker_id, vote_id):
+    def __init__(self, question,content,title,tag, datetime_updated, datetime_posted, asker_id, vote_id):
         self.question = question
+        self.title =title
+        self.content =content
+        self.tag =tag
         self.datetime_posted = datetime_posted
         self.datetime_updated = datetime_updated
         self.asker_id = asker_id
@@ -81,7 +87,10 @@ class Question(db.Model):
             'id': self.id,
             'question': self.question,
             'asker_id': self.asker_id,
-            'vote_id': self.vote_id
+            'vote_id': self.vote_id,
+            'title':self.title,
+            'content': self.content,
+            'tag': self.tag
             # add more fields as needed
         }
 

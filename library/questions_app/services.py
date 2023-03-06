@@ -20,15 +20,21 @@ login_manager = LoginManager()
 
 def add_question_services():
     question = request.json['question']
+    title = request.json['title']
+    content = request.json['content']
+    tag = request.json['tag']
     datetime_posted = datetime.now() 
     datetime_updated = datetime.now()
     asker_id = current_user.id  
     
     try:
-        new_question = Question(question= question,datetime_updated=datetime_updated, datetime_posted=datetime_posted,asker_id=asker_id)
+        new_question = Question(question= question,title=title,content=content,tag=tag,datetime_updated=datetime_updated, datetime_posted=datetime_posted,asker_id=asker_id)
         db.session.add(new_question)
         db.session.commit()
         return jsonify({'question': new_question.question,
+                        'title': new_question.title,
+                        'content': new_question.content,
+                        'tag': new_question.tag,
                         'datetime_posted': new_question.datetime_posted,
                         'datetime_updated': new_question.datetime_updated,
                         'asker_id': new_question.asker_id})

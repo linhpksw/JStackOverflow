@@ -16,7 +16,7 @@ class UserSchema(ma.Schema):
 
 class QuestionSchema(ma.Schema):
     class Meta:
-        fields = ('id', 'question', 'datetime_posted',
+        fields = ('id', 'question', 'title','content','tag','datetime_posted',
                   'datetime_updated', 'asker_id', 'vote_id')
 
 
