@@ -164,21 +164,23 @@ const postQuestion = async () => {
         const response = await fetch(URL, opt);
         const jsonResponse = await response.json();
 
-        if (jsonResponse.status == 'add question successfully') {
-            const {
-                name: askerName,
-                question_id: questionId,
-                title: questionTitle,
-                content: questionContent,
-                tag: questionTag,
-                asker_id: askerId,
-                datetime_posted: questionTime,
-                datetime_updated: updateTime,
-            } = jsonResponse;
+        console.log(jsonResponse);
 
-            appendQuestion(questionId, askerId, questionTitle, questionTag, questionTime, askerName);
-            modalQuestion.classList.remove('modal-open');
-        }
+        // if (jsonResponse.status == 'add question successfully') {
+        //     const {
+        //         name: askerName,
+        //         question_id: questionId,
+        //         title: questionTitle,
+        //         content: questionContent,
+        //         tag: questionTag,
+        //         asker_id: askerId,
+        //         datetime_posted: questionTime,
+        //         datetime_updated: updateTime,
+        //     } = jsonResponse;
+
+        //     appendQuestion(questionId, askerId, questionTitle, questionTag, questionTime, askerName);
+        //     modalQuestion.classList.remove('modal-open');
+        // }
     } catch (err) {
         console.log(err);
     }
