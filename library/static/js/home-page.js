@@ -4,8 +4,6 @@ const modalOpenBtn = document.getElementById('modal-open-btn');
 
 const postQuestionElement = document.getElementById('post-question');
 
-window.addEventListener('DOMContentLoaded', loadQuestions);
-
 const loadQuestions = async () => {
     try {
         const URL = 'https://jstackoverflow.jsclub.me/questions_manager/questions/all_questions';
@@ -202,3 +200,5 @@ const postQuestion = async () => {
 };
 
 postQuestionElement.addEventListener('click', postQuestion);
+
+window.addEventListener('DOMContentLoaded', loadQuestions);
