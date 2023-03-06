@@ -155,6 +155,8 @@ const postQuestion = async () => {
             content: questionContent,
         };
 
+        console.log(questionContent);
+
         const opt = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
