@@ -5,6 +5,8 @@ try {
 
     const signInBtn = document.getElementById('sign-in-btn');
 
+    console.log(email.value);
+
     const fetchUserCredential = async () => {
         const data = {
             email: email.value,

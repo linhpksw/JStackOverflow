@@ -72,7 +72,7 @@ def login_services():
 
     found_user = User.query.filter_by(email=email).first()
     if not found_user:
-        return jsonify({"error":"not found "})
+        return jsonify({"error":"not found"})
     else:
         if password and check_password_hash(found_user.password, password):
             login_user(found_user)
