@@ -4,6 +4,10 @@ const modalOpenBtn = document.getElementById('modal-open-btn');
 
 const postQuestionElement = document.getElementById('post-question');
 
+const signOut = document.getElementById('sign-out');
+
+const userName = document.getElementById('user-name');
+
 const loadQuestions = async () => {
     try {
         const URL = 'https://jstackoverflow.jsclub.me/questions_manager/questions/all_questions';
@@ -212,8 +216,6 @@ const postQuestion = async () => {
 
 postQuestionElement.addEventListener('click', postQuestion);
 
-window.addEventListener('DOMContentLoaded', loadQuestions);
-
 function calculateTime(questionTime) {
     const date = new Date(questionTime);
 
@@ -226,3 +228,21 @@ function calculateTime(questionTime) {
 
     return date.toLocaleString('vi-VN', options);
 }
+
+const signOutFeature = async () => {
+    try {
+        const URL = 'https://jstackoverflow.jsclub.me/logout';
+
+        const opt = {
+            method: 'POST',
+        };
+
+        await fetch(URL, opt);
+    } catch (err) {
+        console.log(err);
+    }
+};
+
+signOut.addEventListener('click', signOutFeature);
+
+window.addEventListener('DOMContentLoaded', loadQuestions);

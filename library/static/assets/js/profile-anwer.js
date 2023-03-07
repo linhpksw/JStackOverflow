@@ -25,7 +25,7 @@ loadStats();
 loadAnswers();
 loadInfos();
 loadActivity();
-loadStats();
+
 async function loadStats() {
   let info = document.getElementById("stats");
   let info1 = document.getElementById("total-answers");
@@ -82,6 +82,7 @@ async function loadInfos() {
     const response = await fetch(URL, opt);
     const jsonResponse = await response.json();
     let info = document.getElementById("general-info");
+    let info1 = document.getElementById("link-user");
     let htmls = `<div class="d-flex position-relative">
                     <a class="img-user"><img style="height: 175px;" class = "rounded-circle" src="${jsonResponse.avatar}"/></a>
                     <div class="d-flex">
@@ -192,12 +193,22 @@ async function loadInfos() {
                     </div>
                 </div>`;
     info.innerHTML = htmls;
+    let htmls1 = `
+    <div class = "me-2">
+    <a class="" href="https://jstackoverflow.jsclub.me/user/${id}">
+        <img class = "rounded-circle" style="height: 50px;" src="${jsonResponse.avatar}">
+    </a>
+</div>
+<div><a class="" href="https://jstackoverflow.jsclub.me/user/${id}" style="color: #fff;">${jsonResponse.name}</a></div>
+    `;
+    info1.innerHTML = htmls1;
   } catch (err) {
     console.log(err);
   }
 }
 async function loadStats() {
   let info = document.getElementById("stats");
+  let info1 = document.getElementById("total-answers");
   const URL1 = `https://jstackoverflow.jsclub.me/api/user/${id}/answers`;
   const URL2 = `https://jstackoverflow.jsclub.me/api/user/${id}/questions`;
   const opt = {
@@ -220,6 +231,12 @@ async function loadStats() {
                                     </div>
   `;
   info.innerHTML = htmls;
+  let htmls1 = `
+  <div>
+                                        <h4>${jsonResponse1.answers.length} Answers</h4>
+                                    </div>
+  `;
+  info1.innerHTML = htmls1;
 }
 async function loadAnswers() {
   try {
