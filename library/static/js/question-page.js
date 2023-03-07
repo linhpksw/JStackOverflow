@@ -65,8 +65,8 @@ getQuestionFromAPI();
 try{
 async function getQuestionFromAPI() {
   
-  const responseAPT = await fetch('https://jsonplaceholder.typicode.com/posts');
-  const data = await responseAPT.json();
+  const responseAPI = await fetch('https://jsonplaceholder.typicode.com/posts');
+  const data = await responseAPI.json();
   const divItem = document.createElement('div');
   divItem.innerHTML = `
   <div id="just-question">
