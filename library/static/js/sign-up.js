@@ -24,6 +24,9 @@ try {
 
             const opt = {
                 method: 'POST',
+                headers: {
+                    'Content-Type': 'form-data',
+                },
                 body: data,
             };
 
