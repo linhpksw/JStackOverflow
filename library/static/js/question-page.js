@@ -1,32 +1,32 @@
-const incrementCount = document.getElementById("increment-count");
-const decrementCount = document.getElementById("decrement-count");
+const incrementCount = document.getElementById('increment-count');
+const decrementCount = document.getElementById('decrement-count');
 
-const totalCount = document.getElementById("total-count");
-const h1 = document.getElementsByTagName("h1")[0];
+const totalCount = document.getElementById('total-count');
 
-const id = h1.textContent;
-console.log(id);
+const h1 = document.getElementsByTagName('h1')[0];
+const questionId = h1.textContent;
+console.log(questionId);
 
 var count = 0;
 
 totalCount.innerHTML = count;
 
 const handleIncrement = () => {
-  count++;
-  totalCount.innerHTML = count;
+    count++;
+    totalCount.innerHTML = count;
 };
 
 const handleDecrement = () => {
-  count--;
-  totalCount.innerHTML = count;
+    count--;
+    totalCount.innerHTML = count;
 };
-incrementCount.addEventListener("click", handleIncrement);
-decrementCount.addEventListener("click", handleDecrement);
+incrementCount.addEventListener('click', handleIncrement);
+decrementCount.addEventListener('click', handleDecrement);
 
 // get question
 
 {
-  /* <div id="just-question">
+    /* <div id="just-question">
 
 <h1 id="title-ques" class="title-question ">Làm gì khi có quá nhiều thứ để học ?</h1>
 <ul class="note-list text-white flex mb-4 text-sm">
@@ -56,18 +56,16 @@ decrementCount.addEventListener("click", handleDecrement);
 </div> */
 }
 
-const question = document.getElementById("just-question");
+const question = document.getElementById('just-question');
 
 getQuestionFromAPI();
 
 try {
-  async function renderQuestion() {
-    const responseAPT = await fetch(
-      "https://jstackoverflow.jsclub.me/questions_manager/questions/$ { id }"
-    );
-    const data = await responseAPT.json();
-    const divItem = document.createElement("div");
-    divItem.innerHTML = `
+    async function renderQuestion() {
+        const responseAPT = await fetch('https://jstackoverflow.jsclub.me/questions_manager/questions/$ { id }');
+        const data = await responseAPT.json();
+        const divItem = document.createElement('div');
+        divItem.innerHTML = `
   <div id="just-question">
 
 <h1 id="title-ques" class="title-question "> ${data.title} </h1>
@@ -95,15 +93,15 @@ try {
 </div>
 </div>
   `;
-  }
-  list.appendChild(divItem);
+    }
+    list.appendChild(divItem);
 } catch (err) {
-  console.error(err);
+    console.error(err);
 }
 
 //js answer
 
-const list = document.getElementById("list");
+const list = document.getElementById('list');
 
 getAnswerFromAPI();
 
@@ -143,6 +141,6 @@ getAnswerFromAPI();
 //add question
 
 function myFunction() {
-  const element = document.getElementById("fill-answer");
-  element.scrollIntoView();
+    const element = document.getElementById('fill-answer');
+    element.scrollIntoView();
 }
