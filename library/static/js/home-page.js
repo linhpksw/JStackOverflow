@@ -237,7 +237,12 @@ const signOutFeature = async () => {
             method: 'POST',
         };
 
-        await fetch(URL, opt);
+        const response = await fetch(URL, opt);
+        const jsonResponse = await response.json();
+
+        if (jsonResponse.success == 'logout successfully') {
+            window.location.href = '/';
+        }
     } catch (err) {
         console.log(err);
     }
