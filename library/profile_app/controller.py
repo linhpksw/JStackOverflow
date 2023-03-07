@@ -35,7 +35,7 @@ def get_all_users():
     return get_all_users_services()
 
 
-@profiles.route('/sign_up', methods=['GET', 'POST'])
+@profiles.route('/sign-up', methods=['GET', 'POST'])
 def sign_up():
     if request.method == 'GET':
         return render_template('sign-up.html')
