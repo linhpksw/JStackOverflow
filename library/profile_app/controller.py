@@ -15,8 +15,9 @@ def login():
     return login_services()
 
 @profiles.route('/home', methods=['GET'])
+#@login_required
 def home():
-    if current_user is None:
+    if not current_user.is_authenticated:
         return redirect('/')
     return render_template('home-page.html')  
 
