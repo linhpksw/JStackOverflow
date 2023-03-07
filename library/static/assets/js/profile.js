@@ -195,13 +195,79 @@ async function loadInfos() {
 }
 const loadAnswers = async () => {
   try {
-    const URL = `https://jstackoverflow.jsclub.me/user/${id}/answers`;
+    let info = document.getElementById("general-questions");
+    let htmls = ``;
+    const URL = `https://jstackoverflow.jsclub.me/user/${id}/questions`;
     const opt = {
       method: "GET",
     };
     const response = await fetch(URL, opt);
     const jsonResponse = await response.json();
-    console.log(jsonResponse.questions);
+    if (jsonResponse.questions.length < 5) {
+      for (let i = jsonResponse.questions.length - 1; i >= 0; i--) {
+        htmls += `
+            <div class="my-2 answers-list">
+            <div class="pe-3 ps-3 pt-3 d-flex">
+                <div class="me-3">
+                    <span>${jsonResponse.answers[i].rating}</span>
+                    <span>votes</span>
+                </div>
+            </div>
+            <div>
+                <div class="pe-3 ps-3 pb-3">
+                    <h5 class="title-ans">${jsonResponse.answers[i].title}</h5>
+                    <div class="d-flex">
+                        <div class="post-summary-tags d-flex">
+                            <ul class="ps-0">
+                                <li>${jsonResponse.answers[i].tag}</li>
+                            </ul>
+                        </div>
+                        <div class="d-flex align-items-center justify-content-end flex-grow-1">
+                            <div>
+                                answer at 00:02
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+            `;
+      }
+    }
+    for (
+      let i = jsonResponse.questions.length - 1;
+      i > jsonResponse.questions.length - 6;
+      i--
+    ) {
+      htmls += `
+        <div class="my-2 answers-list">
+        <div class="pe-3 ps-3 pt-3 d-flex">
+            <div class="me-3">
+                <span>${jsonResponse.answers[i].rating}</span>
+                <span>votes</span>
+            </div>
+        </div>
+        <div>
+            <div class="pe-3 ps-3 pb-3">
+                <h5 class="title-ans">${jsonResponse.answers[i].title}</h5>
+                <div class="d-flex">
+                    <div class="post-summary-tags d-flex">
+                        <ul class="ps-0">
+                            <li>${jsonResponse.answers[i].tag}</li>
+                        </ul>
+                    </div>
+                    <div class="d-flex align-items-center justify-content-end flex-grow-1">
+                        <div>
+                            answer at 00:02
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        `;
+    }
+    info.innerHTML = htmls;
   } catch (err) {
     console.log(err);
   }
@@ -222,7 +288,7 @@ async function loadQuestions() {
             <div class="my-2 answers-list">
             <div class="pe-3 ps-3 pt-3 d-flex">
                 <div class="me-3">
-                    <span>0</span>
+                    <span>${jsonResponse.questions[i].rating}</span>
                     <span>votes</span>
                 </div>
 
