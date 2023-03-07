@@ -219,12 +219,12 @@ async function loadInfos() {
                 </div>`;
     info.innerHTML = htmls;
     let htmls1 = `
-    <div>
-    <a class="" href="">
-        <img style="height: 50px;" src="${jsonResponse.avatar}">
+    <div class = "me-2">
+    <a class="" href="https://jstackoverflow.jsclub.me/user/${id}">
+        <img class = "rounded-circle" style="height: 50px;" src="${jsonResponse.avatar}">
     </a>
 </div>
-<div><a class="" href="">${jsonResponse.name}</a></div>
+<div><a class="" href="https://jstackoverflow.jsclub.me/user/${id}" style="color: #fff;">${jsonResponse.name}</a></div>
     `;
     info1.innerHTML = htmls1;
   } catch (err) {
