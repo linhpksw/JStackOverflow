@@ -15,7 +15,6 @@ def login():
     return login_services()
 
 @profiles.route('/home', methods=['GET'])
-@login_required
 def home():
     if not current_user:
         return redirect('/')
