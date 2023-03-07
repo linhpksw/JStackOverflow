@@ -25,9 +25,9 @@ try {
             const opt = {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'form-data',
+                    'Content-Type': 'application/json',
                 },
-                body: data,
+                body: JSON.stringify(data),
             };
 
             const URL = 'https://jstackoverflow.jsclub.me/sign-up';
