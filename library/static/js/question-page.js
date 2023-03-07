@@ -46,10 +46,10 @@ const getQuestion = async () => {
 
         const html = ` <!-- nội dung -->
         <div id="just-question">
-            <h1 id="question-title">${questionTitle}</h1>
+            <h1 id="question-title" class="text-white text-2xl">${questionTitle}</h1>
             <ul class="note-list mb-4 flex text-sm text-white">
                 <li class="mr-4 font-semibold">
-                    Asked<span id="post-time" class="note-item ml-2">${postTime}</span>
+                    Asked<span id="post-time" class="note-item ml-2">${calculateTime(postTime)}</span>
                 </li>
             </ul>
             <hr width="100%" />
@@ -189,3 +189,16 @@ const getQuestion = async () => {
 // const totalCount = document.getElementById('total-count');
 
 window.addEventListener('DOMContentLoaded', getQuestion);
+
+function calculateTime(questionTime) {
+    const date = new Date(questionTime);
+
+    const options = {
+        weekday: 'long',
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+    };
+
+    return date.toLocaleString('vi-VN', options);
+}
