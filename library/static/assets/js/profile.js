@@ -9,6 +9,8 @@ const searchBar = document.getElementById("search-text");
 let data = [];
 loadInfos();
 loadQuestions();
+loadAbout();
+loadAnswers();
 searchBar.addEventListener("keyup", (e) => {
   const searchString = e.target.value.toLowerCase();
   const filteredCharacters = data.filter((character) => {
@@ -24,7 +26,7 @@ const loadStats = async () => {
   const response = await fetch(URL, opt);
   const jsonResponse = await response.json();
 };
-const loadAbout = async () => {
+async function loadAbout() {
   try {
     let info = document.getElementById("about");
     const URL = `https://jstackoverflow.jsclub.me/api/user/${id}`;
@@ -61,7 +63,7 @@ const loadAbout = async () => {
   } catch (err) {
     console.log(err);
   }
-};
+}
 async function loadInfos() {
   try {
     const URL = `https://jstackoverflow.jsclub.me/api/user/${id}`;
@@ -185,7 +187,7 @@ async function loadInfos() {
     console.log(err);
   }
 }
-const loadAnswers = async () => {
+async function loadAnswers() {
   try {
     let info = document.getElementById("general-answers");
     let htmls = ``;
@@ -263,7 +265,7 @@ const loadAnswers = async () => {
   } catch (err) {
     console.log(err);
   }
-};
+}
 async function loadQuestions() {
   try {
     let info = document.getElementById("general-questions");
