@@ -20,8 +20,6 @@ try {
                 phone_number: phone.value,
             };
 
-            console.log(data);
-
             const opt = {
                 method: 'POST',
                 headers: {
