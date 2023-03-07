@@ -231,7 +231,7 @@ function calculateTime(questionTime) {
 
 const signOutFeature = async () => {
     try {
-        const URL = 'https://jstackoverflow.jsclub.me/log-out';
+        const URL = 'https://jstackoverflow.jsclub.me/logout';
 
         const opt = {
             method: 'POST',
