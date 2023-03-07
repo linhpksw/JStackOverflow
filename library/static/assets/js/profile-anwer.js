@@ -223,7 +223,7 @@ async function loadStats() {
   info.innerHTML = htmls;
   let htmls1 = `
   <div>
-                                        <h4>${jsonResponse1.questions.length} Questions</h4>
+                                        <h4>${jsonResponse1.answers.length} Answers</h4>
                                     </div>
   `;
   info1.innerHTML = htmls1;
