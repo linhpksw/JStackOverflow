@@ -23,9 +23,9 @@ const getQuestion = async () => {
         const questionTitle = document.getElementById('question-title');
         const postTime = document.getElementById('post-time');
 
-        const questionContent = quill.getContents();
+        // const questionContent = quill.getContents();
 
-        const URL = `https://jstackoverflow.jsclub.me/questions_manager/questions/${questionId}`;
+        const URL = `https://jstackoverflow.jsclub.me/api/questions_manager/questions/${questionId}`;
 
         const opt = {
             method: 'GET',
