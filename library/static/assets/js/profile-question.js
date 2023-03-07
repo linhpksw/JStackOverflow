@@ -25,7 +25,6 @@ loadQuestions();
 loadStats();
 loadInfos();
 loadActivity();
-loadStats();
 async function loadStats() {
   let info = document.getElementById("stats");
   let info1 = document.getElementById("total-questions");
