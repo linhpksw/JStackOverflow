@@ -7,7 +7,7 @@ console.log(id);
 h1.remove();
 const searchBar = document.getElementById("search-text");
 let data = [];
-
+loadQuestions();
 searchBar.addEventListener("keyup", (e) => {
   const searchString = e.target.value.toLowerCase();
   const filteredCharacters = data.filter((character) => {
