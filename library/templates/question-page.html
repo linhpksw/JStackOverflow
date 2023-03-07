@@ -228,7 +228,28 @@
                     <!-- ở giữa -->
                     <div id="content" class="my-4 mx-5 flex h-full flex-col gap-5 rounded-2xl py-5 px-5">
                         <!-- câu hỏi -->
-                        <div id="question-element"></div>
+                        <div id="question-element">
+                            <h1 id="question-title" class="title-question">Làm gì khi có quá nhiều thứ để học ?</h1>
+                            <ul class="note-list mb-4 flex text-sm text-white">
+                                <li class="mr-4 font-semibold">
+                                    Askedd<span id="post-time" class="note-item ml-2">today</span>
+                                </li>
+                                <li class="mr-4 font-semibold">Modified<span class="note-item ml-2">today</span></li>
+                                <li class="mr-4 font-semibold">Viewd<span class="note-item ml-2">24 times</span></li>
+                            </ul>
+                            <hr width="100%" />
+                            <div class="flex p-5">
+                                <div class="float-left mr-3 px-1">
+                                    <button id="increment-count" class="material-icons text-xl text-white">
+                                        arrow_drop_up
+                                    </button>
+                                    <div id="total-count" class="text-center align-middle text-white"></div>
+                                    <button id="decrement-count" class="material-icons text-4xl text-white">
+                                        arrow_drop_down
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
 
                         <!-- câu trả lời  -->
                         <div class="my-10">
