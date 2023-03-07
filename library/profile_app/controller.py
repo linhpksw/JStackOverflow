@@ -15,10 +15,10 @@ def login():
     return login_services()
 
 @profiles.route('/home', methods=['GET'])
-@login_required
+#@login_required
 def home():
-    if not current_user:
-        return redirect(url_for('index'))
+    if not current_user.is_authenticated:
+        return redirect('/')
     return render_template('home-page.html')  
 
         
