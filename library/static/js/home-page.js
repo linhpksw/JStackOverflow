@@ -50,10 +50,6 @@ discardBtn.addEventListener('click', () => {
     modalQuestion.classList.remove('modal-open');
 });
 
-function calculateTime(questionTime) {
-    return questionTime.toLocaleString('vi-VN');
-}
-
 function appendQuestion(questionId, askerId, questionTitle, questionTag, questionTime, askerName) {
     const questionsElement = document.getElementById('questions');
 
@@ -217,3 +213,8 @@ const postQuestion = async () => {
 postQuestionElement.addEventListener('click', postQuestion);
 
 window.addEventListener('DOMContentLoaded', loadQuestions);
+
+function calculateTime(questionTime) {
+    console.log(questionTime.toLocaleString('vi-VN'));
+    return questionTime.toLocaleString('vi-VN');
+}
