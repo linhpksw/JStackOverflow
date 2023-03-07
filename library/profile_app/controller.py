@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, redirect, url_for, jsonify,session
+from flask import Blueprint, render_template, redirect, url_for, jsonify,session, request
 from .services import sign_up_services, login_services, logout_services, delete_user_services, load_user, see_profile_services, edit_profile_services, change_avatar_services, get_question_by_user_id, get_answer_by_user_id, get_all_users_services, get_info_user_services
 from flask_login import login_required, login_user, LoginManager, logout_user, current_user
 from library.extensions import login_manager
@@ -30,10 +30,18 @@ def get_info(id):
 def get_all_users():
     return get_all_users_services()
     
-
-@profiles.route('/sign_up', methods=['POST'])
+@profiles.route('/sign_up', methods=['GET', 'POST'])
 def sign_up():
-     return  sign_up_services() #, render_template('draft.html')
+    if request.method == 'GET':
+        return  render_template('sign-up.html')
+    elif request.method == 'POST':
+        return  sign_up_services()
+
+
+ 
+# @profiles.route('/sign_up', methods=['POST'])
+# def sign_up():
+#      return  sign_up_services() #, render_template('draft.html')
 
 
 
@@ -77,13 +85,24 @@ def change_avatar(id):
     return change_avatar_services(id)
 
 
-@profiles.route('/user/<int:id>/questions', methods=['GET'])
+@profiles.route('api/user/<int:id>/questions', methods=['GET'])
 @login_required
 def get_questions(id):
     return get_question_by_user_id(id)
 
 
-@profiles.route('/user/<int:id>/answers', methods=['GET'])
+@profiles.route('api/user/<int:id>/answers', methods=['GET'])
 @login_required
 def get_answers(id):
     return get_answer_by_user_id(id)
+
+@profiles.route('/user/<int:id>/questions', methods=['GET'])
+@login_required
+def get_questions(id):
+    return render_template('profile_page_question.html', id =id)
+
+
+@profiles.route('/user/<int:id>/answers', methods=['GET'])
+@login_required
+def get_answers(id):
+    return render_template('profile_page_answer.html', id =id)
