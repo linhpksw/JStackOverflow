@@ -230,19 +230,3 @@ function calculateTime(questionTime) {
 
     return date.toLocaleString('vi-VN', options);
 }
-
-const signOutFeature = async () => {
-    try {
-        const URL = 'https://jstackoverflow.jsclub.me/log-out';
-
-        const opt = {
-            method: 'POST',
-        };
-
-        const response = await fetch(URL, opt);
-    } catch (err) {
-        console.log(err);
-    }
-};
-
-signOut.addEventListener('click', signOutFeature);
