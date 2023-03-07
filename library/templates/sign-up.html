@@ -4,140 +4,143 @@
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Sign up page</title>
+        <title>Sign up</title>
 
-        <link rel="stylesheet" href="../../src/static/css/signup-i.css" />
-        <link rel="stylesheet" href="../../src/static/css/signup-o.css" />
+        <!-- TODO -->
+        <link rel="stylesheet" href="{{ url_for('static',filename ='css/signin-i.css')}}" />
+        <link rel="stylesheet" href="{{ url_for('static',filename ='css/signin-o.css')}}" />
+
+        <!-- <link rel="stylesheet" href="../../library/static/css/signup-i.css" />
+        <link rel="stylesheet" href="../../library/static/css/signup-o.css" /> -->
     </head>
     <body>
-        <div class="flex h-screen w-full flex-col items-center justify-center">
-            <h1 class="mb-5 text-3xl font-bold text-gray-900 dark:text-white md:text-2xl">
-                Create your JStackOverflow account
-            </h1>
-            <form class="w-1/2">
-                <div class="group relative z-0 mb-6 w-full">
-                    <input
-                        type="email"
-                        name="floating_email"
-                        id="floating_email"
-                        class="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-2.5 px-0 text-sm text-gray-900 focus:border-blue-600 focus:outline-none focus:ring-0 dark:border-gray-600 dark:text-white dark:focus:border-blue-500"
-                        placeholder=" "
-                        required />
-                    <label
-                        for="floating_email"
-                        class="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-blue-600 dark:text-gray-400 peer-focus:dark:text-blue-500"
-                        >Email address</label
-                    >
-                </div>
-                <div class="group relative z-0 mb-6 w-full">
-                    <input
-                        type="password"
-                        name="floating_password"
-                        id="floating_password"
-                        class="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-2.5 px-0 text-sm text-gray-900 focus:border-blue-600 focus:outline-none focus:ring-0 dark:border-gray-600 dark:text-white dark:focus:border-blue-500"
-                        placeholder=" "
-                        required />
-                    <label
-                        for="floating_password"
-                        class="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-blue-600 dark:text-gray-400 peer-focus:dark:text-blue-500"
-                        >Password</label
-                    >
-                </div>
-                <div class="group relative z-0 mb-6 w-full">
-                    <input
-                        type="password"
-                        name="repeat_password"
-                        id="floating_repeat_password"
-                        class="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-2.5 px-0 text-sm text-gray-900 focus:border-blue-600 focus:outline-none focus:ring-0 dark:border-gray-600 dark:text-white dark:focus:border-blue-500"
-                        placeholder=" "
-                        required />
-                    <label
-                        for="floating_repeat_password"
-                        class="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-blue-600 dark:text-gray-400 peer-focus:dark:text-blue-500"
-                        >Confirm password</label
-                    >
-                </div>
-                <div class="grid md:grid-cols-2 md:gap-6">
-                    <div class="group relative z-0 mb-6 w-full">
-                        <input
-                            type="text"
-                            name="floating_first_name"
-                            id="floating_first_name"
-                            class="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-2.5 px-0 text-sm text-gray-900 focus:border-blue-600 focus:outline-none focus:ring-0 dark:border-gray-600 dark:text-white dark:focus:border-blue-500"
-                            placeholder=" "
-                            required />
-                        <label
-                            for="floating_first_name"
-                            class="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-blue-600 dark:text-gray-400 peer-focus:dark:text-blue-500"
-                            >First name</label
-                        >
-                    </div>
-                    <div class="group relative z-0 mb-6 w-full">
-                        <input
-                            type="text"
-                            name="floating_last_name"
-                            id="floating_last_name"
-                            class="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-2.5 px-0 text-sm text-gray-900 focus:border-blue-600 focus:outline-none focus:ring-0 dark:border-gray-600 dark:text-white dark:focus:border-blue-500"
-                            placeholder=" "
-                            required />
-                        <label
-                            for="floating_last_name"
-                            class="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-blue-600 dark:text-gray-400 peer-focus:dark:text-blue-500"
-                            >Last name</label
-                        >
-                    </div>
-                </div>
-                <div class="grid md:grid-cols-2 md:gap-6">
-                    <div class="group relative z-0 mb-6 w-full">
-                        <input
-                            type="tel"
-                            pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
-                            name="floating_phone"
-                            id="floating_phone"
-                            class="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-2.5 px-0 text-sm text-gray-900 focus:border-blue-600 focus:outline-none focus:ring-0 dark:border-gray-600 dark:text-white dark:focus:border-blue-500"
-                            placeholder=" "
-                            required />
-                        <label
-                            for="floating_phone"
-                            class="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-blue-600 dark:text-gray-400 peer-focus:dark:text-blue-500"
-                            >Phone number (123-456-7890)</label
-                        >
-                    </div>
-                    <div class="group relative z-0 mb-6 w-full">
-                        <input
-                            type="text"
-                            name="floating_company"
-                            id="floating_company"
-                            class="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-2.5 px-0 text-sm text-gray-900 focus:border-blue-600 focus:outline-none focus:ring-0 dark:border-gray-600 dark:text-white dark:focus:border-blue-500"
-                            placeholder=" "
-                            required />
-                        <label
-                            for="floating_company"
-                            class="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-blue-600 dark:text-gray-400 peer-focus:dark:text-blue-500"
-                            >Company (Ex. Google)</label
-                        >
-                    </div>
-                </div>
+        <div class="flex h-screen items-center justify-center bg-gray-900">
+            <div class="rounded-lg border border-gray-700 bg-gray-800 shadow">
+                <div class="space-y-4 p-6">
+                    <h1 class="wrap mb-5 text-3xl font-bold text-white">Create your JStackOverflow account</h1>
 
-                <div class="mt-3 flex gap-10">
-                    <button
-                        class="group relative mb-2 mr-2 inline-flex items-center justify-center overflow-hidden rounded-lg bg-gradient-to-br from-cyan-500 to-blue-500 p-0.5 text-sm font-medium text-gray-900 hover:text-white focus:outline-none focus:ring-4 focus:ring-cyan-200 group-hover:from-cyan-500 group-hover:to-blue-500 dark:text-white dark:focus:ring-cyan-800">
-                        <a
-                            href="./sign-in.html"
-                            class="relative rounded-md bg-white px-5 py-2.5 transition-all duration-75 ease-in group-hover:bg-opacity-0 dark:bg-gray-900">
-                            Sign in instead
-                        </a>
-                    </button>
+                    <form>
+                        <div class="group relative z-0 mb-6 w-full">
+                            <input
+                                type="email"
+                                name="floating_email"
+                                id="email"
+                                class="peer block w-full appearance-none border-0 border-b-2 border-gray-600 bg-transparent py-2.5 px-0 text-sm text-white focus:border-blue-500 focus:outline-none focus:ring-0"
+                                placeholder=" "
+                                required />
+                            <label
+                                for="floating_email"
+                                class="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-400 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-blue-500"
+                                >Email address</label
+                            >
+                        </div>
+                        <div class="group relative z-0 mb-6 w-full">
+                            <input
+                                type="password"
+                                name="floating_password"
+                                id="password"
+                                class="peer block w-full appearance-none border-0 border-b-2 border-gray-600 bg-transparent py-2.5 px-0 text-sm text-white focus:border-blue-500 focus:outline-none focus:ring-0"
+                                placeholder=" "
+                                required />
+                            <label
+                                for="floating_password"
+                                class="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-400 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-blue-500"
+                                >Password</label
+                            >
+                        </div>
+                        <div class="group relative z-0 mb-6 w-full">
+                            <input
+                                type="password"
+                                name="repeat_password"
+                                id="confirm-password"
+                                class="peer block w-full appearance-none border-0 border-b-2 border-gray-600 bg-transparent py-2.5 px-0 text-sm text-white focus:border-blue-500 focus:outline-none focus:ring-0"
+                                placeholder=" "
+                                required />
+                            <label
+                                for="floating_repeat_password"
+                                class="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-400 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-blue-500"
+                                >Confirm password</label
+                            >
+                        </div>
+                        <div class="">
+                            <div class="group relative z-0 mb-6 w-full">
+                                <input
+                                    type="text"
+                                    name="floating_first_name"
+                                    id="full-name"
+                                    class="peer block w-full appearance-none border-0 border-b-2 border-gray-600 bg-transparent py-2.5 px-0 text-sm text-white focus:border-blue-500 focus:outline-none focus:ring-0"
+                                    placeholder=" "
+                                    required />
+                                <label
+                                    for="floating_first_name"
+                                    class="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-400 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-blue-500"
+                                    >Full name</label
+                                >
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-2 gap-6">
+                            <div class="group relative z-0 mb-6 w-full">
+                                <input
+                                    datepicker
+                                    datepicker-autohide
+                                    type="text"
+                                    name="floating_first_name"
+                                    id="date-picker"
+                                    class="peer block w-full appearance-none border-0 border-b-2 border-gray-600 bg-transparent py-2.5 px-0 text-sm text-white focus:border-blue-500 focus:outline-none focus:ring-0"
+                                    placeholder=" "
+                                    required />
+                                <label
+                                    for="floating_first_name"
+                                    class="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-400 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-blue-500"
+                                    >Date of birth</label
+                                >
+                            </div>
 
-                    <button
-                        type="button"
-                        class="mr-2 mb-2 rounded-lg bg-gradient-to-br from-pink-500 to-orange-400 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-gradient-to-bl focus:outline-none focus:ring-4 focus:ring-pink-200 dark:focus:ring-pink-800">
-                        Sign up
-                    </button>
+                            <div class="group relative z-0 mb-6 w-full">
+                                <input
+                                    type="tel"
+                                    pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                                    name="floating_phone"
+                                    id="phone"
+                                    class="peer block w-full appearance-none border-0 border-b-2 border-gray-600 bg-transparent py-2.5 px-0 text-sm text-white focus:border-blue-500 focus:outline-none focus:ring-0"
+                                    placeholder=" "
+                                    required />
+                                <label
+                                    for="floating_phone"
+                                    class="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-400 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-blue-500"
+                                    >Phone number</label
+                                >
+                            </div>
+                        </div>
+
+                        <div class="mt-3 flex gap-10">
+                            <button
+                                class="group relative mb-2 mr-2 inline-flex items-center justify-center overflow-hidden rounded-lg bg-gradient-to-br from-cyan-500 to-blue-500 p-0.5 text-sm font-medium text-white hover:text-white focus:outline-none focus:ring-4 focus:ring-cyan-800 group-hover:from-cyan-500 group-hover:to-blue-500">
+                                <a
+                                    href="/"
+                                    class="relative rounded-md bg-gray-900 px-5 py-2.5 transition-all duration-75 ease-in group-hover:bg-opacity-0">
+                                    Sign in instead
+                                </a>
+                            </button>
+
+                            <button
+                                id="sign-up-btn"
+                                type="button"
+                                class="mr-2 mb-2 rounded-lg bg-gradient-to-br from-pink-500 to-orange-400 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-gradient-to-bl focus:outline-none focus:ring-4 focus:ring-pink-800">
+                                Sign up
+                            </button>
+                        </div>
+                    </form>
                 </div>
-            </form>
+            </div>
         </div>
 
-        <script src="../../node_modules/flowbite/dist/flowbite.min.js"></script>
+        <!-- TODO -->
+        <!-- <script src="../static/js/flowbite.min.js"></script>
+        <script src="../static/js/datepicker.js"></script>
+        <script src="../static/js/sign-up.js"></script> -->
+
+        <script src="{{url_for('static',filename ='js/sign-up.js')}}"></script>
+        <script src="{{url_for('static',filename ='js/datepicker.js')}}"></script>
     </body>
 </html>
