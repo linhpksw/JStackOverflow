@@ -1,6 +1,7 @@
 let list = document.getElementById("list");
 const search = document.getElementById("search-text");
-const id = 124859;
+const id = "{{ id }}";
+console.log(id);
 const searchBar = document.getElementById("search-text");
 let data = [];
 
@@ -11,7 +12,45 @@ searchBar.addEventListener("keyup", (e) => {
   });
   console.log(filteredCharacters);
 });
-loadQuestions();
+const loadAbout = async () => {
+  try {
+    const URL = "https://jstackoverflow.jsclub.me/api/user/832744";
+    const opt = {
+      method: "GET",
+    };
+    const response = await fetch(URL, opt);
+    const jsonResponse = await response.json();
+    console.log(jsonResponse.questions);
+  } catch (err) {
+    console.log(err);
+  }
+};
+const loadInfos = async () => {
+  try {
+    const URL = "https://jstackoverflow.jsclub.me/api/user/832744";
+    const opt = {
+      method: "GET",
+    };
+    const response = await fetch(URL, opt);
+    const jsonResponse = await response.json();
+    console.log(jsonResponse.questions);
+  } catch (err) {
+    console.log(err);
+  }
+};
+const loadAnswers = async () => {
+  try {
+    const URL = "https://jstackoverflow.jsclub.me/user/872805/answers";
+    const opt = {
+      method: "GET",
+    };
+    const response = await fetch(URL, opt);
+    const jsonResponse = await response.json();
+    console.log(jsonResponse.questions);
+  } catch (err) {
+    console.log(err);
+  }
+};
 const loadQuestions = async () => {
   try {
     const URL = "https://jstackoverflow.jsclub.me/user/872805/questions";
@@ -84,7 +123,6 @@ const getDataFakeAPI = async () => {
     console.error(err);
   }
 };
-console.log(data);
 function renderAbout(users) {
   let info = document.getElementById("edit-about");
   let htmls = "";
