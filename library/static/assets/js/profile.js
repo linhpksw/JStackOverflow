@@ -17,13 +17,54 @@ searchBar.addEventListener("keyup", (e) => {
 });
 const loadAbout = async () => {
   try {
-    const URL = `https://jstackoverflow.jsclub.me/api/user/${id}`;
+    let info = document.getElementById("general-questions");
+    let htmls = ``;
+    const URL = `https://jstackoverflow.jsclub.me/api/get_info/${id}`;
     const opt = {
       method: "GET",
     };
     const response = await fetch(URL, opt);
     const jsonResponse = await response.json();
-    console.log(jsonResponse.questions);
+
+    for (
+      let i = jsonResponse.questions.length - 1;
+      i > jsonResponse.questions.length - 6;
+      i--
+    ) {
+      htmls += `
+            <div class="my-2 answers-list">
+            <div class="pe-3 ps-3 pt-3 d-flex">
+                <div class="me-3">
+                    <span>0</span>
+                    <span>votes</span>
+                </div>
+    
+                <div class="ms-3">
+                    <span>0</span>
+                    <span>views</span>
+                </div>
+            </div>
+            <div>
+                <div class="pe-3 ps-3 pb-3">
+                    <h5 class="title-ans">${jsonResponse.questions[i].title}</h5>
+                    <div class="d-flex">
+                        <div class="post-summary-tags d-flex">
+                            <ul class="ps-0">
+                                <li>${jsonResponse.questions[i].tag}</li>
+                            </ul>
+                        </div>
+                        <div class="d-flex align-items-center justify-content-end flex-grow-1">
+                            <div>
+                                answer at 00:02
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+            `;
+    }
+    info.innerHTML = htmls;
   } catch (err) {
     console.log(err);
   }
@@ -36,6 +77,117 @@ const loadInfos = async () => {
     };
     const response = await fetch(URL, opt);
     const jsonResponse = await response.json();
+
+    let htmls = `<div class="d-flex position-relative">
+                    <a class="img-user"><img src="${jsonResponse.avatar}" /></a>
+                    <div class="d-flex">
+                        <div class="d-flex align-items-center infor">
+                            <div class="me-3">
+                                <div class="d-flex ms-3">
+                                    <div class="me-3">
+                                        <h3>${jsonResponse.name}</h3>
+                                    </div>
+                                    <!-- <div class="d-flex address">
+                                        <div class="me-2">
+                                            <i class="fa-solid fa-location-dot fa-lg mt-3"></i>
+                                        </div>
+                                        <div>
+                                            <p class="mt-2"></p>
+                                        </div>
+                                    </div> -->
+                                </div>
+
+                                <div class="">
+                                    <ul class="list-reset ms-3">
+                                        <li class="mb-2 mt-2">
+                                            <div class="d-flex me-3">
+                                                <div>
+                                                    <i class="fa-solid fa-venus-mars me-2"></i>
+                                                </div>
+                                                <div>Gender : ${jsonResponse.gender}</div>
+                                            </div>
+                                        </li>
+
+                                        <li class="mb-2 mt-2">
+                                            <div class="d-flex me-3">
+                                                <div>
+                                                    <i class="fa-solid fa-cake-candles me-2"></i>
+                                                </div>
+                                                <div>DoB: </div>
+                                            </div>
+                                        </li>
+                                        
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex position-absolute end-0 top-0">
+                        <a class="btn-custom-var d-flex me-1 ms-1 btn" type="" href="" type="button"
+                            data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                            <i class="fa-solid fa-pen me-1 mt-1"></i>
+                            Edit profile
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="fade modal" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
+                    tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="staticBackdropLabel">
+                                    Edit your profile
+                                </h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="d-flex align-items-start flex-column">
+                                    <div class="my-2 mx-auto">
+                                        <div class="d-flex align-items-start flex-column">
+                                            <div class="form-floating mb-3">
+                                                <input type="email" class="input-change form-control" id="floatingName"
+                                                    placeholder="Name" value="User_name" />
+                                                <label for="floatingInput">Display name</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="my-2 mx-auto">
+                                        <div class="d-flex align-items-start flex-column">
+                                            <div class="form-floating mb-3">
+                                                <input type="email" class="input-change form-control" id="floatingName"
+                                                    placeholder="Name" value="HA NOI CITY" />
+                                                <label for="floatingInput">Location</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="my-2 mx-auto">
+                                        <div class="d-flex align-items-start flex-column">
+                                            <div class="form-floating mb-3">
+                                                <textarea id="floatingTextarea" value=""
+                                                    class="input-change form-control"
+                                                    placeholder="Write something fun about you..." style="
+                                                        height: 150px;
+                                                    "></textarea>
+                                                <label for="floatingTextarea">About me</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn-secondary btn" data-bs-dismiss="modal">
+                                    Close
+                                </button>
+                                <button type="button" class="btn-primary btn">
+                                    Save changes
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>`;
+
     console.log(jsonResponse.questions);
   } catch (err) {
     console.log(err);
