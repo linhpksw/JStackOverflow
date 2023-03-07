@@ -160,7 +160,8 @@ def see_profile_services(id):
                                         "education": found_user.education,
                                         "experience": found_user.experience,
                                         "year_of_experience": found_user.year_of_experience,
-                                        "avatar": found_user.avatar})  
+                                        "avatar": found_user.avatar,
+                                        "id": found_user.id})  
     except Exception as e:
         print('an error occur:', e)
         return jsonify({"Error:", e}) 

@@ -11,7 +11,11 @@ from flask import jsonify
 main = Blueprint('main', __name__)
 
 # setup the questions services
-       
+@main.route('/questions_manager/questions/question',methods=['GET'])
+def questions_page():
+        return render_template('question-page.html') 
+
+      
 @main.route('/questions_manager/add_question', methods=['POST'])
 @login_required
 def add_questions():

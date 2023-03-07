@@ -1,19 +1,3 @@
-const bgcolor = document.querySelector(".img-user");
-const colors = [
-  "#00aefd",
-  "#ffa400",
-  "#07a787",
-  "#ff7870",
-  "black",
-  "pink",
-  "yellow",
-  "#e74c3c",
-  "#2979ff",
-];
-bgcolor.addEventListener("click", function () {
-  const randomColor = colors[Math.floor(Math.random() * colors.length)];
-  document.querySelector(".img-user").style.backgroundColor = randomColor;
-});
 let list = document.getElementById("list");
 const search = document.getElementById("search-text");
 const id = 124859;
@@ -27,17 +11,71 @@ searchBar.addEventListener("keyup", (e) => {
   });
   console.log(filteredCharacters);
 });
-
+loadQuestions();
+const loadQuestions = async () => {
+  try {
+    const URL = "https://jstackoverflow.jsclub.me/user/872805/questions";
+    const opt = {
+      method: "GET",
+    };
+    const response = await fetch(URL, opt);
+    const jsonResponse = await response.json();
+    console.log(jsonResponse.questions);
+  } catch (err) {
+    console.log(err);
+  }
+};
 const getDataFakeAPI = async () => {
   try {
-    const responseAPI = await fetch(
-      "https://jsonplaceholder.typicode.com/users"
+    // const responseAPI = await fetch(
+    //   "https://jsonplaceholder.typicode.com/users"
+    // );
+    // data = await responseAPI.json();
+    const responseQuestions = await fetch(
+      "https://jstackoverflow.jsclub.me/user/872805/questions"
     );
-    data = await responseAPI.json();
+    const { questions } = await responseQuestions.json();
+    function renderGeneralQuestions() {
+      let info = document.getElementById("general-questions");
+      let tmp = questions.slice(-5);
+      let htmls = "";
+      for (let i = 4; i >= 0; i--) {
+        htmls += `
+                <div class="mb-2 answers-list">
+                <div class="pe-3 ps-3 pt-3 d-flex">
+                    <div class="me-3">
+                        <span>31</span>
+                        <span>votes</span>
+                    </div>
+                    <div class="post-summary-stats">
+                        <svg aria-hidden="true" class="svg-icon iconCheckmarkSm" width="14"
+                            height="14" viewBox="0 0 14 14">
+                            <path d=="M13 3.41 11.59 2 5 8.59 2.41 6 1 7.41l4 4 8-8Z"></path>
+                        </svg>
+                        Accept
+                    </div>
+                </div>
+                <div>
+                    <div class="pe-3 ps-3 pb-3">
+                        <h5 class="title-ans">${tmp[i].title}</h5>
+                        <div class="d-flex">
+                            <div class="d-flex align-items-center justify-content-end flex-grow-1">
+                                <div>
+                                    answer at 00:02
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+              </div>
+              `;
+      }
+      info.innerHTML = htmls;
+    }
+
     let userIds = data.filter(function (user) {
       return user.id == 1;
     });
-    console.log(data);
     renderGeneralInfo(userIds);
     renderGeneralAnswer();
     renderGeneralQuestions();
@@ -46,17 +84,18 @@ const getDataFakeAPI = async () => {
     console.error(err);
   }
 };
+console.log(data);
 function renderAbout(users) {
   let info = document.getElementById("edit-about");
   let htmls = "";
   let tmp = users.filter(function (user) {
-    return user.id === 1;
+    return user.id == 1;
   });
   console.log(tmp);
-  if (tmp.length === 0) {
+  if (tmp.length == 0) {
     htmls += `<div id = "edit-about">
         <div class="about-me">
-            <div class="empty-box">
+            <div class="empty-box"></div>
                 <p class="about-txt">
                     Your about me section is
                     currently blank. You want to
@@ -71,49 +110,13 @@ function renderAbout(users) {
   } else {
     htmls += `
         <div>
-            ${tmp.name}
+            ${tmp[0].name}
         </div>
         `;
   }
   info.innerHTML = htmls;
 }
-function renderGeneralQuestions() {
-  let info = document.getElementById("general-questions");
-  let tmp = data.slice(-5);
-  let htmls = "";
-  for (let i = 4; i >= 0; i--) {
-    htmls += `
-          <div class="mb-2 answers-list">
-          <div class="pe-3 ps-3 pt-3 d-flex">
-              <div class="me-3">
-                  <span>31</span>
-                  <span>votes</span>
-              </div>
-              <div class="post-summary-stats">
-                  <svg aria-hidden="true" class="svg-icon iconCheckmarkSm" width="14"
-                      height="14" viewBox="0 0 14 14">
-                      <path d=="M13 3.41 11.59 2 5 8.59 2.41 6 1 7.41l4 4 8-8Z"></path>
-                  </svg>
-                  Accept
-              </div>
-          </div>
-          <div>
-              <div class="pe-3 ps-3 pb-3">
-                  <h5 class="title-ans">${tmp[i].name}</h5>
-                  <div class="d-flex">
-                      <div class="d-flex align-items-center justify-content-end flex-grow-1">
-                          <div>
-                              answer at 00:02
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
-        </div>
-        `;
-  }
-  info.innerHTML = htmls;
-}
+
 function renderGeneralAnswer() {
   let info = document.getElementById("general-answer");
   let tmp = data.slice(-5);
@@ -123,16 +126,16 @@ function renderGeneralAnswer() {
         <div class="mb-2 answers-list">
         <div class="pe-3 ps-3 pt-3 d-flex">
             <div class="me-3">
-                <span>31</span>
+                <span>0</span>
                 <span>votes</span>
             </div>
-            <div class="post-summary-stats">
-                <svg aria-hidden="true" class="svg-icon iconCheckmarkSm" width="14"
-                    height="14" viewBox="0 0 14 14">
-                    <path d=="M13 3.41 11.59 2 5 8.59 2.41 6 1 7.41l4 4 8-8Z"></path>
-                </svg>
-                Accept
-            </div>
+            // <div class="post-summary-stats">
+            //     <svg aria-hidden="true" class="svg-icon iconCheckmarkSm" width="14"
+            //         height="14" viewBox="0 0 14 14">
+            //         <path d=="M13 3.41 11.59 2 5 8.59 2.41 6 1 7.41l4 4 8-8Z"></path>
+            //     </svg>
+            //     Accept
+            // </div>
         </div>
         <div>
             <div class="pe-3 ps-3 pb-3">

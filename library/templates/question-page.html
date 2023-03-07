@@ -6,10 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Question Page</title>
-    <link rel="stylesheet" href="{{url_for('static',filename ='css/question-i.css')}}" />
-    <link rel="stylesheet" href="{{url_for('static',filename ='css/question-o.css')}}" />
-    <link rel="stylesheet" href="../static/css/question-i.css">
-    <link rel="stylesheet" href="../static/css/question-o.css">
+    <link rel="stylesheet" href="{{url_for('static',filename ='css/question-i.css')}}" >
+    <link rel="stylesheet" href="{{url_for('static',filename ='css/question-o.css')}}" >
+     <!-- <link rel="stylesheet" href="../static/css/question-i.css">
+    <link rel="stylesheet" href="../static/css/question-o.css">  -->
 
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -193,34 +193,37 @@
                 <div id="content" class=" flex h-full flex-col gap-5 py-5 px-5 my-4 rounded-2xl mx-5">
                     <!-- câu hỏi -->
                     <div>
+                     <div id="just-question">
 
-                    <h1 id="title-ques" class="title-question ">Làm gì khi có quá nhiều thứ để học ?</h1>
-                    <ul class="note-list text-white flex mb-4 text-sm">
-                        <li class="mr-4 font-semibold">Askedd<span class="note-item ml-2">today</span></li>
-                        <li class="mr-4 font-semibold">Modified<span class="note-item ml-2">today</span></li>
-                        <li class="mr-4 font-semibold">Viewd<span class="note-item ml-2">24 times</span></li>
-                    </ul>
-                    <hr width="100%">
-                    <div class="flex p-5">
-    
-                        <div  class="float-left px-1 mr-3 ">
-                            <button id="increment-count" class="material-icons  text-white text-xl"  >arrow_drop_up</button>
-                            <div id="total-count"   class="text-white text-center align-middle"></div> 
-                            <button id="decrement-count" class="material-icons  text-white text-4xl">arrow_drop_down</button>
-                        </div> 
-                        <p id="content-ques" class="content-question md-48 text-white float-right text-justify">Chả là năm nay e định học thêm nhiều kĩ năng mềm để có ích cho bản thân sau này và đã lên hẳn 1 list các kỹ năng cần học,kết quả là quá nhiều nên e không biết phải sắp xếp học các kỹ năng sao cho hợp lý,mong các bác cho e xin vài lời khuyên.</p>
-                    </div>
-                    <!-- tags -->
-                    <div id="tags" class="">
-                        <ul class=" text-xs  ">
-                            <li class="inline-block rounded-sm ">TRS601</li>
-                            <li class="inline-block rounded-sm">MAE101</li>
-                            <li class="inline-block rounded-sm">TRS501</li>
+                        <h1 id="title-ques" class="title-question ">Làm gì khi có quá nhiều thứ để học ?</h1>
+                        <ul class="note-list text-white flex mb-4 text-sm">
+                            <li class="mr-4 font-semibold">Askedd<span class="note-item ml-2">today</span></li>
+                            <li class="mr-4 font-semibold">Modified<span class="note-item ml-2">today</span></li>
+                            <li class="mr-4 font-semibold">Viewd<span class="note-item ml-2">24 times</span></li>
                         </ul>
-    
-                    </div>
+                        <hr width="100%">
+                        <div class="flex p-5">
+        
+                            <div  class="float-left px-1 mr-3 ">
+                                <button id="increment-count" class="material-icons  text-white text-xl"  >arrow_drop_up</button>
+                                <div id="total-count"   class="text-white text-center align-middle"></div> 
+                                <button id="decrement-count" class="material-icons  text-white text-4xl">arrow_drop_down</button>
+                            </div> 
+                            <p id="content-ques" class="content-question md-48 text-white float-right text-justify">Chả là năm nay e định học thêm nhiều kĩ năng mềm để có ích cho bản thân sau này và đã lên hẳn 1 list các kỹ năng cần học,kết quả là quá nhiều nên e không biết phải sắp xếp học các kỹ năng sao cho hợp lý,mong các bác cho e xin vài lời khuyên.</p>
+                        </div>
+                        
+                        <div id="tags" class="">
+                            <ul class=" text-xs  ">
+                                <li class="inline-block rounded-sm ">TRS601</li>
+                                <li class="inline-block rounded-sm">MAE101</li>
+                                <li class="inline-block rounded-sm">TRS501</li>
+                            </ul>
+        
+                        </div>
+                    </div> 
+                    
                     <!-- biểu tượng cmt, share, save -->
-                    <div id="cmt-btn" onclick="myFunction" class=" text-white flex ml-4  m-5 py-5 mr-3 text-sm">
+                    <div id="cmt-btn" onclick="myFunction()" class=" text-white flex ml-4  m-5 py-5 mr-3 text-sm">
                         <div class="cursor-pointer hover:bg-gray-400 flex align-middle items-center py-2 mr-3 hover:rounded-sm">
                             <i class="material-icons  text-white mr-3 ">forum </i>
                             <div  class=" mr-4">comment</div>
@@ -318,7 +321,9 @@
             </div>
         </main>
 
-    <script src="../static/js/question-page.js"></script>
+    <!-- <script src="../static/js/question-page.js"></script> -->
+    <script src="{{url_for('static',filename ='js/question-page.js')}}"></script>
+
         
     
 </body>
