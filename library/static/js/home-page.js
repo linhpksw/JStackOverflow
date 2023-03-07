@@ -6,22 +6,6 @@ const postQuestionElement = document.getElementById('post-question');
 
 const signOut = document.getElementById('sign-out');
 
-signOut.addEventListener('click', signOutFeature);
-
-const signOutFeature = async () => {
-    try {
-        const URL = 'https://jstackoverflow.jsclub.me/log-out';
-
-        const opt = {
-            method: 'POST',
-        };
-
-        const response = await fetch(URL, opt);
-    } catch (err) {
-        console.log(err);
-    }
-};
-
 const userName = document.getElementById('user-name');
 
 const loadQuestions = async () => {
@@ -246,3 +230,19 @@ function calculateTime(questionTime) {
 
     return date.toLocaleString('vi-VN', options);
 }
+
+signOut.addEventListener('click', signOutFeature);
+
+const signOutFeature = async () => {
+    try {
+        const URL = 'https://jstackoverflow.jsclub.me/log-out';
+
+        const opt = {
+            method: 'POST',
+        };
+
+        const response = await fetch(URL, opt);
+    } catch (err) {
+        console.log(err);
+    }
+};
