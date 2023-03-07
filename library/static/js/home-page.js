@@ -132,7 +132,7 @@ function appendQuestion(questionId, askerId, questionTitle, questionTag, questio
                         ><a id="user-name" href="/user/${askerId}" class="text-amber-400"
                             >${askerName}</a
                         >
-                        asked at ${questionTime}</span
+                        asked at ${calculateTime(questionTime)}</span
                     >
                 </div>
             </div>
@@ -213,3 +213,16 @@ const postQuestion = async () => {
 postQuestionElement.addEventListener('click', postQuestion);
 
 window.addEventListener('DOMContentLoaded', loadQuestions);
+
+function calculateTime(questionTime) {
+    const date = new Date(questionTime);
+
+    const options = {
+        weekday: 'long',
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+    };
+
+    return date.toLocaleString('vi-VN', options);
+}
