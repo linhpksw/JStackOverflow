@@ -25,6 +25,39 @@ loadStats();
 loadAnswers();
 loadInfos();
 loadActivity();
+loadStats();
+async function loadStats() {
+  let info = document.getElementById("stats");
+  let info1 = document.getElementById("total-answers");
+  const URL1 = `https://jstackoverflow.jsclub.me/api/user/${id}/answers`;
+  const URL2 = `https://jstackoverflow.jsclub.me/api/user/${id}/questions`;
+  const opt = {
+    method: "GET",
+  };
+  const response1 = await fetch(URL1, opt);
+  const response2 = await fetch(URL2, opt);
+  const jsonResponse1 = await response1.json();
+  const jsonResponse2 = await response2.json();
+  let htmls = `
+      <div class="d-flex">
+                                          <div class="m-2 p-2">
+                                              <div>${jsonResponse1.answers.length}</div>
+                                              Answers
+                                          </div>
+                                          <div class="m-2 p-2">
+                                              <div>${jsonResponse2.questions.length}</div>
+                                              Questions
+                                          </div>
+                                      </div>
+    `;
+  info.innerHTML = htmls;
+  let html1 = `
+    <div>
+                                        <h4>${jsonResponse1.answers.length} Answer</h4>
+                                    </div>
+    `;
+  info1.innerHTML = html1;
+}
 async function loadActivity() {
   let info = document.getElementById("activity");
   let htmls = `
@@ -207,7 +240,7 @@ async function loadAnswers() {
                 <div class="d-flex">
                     <div class="post-summary-tags d-flex">
                         <ul class="ps-0">
-                            <li class = "p-2">${jsonResponse.answers[i].tag}</li>
+                            <li class = "p-1">${jsonResponse.answers[i].tag}</li>
                         </ul>
                     </div>
                     <div class="d-flex align-items-center justify-content-end flex-grow-1">
