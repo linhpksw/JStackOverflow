@@ -389,4 +389,4 @@ function renderGeneralInfo(users) {
   });
   info.innerHTML = htmls;
 }
-getDataFakeAPI();
+// getDataFakeAPI();
