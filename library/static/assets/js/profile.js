@@ -77,7 +77,7 @@ const loadInfos = async () => {
     };
     const response = await fetch(URL, opt);
     const jsonResponse = await response.json();
-
+    let info = document.getElementById("general-info");
     let htmls = `<div class="d-flex position-relative">
                     <a class="img-user"><img src="${jsonResponse.avatar}" /></a>
                     <div class="d-flex">
@@ -187,8 +187,7 @@ const loadInfos = async () => {
                         </div>
                     </div>
                 </div>`;
-
-    console.log(jsonResponse.questions);
+    info.innerHTML = htmls;
   } catch (err) {
     console.log(err);
   }
