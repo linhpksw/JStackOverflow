@@ -216,7 +216,7 @@ async function loadQuestions() {
                 <div class="d-flex">
                     <div class="post-summary-tags d-flex">
                         <ul class="ps-0">
-                            <li>${jsonResponse.questions[i].tag}</li>
+                            <li class = "p-2">${jsonResponse.questions[i].tag}</li>
                         </ul>
                     </div>
                     <div class="d-flex align-items-center justify-content-end flex-grow-1">
