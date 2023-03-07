@@ -110,13 +110,12 @@ list.appendChild(divItem);
 //js answer
 
 const list = document.getElementById('list');
-const search = document.getElementById('search');
 
 getAnswerFromAPI();
 
 async function getAnswerFromAPI() {
-  const responseAPT = await fetch('https://jsonplaceholder.typicode.com/comments');
-  const  data  = await responseAPT.json();
+  const responseAPI = await fetch('https://jsonplaceholder.typicode.com/comments');
+  const  data  = await responseAPI.json();
   data.forEach(data => {
     const divItem = document.createElement('div');
     divItem.innerHTML = `
