@@ -1,6 +1,6 @@
 let list = document.getElementById("list");
 const search = document.getElementById("search-text");
-const id = "{{ id }}";
+const id = `{{ id }}`;
 console.log(id);
 const searchBar = document.getElementById("search-text");
 let data = [];
