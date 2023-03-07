@@ -215,6 +215,7 @@ postQuestionElement.addEventListener('click', postQuestion);
 window.addEventListener('DOMContentLoaded', loadQuestions);
 
 function calculateTime(questionTime) {
-    console.log(questionTime.toLocaleString('vi-VN'));
-    return questionTime.toLocaleString('vi-VN');
+    const date = new Date(questionTime);
+
+    return date.toLocaleString('vi-VN');
 }
