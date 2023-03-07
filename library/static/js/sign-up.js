@@ -16,7 +16,7 @@ try {
                 email: email.value,
                 password: password.value,
                 name: fullName.value,
-                date_of_birth: dateOfBirth.value.split('/').reverse().join('-'),
+                date_of_birth: formatDate(dateOfBirth.value),
                 phone_number: phone.value,
             };
 
@@ -42,4 +42,10 @@ try {
     signUpBtn.addEventListener('click', fetchUserInfo);
 } catch (err) {
     console.log(err);
+}
+
+function formatDate(str) {
+    const [month, day, year] = str.split('/');
+
+    return `${year}-${month}-${day}`;
 }
