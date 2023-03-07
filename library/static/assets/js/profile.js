@@ -54,7 +54,7 @@ const loadAnswers = async () => {
     console.log(err);
   }
 };
-const loadQuestions = async () => {
+async function loadQuestions() {
   try {
     const URL = `https://jstackoverflow.jsclub.me/user/${id}/questions`;
     const opt = {
@@ -66,7 +66,7 @@ const loadQuestions = async () => {
   } catch (err) {
     console.log(err);
   }
-};
+}
 const getDataFakeAPI = async () => {
   try {
     const responseAPI = await fetch(
