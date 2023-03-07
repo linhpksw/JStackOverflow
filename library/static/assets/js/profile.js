@@ -221,7 +221,7 @@ async function loadInfos() {
     let htmls1 = `
     <div class = "me-2">
     <a class="" href="https://jstackoverflow.jsclub.me/user/${id}">
-        <img style="height: 50px;" src="${jsonResponse.avatar}">
+        <img class = "rounded-circle" style="height: 50px;" src="${jsonResponse.avatar}">
     </a>
 </div>
 <div><a class="" href="https://jstackoverflow.jsclub.me/user/${id}" style="color: #fff;">${jsonResponse.name}</a></div>
