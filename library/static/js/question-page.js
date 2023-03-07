@@ -63,6 +63,8 @@ const getQuestion = async () => {
                         arrow_drop_down
                     </button>
 
+                    <p class="text-white font-bold">${questionContent}</p>
+
                     
                 </div>
             </div>
