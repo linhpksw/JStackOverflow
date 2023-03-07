@@ -194,7 +194,7 @@ const loadAnswers = async () => {
   try {
     let info = document.getElementById("general-answers");
     let htmls = ``;
-    const URL = `https://jstackoverflow.jsclub.me/user/${id}/answers`;
+    const URL = `https://jstackoverflow.jsclub.me/api/user/${id}/answers`;
     const opt = {
       method: "GET",
     };
@@ -273,7 +273,7 @@ async function loadQuestions() {
   try {
     let info = document.getElementById("general-questions");
     let htmls = ``;
-    const URL = `https://jstackoverflow.jsclub.me/user/${id}/questions`;
+    const URL = `https://jstackoverflow.jsclub.me/api/user/${id}/questions`;
     const opt = {
       method: "GET",
     };
