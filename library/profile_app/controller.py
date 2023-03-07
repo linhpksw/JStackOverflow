@@ -15,6 +15,7 @@ def login():
     return login_services()
 
 @profiles.route('/home', methods=['GET'])
+@login_required
 def home():
     return render_template('home-page.html')  
 
