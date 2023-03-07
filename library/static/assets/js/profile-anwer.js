@@ -14,9 +14,12 @@
 //   const randomColor = colors[Math.floor(Math.random() * colors.length)];
 //   document.querySelector(".img-user").style.backgroundColor = randomColor;
 // });
+const h1 = document.getElementsByTagName("h1")[0];
+
+const id = h1.textContent;
+console.log(id);
 let list = document.getElementById("list");
 const search = document.getElementById("search-text");
-const id = 124859;
 loadStats();
 loadAnswers();
 loadInfos();
