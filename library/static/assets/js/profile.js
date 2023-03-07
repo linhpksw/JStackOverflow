@@ -88,7 +88,7 @@ async function loadAbout() {
             </div>`;
     } else {
       htmls += `
-            <div>
+            <div class = "p-2">
                 ${tmp}
             </div>
             `;
