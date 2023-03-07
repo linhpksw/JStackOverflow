@@ -7,6 +7,7 @@ console.log(id);
 h1.remove();
 const searchBar = document.getElementById("search-text");
 let data = [];
+loadInfos();
 loadQuestions();
 searchBar.addEventListener("keyup", (e) => {
   const searchString = e.target.value.toLowerCase();
@@ -69,7 +70,7 @@ const loadAbout = async () => {
     console.log(err);
   }
 };
-const loadInfos = async () => {
+async function loadInfos() {
   try {
     const URL = `https://jstackoverflow.jsclub.me/api/user/${id}`;
     const opt = {
@@ -191,7 +192,7 @@ const loadInfos = async () => {
   } catch (err) {
     console.log(err);
   }
-};
+}
 const loadAnswers = async () => {
   try {
     const URL = `https://jstackoverflow.jsclub.me/user/${id}/answers`;
