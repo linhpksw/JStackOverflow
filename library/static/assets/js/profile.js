@@ -30,7 +30,7 @@ async function loadStats() {
   const response2 = await fetch(URL2, opt);
   const jsonResponse1 = await response1.json();
   const jsonResponse2 = await response2.json();
-  htmls += `
+  let htmls = `
     <div class="d-flex">
                                         <div class="m-2 p-2">
                                             <div>${jsonResponse1.answers.length}</div>
