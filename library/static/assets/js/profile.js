@@ -11,6 +11,7 @@ loadInfos();
 loadQuestions();
 loadAbout();
 loadAnswers();
+loadStats();
 searchBar.addEventListener("keyup", (e) => {
   const searchString = e.target.value.toLowerCase();
   const filteredCharacters = data.filter((character) => {
@@ -18,14 +19,31 @@ searchBar.addEventListener("keyup", (e) => {
   });
   console.log(filteredCharacters);
 });
-const loadStats = async () => {
-  const URL = `https://jstackoverflow.jsclub.me/api/user/${id}`;
+async function loadStats() {
+  let info = document.getElementById("stats");
+  const URL1 = `https://jstackoverflow.jsclub.me/api/user/${id}/answers`;
+  const URL2 = `https://jstackoverflow.jsclub.me/api/user/${id}/questions`;
   const opt = {
     method: "GET",
   };
-  const response = await fetch(URL, opt);
-  const jsonResponse = await response.json();
-};
+  const response1 = await fetch(URL1, opt);
+  const response2 = await fetch(URL2, opt);
+  const jsonResponse1 = await response1.json();
+  const jsonResponse2 = await response2.json();
+  htmls += `
+    <div class="d-flex">
+                                        <div class="m-2 p-2">
+                                            <div>${jsonResponse1.answers.length}</div>
+                                            Answers
+                                        </div>
+                                        <div class="m-2 p-2">
+                                            <div>${jsonResponse2.questions.length}</div>
+                                            Questions
+                                        </div>
+                                    </div>
+  `;
+  info.innerHTML = htmls;
+}
 async function loadAbout() {
   try {
     let info = document.getElementById("about");
