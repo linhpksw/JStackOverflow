@@ -56,6 +56,7 @@ const loadAnswers = async () => {
 };
 async function loadQuestions() {
   try {
+    let info = document.getElementById("general-questions");
     let htmls = ``;
     const URL = `https://jstackoverflow.jsclub.me/user/${id}/questions`;
     const opt = {
@@ -65,49 +66,79 @@ async function loadQuestions() {
     const jsonResponse = await response.json();
     if (jsonResponse.questions.length < 5) {
       for (let i = jsonResponse.questions.length - 1; i >= 0; i--) {
-        const e = jsonResponse.questions[i];
-        console.log(e);
-        //     htmls += `
-        //     <div class="my-2 answers-list">
-        //     <div class="pe-3 ps-3 pt-3 d-flex">
-        //         <div class="me-3">
-        //             <span>0</span>
-        //             <span>votes</span>
-        //         </div>
+        htmls += `
+            <div class="my-2 answers-list">
+            <div class="pe-3 ps-3 pt-3 d-flex">
+                <div class="me-3">
+                    <span>0</span>
+                    <span>votes</span>
+                </div>
 
-        //         <div class="ms-3">
-        //             <span>0</span>
-        //             <span>views</span>
-        //         </div>
-        //     </div>
-        //     <div>
-        //         <div class="pe-3 ps-3 pb-3">
-        //             <h5 class="title-ans">HELLO</h5>
-        //             <div class="d-flex">
-        //                 <div class="post-summary-tags d-flex">
-        //                     <ul class="ps-0">
-        //                         <li>#MAE101</li>
-        //                         <li>#PRF192</li>
-        //                     </ul>
-        //                 </div>
-        //                 <div class="d-flex align-items-center justify-content-end flex-grow-1">
-        //                     <div>
-        //                         answer at 00:02
-        //                     </div>
-        //                 </div>
-        //             </div>
-        //         </div>
-        //     </div>
-        // </div>
-        //     `;
+                <div class="ms-3">
+                    <span>0</span>
+                    <span>views</span>
+                </div>
+            </div>
+            <div>
+                <div class="pe-3 ps-3 pb-3">
+                    <h5 class="title-ans">${jsonResponse.questions[i].title}</h5>
+                    <div class="d-flex">
+                        <div class="post-summary-tags d-flex">
+                            <ul class="ps-0">
+                                <li>${jsonResponse.questions[i].tag}</li>
+                            </ul>
+                        </div>
+                        <div class="d-flex align-items-center justify-content-end flex-grow-1">
+                            <div>
+                                answer at 00:02
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+            `;
       }
     }
     for (
       let i = jsonResponse.questions.length - 1;
       i > jsonResponse.questions.length - 6;
       i--
-    )
-      jsonResponse.questions;
+    ) {
+      htmls += `
+        <div class="my-2 answers-list">
+        <div class="pe-3 ps-3 pt-3 d-flex">
+            <div class="me-3">
+                <span>0</span>
+                <span>votes</span>
+            </div>
+
+            <div class="ms-3">
+                <span>0</span>
+                <span>views</span>
+            </div>
+        </div>
+        <div>
+            <div class="pe-3 ps-3 pb-3">
+                <h5 class="title-ans">${jsonResponse.questions[i].title}</h5>
+                <div class="d-flex">
+                    <div class="post-summary-tags d-flex">
+                        <ul class="ps-0">
+                            <li>${jsonResponse.questions[i].tag}</li>
+                        </ul>
+                    </div>
+                    <div class="d-flex align-items-center justify-content-end flex-grow-1">
+                        <div>
+                            answer at 00:02
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        `;
+    }
+    info.innerHTML = htmls;
   } catch (err) {
     console.log(err);
   }
