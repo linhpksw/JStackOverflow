@@ -37,7 +37,7 @@ async function loadAbout() {
     const jsonResponse = await response.json();
     let tmp = jsonResponse.bio;
     let htmls = ``;
-    if (tmp === NULL) {
+    if (tmp === "") {
       htmls += `<div id = "edit-about">
             <div class="about-me">
                 <div class="empty-box"></div>
@@ -235,12 +235,6 @@ async function loadAnswers() {
     ) {
       htmls += `
         <div class="my-2 answers-list">
-        <div class="pe-3 ps-3 pt-3 d-flex">
-            <div class="me-3">
-                <span>${jsonResponse.answers[i].rating}</span>
-                <span>votes</span>
-            </div>
-        </div>
         <div>
             <div class="pe-3 ps-3 pb-3">
                 <h5 class="title-ans">${jsonResponse.answers[i].title}</h5>
