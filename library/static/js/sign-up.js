@@ -9,7 +9,7 @@ try {
     const signUpBtn = document.getElementById('sign-up-btn');
 
     async function fetchUserInfo() {
-        if (password != confirmPassword) {
+        if (password.value != confirmPassword.value) {
             alert(`Those passwords didn't match. Try again.`);
         } else {
             const data = {
