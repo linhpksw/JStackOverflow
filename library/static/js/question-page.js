@@ -1,28 +1,32 @@
-const incrementCount = document.getElementById('increment-count');
-const decrementCount = document.getElementById('decrement-count');
+const incrementCount = document.getElementById("increment-count");
+const decrementCount = document.getElementById("decrement-count");
 
-const totalCount = document.getElementById('total-count');
+const totalCount = document.getElementById("total-count");
+const h1 = document.getElementsByTagName("h1")[0];
+
+const id = h1.textContent;
+console.log(id);
 
 var count = 0;
 
 totalCount.innerHTML = count;
 
 const handleIncrement = () => {
-    count++;
-    totalCount.innerHTML = count;
+  count++;
+  totalCount.innerHTML = count;
 };
 
 const handleDecrement = () => {
-    count--;
-    totalCount.innerHTML = count;
+  count--;
+  totalCount.innerHTML = count;
 };
-incrementCount.addEventListener('click', handleIncrement);
-decrementCount.addEventListener('click', handleDecrement);
+incrementCount.addEventListener("click", handleIncrement);
+decrementCount.addEventListener("click", handleDecrement);
 
 // get question
 
 {
-    /* <div id="just-question">
+  /* <div id="just-question">
 
 <h1 id="title-ques" class="title-question ">Làm gì khi có quá nhiều thứ để học ?</h1>
 <ul class="note-list text-white flex mb-4 text-sm">
@@ -52,16 +56,18 @@ decrementCount.addEventListener('click', handleDecrement);
 </div> */
 }
 
-const question = document.getElementById('just-question');
+const question = document.getElementById("just-question");
 
 getQuestionFromAPI();
 
 try {
-    async function getQuestionFromAPI() {
-        const responseAPT = await fetch('https://jsonplaceholder.typicode.com/posts');
-        const data = await responseAPT.json();
-        const divItem = document.createElement('div');
-        divItem.innerHTML = `
+  async function getQuestionFromAPI() {
+    const responseAPT = await fetch(
+      "https://jsonplaceholder.typicode.com/posts"
+    );
+    const data = await responseAPT.json();
+    const divItem = document.createElement("div");
+    divItem.innerHTML = `
   <div id="just-question">
 
 <h1 id="title-ques" class="title-question "> ${data.title} </h1>
@@ -91,24 +97,26 @@ try {
 </div>
 </div>
   `;
-    }
-    list.appendChild(divItem);
+  }
+  list.appendChild(divItem);
 } catch (err) {
-    console.error(err);
+  console.error(err);
 }
 
 //js answer
 
-const list = document.getElementById('list');
+const list = document.getElementById("list");
 
 getAnswerFromAPI();
 
 async function getAnswerFromAPI() {
-    const responseAPI = await fetch('https://jsonplaceholder.typicode.com/comments');
-    const data = await responseAPI.json();
-    data.forEach((data) => {
-        const divItem = document.createElement('div');
-        divItem.innerHTML = `
+  const responseAPI = await fetch(
+    "https://jsonplaceholder.typicode.com/comments"
+  );
+  const data = await responseAPI.json();
+  data.forEach((data) => {
+    const divItem = document.createElement("div");
+    divItem.innerHTML = `
     <div class="flex p-4 items-start space-x-4">
       <img class="w-10 h-10 rounded-full" src="/src/img/meo.jpg" alt="Avatar">
       <div id="answer1" class="m-4">
@@ -130,13 +138,13 @@ async function getAnswerFromAPI() {
 
       </div>
     `;
-        list.appendChild(divItem);
-    });
+    list.appendChild(divItem);
+  });
 }
 
 //add question
 
 function myFunction() {
-    const element = document.getElementById('fill-answer');
-    element.scrollIntoView();
+  const element = document.getElementById("fill-answer");
+  element.scrollIntoView();
 }

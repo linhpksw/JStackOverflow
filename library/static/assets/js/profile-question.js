@@ -1,22 +1,172 @@
-const bgcolor = document.querySelector(".img-user");
-const colors = [
-  "#00aefd",
-  "#ffa400",
-  "#07a787",
-  "#ff7870",
-  "black",
-  "pink",
-  "yellow",
-  "#e74c3c",
-  "#2979ff",
-];
-bgcolor.addEventListener("click", function () {
-  const randomColor = colors[Math.floor(Math.random() * colors.length)];
-  document.querySelector(".img-user").style.backgroundColor = randomColor;
-});
+// const bgcolor = document.querySelector(".img-user");
+// const colors = [
+//   "#00aefd",
+//   "#ffa400",
+//   "#07a787",
+//   "#ff7870",
+//   "black",
+//   "pink",
+//   "yellow",
+//   "#e74c3c",
+//   "#2979ff",
+// ];
+// bgcolor.addEventListener("click", function () {
+//   const randomColor = colors[Math.floor(Math.random() * colors.length)];
+//   document.querySelector(".img-user").style.backgroundColor = randomColor;
+// });
 let list = document.getElementById("list");
 const search = document.getElementById("search-text");
+loadQuestions();
+loadStats();
+loadInfos();
+async function loadInfos() {
+  try {
+    const URL = `https://jstackoverflow.jsclub.me/api/user/${id}`;
+    const opt = {
+      method: "GET",
+    };
+    const response = await fetch(URL, opt);
+    const jsonResponse = await response.json();
+    let info = document.getElementById("general-info");
+    let htmls = `<div class="d-flex position-relative">
+                    <a class="img-user"><img style="height: 175px;" class = "rounded-circle" src="${jsonResponse.avatar}"/></a>
+                    <div class="d-flex">
+                        <div class="d-flex align-items-center infor">
+                            <div class="me-3">
+                                <div class="d-flex ms-3">
+                                    <div class="me-3">
+                                        <h3>${jsonResponse.name}</h3>
+                                    </div>
+                                    <!-- <div class="d-flex address">
+                                        <div class="me-2">
+                                            <i class="fa-solid fa-location-dot fa-lg mt-3"></i>
+                                        </div>
+                                        <div>
+                                            <p class="mt-2"></p>
+                                        </div>
+                                    </div> -->
+                                </div>
 
+                                <div class="">
+                                    <ul class="list-reset ms-3">
+                                        <li class="mb-2 mt-2">
+                                            <div class="d-flex me-3">
+                                                <div>
+                                                    <i class="fa-solid fa-venus-mars me-2"></i>
+                                                </div>
+                                                <div>Gender : ${jsonResponse.gender}</div>
+                                            </div>
+                                        </li>
+
+                                        <li class="mb-2 mt-2">
+                                            <div class="d-flex me-3">
+                                                <div>
+                                                    <i class="fa-solid fa-cake-candles me-2"></i>
+                                                </div>
+                                                <div>DoB: </div>
+                                            </div>
+                                        </li>
+                                        
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex position-absolute end-0 top-0">
+                        <a class="btn-custom-var d-flex me-1 ms-1 btn" type="" href="" type="button"
+                            data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                            <i class="fa-solid fa-pen me-1 mt-1"></i>
+                            Edit profile
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="fade modal" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
+                    tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="staticBackdropLabel">
+                                    Edit your profile
+                                </h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="d-flex align-items-start flex-column">
+                                    <div class="my-2 mx-auto">
+                                        <div class="d-flex align-items-start flex-column">
+                                            <div class="form-floating mb-3">
+                                                <input type="email" class="input-change form-control" id="floatingName"
+                                                    placeholder="Name" value="User_name" />
+                                                <label for="floatingInput">Display name</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="my-2 mx-auto">
+                                        <div class="d-flex align-items-start flex-column">
+                                            <div class="form-floating mb-3">
+                                                <input type="email" class="input-change form-control" id="floatingName"
+                                                    placeholder="Name" value="HA NOI CITY" />
+                                                <label for="floatingInput">Location</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="my-2 mx-auto">
+                                        <div class="d-flex align-items-start flex-column">
+                                            <div class="form-floating mb-3">
+                                                <textarea id="floatingTextarea" value=""
+                                                    class="input-change form-control"
+                                                    placeholder="Write something fun about you..." style="
+                                                        height: 150px;
+                                                    "></textarea>
+                                                <label for="floatingTextarea">About me</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn-secondary btn" data-bs-dismiss="modal">
+                                    Close
+                                </button>
+                                <button type="button" class="btn-primary btn">
+                                    Save changes
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>`;
+    info.innerHTML = htmls;
+  } catch (err) {
+    console.log(err);
+  }
+}
+async function loadStats() {
+  let info = document.getElementById("stats");
+  const URL1 = `https://jstackoverflow.jsclub.me/api/user/${id}/answers`;
+  const URL2 = `https://jstackoverflow.jsclub.me/api/user/${id}/questions`;
+  const opt = {
+    method: "GET",
+  };
+  const response1 = await fetch(URL1, opt);
+  const response2 = await fetch(URL2, opt);
+  const jsonResponse1 = await response1.json();
+  const jsonResponse2 = await response2.json();
+  let htmls = `
+    <div class="d-flex">
+                                        <div class="m-2 p-2">
+                                            <div>${jsonResponse1.answers.length}</div>
+                                            Answers
+                                        </div>
+                                        <div class="m-2 p-2">
+                                            <div>${jsonResponse2.questions.length}</div>
+                                            Questions
+                                        </div>
+                                    </div>
+  `;
+  info.innerHTML = htmls;
+}
 async function loadQuestions() {
   try {
     let info = document.getElementById("general-questions");
