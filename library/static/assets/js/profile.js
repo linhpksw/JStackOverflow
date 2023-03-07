@@ -293,7 +293,6 @@ async function loadQuestions() {
                                     <div class="d-flex align-items-end">
                                         <div class="d-flex">
                                             <a class="update-list rounded-start-1 px-1">Score</a>
-                                            <a class="update-list px-1">Views</a>
                                             <a class="update-list rounded-end-1 px-1">Newest</a>
                                         </div>
                                     </div>
