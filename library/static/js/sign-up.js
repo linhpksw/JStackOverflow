@@ -31,7 +31,7 @@ try {
                 body: JSON.stringify(data),
             };
 
-            const URL = 'https://jstackoverflow.jsclub.me/sign_up';
+            const URL = 'https://jstackoverflow.jsclub.me/sign-up';
             const response = await fetch(URL, opt);
             const jsonResponse = await response.json();
 
