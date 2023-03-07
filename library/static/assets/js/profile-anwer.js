@@ -198,6 +198,7 @@ async function loadInfos() {
 }
 async function loadStats() {
   let info = document.getElementById("stats");
+  let info1 = document.getElementById("total-answers");
   const URL1 = `https://jstackoverflow.jsclub.me/api/user/${id}/answers`;
   const URL2 = `https://jstackoverflow.jsclub.me/api/user/${id}/questions`;
   const opt = {
@@ -220,6 +221,12 @@ async function loadStats() {
                                     </div>
   `;
   info.innerHTML = htmls;
+  let htmls1 = `
+  <div>
+                                        <h4>${jsonResponse1.questions.length} Questions</h4>
+                                    </div>
+  `;
+  info1.innerHTML = htmls1;
 }
 async function loadAnswers() {
   try {
