@@ -7,7 +7,7 @@ console.log(id);
 h1.remove();
 const searchBar = document.getElementById("search-text");
 let data = [];
-
+loadQuestions();
 searchBar.addEventListener("keyup", (e) => {
   const searchString = e.target.value.toLowerCase();
   const filteredCharacters = data.filter((character) => {
@@ -17,7 +17,7 @@ searchBar.addEventListener("keyup", (e) => {
 });
 const loadAbout = async () => {
   try {
-    const URL = "https://jstackoverflow.jsclub.me/api/user/832744";
+    const URL = `https://jstackoverflow.jsclub.me/api/user/${id}`;
     const opt = {
       method: "GET",
     };
@@ -30,7 +30,7 @@ const loadAbout = async () => {
 };
 const loadInfos = async () => {
   try {
-    const URL = "https://jstackoverflow.jsclub.me/api/user/832744";
+    const URL = `https://jstackoverflow.jsclub.me/api/user/${id}`;
     const opt = {
       method: "GET",
     };
@@ -43,7 +43,7 @@ const loadInfos = async () => {
 };
 const loadAnswers = async () => {
   try {
-    const URL = "https://jstackoverflow.jsclub.me/user/872805/answers";
+    const URL = `https://jstackoverflow.jsclub.me/user/${id}/answers`;
     const opt = {
       method: "GET",
     };
@@ -54,9 +54,9 @@ const loadAnswers = async () => {
     console.log(err);
   }
 };
-const loadQuestions = async () => {
+async function loadQuestions() {
   try {
-    const URL = "https://jstackoverflow.jsclub.me/user/872805/questions";
+    const URL = `https://jstackoverflow.jsclub.me/user/${id}/questions`;
     const opt = {
       method: "GET",
     };
@@ -66,7 +66,7 @@ const loadQuestions = async () => {
   } catch (err) {
     console.log(err);
   }
-};
+}
 const getDataFakeAPI = async () => {
   try {
     const responseAPI = await fetch(
