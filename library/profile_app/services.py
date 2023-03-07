@@ -18,8 +18,8 @@ def sign_up_services():
     id = random.randint(100000, 999999)
     name = request.values.get('name')
     email = request.values.get('email')
-    # if email is None or email.strip() == '':
-    #     return jsonify({'status':'Email field is required'})
+    if email is None or email.strip() == '':
+        return jsonify({'status':'Email field is required'})
     email_pattern = r'^[a-zA-Z0-9+-.%_]+@[a-zA-Z0-9.-]+\.[a-zA-z]{2,}$'
     if not re.match(email_pattern, email):
         return jsonify({'status':'Invalid email format'})
