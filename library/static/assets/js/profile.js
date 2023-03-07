@@ -8,9 +8,9 @@ h1.remove();
 const searchBar = document.getElementById("search-text");
 let data = [];
 loadInfos();
-loadQuestions();
+// loadQuestions();
 loadAbout();
-loadAnswers();
+// loadAnswers();
 loadStats();
 loadActivity();
 async function loadActivity() {
