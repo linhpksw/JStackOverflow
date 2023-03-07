@@ -11,7 +11,7 @@ searchBar.addEventListener("keyup", (e) => {
   });
   console.log(filteredCharacters);
 });
-loadQuestions;
+loadQuestions();
 const loadQuestions = async () => {
   try {
     const URL = "https://jstackoverflow.jsclub.me/user/872805/questions";
