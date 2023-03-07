@@ -217,5 +217,12 @@ window.addEventListener('DOMContentLoaded', loadQuestions);
 function calculateTime(questionTime) {
     const date = new Date(questionTime);
 
-    return date.toLocaleString('vi-VN');
+    const options = {
+        weekday: 'long',
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+    };
+
+    return date.toLocaleString('vi-VN', options);
 }
