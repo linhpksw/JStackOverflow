@@ -16,9 +16,17 @@ searchBar.addEventListener("keyup", (e) => {
   });
   console.log(filteredCharacters);
 });
+const loadStats = async () => {
+  const URL = `https://jstackoverflow.jsclub.me/api/user/${id}`;
+  const opt = {
+    method: "GET",
+  };
+  const response = await fetch(URL, opt);
+  const jsonResponse = await response.json();
+};
 const loadAbout = async () => {
   try {
-    let info = document.getElementById("general-questions");
+    let info = document.getElementById("about");
     const URL = `https://jstackoverflow.jsclub.me/api/user/${id}`;
     const opt = {
       method: "GET",
