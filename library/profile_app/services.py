@@ -19,22 +19,22 @@ def sign_up_services():
     name = request.values.get('name')
     email = request.values.get('email')
     if email is None or email.strip() == '':
-        return 'Email field is required'
+        return jsonify({'status':'Email field is required'})
     email_pattern = r'^[a-zA-Z0-9+-.%_]+@[a-zA-Z0-9.-]+\.[a-zA-z]{2,}$'
     if not re.match(email_pattern, email):
-        return 'Invalid email format'
+        return jsonify({'status':'Invalid email format'})
 
     password = request.values.get('password')
     password_pattern = r'^[a-zA-Z0-9+-.*/%_@#!^]{6,}$'
     if not re.match(password_pattern, password):
-        return 'Password should have at least 6 characters and should not contain any spaces'
+        return jsonify({'status':'Password should have at least 6 characters and should not contain any spaces'})
     else:
         password = generate_password_hash(password)
 
     phone_number = request.values.get('phone_number')
     phone_number_pattern = r'^\d{10,11}$'
     if not re.match(phone_number_pattern, phone_number):
-        return 'Invalid phone number format'
+        return jsonify({'status':'Invalid phone number format'})
 
     date_of_birth_str = request.values.get('date_of_birth')
     if date_of_birth_str != None:
@@ -49,7 +49,7 @@ def sign_up_services():
 
     existing_user = User.query.filter_by(email=email).first()
     if existing_user:
-        return "Email address already in use!"
+        return jsonify({'status':"Email address already in use!"})
 
     try:
         new_user = User(id=id, name=name, email=email, password=password, phone_number=phone_number,
