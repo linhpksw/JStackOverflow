@@ -283,21 +283,6 @@ async function loadQuestions() {
     if (jsonResponse.questions.length < 5) {
       for (let i = jsonResponse.questions.length - 1; i >= 0; i--) {
         htmls += `
-        <div class="d-flex">
-                                <div class="d-flex flex-grow-1">
-                                    <div>
-                                        <h4>${length} Questions</h4>
-                                    </div>
-                                </div>
-                                <div>
-                                    <div class="d-flex align-items-end">
-                                        <div class="d-flex">
-                                            <a class="update-list rounded-start-1 px-1">Score</a>
-                                            <a class="update-list rounded-end-1 px-1">Newest</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
             <div class="my-2 answers-list">
             <div class="pe-3 ps-3 pt-3 d-flex">
                 <div class="me-3">
