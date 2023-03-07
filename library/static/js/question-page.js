@@ -1,22 +1,22 @@
 // ==========================================================
 const h1 = document.getElementsByTagName('h1')[0];
 const questionId = h1.textContent;
-let toolbarOptions = [
-    [{ header: [1, 2, 3] }],
-    // [{ header: 1 }, { header: 2 }],
-    ['bold', 'italic', 'underline'],
-    [{ list: 'ordered' }, { list: 'bullet' }],
-    ['blockquote', 'code-block'],
-    ['link', 'image'],
-];
-let options = {
-    modules: { toolbar: toolbarOptions, syntax: true },
-    placeholder: 'Compose an epic...',
-    theme: 'snow',
-};
+// let toolbarOptions = [
+//     [{ header: [1, 2, 3] }],
+//     // [{ header: 1 }, { header: 2 }],
+//     ['bold', 'italic', 'underline'],
+//     [{ list: 'ordered' }, { list: 'bullet' }],
+//     ['blockquote', 'code-block'],
+//     ['link', 'image'],
+// ];
+// let options = {
+//     modules: { toolbar: toolbarOptions, syntax: true },
+//     placeholder: 'Compose an epic...',
+//     theme: 'snow',
+// };
 
-const quill = new Quill('#editor', options);
-const container = document.querySelector('#delta-container');
+// const quill = new Quill('#editor', options);
+// const container = document.querySelector('#delta-container');
 
 const getQuestion = async () => {
     try {
