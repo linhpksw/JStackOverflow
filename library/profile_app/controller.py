@@ -54,9 +54,11 @@ def load_user_callback(id):
 
 
 @profiles.route('/logout', methods=['POST'])
-@login_required
+# @login_required
 def logout():
     return logout_services()
+
+
 
 
 @profiles.route('/delete', methods=['DELETE'])
