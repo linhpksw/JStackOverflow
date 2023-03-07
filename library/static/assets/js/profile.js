@@ -1,8 +1,10 @@
 let list = document.getElementById("list");
 const search = document.getElementById("search-text");
 const h1 = document.getElementsByTagName("h1")[0];
+
 const id = h1.textContent;
 console.log(id);
+h1.remove();
 const searchBar = document.getElementById("search-text");
 let data = [];
 
