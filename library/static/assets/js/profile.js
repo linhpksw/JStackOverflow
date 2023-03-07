@@ -11,7 +11,19 @@ searchBar.addEventListener("keyup", (e) => {
   });
   console.log(filteredCharacters);
 });
-
+const loadQuestions = async () => {
+  try {
+    const URL = "https://jstackoverflow.jsclub.me/user/872805/questions";
+    const opt = {
+      method: "GET",
+    };
+    const response = await fetch(URL, opt);
+    const jsonResponse = await response.json();
+    console.log(jsonResponse.questions);
+  } catch (err) {
+    console.log(err);
+  }
+};
 const getDataFakeAPI = async () => {
   try {
     // const responseAPI = await fetch(
