@@ -85,13 +85,13 @@ def change_avatar(id):
     return change_avatar_services(id)
 
 
-@profiles.route('api/user/<int:id>/questions', methods=['GET'])
+@profiles.route('/api/user/<int:id>/questions', methods=['GET'])
 @login_required
 def get_questions(id):
     return get_question_by_user_id(id)
 
 
-@profiles.route('api/user/<int:id>/answers', methods=['GET'])
+@profiles.route('/api/user/<int:id>/answers', methods=['GET'])
 @login_required
 def get_answers(id):
     return get_answer_by_user_id(id)
