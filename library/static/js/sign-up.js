@@ -16,7 +16,7 @@ try {
                 email: email.value,
                 password: password.value,
                 name: fullName.value,
-                date_of_birth: dateOfBirth.value,
+                date_of_birth: dateOfBirth.value.split('/').reverse().join('-'),
                 phone_number: phone.value,
             };
 
