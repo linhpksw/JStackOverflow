@@ -40,10 +40,7 @@ const loadAbout = async () => {
                     <span>votes</span>
                 </div>
     
-                <div class="ms-3">
-                    <span>0</span>
-                    <span>views</span>
-                </div>
+                
             </div>
             <div>
                 <div class="pe-3 ps-3 pb-3">
@@ -80,7 +77,7 @@ async function loadInfos() {
     const jsonResponse = await response.json();
     let info = document.getElementById("general-info");
     let htmls = `<div class="d-flex position-relative">
-                    <a class="img-user rounded-circle"><img style="height: 175px;" src="${jsonResponse.avatar}"/></a>
+                    <a class="img-user"><img style="height: 175px;" class = "rounded-circle" src="${jsonResponse.avatar}"/></a>
                     <div class="d-flex">
                         <div class="d-flex align-items-center infor">
                             <div class="me-3">
@@ -203,8 +200,8 @@ const loadAnswers = async () => {
     };
     const response = await fetch(URL, opt);
     const jsonResponse = await response.json();
-    if (jsonResponse.questions.length < 5) {
-      for (let i = jsonResponse.questions.length - 1; i >= 0; i--) {
+    if (jsonResponse.answers.length < 5) {
+      for (let i = jsonResponse.answers.length - 1; i >= 0; i--) {
         htmls += `
             <div class="my-2 answers-list">
             <div class="pe-3 ps-3 pt-3 d-flex">
@@ -235,8 +232,8 @@ const loadAnswers = async () => {
       }
     }
     for (
-      let i = jsonResponse.questions.length - 1;
-      i > jsonResponse.questions.length - 6;
+      let i = jsonResponse.answers.length - 1;
+      i > jsonResponse.answers.length - 6;
       i--
     ) {
       htmls += `
@@ -282,9 +279,26 @@ async function loadQuestions() {
     };
     const response = await fetch(URL, opt);
     const jsonResponse = await response.json();
+    let length = jsonResponse.questions.length;
     if (jsonResponse.questions.length < 5) {
       for (let i = jsonResponse.questions.length - 1; i >= 0; i--) {
         htmls += `
+        <div class="d-flex">
+                                <div class="d-flex flex-grow-1">
+                                    <div>
+                                        <h4>${length} Questions</h4>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="d-flex align-items-end">
+                                        <div class="d-flex">
+                                            <a class="update-list rounded-start-1 px-1">Score</a>
+                                            <a class="update-list px-1">Views</a>
+                                            <a class="update-list rounded-end-1 px-1">Newest</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
             <div class="my-2 answers-list">
             <div class="pe-3 ps-3 pt-3 d-flex">
                 <div class="me-3">
@@ -292,10 +306,7 @@ async function loadQuestions() {
                     <span>votes</span>
                 </div>
 
-                <div class="ms-3">
-                    <span>0</span>
-                    <span>views</span>
-                </div>
+                
             </div>
             <div>
                 <div class="pe-3 ps-3 pb-3">
@@ -331,10 +342,7 @@ async function loadQuestions() {
                 <span>votes</span>
             </div>
 
-            <div class="ms-3">
-                <span>0</span>
-                <span>views</span>
-            </div>
+            
         </div>
         <div>
             <div class="pe-3 ps-3 pb-3">
