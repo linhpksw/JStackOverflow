@@ -16,7 +16,7 @@ try {
                 email: email.value,
                 password: password.value,
                 name: fullName.value,
-                date_of_birth: dateOfBirth.value,
+                date_of_birth: dateOfBirth.value.split('/').reverse().join('-'),
                 phone_number: phone.value,
             };
 
@@ -31,7 +31,7 @@ try {
                 body: JSON.stringify(data),
             };
 
-            const URL = 'https://jstackoverflow.jsclub.me/sign_up';
+            const URL = 'https://jstackoverflow.jsclub.me/sign-up';
             const response = await fetch(URL, opt);
             const jsonResponse = await response.json();
 
