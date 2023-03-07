@@ -18,8 +18,8 @@ def sign_up_services():
     id = random.randint(100000, 999999)
     name = request.values.get('name')
     email = request.values.get('email')
-    if email is None or email.strip() == '':
-        return jsonify({'status':'Email field is required'})
+    # if email is None or email.strip() == '':
+    #     return jsonify({'status':'Email field is required'})
     email_pattern = r'^[a-zA-Z0-9+-.%_]+@[a-zA-Z0-9.-]+\.[a-zA-z]{2,}$'
     if not re.match(email_pattern, email):
         return jsonify({'status':'Invalid email format'})
@@ -57,7 +57,7 @@ def sign_up_services():
                         experience=experience, year_of_experience=year_of_experience)
         db.session.add(new_user)
         db.session.commit()
-        return render_template('sign-in.html')
+        return jsonify({'status':"sign up successfully"})
     except Exception as e:
         db.session.rollback()
         print("An error occurred:", e)
@@ -118,7 +118,7 @@ def edit_profile_services(id):
     data = request.json
     if not data:
         return jsonify({'error':'No need to edit'})
-    infor = ["name", "bio", "education", "experience", "year_of_experience"]
+    infor = ["name", "bio", "education", "experience", "year_of_experience","gender"]
     if "date_of_birth" in data:
         date_of_birth = datetime.strptime(
             data.get("date_of_birth"), '%Y-%m-%d').date()
@@ -189,7 +189,7 @@ def get_path_image(request):
         res = cloudinary.uploader.upload(file)
         return res['secure_url']
     else:
-        return "https://res.cloudinary.com/dxu6nsoye/image/upload/v1649821452/z3336574163217_bc5927ec38c68b516f13b300443dfcac_zouzvp.jpg"
+        return "https://res.cloudinary.com/dpybsqrhy/image/upload/v1678178336/Screenshot_2023-03-07_153621_hg11np.png"
 
 
 def get_all_users_services():

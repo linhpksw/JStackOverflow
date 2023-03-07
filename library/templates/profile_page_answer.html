@@ -12,8 +12,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet" />
     <!--Set up bootstrap-->
-    <link rel="stylesheet" href="/src/assets/scss/main.css" />
-    <script src="/src/assets/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="{{url_for('static',filename ='assets/scss/main.css')}}" />
+    <script src="{{url_for('static',filename ='assets/js/bootstrap.bundle.min.js')}}"></script>
     <!--Fontawesome-->
     <script src="https://kit.fontawesome.com/f7f5b64900.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://kit.fontawesome.com/f7f5b64900.css" crossorigin="anonymous" />
@@ -299,7 +299,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div id="list-answers">
+                            <div id="general-answers">
                                 <div class="empty-box">
                                     You have not
                                     <a href="">answered</a>
@@ -345,7 +345,7 @@
             </div>
         </div>
     </section>
-    <script src="/src/assets/js/profile-anwer.js"></script>
+    <script src="{{url_for('static',filename ='assets/js/profile-anwer.js')}}"></script>
 </body>
 
 </html>
