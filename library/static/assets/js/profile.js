@@ -8,9 +8,9 @@ h1.remove();
 const searchBar = document.getElementById("search-text");
 let data = [];
 loadInfos();
-loadQuestions();
+// loadQuestions();
 loadAbout();
-loadAnswers();
+// loadAnswers();
 loadStats();
 loadActivity();
 async function loadActivity() {
@@ -88,7 +88,7 @@ async function loadAbout() {
             </div>`;
     } else {
       htmls += `
-            <div>
+            <div class = "p-2">
                 ${tmp}
             </div>
             `;
@@ -221,252 +221,250 @@ async function loadInfos() {
     console.log(err);
   }
 }
-async function loadAnswers() {
-  try {
-    let info = document.getElementById("general-answers");
-    let htmls = ``;
-    const URL = `https://jstackoverflow.jsclub.me/api/user/${id}/answers`;
-    const opt = {
-      method: "GET",
-    };
-    const response = await fetch(URL, opt);
-    const jsonResponse = await response.json();
-    if (jsonResponse.answers.length < 5) {
-      for (let i = jsonResponse.answers.length - 1; i >= 0; i--) {
-        htmls += `
-            <div class="my-2 answers-list">
-            <div class="pe-3 ps-3 pt-3 d-flex">
-                <div class="me-3">
-                    <span>${jsonResponse.answers[i].rating}</span>
-                    <span>votes</span>
-                </div>
-            </div>
-            <div>
-                <div class="pe-3 ps-3 pb-3">
-                    <h5 class="title-ans">${jsonResponse.answers[i].title}</h5>
-                    <div class="d-flex">
-                        <div class="post-summary-tags d-flex">
-                            <ul class="ps-0">
-                                <li class = "p-1">${jsonResponse.answers[i].tag}</li>
-                            </ul>
-                        </div>
-                        <div class="d-flex align-items-center justify-content-end flex-grow-1">
-                            <div>
-                                answer at 00:02
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-            `;
-      }
-    }
-    for (
-      let i = jsonResponse.answers.length - 1;
-      i > jsonResponse.answers.length - 6;
-      i--
-    ) {
-      htmls += `
-        <div class="my-2 answers-list">
-        <div>
-            <div class="pe-3 ps-3 pb-3">
-                <h5 class="title-ans">${jsonResponse.answers[i].title}</h5>
-                <div class="d-flex">
-                    <div class="post-summary-tags d-flex">
-                        <ul class="ps-0">
-                            <li class = "p-1">${jsonResponse.answers[i].tag}</li>
-                        </ul>
-                    </div>
-                    <div class="d-flex align-items-center justify-content-end flex-grow-1">
-                        <div>
-                            answer at 00:02
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-        `;
-    }
-    info.innerHTML = htmls;
-  } catch (err) {
-    console.log(err);
-  }
-}
-async function loadQuestions() {
-  try {
-    let info = document.getElementById("general-questions");
-    let htmls = ``;
-    const URL = `https://jstackoverflow.jsclub.me/api/user/${id}/questions`;
-    const opt = {
-      method: "GET",
-    };
-    const response = await fetch(URL, opt);
-    const jsonResponse = await response.json();
-    let length = jsonResponse.questions.length;
-    if (jsonResponse.questions.length < 5) {
-      for (let i = jsonResponse.questions.length - 1; i >= 0; i--) {
-        htmls += `
-            <div class="my-2 answers-list">
-            <div class="pe-3 ps-3 pt-3 d-flex">
-                <div class="me-3">
-                    <span>${jsonResponse.questions[i].rating}</span>
-                    <span>votes</span>
-                </div>
+// async function loadAnswers() {
+//   try {
+//     let info = document.getElementById("general-answers");
+//     let htmls = ``;
+//     const URL = `https://jstackoverflow.jsclub.me/api/user/${id}/answers`;
+//     const opt = {
+//       method: "GET",
+//     };
+//     const response = await fetch(URL, opt);
+//     const jsonResponse = await response.json();
+//     if (jsonResponse.answers.length < 5) {
+//       for (let i = jsonResponse.answers.length - 1; i >= 0; i--) {
+//         htmls += `
+//             <div class="my-2 answers-list">
+//             <div class="pe-3 ps-3 pt-3 d-flex">
+//                 <div class="me-3">
+//                     <span>${jsonResponse.answers[i].rating}</span>
+//                     <span>votes</span>
+//                 </div>
+//             </div>
+//             <div>
+//                 <div class="pe-3 ps-3 pb-3">
+//                     <h5 class="title-ans">${jsonResponse.answers[i].title}</h5>
+//                     <div class="d-flex">
+//                         <div class="post-summary-tags d-flex">
+//                             <ul class="ps-0">
+//                                 <li class = "p-1">${jsonResponse.answers[i].tag}</li>
+//                             </ul>
+//                         </div>
+//                         <div class="d-flex align-items-center justify-content-end flex-grow-1">
+//                             <div>
+//                                 answer at 00:02
+//                             </div>
+//                         </div>
+//                     </div>
+//                 </div>
+//             </div>
+//         </div>
+//             `;
+//       }
+//     }
+//     for (
+//       let i = jsonResponse.answers.length - 1;
+//       i > jsonResponse.answers.length - 6;
+//       i--
+//     ) {
+//       htmls += `
+//         <div class="my-2 answers-list">
+//         <div>
+//             <div class="pe-3 ps-3 pb-3">
+//                 <h5 class="title-ans">${jsonResponse.answers[i].title}</h5>
+//                 <div class="d-flex">
+//                     <div class="post-summary-tags d-flex">
+//                         <ul class="ps-0">
+//                             <li class = "p-1">${jsonResponse.answers[i].tag}</li>
+//                         </ul>
+//                     </div>
+//                     <div class="d-flex align-items-center justify-content-end flex-grow-1">
+//                         <div>
+//                             answer at 00:02
+//                         </div>
+//                     </div>
+//                 </div>
+//             </div>
+//         </div>
+//     </div>
+//         `;
+//     }
+//     info.innerHTML = htmls;
+//   } catch (err) {
+//     console.log(err);
+//   }
+// }
+// async function loadQuestions() {
+//   try {
+//     let info = document.getElementById("general-questions");
+//     let htmls = ``;
+//     const URL = `https://jstackoverflow.jsclub.me/api/user/${id}/questions`;
+//     const opt = {
+//       method: "GET",
+//     };
+//     const response = await fetch(URL, opt);
+//     const jsonResponse = await response.json();
+//     let length = jsonResponse.questions.length;
+//     if (jsonResponse.questions.length < 5) {
+//       for (let i = jsonResponse.questions.length - 1; i >= 0; i--) {
+//         htmls += `
+//             <div class="my-2 answers-list">
+//             <div class="pe-3 ps-3 pt-3 d-flex">
+//                 <div class="me-3">
+//                     <span>${jsonResponse.questions[i].rating}</span>
+//                     <span>votes</span>
+//                 </div>
 
-                
-            </div>
-            <div>
-                <div class="pe-3 ps-3 pb-3">
-                    <h5 class="title-ans">${jsonResponse.questions[i].title}</h5>
-                    <div class="d-flex">
-                        <div class="post-summary-tags d-flex">
-                            <ul class="ps-0">
-                                <li class = "p-1">${jsonResponse.questions[i].tag}</li>
-                            </ul>
-                        </div>
-                        <div class="d-flex align-items-center justify-content-end flex-grow-1">
-                            <div>
-                                answer at 00:02
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-            `;
-      }
-    }
-    for (
-      let i = jsonResponse.questions.length - 1;
-      i > jsonResponse.questions.length - 6;
-      i--
-    ) {
-      htmls += `
-        <div class="my-2 answers-list">
-        <div class="pe-3 ps-3 pt-3 d-flex">
-            <div class="me-3">
-                <span>0</span>
-                <span>votes</span>
-            </div>
+//             </div>
+//             <div>
+//                 <div class="pe-3 ps-3 pb-3">
+//                     <h5 class="title-ans">${jsonResponse.questions[i].title}</h5>
+//                     <div class="d-flex">
+//                         <div class="post-summary-tags d-flex">
+//                             <ul class="ps-0">
+//                                 <li class = "p-1">${jsonResponse.questions[i].tag}</li>
+//                             </ul>
+//                         </div>
+//                         <div class="d-flex align-items-center justify-content-end flex-grow-1">
+//                             <div>
+//                                 answer at 00:02
+//                             </div>
+//                         </div>
+//                     </div>
+//                 </div>
+//             </div>
+//         </div>
+//             `;
+//       }
+//     }
+//     for (
+//       let i = jsonResponse.questions.length - 1;
+//       i > jsonResponse.questions.length - 6;
+//       i--
+//     ) {
+//       htmls += `
+//         <div class="my-2 answers-list">
+//         <div class="pe-3 ps-3 pt-3 d-flex">
+//             <div class="me-3">
+//                 <span>0</span>
+//                 <span>votes</span>
+//             </div>
 
-            
-        </div>
-        <div>
-            <div class="pe-3 ps-3 pb-3">
-                <h5 class="title-ans">${jsonResponse.questions[i].title}</h5>
-                <div class="d-flex">
-                    <div class="post-summary-tags d-flex">
-                        <ul class="ps-0">
-                            <li class = "p-1">${jsonResponse.questions[i].tag}</li>
-                        </ul>
-                    </div>
-                    <div class="d-flex align-items-center justify-content-end flex-grow-1">
-                        <div>
-                            answer at 00:02
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-        `;
-    }
-    info.innerHTML = htmls;
-  } catch (err) {
-    console.log(err);
-  }
-}
-const getDataFakeAPI = async () => {
-  try {
-    const responseAPI = await fetch(
-      "https://jsonplaceholder.typicode.com/users"
-    );
-    data = await responseAPI.json();
-    // const responseQuestions = await fetch(
-    //   "https://jstackoverflow.jsclub.me/user/872805/questions"
-    // );
-    // const { questions } = await responseQuestions.json();
-    // function renderGeneralQuestions() {
-    //   let info = document.getElementById("general-questions");
-    //   let tmp = questions.slice(-5);
-    //   let htmls = "";
-    //   for (let i = 4; i >= 0; i--) {
-    //     htmls += `
-    //             <div class="mb-2 answers-list">
-    //             <div class="pe-3 ps-3 pt-3 d-flex">
-    //                 <div class="me-3">
-    //                     <span>31</span>
-    //                     <span>votes</span>
-    //                 </div>
-    //                 <div class="post-summary-stats">
-    //                     <svg aria-hidden="true" class="svg-icon iconCheckmarkSm" width="14"
-    //                         height="14" viewBox="0 0 14 14">
-    //                         <path d=="M13 3.41 11.59 2 5 8.59 2.41 6 1 7.41l4 4 8-8Z"></path>
-    //                     </svg>
-    //                     Accept
-    //                 </div>
-    //             </div>
-    //             <div>
-    //                 <div class="pe-3 ps-3 pb-3">
-    //                     <h5 class="title-ans">${tmp[i].title}</h5>
-    //                     <div class="d-flex">
-    //                         <div class="d-flex align-items-center justify-content-end flex-grow-1">
-    //                             <div>
-    //                                 answer at 00:02
-    //                             </div>
-    //                         </div>
-    //                     </div>
-    //                 </div>
-    //             </div>
-    //           </div>
-    //           `;
-    //   }
-    //   info.innerHTML = htmls;
-    // }
+//         </div>
+//         <div>
+//             <div class="pe-3 ps-3 pb-3">
+//                 <h5 class="title-ans">${jsonResponse.questions[i].title}</h5>
+//                 <div class="d-flex">
+//                     <div class="post-summary-tags d-flex">
+//                         <ul class="ps-0">
+//                             <li class = "p-1">${jsonResponse.questions[i].tag}</li>
+//                         </ul>
+//                     </div>
+//                     <div class="d-flex align-items-center justify-content-end flex-grow-1">
+//                         <div>
+//                             answer at 00:02
+//                         </div>
+//                     </div>
+//                 </div>
+//             </div>
+//         </div>
+//     </div>
+//         `;
+//     }
+//     info.innerHTML = htmls;
+//   } catch (err) {
+//     console.log(err);
+//   }
+// }
+// const getDataFakeAPI = async () => {
+//   try {
+//     const responseAPI = await fetch(
+//       "https://jsonplaceholder.typicode.com/users"
+//     );
+//     data = await responseAPI.json();
+//     // const responseQuestions = await fetch(
+//     //   "https://jstackoverflow.jsclub.me/user/872805/questions"
+//     // );
+//     // const { questions } = await responseQuestions.json();
+//     // function renderGeneralQuestions() {
+//     //   let info = document.getElementById("general-questions");
+//     //   let tmp = questions.slice(-5);
+//     //   let htmls = "";
+//     //   for (let i = 4; i >= 0; i--) {
+//     //     htmls += `
+//     //             <div class="mb-2 answers-list">
+//     //             <div class="pe-3 ps-3 pt-3 d-flex">
+//     //                 <div class="me-3">
+//     //                     <span>31</span>
+//     //                     <span>votes</span>
+//     //                 </div>
+//     //                 <div class="post-summary-stats">
+//     //                     <svg aria-hidden="true" class="svg-icon iconCheckmarkSm" width="14"
+//     //                         height="14" viewBox="0 0 14 14">
+//     //                         <path d=="M13 3.41 11.59 2 5 8.59 2.41 6 1 7.41l4 4 8-8Z"></path>
+//     //                     </svg>
+//     //                     Accept
+//     //                 </div>
+//     //             </div>
+//     //             <div>
+//     //                 <div class="pe-3 ps-3 pb-3">
+//     //                     <h5 class="title-ans">${tmp[i].title}</h5>
+//     //                     <div class="d-flex">
+//     //                         <div class="d-flex align-items-center justify-content-end flex-grow-1">
+//     //                             <div>
+//     //                                 answer at 00:02
+//     //                             </div>
+//     //                         </div>
+//     //                     </div>
+//     //                 </div>
+//     //             </div>
+//     //           </div>
+//     //           `;
+//     //   }
+//     //   info.innerHTML = htmls;
+//     // }
 
-    let userIds = data.filter(function (user) {
-      return user.id == 1;
-    });
-    renderGeneralInfo(userIds);
-    renderGeneralAnswer();
-    // renderGeneralQuestions();
-    renderAbout(userIds);
-  } catch (err) {
-    console.error(err);
-  }
-};
-function renderAbout(users) {
-  let info = document.getElementById("edit-about");
-  let htmls = "";
-  let tmp = users.filter(function (user) {
-    return user.id == 1;
-  });
-  console.log(tmp);
-  if (tmp.length == 0) {
-    htmls += `<div id = "edit-about">
-        <div class="about-me">
-            <div class="empty-box"></div>
-                <p class="about-txt">
-                    Your about me section is
-                    currently blank. You want to
-                    change it?
-                    <i class="fa-solid fa-hand-back-point-right"></i>
-                    <a href="" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Click
-                        here</a>
-                </p>
-            </div>
-        </div>
-        </div>`;
-  } else {
-    htmls += `
-        <div>
-            ${tmp[0].name}
-        </div>
-        `;
-  }
-  info.innerHTML = htmls;
-}
+//     let userIds = data.filter(function (user) {
+//       return user.id == 1;
+//     });
+//     renderGeneralInfo(userIds);
+//     renderGeneralAnswer();
+//     // renderGeneralQuestions();
+//     renderAbout(userIds);
+//   } catch (err) {
+//     console.error(err);
+//   }
+// };
+// function renderAbout(users) {
+//   let info = document.getElementById("edit-about");
+//   let htmls = "";
+//   let tmp = users.filter(function (user) {
+//     return user.id == 1;
+//   });
+//   console.log(tmp);
+//   if (tmp.length == 0) {
+//     htmls += `<div id = "edit-about">
+//         <div class="about-me">
+//             <div class="empty-box"></div>
+//                 <p class="about-txt">
+//                     Your about me section is
+//                     currently blank. You want to
+//                     change it?
+//                     <i class="fa-solid fa-hand-back-point-right"></i>
+//                     <a href="" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Click
+//                         here</a>
+//                 </p>
+//             </div>
+//         </div>
+//         </div>`;
+//   } else {
+//     htmls += `
+//         <div>
+//             ${tmp[0].name}
+//         </div>
+//         `;
+//   }
+//   info.innerHTML = htmls;
+// }
 
 // getDataFakeAPI();
