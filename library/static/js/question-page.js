@@ -62,15 +62,15 @@ const getQuestion = async () => {
                     <button id="decrement-count" class="material-icons text-4xl text-white">
                         arrow_drop_down
                     </button>
+
+                    
                 </div>
             </div>
 
             <!-- Tags -->
             <div id="tags" class="">
                 <ul class="text-xs">
-                    <li class="inline-block rounded-sm">TRS601</li>
-                    <li class="inline-block rounded-sm">MAE101</li>
-                    <li class="inline-block rounded-sm">TRS501</li>
+                    <li class="inline-block rounded-sm">${questionTag}</li>
                 </ul>
             </div>
         </div>
