@@ -37,6 +37,7 @@ def sign_up():
     elif request.method == 'POST':
         return  sign_up_services()
 
+
  
 # @profiles.route('/sign_up', methods=['POST'])
 # def sign_up():
@@ -84,13 +85,24 @@ def change_avatar(id):
     return change_avatar_services(id)
 
 
-@profiles.route('/user/<int:id>/questions', methods=['GET'])
+@profiles.route('api/user/<int:id>/questions', methods=['GET'])
 @login_required
 def get_questions(id):
     return get_question_by_user_id(id)
 
 
-@profiles.route('/user/<int:id>/answers', methods=['GET'])
+@profiles.route('api/user/<int:id>/answers', methods=['GET'])
 @login_required
 def get_answers(id):
     return get_answer_by_user_id(id)
+
+@profiles.route('/user/<int:id>/questions', methods=['GET'])
+@login_required
+def get_questions(id):
+    return render_template('profile_page_question.html', id =id)
+
+
+@profiles.route('/user/<int:id>/answers', methods=['GET'])
+@login_required
+def get_answers(id):
+    return render_template('profile_page_answer.html', id =id)

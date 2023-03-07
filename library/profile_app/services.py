@@ -57,7 +57,7 @@ def sign_up_services():
                         experience=experience, year_of_experience=year_of_experience)
         db.session.add(new_user)
         db.session.commit()
-        return render_template('sign-in.html')
+        return jsonify({'status':"sign up successfully"})
     except Exception as e:
         db.session.rollback()
         print("An error occurred:", e)
