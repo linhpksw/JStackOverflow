@@ -80,7 +80,7 @@ async function loadInfos() {
     const jsonResponse = await response.json();
     let info = document.getElementById("general-info");
     let htmls = `<div class="d-flex position-relative">
-                    <a class="img-user rounded-circle"><img src="${jsonResponse.avatar}" style = "height: 175px;"/></a>
+                    <a class="img-user rounded-circle"><img src="${jsonResponse.avatar}" class = "img"/></a>
                     <div class="d-flex">
                         <div class="d-flex align-items-center infor">
                             <div class="me-3">
