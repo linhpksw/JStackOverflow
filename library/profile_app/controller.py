@@ -56,7 +56,13 @@ def load_user_callback(id):
 @profiles.route('/logout', methods=['POST'])
 # @login_required
 def logout():
-    return logout_services()
+    if request.method == 'POST':
+        return render_template('sign-in.html')
+    else:
+        return logout_services()
+    
+
+
 
 
 
