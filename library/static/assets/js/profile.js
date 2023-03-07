@@ -9,6 +9,9 @@ const searchBar = document.getElementById("search-text");
 let data = [];
 loadInfos();
 loadQuestions();
+loadAbout();
+loadAnswers();
+loadStats();
 searchBar.addEventListener("keyup", (e) => {
   const searchString = e.target.value.toLowerCase();
   const filteredCharacters = data.filter((character) => {
@@ -16,57 +19,69 @@ searchBar.addEventListener("keyup", (e) => {
   });
   console.log(filteredCharacters);
 });
-const loadAbout = async () => {
+async function loadStats() {
+  let info = document.getElementById("stats");
+  const URL1 = `https://jstackoverflow.jsclub.me/api/user/${id}/answers`;
+  const URL2 = `https://jstackoverflow.jsclub.me/api/user/${id}/questions`;
+  const opt = {
+    method: "GET",
+  };
+  const response1 = await fetch(URL1, opt);
+  const response2 = await fetch(URL2, opt);
+  const jsonResponse1 = await response1.json();
+  const jsonResponse2 = await response2.json();
+  let htmls = `
+    <div class="d-flex">
+                                        <div class="m-2 p-2">
+                                            <div>${jsonResponse1.answers.length}</div>
+                                            Answers
+                                        </div>
+                                        <div class="m-2 p-2">
+                                            <div>${jsonResponse2.questions.length}</div>
+                                            Questions
+                                        </div>
+                                    </div>
+  `;
+  info.innerHTML = htmls;
+}
+async function loadAbout() {
   try {
-    let info = document.getElementById("general-questions");
-    let htmls = ``;
-    const URL = `https://jstackoverflow.jsclub.me/api/get_info/${id}`;
+    let info = document.getElementById("about");
+    const URL = `https://jstackoverflow.jsclub.me/api/user/${id}`;
     const opt = {
       method: "GET",
     };
     const response = await fetch(URL, opt);
     const jsonResponse = await response.json();
-
-    for (
-      let i = jsonResponse.questions.length - 1;
-      i > jsonResponse.questions.length - 6;
-      i--
-    ) {
+    let tmp = jsonResponse.bio;
+    let htmls = ``;
+    if (tmp === "") {
+      htmls += `<div id = "edit-about">
+            <div class="about-me">
+                <div class="empty-box"></div>
+                    <p class="about-txt">
+                        Your about me section is
+                        currently blank. You want to
+                        change it?
+                        <i class="fa-solid fa-hand-back-point-right"></i>
+                        <a href="" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Click
+                            here</a>
+                    </p>
+                </div>
+            </div>
+            </div>`;
+    } else {
       htmls += `
-            <div class="my-2 answers-list">
-            <div class="pe-3 ps-3 pt-3 d-flex">
-                <div class="me-3">
-                    <span>0</span>
-                    <span>votes</span>
-                </div>
-    
-                
-            </div>
             <div>
-                <div class="pe-3 ps-3 pb-3">
-                    <h5 class="title-ans">${jsonResponse.questions[i].title}</h5>
-                    <div class="d-flex">
-                        <div class="post-summary-tags d-flex">
-                            <ul class="ps-0">
-                                <li>${jsonResponse.questions[i].tag}</li>
-                            </ul>
-                        </div>
-                        <div class="d-flex align-items-center justify-content-end flex-grow-1">
-                            <div>
-                                answer at 00:02
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                ${tmp}
             </div>
-        </div>
             `;
     }
     info.innerHTML = htmls;
   } catch (err) {
     console.log(err);
   }
-};
+}
 async function loadInfos() {
   try {
     const URL = `https://jstackoverflow.jsclub.me/api/user/${id}`;
@@ -190,7 +205,7 @@ async function loadInfos() {
     console.log(err);
   }
 }
-const loadAnswers = async () => {
+async function loadAnswers() {
   try {
     let info = document.getElementById("general-answers");
     let htmls = ``;
@@ -238,12 +253,6 @@ const loadAnswers = async () => {
     ) {
       htmls += `
         <div class="my-2 answers-list">
-        <div class="pe-3 ps-3 pt-3 d-flex">
-            <div class="me-3">
-                <span>${jsonResponse.answers[i].rating}</span>
-                <span>votes</span>
-            </div>
-        </div>
         <div>
             <div class="pe-3 ps-3 pb-3">
                 <h5 class="title-ans">${jsonResponse.answers[i].title}</h5>
@@ -268,7 +277,7 @@ const loadAnswers = async () => {
   } catch (err) {
     console.log(err);
   }
-};
+}
 async function loadQuestions() {
   try {
     let info = document.getElementById("general-questions");

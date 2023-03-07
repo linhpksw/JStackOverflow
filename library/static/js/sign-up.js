@@ -9,16 +9,18 @@ try {
     const signUpBtn = document.getElementById('sign-up-btn');
 
     async function fetchUserInfo() {
-        if (password != confirmPassword) {
+        if (password.value != confirmPassword.value) {
             alert(`Those passwords didn't match. Try again.`);
         } else {
             const data = {
                 email: email.value,
                 password: password.value,
                 name: fullName.value,
-                date_of_birth: dateOfBirth.value,
+                date_of_birth: dateOfBirth.value.split('/').reverse().join('-'),
                 phone_number: phone.value,
             };
+
+            console.log(data);
 
             const opt = {
                 method: 'POST',
@@ -29,7 +31,7 @@ try {
                 body: JSON.stringify(data),
             };
 
-            const URL = 'https://jstackoverflow.jsclub.me/sign_up';
+            const URL = 'https://jstackoverflow.jsclub.me/sign-up';
             const response = await fetch(URL, opt);
             const jsonResponse = await response.json();
 
