@@ -18,7 +18,7 @@ def login():
 @login_required
 def home():
     if not current_user:
-        return redirect(url_for('index'))
+        return redirect('/')
     return render_template('home-page.html')  
 
         
