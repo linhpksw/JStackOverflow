@@ -110,3 +110,5 @@ const getQuestion = async () => {
 // const decrementCount = document.getElementById('decrement-count');
 
 // const totalCount = document.getElementById('total-count');
+
+window.addEventListener('DOMContentLoaded', getQuestion);
