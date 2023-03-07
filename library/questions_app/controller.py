@@ -22,7 +22,7 @@ def add_questions():
     return add_question_services()
 
 
-@main.route('api/questions_manager/questions/<int:id>', methods=['GET'])
+@main.route('/api/questions_manager/questions/<int:id>', methods=['GET'])
 @login_required
 def get_question(id):
     return get_question_services(id)
