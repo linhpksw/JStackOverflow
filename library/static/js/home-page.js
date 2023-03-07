@@ -50,6 +50,10 @@ discardBtn.addEventListener('click', () => {
     modalQuestion.classList.remove('modal-open');
 });
 
+function calculateTime(questionTime) {
+    return questionTime.toLocaleString('vi-VN');
+}
+
 function appendQuestion(questionId, askerId, questionTitle, questionTag, questionTime, askerName) {
     const questionsElement = document.getElementById('questions');
 
@@ -132,7 +136,7 @@ function appendQuestion(questionId, askerId, questionTitle, questionTag, questio
                         ><a id="user-name" href="/user/${askerId}" class="text-amber-400"
                             >${askerName}</a
                         >
-                        asked at ${questionTime}</span
+                        asked at ${calculateTime(questionTime)}</span
                     >
                 </div>
             </div>
