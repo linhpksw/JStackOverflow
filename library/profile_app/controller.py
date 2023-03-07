@@ -30,6 +30,13 @@ def get_info(id):
 def get_all_users():
     return get_all_users_services()
     
+@profiles.route('/sign_up', methods=['GET'])
+def sign_up():
+     return  render_template('sign-up.html')
+
+
+ 
+
 
 @profiles.route('/sign_up', methods=['POST'])
 def sign_up():
