@@ -20,6 +20,22 @@ const id = 124859;
 loadStats();
 loadAnswers();
 loadInfos();
+loadActivity();
+async function loadActivity() {
+  let info = document.getElementById("activity");
+  let htmls = `
+    <li class="m-2 p-1" >
+                                            <a class="m-2" href="https://jstackoverflow.jsclub.me/user/${id}">Summary</a>
+                                        </li>
+                                        <li class="m-2 p-1" >
+                                            <a class="m-2" href="https://jstackoverflow.jsclub.me/user/${id}/answers">Answers</a>
+                                        </li>
+                                        <li class="m-2 p-1" >
+                                            <a class="m-2" href="https://jstackoverflow.jsclub.me/user/${id}/questions">Questions</a>
+                                        </li>
+    `;
+  info.innerHTML = htmls;
+}
 async function loadInfos() {
   try {
     const URL = `https://jstackoverflow.jsclub.me/api/user/${id}`;

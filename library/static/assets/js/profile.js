@@ -12,6 +12,22 @@ loadQuestions();
 loadAbout();
 loadAnswers();
 loadStats();
+loadActivity();
+async function loadActivity() {
+  let info = document.getElementById("activity");
+  let htmls = `
+    <li class="m-2 p-1" >
+                                            <a class="m-2" href="https://jstackoverflow.jsclub.me/user/${id}">Summary</a>
+                                        </li>
+                                        <li class="m-2 p-1" >
+                                            <a class="m-2" href="https://jstackoverflow.jsclub.me/user/${id}/answers">Answers</a>
+                                        </li>
+                                        <li class="m-2 p-1" >
+                                            <a class="m-2" href="https://jstackoverflow.jsclub.me/user/${id}/questions">Questions</a>
+                                        </li>
+    `;
+  info.innerHTML = htmls;
+}
 searchBar.addEventListener("keyup", (e) => {
   const searchString = e.target.value.toLowerCase();
   const filteredCharacters = data.filter((character) => {
