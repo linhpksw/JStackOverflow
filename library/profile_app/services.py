@@ -118,7 +118,7 @@ def edit_profile_services(id):
     data = request.json
     if not data:
         return jsonify({'error':'No need to edit'})
-    infor = ["name", "bio", "education", "experience", "year_of_experience"]
+    infor = ["name", "bio", "education", "experience", "year_of_experience","gender"]
     if "date_of_birth" in data:
         date_of_birth = datetime.strptime(
             data.get("date_of_birth"), '%Y-%m-%d').date()
